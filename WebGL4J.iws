@@ -1,0 +1,1974 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="bb08667d-6c40-4e00-a01e-aa8f27c06e05" name="Default" comment="" />
+    <ignored path="WebGL4J.iws" />
+    <ignored path=".idea/workspace.xml" />
+    <ignored path="$PROJECT_DIR$/.gradle/" />
+    <ignored path="$PROJECT_DIR$/build/" />
+    <ignored path=".idea/dataSources.local.xml" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <PATH>
+              <PATH_ELEMENT>
+                <option name="myItemId" value="" />
+                <option name="myItemType" value="com.intellij.openapi.externalSystem.view.ExternalProjectsStructure$RootNode" />
+              </PATH_ELEMENT>
+              <PATH_ELEMENT>
+                <option name="myItemId" value="WebGL4J" />
+                <option name="myItemType" value="com.intellij.openapi.externalSystem.view.ProjectNode" />
+              </PATH_ELEMENT>
+              <PATH_ELEMENT>
+                <option name="myItemId" value="Dependencies" />
+                <option name="myItemType" value="com.intellij.openapi.externalSystem.view.ExternalSystemViewDefaultContributor$MyDependenciesNode" />
+              </PATH_ELEMENT>
+            </PATH>
+            <PATH>
+              <PATH_ELEMENT>
+                <option name="myItemId" value="" />
+                <option name="myItemType" value="com.intellij.openapi.externalSystem.view.ExternalProjectsStructure$RootNode" />
+              </PATH_ELEMENT>
+              <PATH_ELEMENT>
+                <option name="myItemId" value="WebGL4J" />
+                <option name="myItemType" value="com.intellij.openapi.externalSystem.view.ProjectNode" />
+              </PATH_ELEMENT>
+              <PATH_ELEMENT>
+                <option name="myItemId" value="Tasks" />
+                <option name="myItemType" value="com.intellij.openapi.externalSystem.view.TasksNode" />
+              </PATH_ELEMENT>
+            </PATH>
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="WebGL4J" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/build.gradle">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="53" column="1" selection-start-line="53" selection-start-column="1" selection-end-line="53" selection-end-column="1" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-44.75862">
+              <caret line="59" column="106" selection-start-line="59" selection-start-column="106" selection-end-line="59" selection-end-column="106" />
+              <folding />
+            </state>
+          </provider>
+          <provider editor-type-id="MarkdownPreviewEditor">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/webapp/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-8.461538">
+              <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TriangleTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/shc/webgl4j/client/TriangleTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <marker date="1437900323266" expanded="true" signature="3878:4105" placeholder="{...}" />
+                <marker date="1437900323266" expanded="true" signature="4000:4086" placeholder="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="WebGL10.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/shc/webgl4j/client/WebGL10.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.48173207">
+              <caret line="1625" column="60" selection-start-line="1625" selection-start-column="60" selection-end-line="1625" selection-end-column="60" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#25645#25646#0" expanded="true" />
+                <element signature="e#25688#25689#0" expanded="true" />
+                <element signature="e#41924#41925#0" expanded="true" />
+                <element signature="e#41985#41986#0" expanded="true" />
+                <element signature="e#42221#42222#0" expanded="true" />
+                <element signature="e#42282#42283#0" expanded="true" />
+                <element signature="e#42514#42515#0" expanded="true" />
+                <element signature="e#42575#42576#0" expanded="true" />
+                <element signature="e#43122#43123#0" expanded="true" />
+                <element signature="e#43181#43182#0" expanded="true" />
+                <marker date="1437921477146" expanded="true" signature="25790:26396" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="25812:26170" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="26197:26390" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="26457:26532" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="47643:47690" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="47774:47832" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="47933:48000" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="48078:48129" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="48217:48278" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="48368:48431" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="48513:48568" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="48658:48705" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="48772:48816" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="48909:48975" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="49058:49114" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="49227:49305" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="49402:49476" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="49574:49648" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="49762:49846" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="49961:50045" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="50122:50184" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="50244:50281" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="50371:50418" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="50485:50527" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="50596:50642" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="50752:50811" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="50882:50930" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="51176:51294" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="51539:51657" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="51913:52034" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="52289:52410" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="52615:52714" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="52919:53015" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="53072:53118" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="53180:53231" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="53289:53336" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="53399:53451" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="53516:53566" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="53624:53671" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="53733:53772" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="53842:53889" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="53969:54026" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="54098:54147" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="54229:54288" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="54358:54405" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="54477:54526" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="54589:54629" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="54696:54736" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="54821:54873" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="54958:55016" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="55083:55127" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="55206:55262" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="55348:55403" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="55502:55566" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="55631:55673" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="55751:55806" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="55858:55891" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="55942:55974" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="56111:56213" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="56348:56444" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="56507:56547" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="56617:56664" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="56755:56820" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="56912:56978" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="57056:57117" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="57205:57271" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="57355:57420" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="57478:57516" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="57595:57649" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="57716:57767" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="57833:57883" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="57936:57978" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="58046:58096" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="58211:58303" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="58396:58447" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="58514:58565" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="58636:58687" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="58757:58808" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="58880:58931" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="59005:59056" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="59126:59177" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="59255:59315" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="59404:59473" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="59566:59635" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="59725:59796" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="59872:59930" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="60017:60084" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="60175:60242" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="60362:60445" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="60520:60577" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="60649:60705" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="60789:60854" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="60944:61007" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="61095:61158" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="61244:61307" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="61396:61463" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="61548:61609" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="61695:61756" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="61837:61898" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="61984:62051" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="62121:62171" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="62240:62290" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="62352:62399" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="62471:62524" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="62603:62663" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="62734:62786" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="62867:62929" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="62998:63048" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="63119:63171" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="63235:63276" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="63346:63393" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="63470:63520" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="63606:63659" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="63787:63856" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="63974:64057" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="64144:64198" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="64277:64321" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="64406:64468" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="64552:64605" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="64707:64774" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="64839:64881" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="64964:65020" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="65108:65165" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="65268:65336" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="65477:65571" placeholder="/*...*/" />
+                <marker date="1437921477146" expanded="true" signature="65480:65571" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="65651:65696" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="65765:65811" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="65980:66021" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="66072:66113" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="66164:66205" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="66399:66441" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="66507:66550" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="66610:66656" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="66730:66781" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="66837:66879" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="66945:66988" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="67067:67132" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="67220:67285" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="67354:67409" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="67501:67570" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="67642:67700" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="67798:67873" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="67931:67975" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="68045:68092" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="68047:68092" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="68157:68467" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="68178:68456" placeholder="{&quot;alpha&quot;: true...}" />
+                <marker date="1437921477146" expanded="true" signature="68669:68715" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="68770:68815" placeholder="{...}" />
+                <marker date="1437921477146" expanded="true" signature="68870:68915" placeholder="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="GradleLocalSettings">
+    <option name="availableProjects">
+      <map>
+        <entry>
+          <key>
+            <ExternalProjectPojo>
+              <option name="name" value="WebGL4J" />
+              <option name="path" value="$PROJECT_DIR$" />
+            </ExternalProjectPojo>
+          </key>
+          <value>
+            <list>
+              <ExternalProjectPojo>
+                <option name="name" value="WebGL4J" />
+                <option name="path" value="$PROJECT_DIR$" />
+              </ExternalProjectPojo>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="availableTasks">
+      <map>
+        <entry key="$PROJECT_DIR$">
+          <value>
+            <list>
+              <ExternalTaskPojo>
+                <option name="description" value="Assembles the outputs of this project." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="assemble" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Assembles and tests this project." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="build" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Assembles and tests this project and all projects that depend on it." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="buildDependents" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Assembles and tests this project and all projects it depends on." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="buildNeeded" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Runs all checks." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="check" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Runs the GWT compiler to validate the relevant sources" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="checkGwt" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Assembles classes 'main'." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="classes" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Deletes the build directory." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="clean" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Runs the GWT compiler to translate Java sources to JavaScript for production ready output" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="compileGwt" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Compiles Java source 'main:java'." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="compileJava" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Compiles Java source 'test:java'." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="compileTestJava" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Displays the components produced by root project 'WebGL4J'. [incubating]" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="components" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Displays all dependencies declared in root project 'WebGL4J'." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="dependencies" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Displays the insight into a specific dependency in root project 'WebGL4J'." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="dependencyInsight" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Runs the GWT compiler to produce draft quality output used for development" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="draftCompileGwt" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="draftRun" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Creates a war using the output of the task draftCompileGwt" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="draftWar" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Runs the GWT development mode" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="gwtDev" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Runs the GWT super dev mode" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="gwtSuperDev" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Displays a help message." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="help" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Initializes a new Gradle build. [incubating]" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="init" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Assembles a jar archive containing the main classes." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="jar" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Generates Javadoc API documentation for the main source code." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="javadoc" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Uses your files as and where they are and deploys them to Jetty." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="jettyRun" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Assembles the webapp into a war and deploys it to Jetty." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="jettyRunWar" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Stops Jetty." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="jettyStop" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Displays the configuration model of root project 'WebGL4J'. [incubating]" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="model" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Processes JVM resources 'main:resources'." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="processResources" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Processes JVM resources 'test:resources'." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="processTestResources" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Displays the sub-projects of root project 'WebGL4J'." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="projects" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Displays the properties of root project 'WebGL4J'." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="properties" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="superDev" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Displays the tasks runnable from root project 'WebGL4J'." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="tasks" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Runs the unit tests." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="test" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Assembles classes 'test'." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="testClasses" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Generates a war archive with all the compiled classes, the web-app content and the libraries." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="war" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Creates an exploded web application template to be used by GWT dev mode and eclipse to ensure src/main/webapp stays clean" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="warTemplate" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Generates Gradle wrapper files. [incubating]" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="wrapper" />
+              </ExternalTaskPojo>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="modificationStamps">
+      <map>
+        <entry key="$PROJECT_DIR$" value="2875670976292" />
+      </map>
+    </option>
+    <option name="projectBuildClasspath">
+      <map>
+        <entry key="$PROJECT_DIR$">
+          <value>
+            <ExternalProjectBuildClasspathPojo>
+              <option name="modulesBuildClasspath">
+                <map>
+                  <entry key="$PROJECT_DIR$">
+                    <value>
+                      <ExternalModuleBuildClasspathPojo>
+                        <option name="entries">
+                          <list>
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.gwt/gwt-user/2.7.0/2abdc607f5101c9f431f1e671ee30061d42b8906/gwt-user-2.7.0-sources.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.gwt/gwt-user/2.7.0/bdc7af42581745d3d79c2efe0b514f432b998a5b/gwt-user-2.7.0.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/javax.validation/validation-api/1.0.0.GA/7a561191db2203550fbfa40d534d4997624cd369/validation-api-1.0.0.GA-sources.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/javax.validation/validation-api/1.0.0.GA/b6bd7f9d78f6fdaa3c37dae18a4bd298915f328e/validation-api-1.0.0.GA.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/de.richsource.gradle.plugins/gwt-gradle-plugin/0.6/e38b28f04aaf547e992a4f68113e4274a0dceafb/gwt-gradle-plugin-0.6-sources.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/de.richsource.gradle.plugins/gwt-gradle-plugin/0.6/7393243331d33bbf6fde148da090500249be9e53/gwt-gradle-plugin-0.6.jar" />
+                          </list>
+                        </option>
+                        <option name="path" value="$PROJECT_DIR$" />
+                      </ExternalModuleBuildClasspathPojo>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+              <option name="name" value="WebGL4J" />
+              <option name="projectBuildClasspath">
+                <list>
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/src/announce" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/src/antlr" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/src/base-services" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/src/base-services-groovy" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/src/build-comparison" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/src/build-init" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/src/cli" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/src/code-quality" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/src/core" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/src/dependency-management" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/src/diagnostics" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/src/ear" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/src/ide" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/src/ide-native" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/src/internal-integ-testing" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/src/internal-testing" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/src/ivy" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/src/jacoco" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/src/javascript" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/src/jetty" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/src/language-groovy" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/src/language-java" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/src/language-jvm" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/src/language-native" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/src/language-scala" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/src/launcher" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/src/maven" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/src/messaging" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/src/model-core" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/src/model-groovy" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/src/native" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/src/open-api" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/src/osgi" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/src/platform-base" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/src/platform-jvm" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/src/platform-native" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/src/platform-play" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/src/plugin-development" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/src/plugin-use" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/src/plugins" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/src/publish" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/src/reporting" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/src/resources" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/src/resources-http" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/src/resources-s3" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/src/resources-sftp" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/src/scala" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/src/signing" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/src/sonar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/src/testing-native" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/src/tooling-api" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/src/tooling-api-builders" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/src/ui" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/src/wrapper" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/lib/ant-1.9.4.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/lib/ant-launcher-1.9.4.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/lib/gradle-base-services-2.4.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/lib/gradle-base-services-groovy-2.4.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/lib/gradle-cli-2.4.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/lib/gradle-core-2.4.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/lib/gradle-docs-2.4.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/lib/gradle-launcher-2.4.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/lib/gradle-messaging-2.4.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/lib/gradle-model-core-2.4.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/lib/gradle-model-groovy-2.4.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/lib/gradle-native-2.4.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/lib/gradle-open-api-2.4.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/lib/gradle-resources-2.4.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/lib/gradle-tooling-api-2.4.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/lib/gradle-ui-2.4.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/lib/gradle-wrapper-2.4.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/lib/groovy-all-2.3.10.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/lib/plugins/gradle-announce-2.4.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/lib/plugins/gradle-antlr-2.4.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/lib/plugins/gradle-build-comparison-2.4.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/lib/plugins/gradle-build-init-2.4.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/lib/plugins/gradle-code-quality-2.4.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/lib/plugins/gradle-dependency-management-2.4.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/lib/plugins/gradle-diagnostics-2.4.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/lib/plugins/gradle-ear-2.4.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/lib/plugins/gradle-ide-2.4.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/lib/plugins/gradle-ide-native-2.4.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/lib/plugins/gradle-ivy-2.4.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/lib/plugins/gradle-jacoco-2.4.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/lib/plugins/gradle-javascript-2.4.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/lib/plugins/gradle-jetty-2.4.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/lib/plugins/gradle-language-groovy-2.4.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/lib/plugins/gradle-language-java-2.4.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/lib/plugins/gradle-language-jvm-2.4.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/lib/plugins/gradle-language-native-2.4.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/lib/plugins/gradle-language-scala-2.4.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/lib/plugins/gradle-maven-2.4.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/lib/plugins/gradle-osgi-2.4.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/lib/plugins/gradle-platform-base-2.4.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/lib/plugins/gradle-platform-jvm-2.4.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/lib/plugins/gradle-platform-native-2.4.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/lib/plugins/gradle-platform-play-2.4.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/lib/plugins/gradle-plugin-development-2.4.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/lib/plugins/gradle-plugin-use-2.4.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/lib/plugins/gradle-plugins-2.4.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/lib/plugins/gradle-publish-2.4.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/lib/plugins/gradle-reporting-2.4.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/lib/plugins/gradle-resources-http-2.4.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/lib/plugins/gradle-resources-s3-2.4.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/lib/plugins/gradle-resources-sftp-2.4.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/lib/plugins/gradle-scala-2.4.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/lib/plugins/gradle-signing-2.4.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/lib/plugins/gradle-sonar-2.4.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/lib/plugins/gradle-testing-native-2.4.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/lib/plugins/gradle-tooling-api-builders-2.4.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.4-all/6r4uqcc6ovnq6ac6s0txzcpc0/gradle-2.4/lib/plugins/ivy-2.2.0.jar" />
+                  <option value="$PROJECT_DIR$/buildSrc/src/main/java" />
+                  <option value="$PROJECT_DIR$/buildSrc/src/main/groovy" />
+                </list>
+              </option>
+            </ExternalProjectBuildClasspathPojo>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="externalProjectsViewState">
+      <projects_view />
+    </option>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/webapp/index.html" />
+        <option value="$PROJECT_DIR$/src/main/java/com/shc/webgl4j/client/WebGL.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/shc/webgl4j/client/TriangleTest.java" />
+        <option value="$PROJECT_DIR$/build.gradle" />
+        <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/src/main/java/com/shc/webgl4j/client/WebGL10.java" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="Bundled (Maven 3)" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="NamedScopeManager">
+    <order />
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1616" />
+    <option name="height" value="876" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <OptionsSetting value="true" id="Checkout" />
+    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="true" id="Status" />
+    <OptionsSetting value="true" id="Edit" />
+    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="0" id="Remove" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WebGL4J" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WebGL4J" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WebGL4J" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WebGL4J" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com.shc.webgl4j" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WebGL4J" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WebGL4J" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com.shc.webgl4j" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WebGL4J" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WebGL4J" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WebGL4J" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scratches" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="C:/Program Files/Java/jdk1.8.0_31/bin/jvisualvm.exe" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="SearchEverywhereHistoryKey" value="Ter&#9;ACTION&#9;ActivateTerminalToolWindow&#10;index&#9;FILE&#9;file://E:/WebGL4J/webapp/index.html&#10;build.&#9;FILE&#9;file://E:/WebGL4J/build.gradle" />
+    <property name="FullScreen" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\WebGL4J" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
+      <module name="" />
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
+      <option name="PROGRAM_PARAMETERS" />
+      <method />
+    </configuration>
+    <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
+      <module name="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="DEPLOY" value="true" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="USE_COMMAND_LINE" value="true" />
+      <option name="COMMAND_LINE" value="" />
+      <option name="WIPE_USER_DATA" value="false" />
+      <option name="DISABLE_BOOT_ANIMATION" value="false" />
+      <option name="NETWORK_SPEED" value="full" />
+      <option name="NETWORK_LATENCY" value="none" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
+      <option name="FILTER_LOGCAT_AUTOMATICALLY" value="true" />
+      <method />
+    </configuration>
+    <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
+      <module name="" />
+      <option name="TESTING_TYPE" value="0" />
+      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="USE_COMMAND_LINE" value="true" />
+      <option name="COMMAND_LINE" value="" />
+      <option name="WIPE_USER_DATA" value="false" />
+      <option name="DISABLE_BOOT_ANIMATION" value="false" />
+      <option name="NETWORK_SPEED" value="full" />
+      <option name="NETWORK_LATENCY" value="none" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
+      <option name="FILTER_LOGCAT_AUTOMATICALLY" value="true" />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <module />
+      <method />
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="myFilePath" />
+      <option name="GLUE" />
+      <option name="myNameFilter" />
+      <option name="myGeneratedName" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="FlashRunConfigurationType" factoryName="Flash App">
+      <option name="BCName" value="" />
+      <option name="IOSSimulatorSdkPath" value="" />
+      <option name="adlOptions" value="" />
+      <option name="airProgramParameters" value="" />
+      <option name="appDescriptorForEmulator" value="Android" />
+      <option name="debugTransport" value="USB" />
+      <option name="debuggerSdkRaw" value="BC SDK" />
+      <option name="emulator" value="NexusOne" />
+      <option name="emulatorAdlOptions" value="" />
+      <option name="fastPackaging" value="true" />
+      <option name="fullScreenHeight" value="0" />
+      <option name="fullScreenWidth" value="0" />
+      <option name="launchUrl" value="false" />
+      <option name="launcherParameters">
+        <LauncherParameters>
+          <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
+          <option name="launcherType" value="OSDefault" />
+          <option name="newPlayerInstance" value="false" />
+          <option name="playerPath" value="FlashPlayerDebugger.exe" />
+        </LauncherParameters>
+      </option>
+      <option name="mobileRunTarget" value="Emulator" />
+      <option name="moduleName" value="" />
+      <option name="overriddenMainClass" value="" />
+      <option name="overriddenOutputFileName" value="" />
+      <option name="overrideMainClass" value="false" />
+      <option name="runTrusted" value="true" />
+      <option name="screenDpi" value="0" />
+      <option name="screenHeight" value="0" />
+      <option name="screenWidth" value="0" />
+      <option name="url" value="http://" />
+      <option name="usbDebugPort" value="7936" />
+      <method />
+    </configuration>
+    <configuration default="true" type="FlexUnitRunConfigurationType" factoryName="FlexUnit" appDescriptorForEmulator="Android" class_name="" emulatorAdlOptions="" method_name="" package_name="" scope="Class">
+      <option name="BCName" value="" />
+      <option name="launcherParameters">
+        <LauncherParameters>
+          <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
+          <option name="launcherType" value="OSDefault" />
+          <option name="newPlayerInstance" value="false" />
+          <option name="playerPath" value="FlashPlayerDebugger.exe" />
+        </LauncherParameters>
+      </option>
+      <option name="moduleName" value="" />
+      <option name="trusted" value="true" />
+      <method />
+    </configuration>
+    <configuration default="true" type="GradleRunConfiguration" factoryName="Gradle">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list />
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <method />
+    </configuration>
+    <configuration default="true" type="GrailsRunConfigurationType" factoryName="Grails">
+      <module name="" />
+      <setting name="vmparams" value="" />
+      <setting name="cmdLine" value="run-app" />
+      <setting name="depsClasspath" value="false" />
+      <setting name="passParentEnv" value="true" />
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <setting name="launchBrowser" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="true" type="JarApplication" factoryName="JAR Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="Remote" factoryName="Remote">
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" value="javadebug" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="5005" />
+      <method />
+    </configuration>
+    <configuration default="true" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="TestNG" factoryName="TestNG">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <envs />
+      <properties />
+      <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <pass-parent-envs>true</pass-parent-envs>
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="osgi.bnd.run" factoryName="Run Launcher">
+      <method />
+    </configuration>
+    <configuration default="true" type="osgi.bnd.run" factoryName="Test Launcher (JUnit)">
+      <method />
+    </configuration>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="StatisticProjectComponent">
+    <option name="excludeCompilerOutput" value="true" />
+    <option name="excludeIdea9ArtifactDirectory" value="true" />
+    <option name="excludeTargetDirectories" value="true" />
+    <option name="activateWhenOpenProject" value="true" />
+    <option name="excludedDirectories">
+      <value>
+        <list size="0" />
+      </value>
+    </option>
+    <option name="fileTypes" value="class;svn-base;svn-work;Extra;gif;png;jpg;jpeg;bmp;tga;tiff;ear;war;zip;jar;iml;iws;ipr;bz2;gz;" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="bb08667d-6c40-4e00-a01e-aa8f27c06e05" name="Default" comment="" />
+      <created>1437837992124</created>
+      <option name="number" value="Default" />
+      <updated>1437837992124</updated>
+      <workItem from="1437837994551" duration="552000" />
+      <workItem from="1437838561284" duration="5713000" />
+      <workItem from="1437876891124" duration="7598000" />
+      <workItem from="1437900094745" duration="8861000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="22724000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
+    <editor active="false" />
+    <layout>
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32985657" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32985657" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.145625" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
+      <window_info id="Run with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Statistic" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.164375" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17375" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="combo" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32985657" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="Vcs.Log.UiProperties">
+    <option name="RECENTLY_FILTERED_USER_GROUPS">
+      <collection />
+    </option>
+    <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+      <collection />
+    </option>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="46" column="14" selection-start-line="46" selection-start-column="14" selection-end-line="46" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webapp/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="7" column="61" selection-start-line="7" selection-start-column="61" selection-end-line="7" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/shc/webgl4j/client/TriangleTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="19" column="38" selection-start-line="19" selection-start-column="38" selection-end-line="19" selection-end-column="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <marker date="1437900323266" expanded="true" signature="3878:4105" placeholder="{...}" />
+            <marker date="1437900323266" expanded="true" signature="4000:4086" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/shc/webgl4j/client/WebGL10.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#25645#25646#0" expanded="true" />
+            <element signature="e#25688#25689#0" expanded="true" />
+            <element signature="e#41924#41925#0" expanded="true" />
+            <element signature="e#41985#41986#0" expanded="true" />
+            <element signature="e#42221#42222#0" expanded="true" />
+            <element signature="e#42282#42283#0" expanded="true" />
+            <element signature="e#42514#42515#0" expanded="true" />
+            <element signature="e#42575#42576#0" expanded="true" />
+            <element signature="e#43122#43123#0" expanded="true" />
+            <element signature="e#43181#43182#0" expanded="true" />
+            <marker date="1437921477146" expanded="true" signature="25790:26396" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="25812:26170" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="26197:26390" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="26457:26532" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="47643:47690" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="47774:47832" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="47933:48000" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="48078:48129" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="48217:48278" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="48368:48431" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="48513:48568" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="48658:48705" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="48772:48816" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="48909:48975" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="49058:49114" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="49227:49305" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="49402:49476" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="49574:49648" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="49762:49846" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="49961:50045" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="50122:50184" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="50244:50281" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="50371:50418" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="50485:50527" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="50596:50642" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="50752:50811" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="50882:50930" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="51176:51294" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="51539:51657" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="51913:52034" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="52289:52410" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="52615:52714" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="52919:53015" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="53072:53118" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="53180:53231" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="53289:53336" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="53399:53451" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="53516:53566" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="53624:53671" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="53733:53772" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="53842:53889" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="53969:54026" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="54098:54147" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="54229:54288" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="54358:54405" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="54477:54526" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="54589:54629" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="54696:54736" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="54821:54873" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="54958:55016" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="55083:55127" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="55206:55262" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="55348:55403" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="55502:55566" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="55631:55673" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="55751:55806" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="55858:55891" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="55942:55974" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="56111:56213" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="56348:56444" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="56507:56547" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="56617:56664" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="56755:56820" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="56912:56978" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="57056:57117" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="57205:57271" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="57355:57420" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="57478:57516" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="57595:57649" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="57716:57767" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="57833:57883" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="57936:57978" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="58046:58096" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="58211:58303" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="58396:58447" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="58514:58565" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="58636:58687" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="58757:58808" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="58880:58931" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="59005:59056" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="59126:59177" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="59255:59315" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="59404:59473" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="59566:59635" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="59725:59796" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="59872:59930" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="60017:60084" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="60175:60242" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="60362:60445" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="60520:60577" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="60649:60705" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="60789:60854" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="60944:61007" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="61095:61158" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="61244:61307" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="61396:61463" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="61548:61609" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="61695:61756" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="61837:61898" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="61984:62051" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="62121:62171" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="62240:62290" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="62352:62399" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="62471:62524" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="62603:62663" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="62734:62786" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="62867:62929" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="62998:63048" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="63119:63171" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="63235:63276" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="63346:63393" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="63470:63520" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="63606:63659" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="63787:63856" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="63974:64057" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="64144:64198" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="64277:64321" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="64406:64468" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="64552:64605" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="64707:64774" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="64839:64881" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="64964:65020" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="65108:65165" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="65268:65336" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="65477:65571" placeholder="/*...*/" />
+            <marker date="1437921477146" expanded="true" signature="65480:65571" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="65651:65696" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="65765:65811" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="65980:66021" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="66072:66113" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="66164:66205" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="66399:66441" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="66507:66550" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="66610:66656" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="66730:66781" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="66837:66879" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="66945:66988" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="67067:67132" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="67220:67285" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="67354:67409" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="67501:67570" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="67642:67700" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="67798:67873" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="67931:67975" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="68045:68092" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="68047:68092" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="68157:68467" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="68178:68456" placeholder="{&quot;alpha&quot;: true...}" />
+            <marker date="1437921477146" expanded="true" signature="68669:68715" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="68770:68815" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="68870:68915" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="15" column="20" selection-start-line="15" selection-start-column="20" selection-end-line="15" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webapp/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="7" column="61" selection-start-line="7" selection-start-column="61" selection-end-line="7" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/shc/webgl4j/client/TriangleTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="19" column="38" selection-start-line="19" selection-start-column="38" selection-end-line="19" selection-end-column="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <marker date="1437900323266" expanded="true" signature="3878:4105" placeholder="{...}" />
+            <marker date="1437900323266" expanded="true" signature="4000:4086" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/shc/webgl4j/client/WebGL10.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#25645#25646#0" expanded="true" />
+            <element signature="e#25688#25689#0" expanded="true" />
+            <element signature="e#41924#41925#0" expanded="true" />
+            <element signature="e#41985#41986#0" expanded="true" />
+            <element signature="e#42221#42222#0" expanded="true" />
+            <element signature="e#42282#42283#0" expanded="true" />
+            <element signature="e#42514#42515#0" expanded="true" />
+            <element signature="e#42575#42576#0" expanded="true" />
+            <element signature="e#43122#43123#0" expanded="true" />
+            <element signature="e#43181#43182#0" expanded="true" />
+            <marker date="1437921477146" expanded="true" signature="25790:26396" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="25812:26170" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="26197:26390" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="26457:26532" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="47643:47690" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="47774:47832" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="47933:48000" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="48078:48129" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="48217:48278" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="48368:48431" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="48513:48568" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="48658:48705" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="48772:48816" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="48909:48975" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="49058:49114" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="49227:49305" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="49402:49476" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="49574:49648" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="49762:49846" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="49961:50045" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="50122:50184" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="50244:50281" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="50371:50418" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="50485:50527" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="50596:50642" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="50752:50811" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="50882:50930" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="51176:51294" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="51539:51657" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="51913:52034" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="52289:52410" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="52615:52714" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="52919:53015" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="53072:53118" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="53180:53231" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="53289:53336" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="53399:53451" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="53516:53566" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="53624:53671" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="53733:53772" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="53842:53889" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="53969:54026" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="54098:54147" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="54229:54288" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="54358:54405" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="54477:54526" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="54589:54629" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="54696:54736" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="54821:54873" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="54958:55016" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="55083:55127" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="55206:55262" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="55348:55403" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="55502:55566" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="55631:55673" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="55751:55806" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="55858:55891" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="55942:55974" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="56111:56213" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="56348:56444" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="56507:56547" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="56617:56664" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="56755:56820" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="56912:56978" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="57056:57117" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="57205:57271" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="57355:57420" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="57478:57516" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="57595:57649" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="57716:57767" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="57833:57883" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="57936:57978" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="58046:58096" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="58211:58303" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="58396:58447" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="58514:58565" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="58636:58687" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="58757:58808" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="58880:58931" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="59005:59056" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="59126:59177" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="59255:59315" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="59404:59473" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="59566:59635" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="59725:59796" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="59872:59930" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="60017:60084" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="60175:60242" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="60362:60445" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="60520:60577" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="60649:60705" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="60789:60854" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="60944:61007" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="61095:61158" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="61244:61307" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="61396:61463" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="61548:61609" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="61695:61756" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="61837:61898" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="61984:62051" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="62121:62171" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="62240:62290" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="62352:62399" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="62471:62524" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="62603:62663" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="62734:62786" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="62867:62929" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="62998:63048" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="63119:63171" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="63235:63276" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="63346:63393" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="63470:63520" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="63606:63659" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="63787:63856" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="63974:64057" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="64144:64198" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="64277:64321" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="64406:64468" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="64552:64605" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="64707:64774" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="64839:64881" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="64964:65020" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="65108:65165" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="65268:65336" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="65477:65571" placeholder="/*...*/" />
+            <marker date="1437921477146" expanded="true" signature="65480:65571" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="65651:65696" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="65765:65811" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="65980:66021" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="66072:66113" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="66164:66205" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="66399:66441" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="66507:66550" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="66610:66656" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="66730:66781" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="66837:66879" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="66945:66988" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="67067:67132" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="67220:67285" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="67354:67409" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="67501:67570" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="67642:67700" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="67798:67873" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="67931:67975" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="68045:68092" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="68047:68092" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="68157:68467" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="68178:68456" placeholder="{&quot;alpha&quot;: true...}" />
+            <marker date="1437921477146" expanded="true" signature="68669:68715" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="68770:68815" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="68870:68915" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/shc/webgl4j/client/TriangleTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="16" column="64" selection-start-line="16" selection-start-column="64" selection-end-line="16" selection-end-column="64" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <marker date="1437900323266" expanded="true" signature="3878:4105" placeholder="{...}" />
+            <marker date="1437900323266" expanded="true" signature="4000:4086" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/shc/webgl4j/client/WebGL10.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="13" column="19" selection-start-line="13" selection-start-column="19" selection-end-line="13" selection-end-column="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#25645#25646#0" expanded="true" />
+            <element signature="e#25688#25689#0" expanded="true" />
+            <element signature="e#41924#41925#0" expanded="true" />
+            <element signature="e#41985#41986#0" expanded="true" />
+            <element signature="e#42221#42222#0" expanded="true" />
+            <element signature="e#42282#42283#0" expanded="true" />
+            <element signature="e#42514#42515#0" expanded="true" />
+            <element signature="e#42575#42576#0" expanded="true" />
+            <element signature="e#43122#43123#0" expanded="true" />
+            <element signature="e#43181#43182#0" expanded="true" />
+            <marker date="1437921477146" expanded="true" signature="25790:26396" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="25812:26170" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="26197:26390" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="26457:26532" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="47643:47690" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="47774:47832" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="47933:48000" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="48078:48129" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="48217:48278" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="48368:48431" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="48513:48568" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="48658:48705" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="48772:48816" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="48909:48975" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="49058:49114" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="49227:49305" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="49402:49476" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="49574:49648" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="49762:49846" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="49961:50045" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="50122:50184" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="50244:50281" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="50371:50418" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="50485:50527" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="50596:50642" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="50752:50811" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="50882:50930" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="51176:51294" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="51539:51657" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="51913:52034" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="52289:52410" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="52615:52714" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="52919:53015" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="53072:53118" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="53180:53231" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="53289:53336" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="53399:53451" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="53516:53566" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="53624:53671" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="53733:53772" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="53842:53889" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="53969:54026" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="54098:54147" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="54229:54288" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="54358:54405" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="54477:54526" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="54589:54629" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="54696:54736" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="54821:54873" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="54958:55016" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="55083:55127" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="55206:55262" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="55348:55403" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="55502:55566" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="55631:55673" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="55751:55806" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="55858:55891" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="55942:55974" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="56111:56213" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="56348:56444" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="56507:56547" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="56617:56664" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="56755:56820" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="56912:56978" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="57056:57117" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="57205:57271" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="57355:57420" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="57478:57516" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="57595:57649" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="57716:57767" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="57833:57883" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="57936:57978" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="58046:58096" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="58211:58303" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="58396:58447" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="58514:58565" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="58636:58687" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="58757:58808" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="58880:58931" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="59005:59056" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="59126:59177" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="59255:59315" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="59404:59473" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="59566:59635" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="59725:59796" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="59872:59930" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="60017:60084" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="60175:60242" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="60362:60445" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="60520:60577" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="60649:60705" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="60789:60854" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="60944:61007" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="61095:61158" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="61244:61307" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="61396:61463" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="61548:61609" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="61695:61756" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="61837:61898" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="61984:62051" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="62121:62171" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="62240:62290" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="62352:62399" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="62471:62524" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="62603:62663" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="62734:62786" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="62867:62929" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="62998:63048" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="63119:63171" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="63235:63276" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="63346:63393" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="63470:63520" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="63606:63659" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="63787:63856" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="63974:64057" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="64144:64198" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="64277:64321" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="64406:64468" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="64552:64605" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="64707:64774" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="64839:64881" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="64964:65020" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="65108:65165" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="65268:65336" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="65477:65571" placeholder="/*...*/" />
+            <marker date="1437921477146" expanded="true" signature="65480:65571" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="65651:65696" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="65765:65811" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="65980:66021" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="66072:66113" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="66164:66205" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="66399:66441" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="66507:66550" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="66610:66656" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="66730:66781" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="66837:66879" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="66945:66988" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="67067:67132" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="67220:67285" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="67354:67409" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="67501:67570" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="67642:67700" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="67798:67873" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="67931:67975" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="68045:68092" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="68047:68092" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="68157:68467" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="68178:68456" placeholder="{&quot;alpha&quot;: true...}" />
+            <marker date="1437921477146" expanded="true" signature="68669:68715" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="68770:68815" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="68870:68915" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://JAVA/com.shc.webgl4j.client.WebGL">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement>com.shc.webgl4j.client.WebGL</OriginalElement>
+          <nodes>
+            <node x="" y="">com.shc.webgl4j.client.WebGL.ActiveInfo</node>
+            <node x="" y="">com.shc.webgl4j.client.WebGL.ContextAttributes</node>
+            <node x="" y="">com.shc.webgl4j.client.WebGL</node>
+            <node x="" y="">com.shc.webgl4j.client.WebGL.ShaderPrecisionFormat</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="0.15638040852185373" x="2030.0" y="2067.0" />
+          <SelectedNodes />
+          <Categories>
+            <Category>Inner Classes</Category>
+            <Category>Constructors</Category>
+            <Category>Properties</Category>
+            <Category>Methods</Category>
+          </Categories>
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/shc/webgl4j/webgl4j.gwt.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.26792964">
+          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="53" column="1" selection-start-line="53" selection-start-column="1" selection-end-line="53" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-44.75862">
+          <caret line="59" column="106" selection-start-line="59" selection-start-column="106" selection-end-line="59" selection-end-column="106" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="MarkdownPreviewEditor">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webapp/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.461538">
+          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/shc/webgl4j/client/TriangleTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <marker date="1437900323266" expanded="true" signature="3878:4105" placeholder="{...}" />
+            <marker date="1437900323266" expanded="true" signature="4000:4086" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/shc/webgl4j/client/WebGL10.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.48173207">
+          <caret line="1625" column="60" selection-start-line="1625" selection-start-column="60" selection-end-line="1625" selection-end-column="60" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#25645#25646#0" expanded="true" />
+            <element signature="e#25688#25689#0" expanded="true" />
+            <element signature="e#41924#41925#0" expanded="true" />
+            <element signature="e#41985#41986#0" expanded="true" />
+            <element signature="e#42221#42222#0" expanded="true" />
+            <element signature="e#42282#42283#0" expanded="true" />
+            <element signature="e#42514#42515#0" expanded="true" />
+            <element signature="e#42575#42576#0" expanded="true" />
+            <element signature="e#43122#43123#0" expanded="true" />
+            <element signature="e#43181#43182#0" expanded="true" />
+            <marker date="1437921477146" expanded="true" signature="25790:26396" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="25812:26170" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="26197:26390" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="26457:26532" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="47643:47690" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="47774:47832" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="47933:48000" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="48078:48129" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="48217:48278" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="48368:48431" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="48513:48568" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="48658:48705" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="48772:48816" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="48909:48975" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="49058:49114" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="49227:49305" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="49402:49476" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="49574:49648" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="49762:49846" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="49961:50045" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="50122:50184" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="50244:50281" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="50371:50418" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="50485:50527" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="50596:50642" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="50752:50811" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="50882:50930" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="51176:51294" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="51539:51657" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="51913:52034" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="52289:52410" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="52615:52714" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="52919:53015" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="53072:53118" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="53180:53231" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="53289:53336" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="53399:53451" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="53516:53566" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="53624:53671" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="53733:53772" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="53842:53889" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="53969:54026" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="54098:54147" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="54229:54288" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="54358:54405" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="54477:54526" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="54589:54629" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="54696:54736" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="54821:54873" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="54958:55016" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="55083:55127" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="55206:55262" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="55348:55403" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="55502:55566" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="55631:55673" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="55751:55806" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="55858:55891" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="55942:55974" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="56111:56213" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="56348:56444" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="56507:56547" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="56617:56664" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="56755:56820" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="56912:56978" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="57056:57117" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="57205:57271" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="57355:57420" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="57478:57516" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="57595:57649" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="57716:57767" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="57833:57883" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="57936:57978" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="58046:58096" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="58211:58303" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="58396:58447" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="58514:58565" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="58636:58687" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="58757:58808" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="58880:58931" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="59005:59056" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="59126:59177" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="59255:59315" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="59404:59473" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="59566:59635" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="59725:59796" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="59872:59930" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="60017:60084" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="60175:60242" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="60362:60445" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="60520:60577" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="60649:60705" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="60789:60854" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="60944:61007" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="61095:61158" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="61244:61307" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="61396:61463" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="61548:61609" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="61695:61756" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="61837:61898" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="61984:62051" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="62121:62171" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="62240:62290" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="62352:62399" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="62471:62524" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="62603:62663" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="62734:62786" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="62867:62929" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="62998:63048" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="63119:63171" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="63235:63276" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="63346:63393" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="63470:63520" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="63606:63659" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="63787:63856" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="63974:64057" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="64144:64198" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="64277:64321" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="64406:64468" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="64552:64605" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="64707:64774" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="64839:64881" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="64964:65020" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="65108:65165" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="65268:65336" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="65477:65571" placeholder="/*...*/" />
+            <marker date="1437921477146" expanded="true" signature="65480:65571" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="65651:65696" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="65765:65811" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="65980:66021" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="66072:66113" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="66164:66205" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="66399:66441" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="66507:66550" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="66610:66656" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="66730:66781" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="66837:66879" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="66945:66988" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="67067:67132" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="67220:67285" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="67354:67409" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="67501:67570" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="67642:67700" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="67798:67873" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="67931:67975" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="68045:68092" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="68047:68092" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="68157:68467" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="68178:68456" placeholder="{&quot;alpha&quot;: true...}" />
+            <marker date="1437921477146" expanded="true" signature="68669:68715" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="68770:68815" placeholder="{...}" />
+            <marker date="1437921477146" expanded="true" signature="68870:68915" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
