@@ -317,7 +317,7 @@
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="VcsDirectoryMappings">
-    <mapping directory="" vcs="" />
+    <mapping directory="$PROJECT_DIR$" vcs="Git" />
   </component>
   <component name="libraryTable">
     <library name="Gradle: com.google.gwt:gwt-servlet:2.7.0">
