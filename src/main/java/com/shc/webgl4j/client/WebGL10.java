@@ -1,5 +1,6 @@
 package com.shc.webgl4j.client;
 
+import com.google.gwt.canvas.dom.client.ImageData;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsArrayInteger;
 import com.google.gwt.core.client.JsArrayNumber;
@@ -1122,6 +1123,43 @@ public final class WebGL10
         nglStencilOpSeparate(face, fail, zFail, zPass);
     }
 
+    public static void glTexImage2D(int target, int level, int internalFormat, int width, int height, int border, int format,
+                                    int type, Image pixels)
+    {
+        checkContext();
+        nglTexImage2D(target, level, internalFormat, width, height, border, format, type, pixels.getElement());
+    }
+
+    public static void glTexImage2D(int target, int level, int internalFormat, int format, int type, Image pixels)
+    {
+        glTexImage2D(target, level, internalFormat, pixels.getWidth(), pixels.getHeight(), 0, format, type, pixels);
+    }
+
+    public static void glTexImage2D(int target, int level, int internalFormat, int format, int type, ImageData pixels)
+    {
+        glTexImage2D(target, level, internalFormat, pixels.getWidth(), pixels.getHeight(), 0, format, type, pixels);
+    }
+
+    public static void glTexImage2D(int target, int level, int internalFormat, int width, int height, int border, int format,
+                                    int type, ImageData pixels)
+    {
+        checkContext();
+        nglTexImage2D(target, level, internalFormat, width, height, border, format, type, pixels);
+    }
+
+    public static void glTexImage2D(int target, int level, int internalFormat, int width, int height, int border, int format,
+                                    int type, ArrayBufferView pixels)
+    {
+        glTexImage2D(target, level, internalFormat, width, height, border, format, type, (JavaScriptObject) pixels);
+    }
+
+    public static void glTexImage2D(int target, int level, int internalFormat, int width, int height, int border, int format,
+                                    int type, JavaScriptObject pixels)
+    {
+        checkContext();
+        nglTexImage2D(target, level, internalFormat, width, height, border, format, type, pixels);
+    }
+
     public static void glViewport(int x, int y, int w, int h)
     {
         checkContext();
@@ -1624,6 +1662,16 @@ public final class WebGL10
 
     private static native void nglStencilOpSeparate(int face, int fail, int zFail, int zPass) /*-{
         $wnd.gl.stencilOpSeparate(face, fail, zFail, zPass);
+    }-*/;
+
+    private static native void nglTexImage2D(int target, int level, int internalFormat, int width, int height, int border,
+                                             int format, int type, ArrayBufferView pixels) /*-{
+        $wnd.gl.texImage2D(target, level, internalFormat, width, height, border, format, type, pixels);
+    }-*/;
+
+    private static native void nglTexImage2D(int target, int level, int internalFormat, int width, int height, int border,
+                                             int format, int type, JavaScriptObject pixels) /*-{
+        $wnd.gl.texImage2D(target, level, internalFormat, width, height, border, format, type, pixels);
     }-*/;
 
     private static native void nglVertexAttribPointer(int index, int size, int type, boolean normalized, double stride, double offset) /*-{
