@@ -3,20 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="bb08667d-6c40-4e00-a01e-aa8f27c06e05" name="Default" comment="Added glTexImage2D method and it's overloads">
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/shc/webgl4j/client/TimeUtil.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/war/WEB-INF/classes/com/shc/webgl4j/client/TriangleTest.class" afterPath="$PROJECT_DIR$/war/WEB-INF/classes/com/shc/webgl4j/client/TriangleTest.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/war/WEB-INF/classes/com/shc/webgl4j/client/WebGL10$ActiveInfo.class" afterPath="$PROJECT_DIR$/war/WEB-INF/classes/com/shc/webgl4j/client/WebGL10$ActiveInfo.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/war/WEB-INF/classes/com/shc/webgl4j/client/WebGL10$ContextAttributes.class" afterPath="$PROJECT_DIR$/war/WEB-INF/classes/com/shc/webgl4j/client/WebGL10$ContextAttributes.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/war/WEB-INF/classes/com/shc/webgl4j/client/WebGL10$ShaderPrecisionFormat.class" afterPath="$PROJECT_DIR$/war/WEB-INF/classes/com/shc/webgl4j/client/WebGL10$ShaderPrecisionFormat.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/war/WEB-INF/classes/com/shc/webgl4j/client/WebGL10.class" afterPath="$PROJECT_DIR$/war/WEB-INF/classes/com/shc/webgl4j/client/WebGL10.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/cache.properties.lock" afterPath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/cache.properties.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/fileHashes.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/fileSnapshots.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/outputFileStates.bin" afterPath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/outputFileStates.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/taskArtifacts.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/shc/webgl4j/client/TriangleTest.java" afterPath="$PROJECT_DIR$/src/main/java/com/shc/webgl4j/client/TriangleTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/shc/webgl4j/client/WebGL10.java" afterPath="$PROJECT_DIR$/src/main/java/com/shc/webgl4j/client/WebGL10.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebGL4J.iml" afterPath="$PROJECT_DIR$/WebGL4J.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebGL4J.ipr" afterPath="$PROJECT_DIR$/WebGL4J.ipr" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebGL4J.iws" afterPath="$PROJECT_DIR$/WebGL4J.iws" />
     </list>
     <ignored path="WebGL4J.iws" />
@@ -1235,7 +1221,7 @@
       <workItem from="1438005129300" duration="1769000" />
       <workItem from="1438046410302" duration="597000" />
       <workItem from="1438057309299" duration="16125000" />
-      <workItem from="1438132919567" duration="70000" />
+      <workItem from="1438132919567" duration="164000" />
     </task>
     <task id="LOCAL-00001" summary="Added .gitIgnore to the project">
       <created>1437960247512</created>
@@ -1249,11 +1235,17 @@
       <option name="project" value="LOCAL" />
       <updated>1438046570228</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Added glUniformi(v) method and it's overloads">
+      <created>1438133070316</created>
+      <option name="number" value="00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1438133070316</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="41999000" />
+    <option name="totallyTimeSpent" value="42093000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
@@ -1261,6 +1253,7 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32985657" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32985657" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -1284,7 +1277,6 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32985657" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32985657" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Run with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -1306,7 +1298,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Added .gitIgnore to the project" />
     <MESSAGE value="Added glTexImage2D method and it's overloads" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added glTexImage2D method and it's overloads" />
+    <MESSAGE value="Added glUniformi(v) method and it's overloads" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added glUniformi(v) method and it's overloads" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
