@@ -1,5 +1,6 @@
 package com.shc.webgl4j.client;
 
+import com.google.gwt.canvas.client.Canvas;
 import com.google.gwt.canvas.dom.client.ImageData;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsArrayInteger;
@@ -8,6 +9,8 @@ import com.google.gwt.core.client.JsArrayUtils;
 import com.google.gwt.dom.client.CanvasElement;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.typedarrays.shared.ArrayBufferView;
+import com.google.gwt.typedarrays.shared.Float32Array;
+import com.google.gwt.typedarrays.shared.Int32Array;
 import com.google.gwt.user.client.ui.Image;
 
 /**
@@ -335,6 +338,20 @@ public final class WebGL10
 
             $wnd.alert("Your browser doesn't appear to support WebGL. Try upgrading your browser.");
             $wnd.location.href = 'http://get.webgl.org/';
+        }
+    }-*/;
+
+    public static native boolean isSupported() /*-{
+        try
+        {
+            var canvas = $doc.createElement('canvas');
+            return !! ( $wnd.WebGLRenderingContext && (canvas.getContext('webgl') ||
+                        canvas.getContext('experimental-webgl')));
+        }
+        catch (e)
+        {
+            $wnd.console.log(e);
+            return false;
         }
     }-*/;
 
@@ -1150,7 +1167,8 @@ public final class WebGL10
     public static void glTexImage2D(int target, int level, int internalFormat, int width, int height, int border, int format,
                                     int type, ArrayBufferView pixels)
     {
-        glTexImage2D(target, level, internalFormat, width, height, border, format, type, (JavaScriptObject) pixels);
+        checkContext();
+        nglTexImage2D(target, level, internalFormat, width, height, border, format, type, pixels);
     }
 
     public static void glTexImage2D(int target, int level, int internalFormat, int width, int height, int border, int format,
@@ -1158,6 +1176,146 @@ public final class WebGL10
     {
         checkContext();
         nglTexImage2D(target, level, internalFormat, width, height, border, format, type, pixels);
+    }
+
+    public static void glTexParameterf(int target, int pname, float value)
+    {
+        checkContext();
+        nglTexParameterf(target, pname, value);
+    }
+
+    public static void glTexParameteri(int target, int pname, int value)
+    {
+        checkContext();
+        nglTexParameteri(target, pname, value);
+    }
+
+    public static void glTexSubImage2D(int target, int level, int xOffset, int yOffset, int width, int height, int format,
+                                       int type, ArrayBufferView pixels)
+    {
+        checkContext();
+        nglTexSubImage2D(target, level, xOffset, yOffset, width, height, format, type, pixels);
+    }
+
+    public static void glTexSubImage2D(int target, int level, int xOffset, int yOffset, int width, int height, int format,
+                                       int type, JavaScriptObject pixels)
+    {
+        checkContext();
+        nglTexSubImage2D(target, level, xOffset, yOffset, width, height, format, type, pixels);
+    }
+
+    public static void glTexSubImage2D(int target, int level, int xOffset, int yOffset, int width, int height, int format,
+                                       int type, Image pixels)
+    {
+        glTexSubImage2D(target, level, xOffset, yOffset, width, height, format, type, pixels.getElement());
+    }
+
+    public static void glTexSubImage2D(int target, int level, int xOffset, int yOffset, int width, int height, int format,
+                                       int type, ImageData pixels)
+    {
+        glTexSubImage2D(target, level, xOffset, yOffset, width, height, format, type, (JavaScriptObject) pixels);
+    }
+
+    public static void glTexSubImage2D(int target, int level, int xOffset, int yOffset, int width, int height, int format,
+                                       int type, Canvas pixels)
+    {
+        glTexSubImage2D(target, level, xOffset, yOffset, width, height, format, type, pixels.getElement());
+    }
+
+    public static void glUniform1f(int location, float x)
+    {
+        checkContext();
+        nglUniform1f(location, x);
+    }
+
+    public static void glUniform1fv(int location, Float32Array x)
+    {
+        checkContext();
+        nglUniform1fv(location, x);
+    }
+
+    public static void glUniform1i(int location, int x)
+    {
+        checkContext();
+        nglUniform1i(location, x);
+    }
+
+    public static void glUniform1iv(int location, Int32Array x)
+    {
+        checkContext();
+        nglUniform1iv(location, x);
+    }
+
+    public static void glUniform2f(int location, float x, float y)
+    {
+        checkContext();
+        nglUniform2f(location, x, y);
+    }
+
+    public static void glUniform2fv(int location, Float32Array xy)
+    {
+        checkContext();
+        nglUniform2fv(location, xy);
+    }
+
+    public static void glUniform2i(int location, int x, int y)
+    {
+        checkContext();
+        nglUniform2i(location, x, y);
+    }
+
+    public static void glUniform2iv(int location, Int32Array xy)
+    {
+        checkContext();
+        nglUniform2iv(location, xy);
+    }
+
+    public static void glUniform3f(int location, float x, float y, float z)
+    {
+        checkContext();
+        nglUniform3f(location, x, y, z);
+    }
+
+    public static void glUniform3fv(int location, Float32Array xy)
+    {
+        checkContext();
+        nglUniform3fv(location, xy);
+    }
+
+    public static void glUniform3i(int location, int x, int y, int z)
+    {
+        checkContext();
+        nglUniform3i(location, x, y, z);
+    }
+
+    public static void glUniform3iv(int location, Int32Array xy)
+    {
+        checkContext();
+        nglUniform3iv(location, xy);
+    }
+
+    public static void glUniform4f(int location, float x, float y, float z, float w)
+    {
+        checkContext();
+        nglUniform4f(location, x, y, z, w);
+    }
+
+    public static void glUniform4fv(int location, Float32Array xy)
+    {
+        checkContext();
+        nglUniform4fv(location, xy);
+    }
+
+    public static void glUniform4i(int location, int x, int y, int z, int w)
+    {
+        checkContext();
+        nglUniform4i(location, x, y, z, w);
+    }
+
+    public static void glUniform4iv(int location, Int32Array xy)
+    {
+        checkContext();
+        nglUniform4iv(location, xy);
     }
 
     public static void glViewport(int x, int y, int w, int h)
@@ -1672,6 +1830,88 @@ public final class WebGL10
     private static native void nglTexImage2D(int target, int level, int internalFormat, int width, int height, int border,
                                              int format, int type, JavaScriptObject pixels) /*-{
         $wnd.gl.texImage2D(target, level, internalFormat, width, height, border, format, type, pixels);
+    }-*/;
+
+    private static native void nglTexParameterf(int target, int pname, float value) /*-{
+        $wnd.gl.texParameterf(target, pname, value);
+    }-*/;
+
+    private static native void nglTexParameteri(int target, int pname, int value) /*-{
+        $wnd.gl.texParameteri(target, pname, value);
+    }-*/;
+
+    private static native void nglTexSubImage2D(int target, int level, int xOffset, int yOffset, int width, int height,
+                                                int format, int type, ArrayBufferView pixels) /*-{
+        $wnd.gl.texSubImage2D(target, level, xOffset, yOffset, width, height, format, type, pixels);
+    }-*/;
+
+    private static native void nglTexSubImage2D(int target, int level, int xOffset, int yOffset, int width, int height,
+                                                int format, int type, JavaScriptObject pixels) /*-{
+        $wnd.gl.texSubImage2D(target, level, xOffset, yOffset, width, height, format, type, pixels);
+    }-*/;
+
+    private static native void nglUniform1f(int location, float x) /*-{
+        $wnd.gl.uniform1f(location, x);
+    }-*/;
+
+    private static native void nglUniform1fv(int location, Float32Array x) /*-{
+        $wnd.gl.uniform1fv(location, x);
+    }-*/;
+
+    private static native void nglUniform1i(int location, int x) /*-{
+        $wnd.gl.uniform1i(location, x);
+    }-*/;
+
+    private static native void nglUniform1iv(int location, Int32Array x) /*-{
+        $wnd.gl.uniform1iv(location, x);
+    }-*/;
+
+    private static native void nglUniform2f(int location, float x, float y) /*-{
+        $wnd.gl.uniform2f(location, x, y);
+    }-*/;
+
+    private static native void nglUniform2fv(int location, Float32Array xy) /*-{
+        $wnd.gl.uniform2fv(location, xy);
+    }-*/;
+
+    private static native void nglUniform2i(int location, int x, int y) /*-{
+        $wnd.gl.uniform2i(location, x, y);
+    }-*/;
+
+    private static native void nglUniform2iv(int location, Int32Array xy) /*-{
+        $wnd.gl.uniform2iv(location, xy);
+    }-*/;
+
+    private static native void nglUniform3f(int location, float x, float y, float z) /*-{
+        $wnd.gl.uniform3f(location, x, y, z);
+    }-*/;
+
+    private static native void nglUniform3fv(int location, Float32Array xy) /*-{
+        $wnd.gl.uniform3fv(location, xy);
+    }-*/;
+
+    private static native void nglUniform3i(int location, int x, int y, int z) /*-{
+        $wnd.gl.uniform3i(location, x, y, z);
+    }-*/;
+
+    private static native void nglUniform3iv(int location, Int32Array xy) /*-{
+        $wnd.gl.uniform3iv(location, xy);
+    }-*/;
+
+    private static native void nglUniform4f(int location, float x, float y, float z, float w) /*-{
+        $wnd.gl.uniform4f(location, x, y, z, w);
+    }-*/;
+
+    private static native void nglUniform4fv(int location, Float32Array xy) /*-{
+        $wnd.gl.uniform4fv(location, xy);
+    }-*/;
+
+    private static native void nglUniform4i(int location, int x, int y, int z, int w) /*-{
+        $wnd.gl.uniform4i(location, x, y, z, w);
+    }-*/;
+
+    private static native void nglUniform4iv(int location, Int32Array xy) /*-{
+        $wnd.gl.uniform4iv(location, xy);
     }-*/;
 
     private static native void nglVertexAttribPointer(int index, int size, int type, boolean normalized, double stride, double offset) /*-{

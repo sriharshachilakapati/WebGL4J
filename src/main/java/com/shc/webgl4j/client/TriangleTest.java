@@ -1,5 +1,6 @@
 package com.shc.webgl4j.client;
 
+import com.google.gwt.animation.client.AnimationScheduler;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.dom.client.CanvasElement;
 import com.google.gwt.dom.client.Document;
@@ -13,8 +14,12 @@ public class TriangleTest implements EntryPoint
 {
     public void onModuleLoad()
     {
+        // Check if WebGL10 is supported
+        if (!WebGL10.isSupported())
+            throw new RuntimeException("This browser doesn't support WebGL10");
+
         // Get the <canvas> element to render on using WebGL
-        CanvasElement canvas = (CanvasElement) Document.get().getElementById("webgl");
+        final CanvasElement canvas = (CanvasElement) Document.get().getElementById("webgl");
 
         // Create the context and set the viewport
         WebGL10.createContext(canvas);
@@ -93,18 +98,16 @@ public class TriangleTest implements EntryPoint
         glEnableVertexAttribArray(1);
         glVertexAttribPointer(1, 4, GL_FLOAT, false, 0, 0);
 
-        // Start the animation loop
-        startAnimation();
+        AnimationScheduler.get().requestAnimationFrame(new AnimationScheduler.AnimationCallback()
+        {
+            @Override
+            public void execute(double timestamp)
+            {
+                render();
+                AnimationScheduler.get().requestAnimationFrame(this, canvas);
+            }
+        }, canvas);
     }
-
-    private native void startAnimation() /*-{
-        this.@com.shc.webgl4j.client.TriangleTest::render()();
-
-        var self = this;
-        setTimeout(function () {
-            self.@com.shc.webgl4j.client.TriangleTest::startAnimation()();
-        }, 1000 / 60);
-    }-*/;
 
     private void render()
     {

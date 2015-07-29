@@ -29,8 +29,6 @@
         <webroots>
           <root url="file://$MODULE_DIR$/webapp" relative="/" />
           <root url="file://$MODULE_DIR$/war" relative="/" />
-          <root url="file://$MODULE_DIR$/build/gwt/draftOut/WEB-INF" relative="/WEB-INF" />
-          <root url="file://$MODULE_DIR$/build/gwt/draftOut/webgl4j" relative="/webgl4j" />
         </webroots>
         <sourceRoots>
           <root url="file://$MODULE_DIR$/src/main/resources" />
@@ -45,8 +43,6 @@
         </descriptors>
         <webroots>
           <root url="file://$MODULE_DIR$/webapp" relative="/" />
-          <root url="file://$MODULE_DIR$/build/gwt/out/WEB-INF" relative="/WEB-INF" />
-          <root url="file://$MODULE_DIR$/build/gwt/out/webgl4j" relative="/webgl4j" />
         </webroots>
         <sourceRoots>
           <root url="file://$MODULE_DIR$/src/main/resources" />
