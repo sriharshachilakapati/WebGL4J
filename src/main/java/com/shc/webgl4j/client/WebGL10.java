@@ -11,6 +11,7 @@ import com.google.gwt.dom.client.Element;
 import com.google.gwt.typedarrays.shared.ArrayBufferView;
 import com.google.gwt.typedarrays.shared.Float32Array;
 import com.google.gwt.typedarrays.shared.Int32Array;
+import com.google.gwt.typedarrays.shared.TypedArrays;
 import com.google.gwt.user.client.ui.Image;
 
 /**
@@ -1318,10 +1319,55 @@ public final class WebGL10
         nglUniform4iv(location, xy);
     }
 
-    public static void glViewport(int x, int y, int w, int h)
+    public static void glUniformMatrix2fv(int location, boolean transpose, float[] value)
+    {
+        Float32Array array = TypedArrays.createFloat32Array(value.length);
+        array.set(value);
+        glUniformMatrix2fv(location, transpose, array);
+    }
+
+    public static void glUniformMatrix2fv(int location, boolean transpose, Float32Array value)
     {
         checkContext();
-        nglViewport(x, y, w, h);
+        nglUniformMatrix2fv(location, transpose, value);
+    }
+
+    public static void glUniformMatrix3fv(int location, boolean transpose, float[] value)
+    {
+        Float32Array array = TypedArrays.createFloat32Array(value.length);
+        array.set(value);
+        glUniformMatrix3fv(location, transpose, array);
+    }
+
+    public static void glUniformMatrix3fv(int location, boolean transpose, Float32Array value)
+    {
+        checkContext();
+        nglUniformMatrix3fv(location, transpose, value);
+    }
+
+    public static void glUniformMatrix4fv(int location, boolean transpose, float[] value)
+    {
+        Float32Array array = TypedArrays.createFloat32Array(value.length);
+        array.set(value);
+        glUniformMatrix4fv(location, transpose, array);
+    }
+
+    public static void glUniformMatrix4fv(int location, boolean transpose, Float32Array value)
+    {
+        checkContext();
+        nglUniformMatrix4fv(location, transpose, value);
+    }
+
+    public static void glUseProgram(int programID)
+    {
+        checkContext();
+        nglUseProgram(programID);
+    }
+
+    public static void glValidateProgram(int programID)
+    {
+        checkContext();
+        nglValidateProgram(programID);
     }
 
     public static void glVertexAttribPointer(int index, int size, int type, boolean normalized, long stride, long offset)
@@ -1330,10 +1376,10 @@ public final class WebGL10
         nglVertexAttribPointer(index, size, type, normalized, stride, offset);
     }
 
-    public static void glUseProgram(int programID)
+    public static void glViewport(int x, int y, int w, int h)
     {
         checkContext();
-        nglUseProgram(programID);
+        nglViewport(x, y, w, h);
     }
 
     private static native void nglActiveTexture(int texture) /*-{
@@ -1914,16 +1960,32 @@ public final class WebGL10
         $wnd.gl.uniform4iv(location, xy);
     }-*/;
 
+    private static native void nglUniformMatrix2fv(int location, boolean transpose, Float32Array value)/*-{
+        $wnd.gl.uniformMatrix2fv(location, transpose, value);
+    }-*/;
+
+    private static native void nglUniformMatrix3fv(int location, boolean transpose, Float32Array value)/*-{
+        $wnd.gl.uniformMatrix3fv(location, transpose, value);
+    }-*/;
+
+    private static native void nglUniformMatrix4fv(int location, boolean transpose, Float32Array value)/*-{
+        $wnd.gl.uniformMatrix4fv(location, transpose, value);
+    }-*/;
+
+    private static native void nglUseProgram(int programID) /*-{
+        $wnd.gl.useProgram(programID);
+    }-*/;
+
+    private static native void nglValidateProgram(int programID) /*-{
+        $wnd.gl.validateProgram(programID);
+    }-*/;
+
     private static native void nglVertexAttribPointer(int index, int size, int type, boolean normalized, double stride, double offset) /*-{
         $wnd.gl.vertexAttribPointer(index, size, type, normalized, stride, offset);
     }-*/;
 
     private static native void nglViewport(int x, int y, int w, int h) /*-{
         $wnd.gl.viewport(x, y, w, h);
-    }-*/;
-
-    private static native void nglUseProgram(int programID) /*-{
-        $wnd.gl.useProgram(programID);
     }-*/;
 
     public static class ActiveInfo extends JavaScriptObject
