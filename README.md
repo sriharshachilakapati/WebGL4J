@@ -16,7 +16,21 @@ As you have seen above, that is how the functions are structured in the wrapper,
 
 ## Installation
 
-Right now, the only way to setup WebGL4J is to either copy the sources into your project (recommended) or copy the entire project and start modifying the `TriangleTest` class. This is because GWT requires the sources to be able to compile the your WebGL application. I'm still looking for ways to do this using the `gwt-gradle` plugin.
+Right now, the best way to setup WebGL4J is to either copy the sources into your project (recommended) or copy the entire project and start modifying the `TriangleTest` class. This is because GWT requires the sources to be able to compile the your WebGL application. I'm still looking for ways to do this using the `gwt-gradle` plugin.
+
+If you want to go with the class path JAR approach, you have to compile the library and add the resulting JAR file to your classpath. First start with building the project.
+
+```bash
+./gradlew clean build
+```
+
+Then copy the `WebGL4J.jar` from the `build/libs` directory and add it in the classpath of your GWT application. Now inherit the `WebGL4J` in your modules that use this library by adding the following line to your GWT module XML file.
+
+```xml
+<inherits name="com.shc.webgl4j.client" />
+```
+
+That should let you use WebGL4J in your project. You can now start writing WebGL applications using GWT.
 
 ## Creating the context
 

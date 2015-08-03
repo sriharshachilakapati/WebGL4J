@@ -30,6 +30,10 @@ dependencies {
     compile 'com.google.gwt:gwt-user:2.7.0'
 }
 
+jar {
+    from sourceSets.main.allSource
+}
+
 task draftRun(type: JettyRunWar) {
     dependsOn draftWar
     dependsOn.remove('war')
@@ -44,11 +48,8 @@ task superDev(type: de.richsource.gradle.plugins.gwt.GwtSuperDev) {
     }
 }
 
-task compile {
-    dependsOn build
-    dependsOn jar
-}
-
 draftWar {
    from "war"
 }
+
+build.finalizedBy jar
