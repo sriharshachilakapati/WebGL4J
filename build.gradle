@@ -16,10 +16,6 @@ apply plugin: 'war'
 apply plugin: 'java'
 apply plugin: 'jetty'
 
-war {
-    webAppDirName = file('webapp')
-}
-
 gwt {
     gwtVersion = '2.7.0'
     modules 'com.shc.webgl4j.webgl4j'
