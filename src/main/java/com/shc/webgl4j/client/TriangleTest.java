@@ -4,6 +4,7 @@ import com.google.gwt.animation.client.AnimationScheduler;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.dom.client.CanvasElement;
 import com.google.gwt.dom.client.Document;
+import org.joml.Matrix4f;
 
 import static com.shc.webgl4j.client.WebGL10.*;
 
@@ -12,6 +13,10 @@ import static com.shc.webgl4j.client.WebGL10.*;
  */
 public class TriangleTest implements EntryPoint
 {
+    private int programID;
+
+    private Matrix4f projView;
+
     public void onModuleLoad()
     {
         // Check if WebGL10 is supported
@@ -27,16 +32,19 @@ public class TriangleTest implements EntryPoint
         glClearColor(0, 0, 0, 1);
 
         // The vertex shader source
-        String vsSource = "precision mediump float;                      \n" +
-                          "attribute vec2 position;                      \n" +
-                          "attribute vec4 color;                         \n" +
-                          "                                              \n" +
-                          "varying vec4 vColor;                          \n" +
-                          "                                              \n" +
-                          "void main()                                   \n" +
-                          "{                                             \n" +
-                          "    vColor = color;                           \n" +
-                          "    gl_Position = vec4(position, 0.0, 1.0);   \n" +
+        String vsSource = "precision mediump float;                             \n" +
+                          "                                                     \n" +
+                          "uniform mat4 proj;                                   \n" +
+                          "                                                     \n" +
+                          "attribute vec2 position;                             \n" +
+                          "attribute vec4 color;                                \n" +
+                          "                                                     \n" +
+                          "varying vec4 vColor;                                 \n" +
+                          "                                                     \n" +
+                          "void main()                                          \n" +
+                          "{                                                    \n" +
+                          "    vColor = color;                                  \n" +
+                          "    gl_Position = proj * vec4(position, 0.0, 1.0);   \n" +
                           "}";
 
         // The fragment shader source
@@ -59,7 +67,7 @@ public class TriangleTest implements EntryPoint
         glCompileShader(fsShaderID);
 
         // Create the program
-        int programID = glCreateProgram();
+        programID = glCreateProgram();
         glAttachShader(programID, vsShaderID);
         glAttachShader(programID, fsShaderID);
         glLinkProgram(programID);
@@ -81,7 +89,7 @@ public class TriangleTest implements EntryPoint
         glBufferData(GL_ARRAY_BUFFER, vertices, GL_STATIC_DRAW);
 
         glEnableVertexAttribArray(0);
-        glVertexAttribPointer(0, 2, WebGL10.GL_FLOAT, false, 0, 0);
+        glVertexAttribPointer(0, 2, GL_FLOAT, false, 0, 0);
 
         // Create the colors VBO
         int[] colors =
@@ -98,6 +106,8 @@ public class TriangleTest implements EntryPoint
         glEnableVertexAttribArray(1);
         glVertexAttribPointer(1, 4, GL_FLOAT, false, 0, 0);
 
+        projView = new Matrix4f();
+
         AnimationScheduler.get().requestAnimationFrame(new AnimationScheduler.AnimationCallback()
         {
             @Override
@@ -109,8 +119,22 @@ public class TriangleTest implements EntryPoint
         }, canvas);
     }
 
+    private float angle = 0;
+
     private void render()
     {
+        angle++;
+
+        float scale = 1.5f + (float) Math.sin(TimeUtil.getTimeStamp() / 1000);
+
+        projView.identity()
+                .perspective(70, 640f / 480f, 0.1f, 100)
+                .translate(0, 0, -3)
+                .scale(scale, scale, scale)
+                .rotateY((float) Math.toRadians(angle));
+
+        glUniformMatrix4fv(glGetUniformLocation(programID, "proj"), false, projView.get(new float[16]));
+
         glClear(GL_COLOR_BUFFER_BIT);
         glDrawArrays(GL_TRIANGLES, 0, 3);
     }

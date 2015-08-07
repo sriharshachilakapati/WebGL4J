@@ -5,6 +5,9 @@
     <!-- Inherit the core Web Toolkit stuff.                  -->
     <inherits name='com.google.gwt.user.User'/>
 
+    <!-- Inherit the JOML-GWT project.                        -->
+    <inherits name="org.joml" />
+
     <!-- Specify the app entry point class.                   -->
     <entry-point class='com.shc.webgl4j.client.TriangleTest'/>
 

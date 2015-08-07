@@ -24,6 +24,7 @@ gwt {
 
 dependencies {
     compile 'com.google.gwt:gwt-user:2.7.0'
+    compile fileTree(dir: "libs", includes: ["*.jar"])
 }
 
 jar {
