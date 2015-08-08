@@ -127,8 +127,8 @@ public class TriangleTest implements EntryPoint
 
         float scale = 1.5f + (float) Math.sin(TimeUtil.getTimeStamp() / 1000);
 
-        projView.identity()
-                .perspective(70, 640f / 480f, 0.1f, 100)
+        projView
+                .setPerspective(70, 640f / 480f, 0.1f, 100)
                 .translate(0, 0, -3)
                 .scale(scale, scale, scale)
                 .rotateY((float) Math.toRadians(angle));
