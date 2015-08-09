@@ -11,8 +11,11 @@
     <!-- Inherit the JOML-GWT library.                        -->
     <inherits name='org.joml'/>
 
-    <!-- Define the entrypoint -->
-    <entry-point class='com.shc.webgl4j.examples.client.TriangleTest'/>
+    <!-- Define the entrypoint                                -->
+    <entry-point class='com.shc.webgl4j.examples.client.WebGL4J'/>
+
+    <!-- Define the theme                                     -->
+    <inherits name='com.google.gwt.user.theme.dark.Dark'/>
 
     <source path='client'/>
 

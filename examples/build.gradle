@@ -17,22 +17,21 @@ dependencies {
     compile fileTree(dir: "libs", includes: ["*.jar"])
 }
 
-task draftRun(type: JettyRunWar) {
-    dependsOn draftWar
-    dependsOn.remove('war')
-    webApp=draftWar.archivePath
+task run(type: JettyRunWar) {
+    dependsOn war
+    webApp=war.archivePath
     daemon=true
 }
 
 task superDev(type: de.richsource.gradle.plugins.gwt.GwtSuperDev) {
-    dependsOn draftRun
+    dependsOn run
     doFirst {
     	gwt.modules = gwt.devModules
     }
 }
 
-draftWar {
-   from "war"
+war {
+    from sourceSets.main.resources
 }
 
 task addSource << {

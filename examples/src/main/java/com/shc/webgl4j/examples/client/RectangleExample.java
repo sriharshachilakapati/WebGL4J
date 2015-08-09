@@ -1,36 +1,27 @@
 package com.shc.webgl4j.examples.client;
 
-import com.google.gwt.animation.client.AnimationScheduler;
-import com.google.gwt.core.client.EntryPoint;
-import com.google.gwt.dom.client.CanvasElement;
-import com.google.gwt.dom.client.Document;
-import com.shc.webgl4j.client.WebGL10;
-import com.shc.webgl4j.client.TimeUtil;
+import com.google.gwt.canvas.client.Canvas;
 import org.joml.Matrix4f;
 
 import static com.shc.webgl4j.client.WebGL10.*;
 
 /**
- * Entry point classes define <code>onModuleLoad()</code>
+ * @author Sri Harsha Chilakapati
  */
-public class TriangleTest implements EntryPoint
+public class RectangleExample extends Example
 {
     private int programID;
-
     private Matrix4f projView;
 
-    public void onModuleLoad()
+    public RectangleExample(Canvas canvas)
     {
-        // Check if WebGL10 is supported
-        if (!WebGL10.isSupported())
-            throw new RuntimeException("This browser doesn't support WebGL10");
+        super(canvas);
+    }
 
-        // Get the <canvas> element to render on using WebGL
-        final CanvasElement canvas = (CanvasElement) Document.get().getElementById("webgl");
-
-        // Create the context and set the viewport
-        WebGL10.createContext(canvas);
-        glViewport(0, 0, canvas.getClientWidth(), canvas.getClientHeight());
+    @Override
+    public void init()
+    {
+        context.makeCurrent();
         glClearColor(0, 0, 0, 1);
 
         // The vertex shader source
@@ -55,7 +46,7 @@ public class TriangleTest implements EntryPoint
                           "                                              \n" +
                           "void main()                                   \n" +
                           "{                                             \n" +
-                          "    gl_FragColor = vColor   ;                 \n" +
+                          "    gl_FragColor = vColor;                    \n" +
                           "}";
 
         // Create the vertex shader
@@ -81,9 +72,12 @@ public class TriangleTest implements EntryPoint
         // Create the positions VBO
         float[] vertices =
                 {
-                        +0.0f, +0.8f,
-                        +0.8f, -0.8f,
+                        -0.8f, +0.8f,
+                        +0.8f, +0.8f,
                         -0.8f, -0.8f,
+                        +0.8f, +0.8f,
+                        +0.8f, -0.8f,
+                        -0.8f, -0.8f
                 };
 
         int vboPosID = glCreateBuffer();
@@ -94,10 +88,13 @@ public class TriangleTest implements EntryPoint
         glVertexAttribPointer(0, 2, GL_FLOAT, false, 0, 0);
 
         // Create the colors VBO
-        int[] colors =
+        float[] colors =
                 {
                         1, 0, 0, 1,
                         0, 1, 0, 1,
+                        0, 0, 1, 1,
+                        0, 1, 0, 1,
+                        1, 1, 1, 1,
                         0, 0, 1, 1
                 };
 
@@ -109,33 +106,24 @@ public class TriangleTest implements EntryPoint
         glVertexAttribPointer(1, 4, GL_FLOAT, false, 0, 0);
 
         projView = new Matrix4f();
-
-        AnimationScheduler.get().requestAnimationFrame(new AnimationScheduler.AnimationCallback()
-        {
-            @Override
-            public void execute(double timestamp)
-            {
-                render();
-                AnimationScheduler.get().requestAnimationFrame(this, canvas);
-            }
-        }, canvas);
     }
 
     private float angle = 0;
 
-    private void render()
+    @Override
+    public void render()
     {
+        context.makeCurrent();
+
         angle++;
 
-        float z = (float) Math.sin(TimeUtil.currentSeconds()) * 2;
-
         projView.setPerspective((float) Math.toRadians(70), 640f / 480f, 0.1f, 100)
-                .translate(0, 0, -3 + z)
-                .rotateY((float) Math.toRadians(angle));
+                .translate(0, 0, -2)
+                .rotateZ((float) Math.toRadians(angle));
 
         glUniformMatrix4fv(glGetUniformLocation(programID, "proj"), false, projView.get(new float[16]));
 
         glClear(GL_COLOR_BUFFER_BIT);
-        glDrawArrays(GL_TRIANGLES, 0, 3);
+        glDrawArrays(GL_TRIANGLES, 0, 6);
     }
 }
