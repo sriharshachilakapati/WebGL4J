@@ -3,11 +3,19 @@
 
 # The build directory
 build/
+webgl4j/build/
+examples/build/
 
 # The war directory
-war/
+examples/war/
 
 # IDEA project files
-WebGL4J.iml
-WebGL4J.ipr
-WebGL4J.iws
+*.iml
+*.ipr
+*.iws
+webgl4j/*.iml
+webgl4j/*.ipr
+webgl4j/*.iws
+examples/*.iml
+examples/*.ipr
+examples/*.iws

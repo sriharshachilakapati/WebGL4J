@@ -1,0 +1,43 @@
+apply plugin: 'java'
+apply plugin: 'jetty'
+
+gwt {
+    gwtVersion = '2.7.0'
+    modules 'com.shc.webgl4j.examples.client'
+    devModules 'com.shc.webgl4j.examples.client'
+}
+
+javadoc {
+    options.addStringOption("sourcepath", "")
+}
+
+dependencies {
+    compile project(":webgl4j")
+    compile 'com.google.gwt:gwt-user:2.7.0'
+    compile fileTree(dir: "libs", includes: ["*.jar"])
+}
+
+task draftRun(type: JettyRunWar) {
+    dependsOn draftWar
+    dependsOn.remove('war')
+    webApp=draftWar.archivePath
+    daemon=true
+}
+
+task superDev(type: de.richsource.gradle.plugins.gwt.GwtSuperDev) {
+    dependsOn draftRun
+    doFirst {
+    	gwt.modules = gwt.devModules
+    }
+}
+
+draftWar {
+   from "war"
+}
+
+task addSource << {
+	sourceSets.main.compileClasspath += files(project(':webgl4j').sourceSets.main.allSource)
+}
+
+tasks.compileGwt.dependsOn(addSource)
+tasks.draftCompileGwt.dependsOn(addSource)

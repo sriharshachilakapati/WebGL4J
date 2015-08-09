@@ -4,8 +4,8 @@ Simple JSNI based WebGL wrapper for GWT projects
 
 ## Design
 
-WebGL4J aims to provide static methods to all the WebGL functions, and also the extensions present in the Khronos WebGL Registry. This provides a similar interface to people who are coming from legacy OpenGL environments to use WebGL easily, yet having the same interface to the users coming from JavaScript.
- 
+WebGL4J aims to provide static methods to all the WebGL functions, and also the extensions present in the Khronos WebGL Registry. This provides a similar interface to people who are coming from legacy OpenGL environments (by legacy, I mean desktop) to use WebGL easily, yet having the same interface to the users coming from JavaScript.
+
 | Class     | Description                                                                     |
 |-----------|---------------------------------------------------------------------------------|
 | WebGL10   | Contains all the constants and functions defined in the WebGL 1.0 specification |
@@ -16,12 +16,10 @@ As you have seen above, that is how the functions are structured in the wrapper,
 
 ## Installation
 
-Right now, the best way to setup WebGL4J is to either copy the sources into your project (recommended) or copy the entire project and start modifying the `TriangleTest` class. This is because GWT requires the sources to be able to compile the your WebGL application. I'm still looking for ways to do this using the `gwt-gradle` plugin.
-
-If you want to go with the class path JAR approach, you have to compile the library and add the resulting JAR file to your classpath. First start with building the project.
+For now you have to compile the library and add the resulting JAR file to your classpath in your webapp. First start with building the project.
 
 ```bash
-./gradlew clean build
+./gradlew clean build javadoc
 ```
 
 Then copy the `WebGL4J.jar` from the `build/libs` directory and add it in the classpath of your GWT application. Now inherit the `WebGL4J` in your modules that use this library by adding the following line to your GWT module XML file.
@@ -62,12 +60,36 @@ WebGL10.createContext(canvas);
 Creating a context with a set of context attributes is also supported. Here is an example for creating a context with a stencil buffer.
 
 ```java
-WebGL10.ContextAttributes ctxAttributes = WebGL10.ContextAttributes.create();
+WebGL10.ContextAttributes ctxAttributes = WebGLContext.Attributes.create();
 ctxAttributes.setStencil(true);
 
 // Create the context now
 WebGL10.createContext(canvas, ctxAttributes);
 ```
+
+## Using multiple contexts
+
+WebGL4J has support for rendering using multiple contexts. All the overloads to the method `createContext` returns a `WebGLContext` object which you can store. Then depending on your usage, you make a context 'current'.
+
+```java
+// Create the contexts and store their handles
+WebGLContext ctx1 = WebGL10.createContext(canvas1);
+WebGLContext ctx2 = WebGL10.createContext(canvas2);
+
+// Make context 1 current
+ctx1.makeCurrent();
+
+// [... Draw using context 1       ...]
+// [... Drawing happens on canvas1 ...]
+
+// Make context 2 current
+ctx2.makeCurrent();
+
+// [... Draw using context 2       ...]
+// [... Drawing happens on canvas2 ...]
+```
+
+You don't need to make the context current if you are only using one context. If you are using multiple contexts, the context that is just created will be the current, so in the above example, `ctx2` will be current since it is the latest created context.
 
 ## Licence
 

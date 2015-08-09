@@ -1,9 +1,11 @@
-package com.shc.webgl4j.client;
+package com.shc.webgl4j.examples.client;
 
 import com.google.gwt.animation.client.AnimationScheduler;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.dom.client.CanvasElement;
 import com.google.gwt.dom.client.Document;
+import com.shc.webgl4j.client.WebGL10;
+import com.shc.webgl4j.client.TimeUtil;
 import org.joml.Matrix4f;
 
 import static com.shc.webgl4j.client.WebGL10.*;
@@ -125,12 +127,10 @@ public class TriangleTest implements EntryPoint
     {
         angle++;
 
-        float scale = 1.5f + (float) Math.sin(TimeUtil.getTimeStamp() / 1000);
+        float z = (float) Math.sin(TimeUtil.currentSeconds()) * 2;
 
-        projView
-                .setPerspective(70, 640f / 480f, 0.1f, 100)
-                .translate(0, 0, -3)
-                .scale(scale, scale, scale)
+        projView.setPerspective((float) Math.toRadians(70), 640f / 480f, 0.1f, 100)
+                .translate(0, 0, -3 + z)
                 .rotateY((float) Math.toRadians(angle));
 
         glUniformMatrix4fv(glGetUniformLocation(programID, "proj"), false, projView.get(new float[16]));

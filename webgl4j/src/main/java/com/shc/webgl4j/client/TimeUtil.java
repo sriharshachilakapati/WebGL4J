@@ -3,43 +3,34 @@ package com.shc.webgl4j.client;
 /**
  * @author Sri Harsha Chilakapati
  */
-public final class TimeUtil
-{
-    private TimeUtil()
-    {
+public final class TimeUtil {
+    private TimeUtil() {
     }
 
     private static ImplementationUsed implementationUsed = ImplementationUsed.HIGH_PERFORMANCE;
 
     private static native boolean isInitialized() /*-{
-        return !!$wnd['getTimeStamp'];
+        return !!$wnd['currentMillis'];
     }-*/;
 
     private static native void initialize() /*-{
         var getTimeStamp;
-        if ($wnd.performance.now)
-        {
+        if ($wnd.performance.now) {
             @com.shc.webgl4j.client.TimeUtil::implementationUsed = @com.shc.webgl4j.client.TimeUtil.ImplementationUsed::HIGH_PERFORMANCE;
-            getTimeStamp = function()
-            {
+            getTimeStamp = function () {
                 return $wnd.performance.now();
             }
         }
-        else
-        {
-            if ($wnd.performance.webkitNow)
-            {
+        else {
+            if ($wnd.performance.webkitNow) {
                 @com.shc.webgl4j.client.TimeUtil::implementationUsed = @com.shc.webgl4j.client.TimeUtil.ImplementationUsed::HIGH_PERFORMANCE_WEBKIT;
-                getTimeStamp = function()
-                {
+                getTimeStamp = function () {
                     return $wnd.performance.webkitNow();
                 }
             }
-            else
-            {
+            else {
                 @com.shc.webgl4j.client.TimeUtil::implementationUsed = @com.shc.webgl4j.client.TimeUtil.ImplementationUsed::LOW_PERFORMANCE;
-                getTimeStamp = function()
-                {
+                getTimeStamp = function () {
                     return Date.now();
                 }
             }
@@ -52,12 +43,25 @@ public final class TimeUtil
         return $wnd.getTimeStamp();
     }-*/;
 
-    public static double getTimeStamp()
+    public static double currentSeconds()
     {
+        return currentMillis() * 0.001;
+    }
+
+    public static double currentMillis() {
         if (!isInitialized())
             initialize();
 
         return nGetTimeStamp();
+    }
+
+    public static double currentMicros() {
+        return currentMillis() * 1000;
+    }
+
+    public static double currentNanos()
+    {
+        return currentMicros() * 1000;
     }
 
     public static ImplementationUsed getImplementationUsed()

@@ -317,12 +317,27 @@ public final class WebGL10
     public static final int GL_VIEWPORT                                     = 0x0BA2;
     public static final int GL_ZERO                                         = 0x0000;
 
-    public static void createContext(CanvasElement canvas)
+    /* Prevent instantiation */
+    private WebGL10()
     {
-        createContext(canvas, null);
     }
 
-    public static native void createContext(CanvasElement canvas, ContextAttributes attributes) /*-{
+    public static WebGLContext createContext(Canvas canvas)
+    {
+        return createContext(canvas.getCanvasElement());
+    }
+
+    public static WebGLContext createContext(Canvas canvas, WebGLContext.Attributes attributes)
+    {
+        return createContext(canvas.getCanvasElement(), attributes);
+    }
+
+    public static WebGLContext createContext(CanvasElement canvas)
+    {
+        return createContext(canvas, null);
+    }
+
+    public static native WebGLContext createContext(CanvasElement canvas, WebGLContext.Attributes attributes) /*-{
         try
         {
             if (attributes)
@@ -330,7 +345,7 @@ public final class WebGL10
             else
                 $wnd.gl = canvas.getContext("webgl") || canvas.getContext("experimental-webgl");
 
-            $wnd.ctx = $wnd.gl.getContextAttributes();
+            $wnd.attribs = $wnd.gl.getContextAttributes();
             $wnd.glv = 1.0;
         }
         catch (e)
@@ -340,6 +355,12 @@ public final class WebGL10
             $wnd.alert("Your browser doesn't appear to support WebGL. Try upgrading your browser.");
             $wnd.location.href = 'http://get.webgl.org/';
         }
+
+        return $wnd.context = {
+            gl: $wnd.gl,
+            attribs: $wnd.attribs,
+            glv: $wnd.glv
+        };
     }-*/;
 
     public static native boolean isSupported() /*-{
@@ -785,7 +806,7 @@ public final class WebGL10
         return nglGetCanvas();
     }
 
-    public static ContextAttributes glGetContextAttributes()
+    public static WebGLContext.Attributes glGetContextAttributes()
     {
         checkContext();
         return nglGetContextAttributes();
@@ -809,7 +830,7 @@ public final class WebGL10
         return nglGetError();
     }
 
-    public static int glGetExtension(String name)
+    public static JavaScriptObject glGetExtension(String name)
     {
         checkContext();
         return nglGetExtension(name);
@@ -1376,6 +1397,106 @@ public final class WebGL10
         nglVertexAttribPointer(index, size, type, normalized, stride, offset);
     }
 
+    public static void glVertexAttrib1f(int index, float x)
+    {
+        checkContext();
+        nglVertexAttrib1f(index, x);
+    }
+
+    public static void glVertexAttrib1fv(int index, ArrayBufferView values)
+    {
+        checkContext();
+        nglVertexAttrib1fv(index, values);
+    }
+
+    public static void glVertexAttrib1fv(int index, JavaScriptObject values)
+    {
+        checkContext();
+        nglVertexAttrib1fv(index, values);
+    }
+
+    public static void glVertexAttrib1fv(int index, float[] values)
+    {
+        Float32Array float32Array = TypedArrays.createFloat32Array(values.length);
+        float32Array.set(values);
+        glVertexAttrib1fv(index, float32Array);
+    }
+
+    public static void glVertexAttrib2f(int index, float x, float y)
+    {
+        checkContext();
+        nglVertexAttrib2f(index, x, y);
+    }
+
+    public static void glVertexAttrib2fv(int index, ArrayBufferView values)
+    {
+        checkContext();
+        nglVertexAttrib2fv(index, values);
+    }
+
+    public static void glVertexAttrib2fv(int index, JavaScriptObject values)
+    {
+        checkContext();
+        nglVertexAttrib2fv(index, values);
+    }
+
+    public static void glVertexAttrib2fv(int index, float[] values)
+    {
+        Float32Array float32Array = TypedArrays.createFloat32Array(values.length);
+        float32Array.set(values);
+        glVertexAttrib2fv(index, float32Array);
+    }
+
+    public static void glVertexAttrib3f(int index, float x, float y, float z)
+    {
+        checkContext();
+        nglVertexAttrib3f(index, x, y, z);
+    }
+
+    public static void glVertexAttrib3fv(int index, ArrayBufferView values)
+    {
+        checkContext();
+        nglVertexAttrib3fv(index, values);
+    }
+
+    public static void glVertexAttrib3fv(int index, JavaScriptObject values)
+    {
+        checkContext();
+        nglVertexAttrib3fv(index, values);
+    }
+
+    public static void glVertexAttrib3fv(int index, float[] values)
+    {
+        Float32Array float32Array = TypedArrays.createFloat32Array(values.length);
+        float32Array.set(values);
+        glVertexAttrib3fv(index, float32Array);
+    }
+
+    public static void glVertexAttrib4f(int index, float x, float y, float z, float w)
+    {
+        checkContext();
+        nglVertexAttrib4f(index, x, y, z, w);
+    }
+
+    public static void glVertexAttrib4fv(int index, ArrayBufferView values)
+    {
+        checkContext();
+        nglVertexAttrib4fv(index, values);
+    }
+
+    public static void glVertexAttrib4fv(int index, JavaScriptObject values)
+    {
+        checkContext();
+        nglVertexAttrib4fv(index, values);
+    }
+
+    public static void glVertexAttrib4fv(int index, float[] values)
+    {
+        Float32Array float32Array = TypedArrays.createFloat32Array(values.length);
+        float32Array.set(values);
+        glVertexAttrib4fv(index, float32Array);
+    }
+
     public static void glViewport(int x, int y, int w, int h)
     {
         checkContext();
@@ -1644,7 +1765,7 @@ public final class WebGL10
         return $wnd.gl.canvas;
     }-*/;
 
-    private static native ContextAttributes nglGetContextAttributes() /*-{
+    private static native WebGLContext.Attributes nglGetContextAttributes() /*-{
         return $wnd.gl.getContextAttributes();
     }-*/;
 
@@ -1660,7 +1781,7 @@ public final class WebGL10
         return $wnd.gl.getError();
     }-*/;
 
-    private static native int nglGetExtension(String name) /*-{
+    private static native JavaScriptObject nglGetExtension(String name) /*-{
         return $wnd.gl.getExtension(name);
     }-*/;
 
@@ -1984,6 +2105,54 @@ public final class WebGL10
         $wnd.gl.vertexAttribPointer(index, size, type, normalized, stride, offset);
     }-*/;
 
+    private static native void nglVertexAttrib1f(int index, float x) /*-{
+        $wnd.gl.vertexAttrib1f(x);
+    }-*/;
+
+    private static native void nglVertexAttrib1fv(int index, ArrayBufferView values) /*-{
+        $wnd.gl.vertexAttrib1fv(index, values);
+    }-*/;
+
+    private static native void nglVertexAttrib1fv(int index, JavaScriptObject values) /*-{
+        $wnd.gl.vertexAttrib1fv(index, values);
+    }-*/;
+
+    private static native void nglVertexAttrib2f(int index, float x, float y) /*-{
+        $wnd.gl.vertexAttrib2f(x, y);
+    }-*/;
+
+    private static native void nglVertexAttrib2fv(int index, ArrayBufferView values) /*-{
+        $wnd.gl.vertexAttrib2fv(index, values);
+    }-*/;
+
+    private static native void nglVertexAttrib2fv(int index, JavaScriptObject values) /*-{
+        $wnd.gl.vertexAttrib2fv(index, values);
+    }-*/;
+
+    private static native void nglVertexAttrib3f(int index, float x, float y, float z) /*-{
+        $wnd.gl.vertexAttrib3f(x, y, z);
+    }-*/;
+
+    private static native void nglVertexAttrib3fv(int index, ArrayBufferView values) /*-{
+        $wnd.gl.vertexAttrib3fv(index, values);
+    }-*/;
+
+    private static native void nglVertexAttrib3fv(int index, JavaScriptObject values) /*-{
+        $wnd.gl.vertexAttrib3fv(index, values);
+    }-*/;
+
+    private static native void nglVertexAttrib4f(int index, float x, float y, float z, float w) /*-{
+        $wnd.gl.vertexAttrib4f(x, y, z, w);
+    }-*/;
+
+    private static native void nglVertexAttrib4fv(int index, ArrayBufferView values) /*-{
+        $wnd.gl.vertexAttrib4fv(index, values);
+    }-*/;
+
+    private static native void nglVertexAttrib4fv(int index, JavaScriptObject values) /*-{
+        $wnd.gl.vertexAttrib4fv(index, values);
+    }-*/;
+
     private static native void nglViewport(int x, int y, int w, int h) /*-{
         $wnd.gl.viewport(x, y, w, h);
     }-*/;
@@ -2004,81 +2173,6 @@ public final class WebGL10
 
         public final native int getType() /*-{
             return this.type;
-        }-*/;
-    }
-
-    public static class ContextAttributes extends JavaScriptObject
-    {
-        protected ContextAttributes()
-        {
-        }
-
-        public final native boolean getAlpha() /*-{
-            return this.alpha;
-        }-*/;
-
-        public final native void setAlpha(boolean alpha) /*-{
-            this.alpha = alpha;
-        }-*/;
-
-        public final native boolean getAntialias() /*-{
-            return this.antialias;
-        }-*/;
-
-        public final native void setAntialias(boolean antialias) /*-{
-            this.antialias = antialias;
-        }-*/;
-
-        public final native boolean getDepth() /*-{
-            return this.depth;
-        }-*/;
-
-        public final native void setDepth(boolean depth) /*-{
-            this.depth = depth;
-        }-*/;
-
-        public final native boolean getFailIfMajorPerformanceCaveat() /*-{
-            return this.failIfMajorPerformanceCaveat;
-        }-*/;
-
-        public final native void setFailIfMajorPerformanceCaveat(boolean fail) /*-{
-            this.failIfMajorPerformanceCaveat = fail;
-        }-*/;
-
-        public final native boolean getPremultipliedAlpha() /*-{
-            return this.premultipliedAlpha;
-        }-*/;
-
-        public final native void setPremultipliedAlpha(boolean premultipliedAlpha) /*-{
-            this.premultipliedAlpha = premultipliedAlpha;
-        }-*/;
-
-        public final native boolean getPreserveDrawingBuffer() /*-{
-            return this.preserveDrawingBuffer;
-        }-*/;
-
-        public final native void setPreserveDrawingBuffer(boolean preserveDrawingBuffer) /*-{
-            this.preserveDrawingBuffer = preserveDrawingBuffer;
-        }-*/;
-
-        public final native boolean getStencil() /*-{
-            return this.stencil;
-        }-*/;
-
-        public final native void setStencil(boolean stencil) /*-{
-            this.stencil = stencil;
-        }-*/;
-
-        public static native ContextAttributes create() /*-{
-            return {
-                alpha: true,
-                depth: true,
-                stencil: false,
-                antiAlias: true,
-                preMultipliedAlpha: true,
-                preserveDrawingBuffer: false,
-                failIfMajorPerformanceCaveat: false
-            };
         }-*/;
     }
 
