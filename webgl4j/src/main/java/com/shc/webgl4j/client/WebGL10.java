@@ -1161,29 +1161,16 @@ public final class WebGL10
         checkContext();
         nglStencilOpSeparate(face, fail, zFail, zPass);
     }
-
-    public static void glTexImage2D(int target, int level, int internalFormat, int width, int height, int border, int format,
-                                    int type, Image pixels)
-    {
-        checkContext();
-        nglTexImage2D(target, level, internalFormat, width, height, border, format, type, pixels.getElement());
-    }
-
     public static void glTexImage2D(int target, int level, int internalFormat, int format, int type, Image pixels)
     {
-        glTexImage2D(target, level, internalFormat, pixels.getWidth(), pixels.getHeight(), 0, format, type, pixels);
+        checkContext();
+        nglTexImage2D(target, level, internalFormat, format, type, pixels.getElement());
     }
 
     public static void glTexImage2D(int target, int level, int internalFormat, int format, int type, ImageData pixels)
     {
-        glTexImage2D(target, level, internalFormat, pixels.getWidth(), pixels.getHeight(), 0, format, type, pixels);
-    }
-
-    public static void glTexImage2D(int target, int level, int internalFormat, int width, int height, int border, int format,
-                                    int type, ImageData pixels)
-    {
         checkContext();
-        nglTexImage2D(target, level, internalFormat, width, height, border, format, type, pixels);
+        nglTexImage2D(target, level, internalFormat, format, type, pixels);
     }
 
     public static void glTexImage2D(int target, int level, int internalFormat, int width, int height, int border, int format,
@@ -1193,11 +1180,11 @@ public final class WebGL10
         nglTexImage2D(target, level, internalFormat, width, height, border, format, type, pixels);
     }
 
-    public static void glTexImage2D(int target, int level, int internalFormat, int width, int height, int border, int format,
+    public static void glTexImage2D(int target, int level, int internalFormat, int format,
                                     int type, JavaScriptObject pixels)
     {
         checkContext();
-        nglTexImage2D(target, level, internalFormat, width, height, border, format, type, pixels);
+        nglTexImage2D(target, level, internalFormat, format, type, pixels);
     }
 
     public static void glTexParameterf(int target, int pname, float value)
@@ -1556,7 +1543,7 @@ public final class WebGL10
     }-*/;
 
     private static native void nglBufferData(int target, JsArrayInteger data, int usage) /*-{
-        $wnd.gl.bufferData(target, new Float32Array(data), usage);
+        $wnd.gl.bufferData(target, new Int32Array(data), usage);
     }-*/;
 
     private static native void nglBufferSubData(int target, int offset, double size, JsArrayNumber data) /*-{
@@ -1994,9 +1981,8 @@ public final class WebGL10
         $wnd.gl.texImage2D(target, level, internalFormat, width, height, border, format, type, pixels);
     }-*/;
 
-    private static native void nglTexImage2D(int target, int level, int internalFormat, int width, int height, int border,
-                                             int format, int type, JavaScriptObject pixels) /*-{
-        $wnd.gl.texImage2D(target, level, internalFormat, width, height, border, format, type, pixels);
+    private static native void nglTexImage2D(int target, int level, int internalFormat, int format, int type, JavaScriptObject pixels) /*-{
+        $wnd.gl.texImage2D(target, level, internalFormat, format, type, pixels);
     }-*/;
 
     private static native void nglTexParameterf(int target, int pname, float value) /*-{
