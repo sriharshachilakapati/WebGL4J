@@ -22,7 +22,7 @@ For now you have to compile the library and add the resulting JAR file to your c
 ./gradlew clean build javadoc
 ```
 
-Then copy the `WebGL4J.jar` from the `build/libs` directory and add it in the classpath of your GWT application. Now inherit the `WebGL4J` in your modules that use this library by adding the following line to your GWT module XML file.
+Then copy the `webgl4j.jar` from the `webgl4j/build/libs` directory and add it in the classpath of your GWT application. Now inherit the `WebGL4J` in your modules that use this library by adding the following line to your GWT module XML file.
 
 ```xml
 <inherits name="com.shc.webgl4j.client" />
