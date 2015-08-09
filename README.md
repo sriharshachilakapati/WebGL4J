@@ -91,6 +91,16 @@ ctx2.makeCurrent();
 
 You don't need to make the context current if you are only using one context. If you are using multiple contexts, the context that is just created will be the current, so in the above example, `ctx2` will be current since it is the latest created context.
 
+## Running the examples
+
+You can see the examples in action by navigating your browser to [http://goharsha.com/webgl4j/](http://goharsha.com/webgl4j/). Instead if you want to compile them yourself, enter the following command into the console.
+
+```bash
+./gradlew clean build superDev
+```
+
+Once the terminal says that the server is ready at **http://localhost:9876**, fire up your browser to go to **http://localhost:8080/examples/** and you will see the examples in live.
+
 ## Licence
 
 This project is covered by MIT licence. You can read the terms [here](http://opensource.org/licenses/MIT).
