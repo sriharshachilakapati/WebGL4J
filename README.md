@@ -60,7 +60,7 @@ WebGL10.createContext(canvas);
 Creating a context with a set of context attributes is also supported. Here is an example for creating a context with a stencil buffer.
 
 ```java
-WebGL10.ContextAttributes ctxAttributes = WebGLContext.Attributes.create();
+WebGLContext.Attributes ctxAttributes = WebGLContext.Attributes.create();
 ctxAttributes.setStencil(true);
 
 // Create the context now
