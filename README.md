@@ -57,6 +57,18 @@ CanvasElement canvas = (CanvasElement) Document.get().getElementById("webgl");
 WebGL10.createContext(canvas);
 ```
 
+Creating the context and canvas at runtime without declaring it at runtime is also supported. You can simply create a canvas and call `WebGL10.createContext()` on it.
+
+```java
+// Create the Canvas
+Canvas canvas = Canvas.createIfSupported();
+canvas.setCoordinateSpaceWidth(640);
+canvas.setCoordinateSpaceHeight(480);
+
+// Create the context
+WebGL10.createContext(canvas);
+```
+
 Creating a context with a set of context attributes is also supported. Here is an example for creating a context with a stencil buffer.
 
 ```java
