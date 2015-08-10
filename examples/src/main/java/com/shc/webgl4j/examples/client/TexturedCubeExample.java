@@ -12,13 +12,12 @@ import static com.shc.webgl4j.client.WebGL10.*;
 /**
  * @author Sri Harsha Chilakapati
  */
-public class TextureExample extends Example
+public class TexturedCubeExample extends Example
 {
     private int      programID;
     private Matrix4f projView;
-    private float angle = 0;
 
-    public TextureExample(Canvas canvas)
+    public TexturedCubeExample(Canvas canvas)
     {
         super(canvas);
     }
@@ -28,12 +27,14 @@ public class TextureExample extends Example
     {
         glClearColor(0, 0, 0, 1);
 
+        glEnable(GL_DEPTH_TEST);
+
         // The vertex shader source
         String vsSource = "precision mediump float;                             \n" +
                           "                                                     \n" +
                           "uniform mat4 proj;                                   \n" +
                           "                                                     \n" +
-                          "attribute vec2 position;                             \n" +
+                          "attribute vec3 position;                             \n" +
                           "attribute vec2 texCoords;                            \n" +
                           "                                                     \n" +
                           "varying vec2 vTexCoords;                             \n" +
@@ -41,7 +42,7 @@ public class TextureExample extends Example
                           "void main()                                          \n" +
                           "{                                                    \n" +
                           "    vTexCoords = texCoords;                          \n" +
-                          "    gl_Position = proj * vec4(position, 0.0, 1.0);   \n" +
+                          "    gl_Position = proj * vec4(position, 1.0);        \n" +
                           "}";
 
         // The fragment shader source
@@ -79,12 +80,53 @@ public class TextureExample extends Example
         // Create the positions VBO
         float[] vertices =
                 {
-                        -0.8f, +0.8f,
-                        +0.8f, +0.8f,
-                        -0.8f, -0.8f,
-                        +0.8f, +0.8f,
-                        +0.8f, -0.8f,
-                        -0.8f, -0.8f
+                        // Front face
+                        -1, +1, +1,
+                        -1, -1, +1,
+                        +1, +1, +1,
+                        +1, +1, +1,
+                        -1, -1, +1,
+                        +1, -1, +1,
+
+                        // Right face
+                        +1, +1, +1,
+                        +1, -1, +1,
+                        +1, +1, -1,
+                        +1, +1, -1,
+                        +1, -1, +1,
+                        +1, -1, -1,
+
+                        // Back face
+                        +1, +1, -1,
+                        +1, -1, -1,
+                        -1, -1, -1,
+                        -1, -1, -1,
+                        -1, +1, -1,
+                        +1, +1, -1,
+
+                        // Left face
+                        -1, +1, -1,
+                        -1, -1, -1,
+                        -1, -1, +1,
+                        -1, -1, +1,
+                        -1, +1, +1,
+                        -1, +1, -1,
+
+                        // Top face
+                        -1, +1, -1,
+                        -1, +1, +1,
+                        +1, +1, -1,
+                        +1, +1, -1,
+                        -1, +1, +1,
+                        +1, +1, +1,
+
+                        // Bottom face
+                        -1, -1, -1,
+                        -1, -1, +1,
+                        +1, -1, -1,
+                        +1, -1, -1,
+                        -1, -1, +1,
+                        +1, -1, +1
                 };
 
         int vboPosID = glCreateBuffer();
@@ -92,17 +134,58 @@ public class TextureExample extends Example
         glBufferData(GL_ARRAY_BUFFER, vertices, GL_STATIC_DRAW);
 
         glEnableVertexAttribArray(0);
-        glVertexAttribPointer(0, 2, GL_FLOAT, false, 0, 0);
+        glVertexAttribPointer(0, 3, GL_FLOAT, false, 0, 0);
 
-        // Create the texcoords VBO
+        // Create the colors VBO
         float[] texCoords =
                 {
+                        // Front face
                         0, 0,
-                        1, 0,
                         0, 1,
                         1, 0,
+                        1, 0,
+                        0, 1,
                         1, 1,
-                        0, 1
+
+                        // Right face
+                        0, 0,
+                        0, 1,
+                        1, 0,
+                        1, 0,
+                        0, 1,
+                        1, 1,
+
+                        // Back face
+                        0, 0,
+                        0, 1,
+                        1, 0,
+                        1, 0,
+                        0, 1,
+                        1, 1,
+
+                        // Left face
+                        0, 0,
+                        0, 1,
+                        1, 0,
+                        1, 0,
+                        0, 1,
+                        1, 1,
+
+                        // Top face
+                        0, 0,
+                        0, 1,
+                        1, 0,
+                        1, 0,
+                        0, 1,
+                        1, 1,
+
+                        // Bottom face
+                        0, 0,
+                        0, 1,
+                        1, 0,
+                        1, 0,
+                        0, 1,
+                        1, 1,
                 };
 
         int vboTexID = glCreateBuffer();
@@ -137,19 +220,22 @@ public class TextureExample extends Example
         projView = new Matrix4f();
     }
 
+    private float angle = 0;
+
     @Override
     public void render()
     {
         angle++;
 
         projView.setPerspective((float) Math.toRadians(70), 640f / 480f, 0.1f, 100)
-                .translate(0, 0, -2)
+                .translate(0, 0, -4)
+                .rotateX((float) Math.toRadians(angle))
                 .rotateY((float) Math.toRadians(angle))
                 .rotateZ((float) Math.toRadians(angle));
 
         glUniformMatrix4fv(glGetUniformLocation(programID, "proj"), false, projView.get(new float[16]));
 
-        glClear(GL_COLOR_BUFFER_BIT);
-        glDrawArrays(GL_TRIANGLES, 0, 6);
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        glDrawArrays(GL_TRIANGLES, 0, 36);
     }
 }

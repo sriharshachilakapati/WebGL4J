@@ -1,14 +1,15 @@
 package com.shc.webgl4j.examples.client;
 
-import com.google.gwt.animation.client.AnimationScheduler;
 import com.google.gwt.canvas.client.Canvas;
 import com.shc.webgl4j.client.WebGL10;
 import com.shc.webgl4j.client.WebGLContext;
 
 /**
+ * The abstract class that represents an example. Contains the context, the canvas, and a simple animation loop.
+ *
  * @author Sri Harsha Chilakapati
  */
-public class Example
+public abstract class Example
 {
     protected WebGLContext context;
     protected Canvas       canvas;
@@ -24,28 +25,13 @@ public class Example
         this.context = context;
     }
 
-    public void init()
-    {
-    }
+    /**
+     * Initializes the WebGL resources, and also the example.
+     */
+    public abstract void init();
 
-    public void render()
-    {
-    }
-
-    public Example start()
-    {
-        init();
-
-        AnimationScheduler.get().requestAnimationFrame(new AnimationScheduler.AnimationCallback()
-        {
-            @Override
-            public void execute(double timestamp)
-            {
-                render();
-                AnimationScheduler.get().requestAnimationFrame(this, canvas.getCanvasElement());
-            }
-        }, canvas.getCanvasElement());
-
-        return this;
-    }
+    /**
+     * Called every frame to draw the example onto the canvas.
+     */
+    public abstract void render();
 }

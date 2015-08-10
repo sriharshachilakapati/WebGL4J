@@ -22,7 +22,6 @@ public class TriangleExample extends Example
     @Override
     public void init()
     {
-        context.makeCurrent();
         glClearColor(0, 0, 0, 1);
 
         // The vertex shader source
@@ -108,8 +107,6 @@ public class TriangleExample extends Example
     @Override
     public void render()
     {
-        context.makeCurrent();
-
         angle++;
         float z = -3 + (float) Math.sin(TimeUtil.currentSeconds()) * 2;
 
