@@ -116,3 +116,7 @@ Once the terminal says that the server is ready at **http://localhost:9876**, fi
 ## Licence
 
 This project is covered by MIT licence. You can read the terms [here](http://opensource.org/licenses/MIT).
+
+## Contact
+
+If you want to contact me about this project, or ask any questions, you can e-mail me at [hello@goharsha.com](mailto://hello@goharsha.com). Alternatively, if you are not comfortable with e-mail, you can join the IRC at [#WebGL4J@Freenode](https://kiwiirc.com/client/irc.freenode.net/#WebGL4J/)
