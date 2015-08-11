@@ -462,25 +462,19 @@ public final class WebGL10
     public static void glBufferData(int target, float[] data, int usage)
     {
         checkContext();
-        nglBufferData(target, JsArrayUtils.readOnlyJsArray(data), usage);
+        nglBufferData(target, data, usage);
     }
 
     public static void glBufferData(int target, int[] data, int usage)
     {
         checkContext();
-        nglBufferData(target, JsArrayUtils.readOnlyJsArray(data), usage);
-    }
-
-    public static void glBufferData(int target, byte[] data, int usage)
-    {
-        checkContext();
-        nglBufferData(target, JsArrayUtils.readOnlyJsArray(data), usage);
+        nglBufferData(target, data, usage);
     }
 
     public static void glBufferData(int target, short[] data, int usage)
     {
         checkContext();
-        nglBufferData(target, JsArrayUtils.readOnlyJsArray(data), usage);
+        nglBufferData(target, data, usage);
     }
 
     public static void glBufferSubData(int target, int offset, long size, float[] data)
@@ -1503,18 +1497,30 @@ public final class WebGL10
     }-*/;
 
     private static native void nglBindBuffer(int target, int buffer) /*-{
+        if (buffer == 0)
+            buffer = null;
+
         $wnd.gl.bindBuffer(target, buffer);
     }-*/;
 
     private static native void nglBindFramebuffer(int target, int frameBuffer) /*-{
+        if (frameBuffer == 0)
+            frameBuffer = null;
+
         $wnd.gl.bindFramebuffer(target, frameBuffer);
     }-*/;
 
     private static native void nglBindRenderbuffer(int target, int renderBuffer) /*-{
+        if (renderBuffer == 0)
+            renderBuffer = null;
+
         $wnd.gl.bindRenderbuffer(target, renderBuffer);
     }-*/;
 
     private static native void nglBindTexture(int target, int textureID) /*-{
+        if (textureID == 0)
+            textureID = null;
+
         $wnd.gl.bindTexture(target, textureID);
     }-*/;
 
@@ -1538,12 +1544,16 @@ public final class WebGL10
         $wnd.gl.blendFuncSeparate(srcRGB, dstRGB, srcAlpha, dstAlpha);
     }-*/;
 
-    private static native void nglBufferData(int target, JsArrayNumber data, int usage) /*-{
+    private static native void nglBufferData(int target, float[] data, int usage) /*-{
         $wnd.gl.bufferData(target, new Float32Array(data), usage);
     }-*/;
 
-    private static native void nglBufferData(int target, JsArrayInteger data, int usage) /*-{
+    private static native void nglBufferData(int target, int[] data, int usage) /*-{
         $wnd.gl.bufferData(target, new Int32Array(data), usage);
+    }-*/;
+
+    private static native void nglBufferData(int target, short[] data, int usage) /*-{
+        $wnd.gl.bufferData(target, new Int16Array(data), usage);
     }-*/;
 
     private static native void nglBufferSubData(int target, int offset, double size, JsArrayNumber data) /*-{
