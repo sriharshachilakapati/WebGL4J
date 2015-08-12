@@ -401,169 +401,170 @@ public final class WebGL10
         }
     }-*/;
 
-    public static native boolean isContextCreated() /*-{
-        return typeof ($wnd.gl) !== 'undefined' && $wnd.glv >= 1.0;
-    }-*/;
-
-    public static void checkContext()
+    public static boolean isContextCompatible()
     {
-        if (!isContextCreated())
+        return WebGLContext.getCurrentContext() != null && WebGLContext.getCurrentContext().getVersion() >= 1.0;
+    }
+
+    private static void checkContextCompatibility()
+    {
+        if (!isContextCompatible())
             throw new IllegalStateException("The context should be created before invoking the GL functions");
     }
 
     public static void glActiveTexture(int texture)
     {
-        checkContext();
+        checkContextCompatibility();
         nglActiveTexture(texture);
     }
 
     public static void glAttachShader(int programID, int shaderID)
     {
-        checkContext();
+        checkContextCompatibility();
         nglAttachShader(programID, shaderID);
     }
 
     public static void glBindAttribLocation(int programID, int index, String name)
     {
-        checkContext();
+        checkContextCompatibility();
         nglBindAttribLocation(programID, index, name);
     }
 
     public static void glBindBuffer(int target, int buffer)
     {
-        checkContext();
+        checkContextCompatibility();
         nglBindBuffer(target, buffer);
     }
 
     public static void glBindFramebuffer(int target, int frameBuffer)
     {
-        checkContext();
+        checkContextCompatibility();
         nglBindFramebuffer(target, frameBuffer);
     }
 
     public static void glBindRenderbuffer(int target, int renderBuffer)
     {
-        checkContext();
+        checkContextCompatibility();
         nglBindRenderbuffer(target, renderBuffer);
     }
 
     public static void glBindTexture(int target, int textureID)
     {
-        checkContext();
+        checkContextCompatibility();
         nglBindTexture(target, textureID);
     }
 
     public static void glBlendColor(float r, float g, float b, float a)
     {
-        checkContext();
+        checkContextCompatibility();
         nglBlendColor(r, g, b, a);
     }
 
     public static void glBlendEquation(int mode)
     {
-        checkContext();
+        checkContextCompatibility();
         nglBlendEquation(mode);
     }
 
     public static void glBlendEquationSeparate(int modeRGB, int modeAlpha)
     {
-        checkContext();
+        checkContextCompatibility();
         nglBlendEquationSeparate(modeRGB, modeAlpha);
     }
 
     public static void glBlendFunc(int srcFactor, int dstFactor)
     {
-        checkContext();
+        checkContextCompatibility();
         nglBlendFunc(srcFactor, dstFactor);
     }
 
     public static void glBlendFuncSeparate(int srcRGB, int dstRGB, int srcAlpha, int dstAlpha)
     {
-        checkContext();
+        checkContextCompatibility();
         nglBlendFuncSeparate(srcRGB, dstRGB, srcAlpha, dstAlpha);
     }
 
     public static void glBufferData(int target, float[] data, int usage)
     {
-        checkContext();
+        checkContextCompatibility();
         nglBufferData(target, data, usage);
     }
 
     public static void glBufferData(int target, int[] data, int usage)
     {
-        checkContext();
+        checkContextCompatibility();
         nglBufferData(target, data, usage);
     }
 
     public static void glBufferData(int target, short[] data, int usage)
     {
-        checkContext();
+        checkContextCompatibility();
         nglBufferData(target, data, usage);
     }
 
     public static void glBufferSubData(int target, int offset, long size, float[] data)
     {
-        checkContext();
+        checkContextCompatibility();
         nglBufferSubData(target, offset, size, JsArrayUtils.readOnlyJsArray(data));
     }
 
     public static void glBufferSubData(int target, int offset, long size, int[] data)
     {
-        checkContext();
+        checkContextCompatibility();
         nglBufferSubData(target, offset, size, JsArrayUtils.readOnlyJsArray(data));
     }
 
     public static void glBufferSubData(int target, int offset, long size, byte[] data)
     {
-        checkContext();
+        checkContextCompatibility();
         nglBufferSubData(target, offset, size, JsArrayUtils.readOnlyJsArray(data));
     }
 
     public static void glBufferSubData(int target, int offset, long size, short[] data)
     {
-        checkContext();
+        checkContextCompatibility();
         nglBufferSubData(target, offset, size, JsArrayUtils.readOnlyJsArray(data));
     }
 
     public static int glCheckFramebufferStatus(int target)
     {
-        checkContext();
+        checkContextCompatibility();
         return nglCheckFramebufferStatus(target);
     }
 
     public static void glClear(int masks)
     {
-        checkContext();
+        checkContextCompatibility();
         nglClear(masks);
     }
 
     public static void glClearColor(float r, float g, float b, float a)
     {
-        checkContext();
+        checkContextCompatibility();
         nglClearColor(r, g, b, a);
     }
 
     public static void glClearDepth(float depth)
     {
-        checkContext();
+        checkContextCompatibility();
         nglClearDepth(depth);
     }
 
     public static void glClearStencil(int stencil)
     {
-        checkContext();
+        checkContextCompatibility();
         nglClearStencil(stencil);
     }
 
     public static void glColorMask(boolean red, boolean green, boolean blue, boolean alpha)
     {
-        checkContext();
+        checkContextCompatibility();
         nglColorMask(red, green, blue, alpha);
     }
 
     public static void glCompileShader(int shaderID)
     {
-        checkContext();
+        checkContextCompatibility();
         nglCompileShader(shaderID);
     }
 
@@ -576,14 +577,14 @@ public final class WebGL10
     public static void glCompressedTexImage2D(int target, int level, int internalFormat, long width, long height,
                                               int border, long imageSize, ArrayBufferView pixels)
     {
-        checkContext();
+        checkContextCompatibility();
         nglCompressedTexImage2D(target, level, internalFormat, width, height, border, imageSize, pixels);
     }
 
     public static void glCompressedTexImage2D(int target, int level, int internalFormat, long width, long height,
                                               int border, long imageSize, JavaScriptObject object)
     {
-        checkContext();
+        checkContextCompatibility();
         nglCompressedTexImage2D(target, level, internalFormat, width, height, border, imageSize, object);
     }
 
@@ -596,375 +597,375 @@ public final class WebGL10
     public static void glCompressedTexSubImage2D(int target, int level, int xOffset, int yOffset, long width, long height,
                                                  int format, long imageSize, JavaScriptObject data)
     {
-        checkContext();
+        checkContextCompatibility();
         nglCompressedTexSubImage2D(target, level, xOffset, yOffset, width, height, format, imageSize, data);
     }
 
     public static void glCompressedTexSubImage2D(int target, int level, int xOffset, int yOffset, long width, long height,
                                                  int format, long imageSize, ArrayBufferView data)
     {
-        checkContext();
+        checkContextCompatibility();
         nglCompressedTexSubImage2D(target, level, xOffset, yOffset, width, height, format, imageSize, data);
     }
 
     public static void glCopyTexImage2D(int target, int level, int internalFormat, int x, int y, long width, long height,
                                         int border)
     {
-        checkContext();
+        checkContextCompatibility();
         nglCopyTexImage2D(target, level, internalFormat, x, y, width, height, border);
     }
 
     public static void glCopyTexSubImage2D(int target, int level, int xOffset, int yOffset, int x, int y, long width, long height)
     {
-        checkContext();
+        checkContextCompatibility();
         nglCopyTexSubImage2D(target, level, xOffset, yOffset, x, y, width, height);
     }
 
     public static int glCreateBuffer()
     {
-        checkContext();
+        checkContextCompatibility();
         return nglCreateBuffer();
     }
 
     public static int glCreateFramebuffer()
     {
-        checkContext();
+        checkContextCompatibility();
         return nglCreateFramebuffer();
     }
 
     public static int glCreateProgram()
     {
-        checkContext();
+        checkContextCompatibility();
         return nglCreateProgram();
     }
 
     public static int glCreateRenderbuffer()
     {
-        checkContext();
+        checkContextCompatibility();
         return nglCreateRenderbuffer();
     }
 
     public static int glCreateShader(int type)
     {
-        checkContext();
+        checkContextCompatibility();
         return nglCreateShader(type);
     }
 
     public static int glCreateTexture()
     {
-        checkContext();
+        checkContextCompatibility();
         return nglCreateTexture();
     }
 
     public static void glCullFace(int mode)
     {
-        checkContext();
+        checkContextCompatibility();
         nglCullFace(mode);
     }
 
     public static void glDeleteBuffer(int bufferID)
     {
-        checkContext();
+        checkContextCompatibility();
         nglDeleteBuffer(bufferID);
     }
 
     public static void glDeleteFramebuffer(int frameBufferID)
     {
-        checkContext();
+        checkContextCompatibility();
         nglDeleteFramebuffer(frameBufferID);
     }
 
     public static void glDeleteProgram(int programID)
     {
-        checkContext();
+        checkContextCompatibility();
         nglDeleteProgram(programID);
     }
 
     public static void glDeleteRenderbuffer(int renderBufferID)
     {
-        checkContext();
+        checkContextCompatibility();
         nglDeleteRenderbuffer(renderBufferID);
     }
 
     public static void glDeleteShader(int shaderID)
     {
-        checkContext();
+        checkContextCompatibility();
         nglDeleteShader(shaderID);
     }
 
     public static void glDeleteTexture(int textureID)
     {
-        checkContext();
+        checkContextCompatibility();
         nglDeleteTexture(textureID);
     }
 
     public static void glDepthFunc(int func)
     {
-        checkContext();
+        checkContextCompatibility();
         nglDepthFunc(func);
     }
 
     public static void glDepthMask(boolean flag)
     {
-        checkContext();
+        checkContextCompatibility();
         nglDepthMask(flag);
     }
 
     public static void glDepthRange(double nearVal, double farVal)
     {
-        checkContext();
+        checkContextCompatibility();
         nglDepthRange(nearVal, farVal);
     }
 
     public static void glDetachShader(int programID, int shaderID)
     {
-        checkContext();
+        checkContextCompatibility();
         nglDetachShader(programID, shaderID);
     }
 
     public static void glDisable(int disableCap)
     {
-        checkContext();
+        checkContextCompatibility();
         nglDisable(disableCap);
     }
 
     public static void glDisableVertexAttribArray(int index)
     {
-        checkContext();
+        checkContextCompatibility();
         nglDisableVertexAttribArray(index);
     }
 
     public static void glDrawArrays(int mode, int first, int count)
     {
-        checkContext();
+        checkContextCompatibility();
         nglDrawArrays(mode, first, count);
     }
 
     public static void glDrawElements(int mode, int count, int type, int offset)
     {
-        checkContext();
+        checkContextCompatibility();
         nglDrawElements(mode, count, type, offset);
     }
 
     public static void glEnable(int enableCap)
     {
-        checkContext();
+        checkContextCompatibility();
         nglEnable(enableCap);
     }
 
     public static void glEnableVertexAttribArray(int index)
     {
-        checkContext();
+        checkContextCompatibility();
         nglEnableVertexAttribArray(index);
     }
 
     public static void glFinish()
     {
-        checkContext();
+        checkContextCompatibility();
         nglFinish();
     }
 
     public static void glFlush()
     {
-        checkContext();
+        checkContextCompatibility();
         nglFlush();
     }
 
     public static void glFramebufferRenderbuffer(int target, int attachment, int renderbufferTarget, int renderBuffer)
     {
-        checkContext();
+        checkContextCompatibility();
         nglFramebufferRenderbuffer(target, attachment, renderbufferTarget, renderBuffer);
     }
 
     public static void glFramebufferTexture2D(int target, int attachment, int textureTarget, int texture, int level)
     {
-        checkContext();
+        checkContextCompatibility();
         nglFramebufferTexture2D(target, attachment, textureTarget, texture, level);
     }
 
     public static void glFrontFace(int mode)
     {
-        checkContext();
+        checkContextCompatibility();
         nglFrontFace(mode);
     }
 
     public static void glGenerateMipmap(int target)
     {
-        checkContext();
+        checkContextCompatibility();
         nglGenerateMipmap(target);
     }
 
     public static ActiveInfo glGetActiveAttrib(int programID, int index)
     {
-        checkContext();
+        checkContextCompatibility();
         return nglGetActiveAttrib(programID, index);
     }
 
     public static ActiveInfo glGetActiveUniform(int programID, int index)
     {
-        checkContext();
+        checkContextCompatibility();
         return nglGetActiveUniform(programID, index);
     }
 
     public static int[] glGetAttachedShaders(int programID)
     {
-        checkContext();
+        checkContextCompatibility();
         return nglGetAttachedShaders(programID);
     }
 
     public static int glGetAttribLocation(int programID, String name)
     {
-        checkContext();
+        checkContextCompatibility();
         return nglGetAttribLocation(programID, name);
     }
 
     public static Element glGetCanvas()
     {
-        checkContext();
+        checkContextCompatibility();
         return nglGetCanvas();
     }
 
     public static WebGLContext.Attributes glGetContextAttributes()
     {
-        checkContext();
+        checkContextCompatibility();
         return nglGetContextAttributes();
     }
 
     public static int glGetDrawingBufferHeight()
     {
-        checkContext();
+        checkContextCompatibility();
         return nglGetDrawingBufferHeight();
     }
 
     public static int glGetDrawingBufferWidth()
     {
-        checkContext();
+        checkContextCompatibility();
         return nglGetDrawingBufferWidth();
     }
 
     public static int glGetError()
     {
-        checkContext();
+        checkContextCompatibility();
         return nglGetError();
     }
 
     public static JavaScriptObject glGetExtension(String name)
     {
-        checkContext();
+        checkContextCompatibility();
         return nglGetExtension(name);
     }
 
     public static int glGetFramebufferAttachmentParameter(int target, int attachment, int pname)
     {
-        checkContext();
+        checkContextCompatibility();
         return nglGetFramebufferAttachmentParameter(target, attachment, pname);
     }
 
     public static <T extends JavaScriptObject> T glGetParameter(int pname)
     {
-        checkContext();
+        checkContextCompatibility();
         return nglGetParameter(pname);
     }
 
     public static int glGetParameteri(int pname)
     {
-        checkContext();
+        checkContextCompatibility();
         return nglGetParameteri(pname);
     }
 
     public static boolean glGetParameterb(int pname)
     {
-        checkContext();
+        checkContextCompatibility();
         return nglGetParameterb(pname);
     }
 
     public static int[] glGetParameterii(int pname)
     {
-        checkContext();
+        checkContextCompatibility();
         return nglGetParameterii(pname);
     }
 
     public static float[] glGetParameterff(int pname)
     {
-        checkContext();
+        checkContextCompatibility();
         return nglGetParameterff(pname);
     }
 
     public static boolean[] glGetParameterbb(int pname)
     {
-        checkContext();
+        checkContextCompatibility();
         return nglGetParameterbb(pname);
     }
 
     public static String glGetParameters(int pname)
     {
-        checkContext();
+        checkContextCompatibility();
         return nglGetParameters(pname);
     }
 
     public static String glGetProgramInfoLog(int programID)
     {
-        checkContext();
+        checkContextCompatibility();
         return nglGetProgramInfoLog(programID);
     }
 
     public static int glGetProgramParameteri(int programID, int pname)
     {
-        checkContext();
+        checkContextCompatibility();
         return nglGetProgramParameteri(programID, pname);
     }
 
     public static boolean glGetProgramParameterb(int programID, int pname)
     {
-        checkContext();
+        checkContextCompatibility();
         return nglGetProgramParameterb(programID, pname);
     }
 
     public static int glGetRenderbufferParameter(int target, int pname)
     {
-        checkContext();
+        checkContextCompatibility();
         return nglGetRenderbufferParameter(target, pname);
     }
 
     public static String glGetShaderInfoLog(int shaderID)
     {
-        checkContext();
+        checkContextCompatibility();
         return nglGetShaderInfoLog(shaderID);
     }
 
     public static int glGetShaderParameteri(int shaderID, int pname)
     {
-        checkContext();
+        checkContextCompatibility();
         return nglGetShaderParameteri(shaderID, pname);
     }
 
     public static boolean glGetShaderParameterb(int shaderID, int pname)
     {
-        checkContext();
+        checkContextCompatibility();
         return nglGetShaderParameterb(shaderID, pname);
     }
 
     public static ShaderPrecisionFormat glGetShaderPrecisionFormat(int shaderType, int precisionType)
     {
-        checkContext();
+        checkContextCompatibility();
         return nglGetShaderPrecisionFormat(shaderType, precisionType);
     }
 
     public static String glGetShaderSource(int shaderID)
     {
-        checkContext();
+        checkContextCompatibility();
         return nglGetShaderSource(shaderID);
     }
 
     public static String[] glGetSupportedExtensions()
     {
-        checkContext();
+        checkContextCompatibility();
         return nglGetSupportedExtensions();
     }
 
     public static int glGetTexParameter(int textureID, int pname)
     {
-        checkContext();
+        checkContextCompatibility();
         return nglGetTexParameter(textureID, pname);
     }
 
@@ -975,7 +976,7 @@ public final class WebGL10
 
     public static boolean[] glGetUniformbv(int programID, int location)
     {
-        checkContext();
+        checkContextCompatibility();
         return nglGetUniformbv(programID, location);
     }
 
@@ -986,7 +987,7 @@ public final class WebGL10
 
     public static float[] glGetUniformfv(int programID, int location)
     {
-        checkContext();
+        checkContextCompatibility();
         return nglGetUniformfv(programID, location);
     }
 
@@ -997,19 +998,19 @@ public final class WebGL10
 
     public static int[] glGetUniformiv(int programID, int location)
     {
-        checkContext();
+        checkContextCompatibility();
         return nglGetUniformiv(programID, location);
     }
 
     public static int glGetUniformLocation(int programID, String name)
     {
-        checkContext();
+        checkContextCompatibility();
         return nglGetUniformLocation(programID, name);
     }
 
     public static boolean glGetVertexAttribb(int index, int pname)
     {
-        checkContext();
+        checkContextCompatibility();
         return nglGetVertexAttribb(index, pname);
     }
 
@@ -1020,214 +1021,214 @@ public final class WebGL10
 
     public static float[] glGetVertexAttribfv(int index, int pname)
     {
-        checkContext();
+        checkContextCompatibility();
         return nglGetVertexAttribfv(index, pname);
     }
 
     public static int glGetVertexAttribi(int index, int pname)
     {
-        checkContext();
+        checkContextCompatibility();
         return nglGetVertexAttribi(index, pname);
     }
 
     public static int glGetVertexAttribOffset(int index, int pname)
     {
-        checkContext();
+        checkContextCompatibility();
         return nglGetVertexAttribOffset(index, pname);
     }
 
     public static void glHint(int target, int mode)
     {
-        checkContext();
+        checkContextCompatibility();
         nglHint(target, mode);
     }
 
     public static boolean glIsBuffer(int bufferID)
     {
-        checkContext();
+        checkContextCompatibility();
         return nglIsBuffer(bufferID);
     }
 
     public static boolean glIsContextLost()
     {
-        checkContext();
+        checkContextCompatibility();
         return nglIsContextLost();
     }
 
     public static boolean glIsEnabled(int enableCap)
     {
-        checkContext();
+        checkContextCompatibility();
         return nglIsEnabled(enableCap);
     }
 
     public static boolean glIsFramebuffer(int framebufferID)
     {
-        checkContext();
+        checkContextCompatibility();
         return nglIsFramebuffer(framebufferID);
     }
 
     public static boolean glIsProgram(int programID)
     {
-        checkContext();
+        checkContextCompatibility();
         return nglIsProgram(programID);
     }
 
     public static boolean glIsRenderbuffer(int renderbufferID)
     {
-        checkContext();
+        checkContextCompatibility();
         return nglIsRenderbuffer(renderbufferID);
     }
 
     public static boolean glIsShader(int shaderID)
     {
-        checkContext();
+        checkContextCompatibility();
         return nglIsShader(shaderID);
     }
 
     public static boolean glIsTexture(int textureID)
     {
-        checkContext();
+        checkContextCompatibility();
         return nglIsTexture(textureID);
     }
 
     public static void glLineWidth(int width)
     {
-        checkContext();
+        checkContextCompatibility();
         nglLineWidth(width);
     }
 
     public static void glLinkProgram(int programID)
     {
-        checkContext();
+        checkContextCompatibility();
         nglLinkProgram(programID);
     }
 
     public static void glPixelStorei(int pname, int param)
     {
-        checkContext();
+        checkContextCompatibility();
         nglPixelStorei(pname, param);
     }
 
     public static void glPolygonOffset(double factor, double units)
     {
-        checkContext();
+        checkContextCompatibility();
         nglPolygonOffset(factor, units);
     }
 
     public static void glReadPixels(int x, int y, int w, int h, int format, int type, ArrayBufferView pixels)
     {
-        checkContext();
+        checkContextCompatibility();
         nglReadPixels(x, y, w, h, format, type, pixels);
     }
 
     public static void glRenderbufferStorage(int target, int internalFormat, int width, int height)
     {
-        checkContext();
+        checkContextCompatibility();
         nglRenderbufferStorage(target, internalFormat, width, height);
     }
 
     public static void glSampleCoverage(float value, boolean invert)
     {
-        checkContext();
+        checkContextCompatibility();
         nglSampleCoverage(value, invert);
     }
 
     public static void glScissor(int x, int y, int w, int h)
     {
-        checkContext();
+        checkContextCompatibility();
         nglScissor(x, y, w, h);
     }
 
     public static void glShaderSource(int shaderID, String source)
     {
-        checkContext();
+        checkContextCompatibility();
         nglShaderSource(shaderID, source);
     }
 
     public static void glStencilFunc(int func, int ref, int mask)
     {
-        checkContext();
+        checkContextCompatibility();
         nglStencilFunc(func, ref, mask);
     }
 
     public static void glStencilFuncSeparate(int face, int func, int ref, int mask)
     {
-        checkContext();
+        checkContextCompatibility();
         nglStencilFuncSeparate(face, func, ref, mask);
     }
 
     public static void glStencilMask(int mask)
     {
-        checkContext();
+        checkContextCompatibility();
         nglStencilMask(mask);
     }
 
     public static void glStencilMaskSeparate(int face, int mask)
     {
-        checkContext();
+        checkContextCompatibility();
         nglStencilMaskSeparate(face, mask);
     }
 
     public static void glStencilOp(int sFail, int dpFail, int dpPass)
     {
-        checkContext();
+        checkContextCompatibility();
         nglStencilOp(sFail, dpFail, dpPass);
     }
 
     public static void glStencilOpSeparate(int face, int fail, int zFail, int zPass)
     {
-        checkContext();
+        checkContextCompatibility();
         nglStencilOpSeparate(face, fail, zFail, zPass);
     }
     public static void glTexImage2D(int target, int level, int internalFormat, int format, int type, Image pixels)
     {
-        checkContext();
+        checkContextCompatibility();
         nglTexImage2D(target, level, internalFormat, format, type, pixels.getElement());
     }
 
     public static void glTexImage2D(int target, int level, int internalFormat, int format, int type, ImageData pixels)
     {
-        checkContext();
+        checkContextCompatibility();
         nglTexImage2D(target, level, internalFormat, format, type, pixels);
     }
 
     public static void glTexImage2D(int target, int level, int internalFormat, int width, int height, int border, int format,
                                     int type, ArrayBufferView pixels)
     {
-        checkContext();
+        checkContextCompatibility();
         nglTexImage2D(target, level, internalFormat, width, height, border, format, type, pixels);
     }
 
     public static void glTexImage2D(int target, int level, int internalFormat, int format,
                                     int type, JavaScriptObject pixels)
     {
-        checkContext();
+        checkContextCompatibility();
         nglTexImage2D(target, level, internalFormat, format, type, pixels);
     }
 
     public static void glTexParameterf(int target, int pname, float value)
     {
-        checkContext();
+        checkContextCompatibility();
         nglTexParameterf(target, pname, value);
     }
 
     public static void glTexParameteri(int target, int pname, int value)
     {
-        checkContext();
+        checkContextCompatibility();
         nglTexParameteri(target, pname, value);
     }
 
     public static void glTexSubImage2D(int target, int level, int xOffset, int yOffset, int width, int height, int format,
                                        int type, ArrayBufferView pixels)
     {
-        checkContext();
+        checkContextCompatibility();
         nglTexSubImage2D(target, level, xOffset, yOffset, width, height, format, type, pixels);
     }
 
     public static void glTexSubImage2D(int target, int level, int xOffset, int yOffset, int width, int height, int format,
                                        int type, JavaScriptObject pixels)
     {
-        checkContext();
+        checkContextCompatibility();
         nglTexSubImage2D(target, level, xOffset, yOffset, width, height, format, type, pixels);
     }
 
@@ -1251,97 +1252,97 @@ public final class WebGL10
 
     public static void glUniform1f(int location, float x)
     {
-        checkContext();
+        checkContextCompatibility();
         nglUniform1f(location, x);
     }
 
     public static void glUniform1fv(int location, Float32Array x)
     {
-        checkContext();
+        checkContextCompatibility();
         nglUniform1fv(location, x);
     }
 
     public static void glUniform1i(int location, int x)
     {
-        checkContext();
+        checkContextCompatibility();
         nglUniform1i(location, x);
     }
 
     public static void glUniform1iv(int location, Int32Array x)
     {
-        checkContext();
+        checkContextCompatibility();
         nglUniform1iv(location, x);
     }
 
     public static void glUniform2f(int location, float x, float y)
     {
-        checkContext();
+        checkContextCompatibility();
         nglUniform2f(location, x, y);
     }
 
     public static void glUniform2fv(int location, Float32Array xy)
     {
-        checkContext();
+        checkContextCompatibility();
         nglUniform2fv(location, xy);
     }
 
     public static void glUniform2i(int location, int x, int y)
     {
-        checkContext();
+        checkContextCompatibility();
         nglUniform2i(location, x, y);
     }
 
     public static void glUniform2iv(int location, Int32Array xy)
     {
-        checkContext();
+        checkContextCompatibility();
         nglUniform2iv(location, xy);
     }
 
     public static void glUniform3f(int location, float x, float y, float z)
     {
-        checkContext();
+        checkContextCompatibility();
         nglUniform3f(location, x, y, z);
     }
 
     public static void glUniform3fv(int location, Float32Array xy)
     {
-        checkContext();
+        checkContextCompatibility();
         nglUniform3fv(location, xy);
     }
 
     public static void glUniform3i(int location, int x, int y, int z)
     {
-        checkContext();
+        checkContextCompatibility();
         nglUniform3i(location, x, y, z);
     }
 
     public static void glUniform3iv(int location, Int32Array xy)
     {
-        checkContext();
+        checkContextCompatibility();
         nglUniform3iv(location, xy);
     }
 
     public static void glUniform4f(int location, float x, float y, float z, float w)
     {
-        checkContext();
+        checkContextCompatibility();
         nglUniform4f(location, x, y, z, w);
     }
 
     public static void glUniform4fv(int location, Float32Array xy)
     {
-        checkContext();
+        checkContextCompatibility();
         nglUniform4fv(location, xy);
     }
 
     public static void glUniform4i(int location, int x, int y, int z, int w)
     {
-        checkContext();
+        checkContextCompatibility();
         nglUniform4i(location, x, y, z, w);
     }
 
     public static void glUniform4iv(int location, Int32Array xy)
     {
-        checkContext();
+        checkContextCompatibility();
         nglUniform4iv(location, xy);
     }
 
@@ -1354,7 +1355,7 @@ public final class WebGL10
 
     public static void glUniformMatrix2fv(int location, boolean transpose, Float32Array value)
     {
-        checkContext();
+        checkContextCompatibility();
         nglUniformMatrix2fv(location, transpose, value);
     }
 
@@ -1367,7 +1368,7 @@ public final class WebGL10
 
     public static void glUniformMatrix3fv(int location, boolean transpose, Float32Array value)
     {
-        checkContext();
+        checkContextCompatibility();
         nglUniformMatrix3fv(location, transpose, value);
     }
 
@@ -1380,43 +1381,43 @@ public final class WebGL10
 
     public static void glUniformMatrix4fv(int location, boolean transpose, Float32Array value)
     {
-        checkContext();
+        checkContextCompatibility();
         nglUniformMatrix4fv(location, transpose, value);
     }
 
     public static void glUseProgram(int programID)
     {
-        checkContext();
+        checkContextCompatibility();
         nglUseProgram(programID);
     }
 
     public static void glValidateProgram(int programID)
     {
-        checkContext();
+        checkContextCompatibility();
         nglValidateProgram(programID);
     }
 
     public static void glVertexAttribPointer(int index, int size, int type, boolean normalized, long stride, long offset)
     {
-        checkContext();
+        checkContextCompatibility();
         nglVertexAttribPointer(index, size, type, normalized, stride, offset);
     }
 
     public static void glVertexAttrib1f(int index, float x)
     {
-        checkContext();
+        checkContextCompatibility();
         nglVertexAttrib1f(index, x);
     }
 
     public static void glVertexAttrib1fv(int index, ArrayBufferView values)
     {
-        checkContext();
+        checkContextCompatibility();
         nglVertexAttrib1fv(index, values);
     }
 
     public static void glVertexAttrib1fv(int index, JavaScriptObject values)
     {
-        checkContext();
+        checkContextCompatibility();
         nglVertexAttrib1fv(index, values);
     }
 
@@ -1429,19 +1430,19 @@ public final class WebGL10
 
     public static void glVertexAttrib2f(int index, float x, float y)
     {
-        checkContext();
+        checkContextCompatibility();
         nglVertexAttrib2f(index, x, y);
     }
 
     public static void glVertexAttrib2fv(int index, ArrayBufferView values)
     {
-        checkContext();
+        checkContextCompatibility();
         nglVertexAttrib2fv(index, values);
     }
 
     public static void glVertexAttrib2fv(int index, JavaScriptObject values)
     {
-        checkContext();
+        checkContextCompatibility();
         nglVertexAttrib2fv(index, values);
     }
 
@@ -1454,19 +1455,19 @@ public final class WebGL10
 
     public static void glVertexAttrib3f(int index, float x, float y, float z)
     {
-        checkContext();
+        checkContextCompatibility();
         nglVertexAttrib3f(index, x, y, z);
     }
 
     public static void glVertexAttrib3fv(int index, ArrayBufferView values)
     {
-        checkContext();
+        checkContextCompatibility();
         nglVertexAttrib3fv(index, values);
     }
 
     public static void glVertexAttrib3fv(int index, JavaScriptObject values)
     {
-        checkContext();
+        checkContextCompatibility();
         nglVertexAttrib3fv(index, values);
     }
 
@@ -1479,19 +1480,19 @@ public final class WebGL10
 
     public static void glVertexAttrib4f(int index, float x, float y, float z, float w)
     {
-        checkContext();
+        checkContextCompatibility();
         nglVertexAttrib4f(index, x, y, z, w);
     }
 
     public static void glVertexAttrib4fv(int index, ArrayBufferView values)
     {
-        checkContext();
+        checkContextCompatibility();
         nglVertexAttrib4fv(index, values);
     }
 
     public static void glVertexAttrib4fv(int index, JavaScriptObject values)
     {
-        checkContext();
+        checkContextCompatibility();
         nglVertexAttrib4fv(index, values);
     }
 
@@ -1504,7 +1505,7 @@ public final class WebGL10
 
     public static void glViewport(int x, int y, int w, int h)
     {
-        checkContext();
+        checkContextCompatibility();
         nglViewport(x, y, w, h);
     }
 

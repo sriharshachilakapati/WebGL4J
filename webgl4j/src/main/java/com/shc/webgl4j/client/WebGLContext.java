@@ -27,6 +27,19 @@ package com.shc.webgl4j.client;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
+ * <p>A {@link WebGLContext} represents a WebGL rendering context that is used to draw WebGL graphics onto a HTML5
+ * canvas. A <i>context</i> can represent many things, such as which objects are bound to which targets, and the state
+ * associated with this instance of WebGL. It also provides the WebGL version that is used for it's functions, and also
+ * the {@link WebGLContext.Attributes} of the context.</p>
+ *
+ * <p>This also contains the WebGL functions that does the drawing on a canvas. The static methods in {@link WebGL10}
+ * class call the same methods present in the context which is <i>'current'</i> at that time. This allows for grouping
+ * the methods by the version of WebGL they were first introduced, allowing to easily keep track of which version your
+ * application is using.</p>
+ *
+ * <p>In order to render anything, a context <b><u>must</u></b> be current. If not, the {@link WebGL10} class will not
+ * know from where to call the functions upon, and hence a ReferenceError will be generated.</p>
+ *
  * @author Sri Harsha Chilakapati
  */
 public final class WebGLContext extends JavaScriptObject
@@ -35,18 +48,39 @@ public final class WebGLContext extends JavaScriptObject
     {
     }
 
+    /**
+     * Returns the native JS WebGL context object that this class wraps upon. This is a javascript object that contains
+     * all the methods that are called by {@link WebGL10} and such classes.
+     *
+     * @return The native JS WebGL context object that this class wraps upon.
+     */
     public native JavaScriptObject getGL() /*-{
         return this['gl'];
     }-*/;
 
+    /**
+     * Returns the WebGL context version as a float. This is {@code 1.0} for {@link WebGL10} context, and {@code 2.0}
+     * for WebGL20 contexts.
+     *
+     * @return The WebGL context version as a float.
+     */
     public native float getVersion() /*-{
         return this['glv'];
     }-*/;
 
+    /**
+     * Returns the WebGL context attributes that are used to create this context.
+     *
+     * @return The context attributes that are used to create this context.
+     */
     public native Attributes getAttributes() /*-{
         return this['attribs'];
     }-*/;
 
+    /**
+     * Makes this context current, so that it will be used to render when the static WebGL methods are called. This will
+     * result in the following WebGL calls have effect only on the canvas that this context is based upon.
+     */
     public native void makeCurrent() /*-{
         $wnd.gl = this.gl;
         $wnd.attribs = this.attribs;
@@ -54,15 +88,22 @@ public final class WebGLContext extends JavaScriptObject
         $wnd.context = this;
     }-*/;
 
-    public static void makeContextCurrent(WebGLContext context)
-    {
-        context.makeCurrent();
-    }
-
+    /**
+     * Returns the current context. If there is no context that is current, then {@code null} is returned.
+     *
+     * @return The current context.
+     */
     public static native WebGLContext getCurrentContext() /*-{
+        if ($wnd['context'] === undefined)
+            return null;
+
         return $wnd['context'];
     }-*/;
 
+    /**
+     * This class represents the context attributes that were used to create a context, or the attributes that will be
+     * used to create a context.
+     */
     public static class Attributes extends JavaScriptObject
     {
         protected Attributes()
