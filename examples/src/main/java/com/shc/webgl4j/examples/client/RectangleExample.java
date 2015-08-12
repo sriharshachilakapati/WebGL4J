@@ -89,9 +89,6 @@ public class RectangleExample extends Example
         glLinkProgram(programID);
         glUseProgram(programID);
 
-        glBindAttribLocation(programID, 0, "position");
-        glBindAttribLocation(programID, 1, "color");
-
         // Create the positions VBO
         float[] vertices =
                 {
@@ -107,8 +104,9 @@ public class RectangleExample extends Example
         glBindBuffer(GL_ARRAY_BUFFER, vboPosID);
         glBufferData(GL_ARRAY_BUFFER, vertices, GL_STATIC_DRAW);
 
-        glEnableVertexAttribArray(0);
-        glVertexAttribPointer(0, 2, GL_FLOAT, false, 0, 0);
+        int positionLoc = glGetAttribLocation(programID, "position");
+        glVertexAttribPointer(positionLoc, 2, GL_FLOAT, false, 0, 0);
+        glEnableVertexAttribArray(positionLoc);
 
         // Create the colors VBO
         float[] colors =
@@ -125,8 +123,9 @@ public class RectangleExample extends Example
         glBindBuffer(GL_ARRAY_BUFFER, vboColID);
         glBufferData(GL_ARRAY_BUFFER, colors, GL_STATIC_DRAW);
 
-        glEnableVertexAttribArray(1);
-        glVertexAttribPointer(1, 4, GL_FLOAT, false, 0, 0);
+        int colorLoc = glGetAttribLocation(programID, "color");
+        glVertexAttribPointer(colorLoc, 4, GL_FLOAT, false, 0, 0);
+        glEnableVertexAttribArray(colorLoc);
 
         projView = new Matrix4f();
     }

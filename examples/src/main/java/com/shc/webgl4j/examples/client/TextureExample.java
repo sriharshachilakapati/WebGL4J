@@ -97,9 +97,6 @@ public class TextureExample extends Example
         glLinkProgram(programID);
         glUseProgram(programID);
 
-        glBindAttribLocation(programID, 0, "position");
-        glBindAttribLocation(programID, 1, "texCoords");
-
         // Create the positions VBO
         float[] vertices =
                 {
@@ -115,8 +112,9 @@ public class TextureExample extends Example
         glBindBuffer(GL_ARRAY_BUFFER, vboPosID);
         glBufferData(GL_ARRAY_BUFFER, vertices, GL_STATIC_DRAW);
 
-        glEnableVertexAttribArray(0);
-        glVertexAttribPointer(0, 2, GL_FLOAT, false, 0, 0);
+        int positionLoc = glGetAttribLocation(programID, "position");
+        glVertexAttribPointer(positionLoc, 2, GL_FLOAT, false, 0, 0);
+        glEnableVertexAttribArray(positionLoc);
 
         // Create the texcoords VBO
         float[] texCoords =
@@ -133,8 +131,9 @@ public class TextureExample extends Example
         glBindBuffer(GL_ARRAY_BUFFER, vboTexID);
         glBufferData(GL_ARRAY_BUFFER, texCoords, GL_STATIC_DRAW);
 
-        glEnableVertexAttribArray(1);
-        glVertexAttribPointer(1, 2, GL_FLOAT, false, 0, 0);
+        int texcoordLoc = glGetAttribLocation(programID, "texCoords");
+        glVertexAttribPointer(texcoordLoc, 2, GL_FLOAT, false, 0, 0);
+        glEnableVertexAttribArray(texcoordLoc);
 
         final Image image = new Image("texture.png");
         image.addLoadHandler(new LoadHandler()
