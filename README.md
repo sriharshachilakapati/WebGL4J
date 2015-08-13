@@ -103,6 +103,16 @@ ctx2.makeCurrent();
 
 You don't need to make the context current if you are only using one context. If you are using multiple contexts, the context that is just created will be the current, so in the above example, `ctx2` will be current since it is the latest created context.
 
+## Fullscreen mode
+
+You can use the built in polyfill to request the fullscreen mode on a context. This works in most browsers (Chrome, Safari, Opera, Firefox, IE 11 and the new Edge), with the ones that are tested being Chrome, Firefox, IE 11 and Edge. This is how you request fullscreen mode.
+
+```java
+boolean success = WebGLContext.getCurrent().requestFullscreen();
+```
+
+This method returns a success value, to notify you whether the request is accepted. However, there are some restrictions on this, you can't simply request fullscreen, the request will only be accepted if the user has pressed a key or clicked a button which initiated the request.
+
 ## Running the examples
 
 You can see the examples in action by navigating your browser to [http://goharsha.com/webgl4j/](http://goharsha.com/webgl4j/). Instead if you want to compile them yourself, enter the following command into the console.
