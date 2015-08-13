@@ -89,6 +89,83 @@ public final class WebGLContext extends JavaScriptObject
     }-*/;
 
     /**
+     * A cross browser polyfill for the fullscreen API. Works on Google Chrome 15 and above, Firefox 9 and above,
+     * Safari, Opera 32 and above, Internet Explorer 11 and the new Microsoft Edge. This method requests the browser to
+     * enable fullscreen for the canvas that this WebGLContext uses.
+     *
+     * @return Returns whether the request succeeded or not.
+     */
+    public native boolean requestFullscreen() /*-{
+        var canvas = $wnd['context']['gl']['canvas'];
+
+        // For a modern browser that support the fullscreen API
+        if (canvas['requestFullscreen'])
+            canvas['requestFullscreen']();
+
+        // For Microsoft browsers (Internet Explorer 11 and Microsoft Edge)
+        else if (canvas['msRequestFullscreen'])
+            canvas['msRequestFullscreen']();
+
+        // For Mozilla browsers (Firefox)
+        else if (canvas['mozRequestFullScreen'])
+            canvas['mozRequestFullScreen']();
+
+        // For WebKit browsers (Chrome, Safari, Chromium, Opera)
+        else if (canvas['webkitRequestFullscreen'])
+            canvas['webkitRequestFullscreen'](Element['ALLOW_KEYBOARD_INPUT']);
+
+        // Simply return if not available
+        else
+            return false;
+
+        // Return whether we are now in fullscreen (request succeeded)
+        return this.@com.shc.webgl4j.client.WebGLContext::isFullscreen()();
+    }-*/;
+
+    public native boolean isFullscreen() /*-{
+        if ($doc['fullscreenElement'])
+            return $doc['fullscreenElement'] != null;
+
+        if ($doc['msFullscreenElement'])
+            return $doc['msFullscreenElement'] != null;
+
+        if ($doc['mozFullScreenElement'])
+            return $doc['mozFullScreenElement'] != null;
+
+        if ($doc['webkitFullscreenElement'])
+            return $doc['webkitFullscreenElement'] != null;
+
+        return false;
+    }-*/;
+
+    public native boolean exitFullscreen() /*-{
+        if ($doc['exitFullscreen'])
+            $doc['exitFullscreen']();
+
+        else if ($doc['msExitFullscreen'])
+            $doc['msExitFullscreen']();
+
+        else if ($doc['mozCancelFullScreen'])
+            $doc['mozCancelFullScreen']();
+
+        else if ($doc['webkitExitFullscreen'])
+            $doc['webkitExitFullscreen']();
+
+        else
+            return false;
+
+        return !(this.@com.shc.webgl4j.client.WebGLContext::isFullscreen()());
+    }-*/;
+
+    public void toggleFullscreen()
+    {
+        if (isFullscreen())
+            exitFullscreen();
+        else
+            requestFullscreen();
+    }
+
+    /**
      * Returns the current context. If there is no context that is current, then {@code null} is returned.
      *
      * @return The current context.
