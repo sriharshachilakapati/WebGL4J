@@ -403,7 +403,7 @@ public final class WebGL10
 
     public static boolean isContextCompatible()
     {
-        return WebGLContext.getCurrentContext() != null && WebGLContext.getCurrentContext().getVersion() >= 1.0;
+        return WebGLContext.getCurrent() != null && WebGLContext.getCurrent().getVersion() >= 1.0;
     }
 
     private static void checkContextCompatibility()

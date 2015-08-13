@@ -170,7 +170,7 @@ public final class WebGLContext extends JavaScriptObject
      *
      * @return The current context.
      */
-    public static native WebGLContext getCurrentContext() /*-{
+    public static native WebGLContext getCurrent() /*-{
         if ($wnd['context'] === undefined)
             return null;
 
