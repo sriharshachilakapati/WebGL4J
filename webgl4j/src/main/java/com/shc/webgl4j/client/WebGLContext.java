@@ -119,10 +119,15 @@ public final class WebGLContext extends JavaScriptObject
             return false;
 
         // Return whether we are now in fullscreen (request succeeded)
-        return this.@com.shc.webgl4j.client.WebGLContext::isFullscreen()();
+        return @com.shc.webgl4j.client.WebGLContext::isFullscreen()();
     }-*/;
 
-    public native boolean isFullscreen() /*-{
+    /**
+     * A cross-browser polyfill for FullScreen API.
+     *
+     * @return True if any context is in fullscreen mode, false otherwise.
+     */
+    public static native boolean isFullscreen() /*-{
         if ($doc['fullscreenElement'])
             return $doc['fullscreenElement'] != null;
 
@@ -138,7 +143,7 @@ public final class WebGLContext extends JavaScriptObject
         return false;
     }-*/;
 
-    public native boolean exitFullscreen() /*-{
+    public static native boolean exitFullscreen() /*-{
         if ($doc['exitFullscreen'])
             $doc['exitFullscreen']();
 
@@ -154,7 +159,7 @@ public final class WebGLContext extends JavaScriptObject
         else
             return false;
 
-        return !(this.@com.shc.webgl4j.client.WebGLContext::isFullscreen()());
+        return !(@com.shc.webgl4j.client.WebGLContext::isFullscreen()());
     }-*/;
 
     public void toggleFullscreen()
