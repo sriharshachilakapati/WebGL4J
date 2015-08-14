@@ -39,24 +39,28 @@ public final class TimeUtil {
 
     private static native void initialize() /*-{
         var getTimeStamp;
-        if ($wnd.performance.now) {
+        if ($wnd.performance.now)
+        {
             @com.shc.webgl4j.client.TimeUtil::implementationUsed = @com.shc.webgl4j.client.TimeUtil.ImplementationUsed::HIGH_PERFORMANCE;
-            getTimeStamp = function () {
+            getTimeStamp = function()
+            {
                 return $wnd.performance.now();
             }
         }
-        else {
-            if ($wnd.performance.webkitNow) {
-                @com.shc.webgl4j.client.TimeUtil::implementationUsed = @com.shc.webgl4j.client.TimeUtil.ImplementationUsed::HIGH_PERFORMANCE_WEBKIT;
-                getTimeStamp = function () {
-                    return $wnd.performance.webkitNow();
-                }
+        else if ($wnd.performance.webkitNow)
+        {
+            @com.shc.webgl4j.client.TimeUtil::implementationUsed = @com.shc.webgl4j.client.TimeUtil.ImplementationUsed::HIGH_PERFORMANCE_WEBKIT;
+            getTimeStamp = function()
+            {
+                return $wnd.performance.webkitNow();
             }
-            else {
-                @com.shc.webgl4j.client.TimeUtil::implementationUsed = @com.shc.webgl4j.client.TimeUtil.ImplementationUsed::LOW_PERFORMANCE;
-                getTimeStamp = function () {
-                    return Date.now();
-                }
+        }
+        else
+        {
+            @com.shc.webgl4j.client.TimeUtil::implementationUsed = @com.shc.webgl4j.client.TimeUtil.ImplementationUsed::LOW_PERFORMANCE;
+            getTimeStamp = function()
+            {
+                return Date.now();
             }
         }
 
