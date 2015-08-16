@@ -123,7 +123,9 @@ public final class WebGLContext extends JavaScriptObject
     }-*/;
 
     /**
-     * A cross-browser polyfill for FullScreen API.
+     * A cross-browser polyfill for FullScreen API. Works on Google Chrome 15 and above, Firefox 9 and above,
+     * Safari, Opera 32 and above, Internet Explorer 11 and the new Microsoft Edge. Returns true if any of the context
+     * or even any other element in the page is fullscreen.
      *
      * @return True if any context is in fullscreen mode, false otherwise.
      */
@@ -143,6 +145,13 @@ public final class WebGLContext extends JavaScriptObject
         return false;
     }-*/;
 
+    /**
+     * A cross-browser polyfill for FullScreen API. Works on Google Chrome 15 and above, Firefox 9 and above,
+     * Safari, Opera 32 and above, Internet Explorer 11 and the new Microsoft Edge. This method requests the browser to
+     * exit the fullscreen state.
+     *
+     * @return Returns whether the request is successful.
+     */
     public static native boolean exitFullscreen() /*-{
         if ($doc['exitFullscreen'])
             $doc['exitFullscreen']();
@@ -162,14 +171,6 @@ public final class WebGLContext extends JavaScriptObject
         return !(@com.shc.webgl4j.client.WebGLContext::isFullscreen()());
     }-*/;
 
-    public void toggleFullscreen()
-    {
-        if (isFullscreen())
-            exitFullscreen();
-        else
-            requestFullscreen();
-    }
-
     /**
      * Returns the current context. If there is no context that is current, then {@code null} is returned.
      *
@@ -184,7 +185,11 @@ public final class WebGLContext extends JavaScriptObject
 
     /**
      * This class represents the context attributes that were used to create a context, or the attributes that will be
-     * used to create a context.
+     * used to create a context. The attributes are nothing but the properties of the context. Note that there will be
+     * no effect to the context even if you change the attributes once the context is created. To be sure that the
+     * requested attributes are accepted by the implementation, compare the attributes of the created context.
+     *
+     * @author Sri Harsha Chilakapati
      */
     public static class Attributes extends JavaScriptObject
     {
@@ -192,18 +197,45 @@ public final class WebGLContext extends JavaScriptObject
         {
         }
 
+        /**
+         * Returns whether the draw buffer has an alpha channel. An alpha channel is required for OpenGL to performing
+         * the destination alpha operations and composition with the page. The default value for this is {@code true}.
+         *
+         * @return Whether the draw buffer has an Alpha-channel.
+         */
         public final native boolean getAlpha() /*-{
             return this.alpha;
         }-*/;
 
+        /**
+         * Sets the existence of the alpha channel on the drawing buffer. If the value is true, the drawing buffer has
+         * an alpha channel for the purposes of performing OpenGL destination alpha operations and compositing with the
+         * page. If the value is false, no alpha buffer is available. The default value for this is {@code true}.
+         *
+         * @param alpha The value of the alpha channel.
+         */
         public final native void setAlpha(boolean alpha) /*-{
             this.alpha = alpha;
         }-*/;
 
+        /**
+         * Returns whether anti aliasing is enabled. This is dependent on the implementation. So there is no guarantee
+         * that the implementation respects this property. The default value for this is {@code true}.
+         *
+         * @return Whether anti aliasing is enabled.
+         */
         public final native boolean getAntialias() /*-{
             return this.antialias;
         }-*/;
 
+        /**
+         * Sets the antialias property of the to be created context. If the value is true and the implementation
+         * supports antialiasing the drawing buffer will perform antialiasing using its choice of technique
+         * (multisample/supersample) and quality. If the value is false or the implementation does not support
+         * antialiasing, no antialiasing is performed. The default value for this property is {@code true}.
+         *
+         * @param antialias The new value of the antialiasing property.
+         */
         public final native void setAntialias(boolean antialias) /*-{
             this.antialias = antialias;
         }-*/;
