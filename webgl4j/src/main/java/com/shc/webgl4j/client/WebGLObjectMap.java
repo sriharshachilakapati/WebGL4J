@@ -40,17 +40,17 @@ final class WebGLObjectMap
 {
     private final static Map<WebGLContext, WebGLObjectMap> contexts = new HashMap<>();
 
-    final Map<Integer, JavaScriptObject> shaders       = new HashMap<>();
-    final Map<Integer, JavaScriptObject> buffers       = new HashMap<>();
-    final Map<Integer, JavaScriptObject> programs      = new HashMap<>();
-    final Map<Integer, JavaScriptObject> textures      = new HashMap<>();
-    final Map<Integer, JavaScriptObject> frameBuffers  = new HashMap<>();
-    final Map<Integer, JavaScriptObject> renderBuffers = new HashMap<>();
+    private final Map<Integer, JavaScriptObject> shaders       = new HashMap<>();
+    private final Map<Integer, JavaScriptObject> buffers       = new HashMap<>();
+    private final Map<Integer, JavaScriptObject> programs      = new HashMap<>();
+    private final Map<Integer, JavaScriptObject> textures      = new HashMap<>();
+    private final Map<Integer, JavaScriptObject> frameBuffers  = new HashMap<>();
+    private final Map<Integer, JavaScriptObject> renderBuffers = new HashMap<>();
 
-    final Map<Integer, Map<Integer, JavaScriptObject>> uniforms = new HashMap<>();
+    private final Map<Integer, Map<Integer, JavaScriptObject>> uniforms = new HashMap<>();
 
     // Field to store the current program
-    int currentProgram = 0;
+    private int currentProgram = 0;
 
     private WebGLObjectMap()
     {
@@ -82,34 +82,99 @@ final class WebGLObjectMap
         return shaders.size();
     }
 
+    JavaScriptObject toShader(int shaderID)
+    {
+        return shaders.get(shaderID);
+    }
+
     int createBuffer(JavaScriptObject buffer)
     {
+        if (buffers.values().contains(buffer))
+        {
+            for (int key : buffers.keySet())
+                if (buffers.get(key) == buffer)
+                    return key;
+        }
+
         buffers.put(buffers.size() + 1, buffer);
         return buffers.size();
     }
 
+    JavaScriptObject toBuffer(int bufferID)
+    {
+        return buffers.get(bufferID);
+    }
+
     int createProgram(JavaScriptObject program)
     {
+        if (programs.values().contains(program))
+        {
+            for (int key : programs.keySet())
+                if (programs.get(key) == program)
+                    return key;
+        }
+
         programs.put(programs.size() + 1, program);
         return programs.size();
     }
 
+    JavaScriptObject toProgram(int programID)
+    {
+        return programs.get(programID);
+    }
+
     int createTexture(JavaScriptObject texture)
     {
+        if (textures.values().contains(texture))
+        {
+            for (int key : textures.keySet())
+                if (textures.get(key) == texture)
+                    return key;
+        }
+
         textures.put(textures.size() + 1, texture);
         return textures.size();
     }
 
+    JavaScriptObject toTexture(int textureID)
+    {
+        return textures.get(textureID);
+    }
+
     int createFramebuffer(JavaScriptObject frameBuffer)
     {
+        if (frameBuffers.values().contains(frameBuffer))
+        {
+            for (int key : frameBuffers.keySet())
+                if (frameBuffers.get(key) == frameBuffer)
+                    return key;
+        }
+
         frameBuffers.put(frameBuffers.size() + 1, frameBuffer);
         return frameBuffers.size();
     }
 
+    JavaScriptObject toFramebuffer(int frameBuffer)
+    {
+        return frameBuffers.get(frameBuffer);
+    }
+
     int createRenderBuffer(JavaScriptObject renderBuffer)
     {
+        if (renderBuffers.values().contains(renderBuffer))
+        {
+            for (int key : renderBuffers.keySet())
+                if (renderBuffers.get(key) == renderBuffer)
+                    return key;
+        }
+
         renderBuffers.put(renderBuffers.size() + 1, renderBuffer);
         return renderBuffers.size();
+    }
+
+    JavaScriptObject toRenderBuffer(int renderBuffer)
+    {
+        return renderBuffers.get(renderBuffer);
     }
 
     int createUniform(JavaScriptObject uniform)
@@ -131,6 +196,16 @@ final class WebGLObjectMap
 
         progUniforms.put(progUniforms.size() + 1, uniform);
         return progUniforms.size();
+    }
+
+    JavaScriptObject toUniform(int programID, int uniform)
+    {
+        return uniforms.get(programID).get(uniform);
+    }
+
+    JavaScriptObject toUniform(int uniform)
+    {
+        return toUniform(currentProgram, uniform);
     }
 
     void deleteShader(int shader)

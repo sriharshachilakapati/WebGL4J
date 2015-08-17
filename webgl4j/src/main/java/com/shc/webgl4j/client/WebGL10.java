@@ -418,37 +418,41 @@ public final class WebGL10
     public static void glAttachShader(int programID, int shaderID)
     {
         checkContextCompatibility();
-        nglAttachShader(WebGLObjectMap.get().programs.get(programID), WebGLObjectMap.get().shaders.get(shaderID));
+
+        JavaScriptObject program = WebGLObjectMap.get().toProgram(programID);
+        JavaScriptObject shader = WebGLObjectMap.get().toShader(shaderID);
+
+        nglAttachShader(program, shader);
     }
 
     public static void glBindAttribLocation(int programID, int index, String name)
     {
         checkContextCompatibility();
-        nglBindAttribLocation(WebGLObjectMap.get().programs.get(programID), index, name);
+        nglBindAttribLocation(WebGLObjectMap.get().toProgram(programID), index, name);
     }
 
     public static void glBindBuffer(int target, int buffer)
     {
         checkContextCompatibility();
-        nglBindBuffer(target, WebGLObjectMap.get().buffers.get(buffer));
+        nglBindBuffer(target, WebGLObjectMap.get().toBuffer(buffer));
     }
 
     public static void glBindFramebuffer(int target, int frameBuffer)
     {
         checkContextCompatibility();
-        nglBindFramebuffer(target, WebGLObjectMap.get().frameBuffers.get(frameBuffer));
+        nglBindFramebuffer(target, WebGLObjectMap.get().toFramebuffer(frameBuffer));
     }
 
     public static void glBindRenderbuffer(int target, int renderBuffer)
     {
         checkContextCompatibility();
-        nglBindRenderbuffer(target, WebGLObjectMap.get().renderBuffers.get(renderBuffer));
+        nglBindRenderbuffer(target, WebGLObjectMap.get().toRenderBuffer(renderBuffer));
     }
 
     public static void glBindTexture(int target, int textureID)
     {
         checkContextCompatibility();
-        nglBindTexture(target, WebGLObjectMap.get().textures.get(textureID));
+        nglBindTexture(target, WebGLObjectMap.get().toTexture(textureID));
     }
 
     public static void glBlendColor(float r, float g, float b, float a)
@@ -568,7 +572,7 @@ public final class WebGL10
     public static void glCompileShader(int shaderID)
     {
         checkContextCompatibility();
-        nglCompileShader(WebGLObjectMap.get().shaders.get(shaderID));
+        nglCompileShader(WebGLObjectMap.get().toShader(shaderID));
     }
 
     public static void glCompressedTexImage2D(int target, int level, int internalFormat, long width, long height,
@@ -669,42 +673,42 @@ public final class WebGL10
     public static void glDeleteBuffer(int bufferID)
     {
         checkContextCompatibility();
-        nglDeleteBuffer(WebGLObjectMap.get().buffers.get(bufferID));
+        nglDeleteBuffer(WebGLObjectMap.get().toBuffer(bufferID));
         WebGLObjectMap.get().deleteBuffer(bufferID);
     }
 
     public static void glDeleteFramebuffer(int frameBufferID)
     {
         checkContextCompatibility();
-        nglDeleteFramebuffer(WebGLObjectMap.get().frameBuffers.get(frameBufferID));
+        nglDeleteFramebuffer(WebGLObjectMap.get().toFramebuffer(frameBufferID));
         WebGLObjectMap.get().deleteFramebuffer(frameBufferID);
     }
 
     public static void glDeleteProgram(int programID)
     {
         checkContextCompatibility();
-        nglDeleteProgram(WebGLObjectMap.get().programs.get(programID));
+        nglDeleteProgram(WebGLObjectMap.get().toProgram(programID));
         WebGLObjectMap.get().deleteProgram(programID);
     }
 
     public static void glDeleteRenderbuffer(int renderBufferID)
     {
         checkContextCompatibility();
-        nglDeleteRenderbuffer(WebGLObjectMap.get().renderBuffers.get(renderBufferID));
+        nglDeleteRenderbuffer(WebGLObjectMap.get().toRenderBuffer(renderBufferID));
         WebGLObjectMap.get().deleteRenderBuffer(renderBufferID);
     }
 
     public static void glDeleteShader(int shaderID)
     {
         checkContextCompatibility();
-        nglDeleteShader(WebGLObjectMap.get().shaders.get(shaderID));
+        nglDeleteShader(WebGLObjectMap.get().toShader(shaderID));
         WebGLObjectMap.get().deleteShader(shaderID);
     }
 
     public static void glDeleteTexture(int textureID)
     {
         checkContextCompatibility();
-        nglDeleteTexture(WebGLObjectMap.get().textures.get(textureID));
+        nglDeleteTexture(WebGLObjectMap.get().toTexture(textureID));
         WebGLObjectMap.get().deleteTexture(textureID);
     }
 
@@ -729,7 +733,7 @@ public final class WebGL10
     public static void glDetachShader(int programID, int shaderID)
     {
         checkContextCompatibility();
-        nglDetachShader(WebGLObjectMap.get().programs.get(programID), WebGLObjectMap.get().shaders.get(shaderID));
+        nglDetachShader(WebGLObjectMap.get().toProgram(programID), WebGLObjectMap.get().toShader(shaderID));
     }
 
     public static void glDisable(int disableCap)
@@ -783,13 +787,13 @@ public final class WebGL10
     public static void glFramebufferRenderbuffer(int target, int attachment, int renderbufferTarget, int renderBuffer)
     {
         checkContextCompatibility();
-        nglFramebufferRenderbuffer(target, attachment, renderbufferTarget, WebGLObjectMap.get().renderBuffers.get(renderBuffer));
+        nglFramebufferRenderbuffer(target, attachment, renderbufferTarget, WebGLObjectMap.get().toRenderBuffer(renderBuffer));
     }
 
     public static void glFramebufferTexture2D(int target, int attachment, int textureTarget, int texture, int level)
     {
         checkContextCompatibility();
-        nglFramebufferTexture2D(target, attachment, textureTarget, WebGLObjectMap.get().textures.get(texture), level);
+        nglFramebufferTexture2D(target, attachment, textureTarget, WebGLObjectMap.get().toTexture(texture), level);
     }
 
     public static void glFrontFace(int mode)
@@ -807,19 +811,19 @@ public final class WebGL10
     public static ActiveInfo glGetActiveAttrib(int programID, int index)
     {
         checkContextCompatibility();
-        return nglGetActiveAttrib(WebGLObjectMap.get().programs.get(programID), index);
+        return nglGetActiveAttrib(WebGLObjectMap.get().toProgram(programID), index);
     }
 
     public static ActiveInfo glGetActiveUniform(int programID, int index)
     {
         checkContextCompatibility();
-        return nglGetActiveUniform(WebGLObjectMap.get().programs.get(programID), index);
+        return nglGetActiveUniform(WebGLObjectMap.get().toProgram(programID), index);
     }
 
     public static int[] glGetAttachedShaders(int programID)
     {
         checkContextCompatibility();
-        JavaScriptObject[] nativeArray = nglGetAttachedShaders(WebGLObjectMap.get().programs.get(programID));
+        JavaScriptObject[] nativeArray = nglGetAttachedShaders(WebGLObjectMap.get().toProgram(programID));
         int[] transformedArray = new int[nativeArray.length];
 
         for (int i = 0; i < nativeArray.length; i++)
@@ -831,7 +835,7 @@ public final class WebGL10
     public static int glGetAttribLocation(int programID, String name)
     {
         checkContextCompatibility();
-        return nglGetAttribLocation(WebGLObjectMap.get().programs.get(programID), name);
+        return nglGetAttribLocation(WebGLObjectMap.get().toProgram(programID), name);
     }
 
     public static Element glGetCanvas()
@@ -921,19 +925,19 @@ public final class WebGL10
     public static String glGetProgramInfoLog(int programID)
     {
         checkContextCompatibility();
-        return nglGetProgramInfoLog(WebGLObjectMap.get().programs.get(programID));
+        return nglGetProgramInfoLog(WebGLObjectMap.get().toProgram(programID));
     }
 
     public static int glGetProgramParameteri(int programID, int pname)
     {
         checkContextCompatibility();
-        return nglGetProgramParameteri(WebGLObjectMap.get().programs.get(programID), pname);
+        return nglGetProgramParameteri(WebGLObjectMap.get().toProgram(programID), pname);
     }
 
     public static boolean glGetProgramParameterb(int programID, int pname)
     {
         checkContextCompatibility();
-        return nglGetProgramParameterb(WebGLObjectMap.get().programs.get(programID), pname);
+        return nglGetProgramParameterb(WebGLObjectMap.get().toProgram(programID), pname);
     }
 
     public static int glGetRenderbufferParameter(int target, int pname)
@@ -945,19 +949,19 @@ public final class WebGL10
     public static String glGetShaderInfoLog(int shaderID)
     {
         checkContextCompatibility();
-        return nglGetShaderInfoLog(WebGLObjectMap.get().shaders.get(shaderID));
+        return nglGetShaderInfoLog(WebGLObjectMap.get().toShader(shaderID));
     }
 
     public static int glGetShaderParameteri(int shaderID, int pname)
     {
         checkContextCompatibility();
-        return nglGetShaderParameteri(WebGLObjectMap.get().shaders.get(shaderID), pname);
+        return nglGetShaderParameteri(WebGLObjectMap.get().toShader(shaderID), pname);
     }
 
     public static boolean glGetShaderParameterb(int shaderID, int pname)
     {
         checkContextCompatibility();
-        return nglGetShaderParameterb(WebGLObjectMap.get().shaders.get(shaderID), pname);
+        return nglGetShaderParameterb(WebGLObjectMap.get().toShader(shaderID), pname);
     }
 
     public static ShaderPrecisionFormat glGetShaderPrecisionFormat(int shaderType, int precisionType)
@@ -969,7 +973,7 @@ public final class WebGL10
     public static String glGetShaderSource(int shaderID)
     {
         checkContextCompatibility();
-        return nglGetShaderSource(WebGLObjectMap.get().shaders.get(shaderID));
+        return nglGetShaderSource(WebGLObjectMap.get().toShader(shaderID));
     }
 
     public static String[] glGetSupportedExtensions()
@@ -981,7 +985,7 @@ public final class WebGL10
     public static int glGetTexParameter(int textureID, int pname)
     {
         checkContextCompatibility();
-        return nglGetTexParameter(WebGLObjectMap.get().textures.get(textureID), pname);
+        return nglGetTexParameter(WebGLObjectMap.get().toTexture(textureID), pname);
     }
 
     public static boolean glGetUniformb(int programID, int location)
@@ -992,7 +996,7 @@ public final class WebGL10
     public static boolean[] glGetUniformbv(int programID, int location)
     {
         checkContextCompatibility();
-        return nglGetUniformbv(WebGLObjectMap.get().programs.get(programID), WebGLObjectMap.get().uniforms.get(programID).get(location));
+        return nglGetUniformbv(WebGLObjectMap.get().toProgram(programID), WebGLObjectMap.get().toUniform(programID, location));
     }
 
     public static float glGetUniformf(int programID, int location)
@@ -1003,7 +1007,7 @@ public final class WebGL10
     public static float[] glGetUniformfv(int programID, int location)
     {
         checkContextCompatibility();
-        return nglGetUniformfv(WebGLObjectMap.get().programs.get(programID), WebGLObjectMap.get().uniforms.get(programID).get(location));
+        return nglGetUniformfv(WebGLObjectMap.get().toProgram(programID), WebGLObjectMap.get().toUniform(programID, location));
     }
 
     public static int glGetUniformi(int programID, int location)
@@ -1014,13 +1018,13 @@ public final class WebGL10
     public static int[] glGetUniformiv(int programID, int location)
     {
         checkContextCompatibility();
-        return nglGetUniformiv(WebGLObjectMap.get().programs.get(programID), WebGLObjectMap.get().uniforms.get(programID).get(location));
+        return nglGetUniformiv(WebGLObjectMap.get().toProgram(programID), WebGLObjectMap.get().toUniform(programID, location));
     }
 
     public static int glGetUniformLocation(int programID, String name)
     {
         checkContextCompatibility();
-        return WebGLObjectMap.get().createUniform(nglGetUniformLocation(WebGLObjectMap.get().programs.get(programID), name));
+        return WebGLObjectMap.get().createUniform(nglGetUniformLocation(WebGLObjectMap.get().toProgram(programID), name));
     }
 
     public static boolean glGetVertexAttribb(int index, int pname)
@@ -1061,7 +1065,7 @@ public final class WebGL10
     public static boolean glIsBuffer(int bufferID)
     {
         checkContextCompatibility();
-        return nglIsBuffer(WebGLObjectMap.get().buffers.get(bufferID));
+        return nglIsBuffer(WebGLObjectMap.get().toBuffer(bufferID));
     }
 
     public static boolean glIsContextLost()
@@ -1079,31 +1083,31 @@ public final class WebGL10
     public static boolean glIsFramebuffer(int framebufferID)
     {
         checkContextCompatibility();
-        return nglIsFramebuffer(WebGLObjectMap.get().frameBuffers.get(framebufferID));
+        return nglIsFramebuffer(WebGLObjectMap.get().toFramebuffer(framebufferID));
     }
 
     public static boolean glIsProgram(int programID)
     {
         checkContextCompatibility();
-        return nglIsProgram(WebGLObjectMap.get().programs.get(programID));
+        return nglIsProgram(WebGLObjectMap.get().toProgram(programID));
     }
 
     public static boolean glIsRenderbuffer(int renderbufferID)
     {
         checkContextCompatibility();
-        return nglIsRenderbuffer(WebGLObjectMap.get().renderBuffers.get(renderbufferID));
+        return nglIsRenderbuffer(WebGLObjectMap.get().toRenderBuffer(renderbufferID));
     }
 
     public static boolean glIsShader(int shaderID)
     {
         checkContextCompatibility();
-        return nglIsShader(WebGLObjectMap.get().shaders.get(shaderID));
+        return nglIsShader(WebGLObjectMap.get().toShader(shaderID));
     }
 
     public static boolean glIsTexture(int textureID)
     {
         checkContextCompatibility();
-        return nglIsTexture(WebGLObjectMap.get().textures.get(textureID));
+        return nglIsTexture(WebGLObjectMap.get().toTexture(textureID));
     }
 
     public static void glLineWidth(int width)
@@ -1115,7 +1119,7 @@ public final class WebGL10
     public static void glLinkProgram(int programID)
     {
         checkContextCompatibility();
-        nglLinkProgram(WebGLObjectMap.get().programs.get(programID));
+        nglLinkProgram(WebGLObjectMap.get().toProgram(programID));
     }
 
     public static void glPixelStorei(int pname, int param)
@@ -1157,7 +1161,7 @@ public final class WebGL10
     public static void glShaderSource(int shaderID, String source)
     {
         checkContextCompatibility();
-        nglShaderSource(WebGLObjectMap.get().shaders.get(shaderID), source);
+        nglShaderSource(WebGLObjectMap.get().toShader(shaderID), source);
     }
 
     public static void glStencilFunc(int func, int ref, int mask)
@@ -1268,97 +1272,97 @@ public final class WebGL10
     public static void glUniform1f(int location, float x)
     {
         checkContextCompatibility();
-        nglUniform1f(WebGLObjectMap.get().uniforms.get(WebGLObjectMap.get().currentProgram).get(location), x);
+        nglUniform1f(WebGLObjectMap.get().toUniform(location), x);
     }
 
     public static void glUniform1fv(int location, Float32Array x)
     {
         checkContextCompatibility();
-        nglUniform1fv(WebGLObjectMap.get().uniforms.get(WebGLObjectMap.get().currentProgram).get(location), x);
+        nglUniform1fv(WebGLObjectMap.get().toUniform(location), x);
     }
 
     public static void glUniform1i(int location, int x)
     {
         checkContextCompatibility();
-        nglUniform1i(WebGLObjectMap.get().uniforms.get(WebGLObjectMap.get().currentProgram).get(location), x);
+        nglUniform1i(WebGLObjectMap.get().toUniform(location), x);
     }
 
     public static void glUniform1iv(int location, Int32Array x)
     {
         checkContextCompatibility();
-        nglUniform1iv(WebGLObjectMap.get().uniforms.get(WebGLObjectMap.get().currentProgram).get(location), x);
+        nglUniform1iv(WebGLObjectMap.get().toUniform(location), x);
     }
 
     public static void glUniform2f(int location, float x, float y)
     {
         checkContextCompatibility();
-        nglUniform2f(WebGLObjectMap.get().uniforms.get(WebGLObjectMap.get().currentProgram).get(location), x, y);
+        nglUniform2f(WebGLObjectMap.get().toUniform(location), x, y);
     }
 
     public static void glUniform2fv(int location, Float32Array xy)
     {
         checkContextCompatibility();
-        nglUniform2fv(WebGLObjectMap.get().uniforms.get(WebGLObjectMap.get().currentProgram).get(location), xy);
+        nglUniform2fv(WebGLObjectMap.get().toUniform(location), xy);
     }
 
     public static void glUniform2i(int location, int x, int y)
     {
         checkContextCompatibility();
-        nglUniform2i(WebGLObjectMap.get().uniforms.get(WebGLObjectMap.get().currentProgram).get(location), x, y);
+        nglUniform2i(WebGLObjectMap.get().toUniform(location), x, y);
     }
 
     public static void glUniform2iv(int location, Int32Array xy)
     {
         checkContextCompatibility();
-        nglUniform2iv(WebGLObjectMap.get().uniforms.get(WebGLObjectMap.get().currentProgram).get(location), xy);
+        nglUniform2iv(WebGLObjectMap.get().toUniform(location), xy);
     }
 
     public static void glUniform3f(int location, float x, float y, float z)
     {
         checkContextCompatibility();
-        nglUniform3f(WebGLObjectMap.get().uniforms.get(WebGLObjectMap.get().currentProgram).get(location), x, y, z);
+        nglUniform3f(WebGLObjectMap.get().toUniform(location), x, y, z);
     }
 
     public static void glUniform3fv(int location, Float32Array xy)
     {
         checkContextCompatibility();
-        nglUniform3fv(WebGLObjectMap.get().uniforms.get(WebGLObjectMap.get().currentProgram).get(location), xy);
+        nglUniform3fv(WebGLObjectMap.get().toUniform(location), xy);
     }
 
     public static void glUniform3i(int location, int x, int y, int z)
     {
         checkContextCompatibility();
-        nglUniform3i(WebGLObjectMap.get().uniforms.get(WebGLObjectMap.get().currentProgram).get(location), x, y, z);
+        nglUniform3i(WebGLObjectMap.get().toUniform(location), x, y, z);
     }
 
     public static void glUniform3iv(int location, Int32Array xy)
     {
         checkContextCompatibility();
-        nglUniform3iv(WebGLObjectMap.get().uniforms.get(WebGLObjectMap.get().currentProgram).get(location), xy);
+        nglUniform3iv(WebGLObjectMap.get().toUniform(location), xy);
     }
 
     public static void glUniform4f(int location, float x, float y, float z, float w)
     {
         checkContextCompatibility();
-        nglUniform4f(WebGLObjectMap.get().uniforms.get(WebGLObjectMap.get().currentProgram).get(location), x, y, z, w);
+        nglUniform4f(WebGLObjectMap.get().toUniform(location), x, y, z, w);
     }
 
     public static void glUniform4fv(int location, Float32Array xy)
     {
         checkContextCompatibility();
-        nglUniform4fv(WebGLObjectMap.get().uniforms.get(WebGLObjectMap.get().currentProgram).get(location), xy);
+        nglUniform4fv(WebGLObjectMap.get().toUniform(location), xy);
     }
 
     public static void glUniform4i(int location, int x, int y, int z, int w)
     {
         checkContextCompatibility();
-        nglUniform4i(WebGLObjectMap.get().uniforms.get(WebGLObjectMap.get().currentProgram).get(location), x, y, z, w);
+        nglUniform4i(WebGLObjectMap.get().toUniform(location), x, y, z, w);
     }
 
     public static void glUniform4iv(int location, Int32Array xy)
     {
         checkContextCompatibility();
-        nglUniform4iv(WebGLObjectMap.get().uniforms.get(WebGLObjectMap.get().currentProgram).get(location), xy);
+        nglUniform4iv(WebGLObjectMap.get().toUniform(location), xy);
     }
 
     public static void glUniformMatrix2fv(int location, boolean transpose, float[] value)
@@ -1371,7 +1375,7 @@ public final class WebGL10
     public static void glUniformMatrix2fv(int location, boolean transpose, Float32Array value)
     {
         checkContextCompatibility();
-        nglUniformMatrix2fv(WebGLObjectMap.get().uniforms.get(WebGLObjectMap.get().currentProgram).get(location), transpose, value);
+        nglUniformMatrix2fv(WebGLObjectMap.get().toUniform(location), transpose, value);
     }
 
     public static void glUniformMatrix3fv(int location, boolean transpose, float[] value)
@@ -1384,7 +1388,7 @@ public final class WebGL10
     public static void glUniformMatrix3fv(int location, boolean transpose, Float32Array value)
     {
         checkContextCompatibility();
-        nglUniformMatrix3fv(WebGLObjectMap.get().uniforms.get(WebGLObjectMap.get().currentProgram).get(location), transpose, value);
+        nglUniformMatrix3fv(WebGLObjectMap.get().toUniform(location), transpose, value);
     }
 
     public static void glUniformMatrix4fv(int location, boolean transpose, float[] value)
@@ -1397,20 +1401,20 @@ public final class WebGL10
     public static void glUniformMatrix4fv(int location, boolean transpose, Float32Array value)
     {
         checkContextCompatibility();
-        nglUniformMatrix4fv(WebGLObjectMap.get().uniforms.get(WebGLObjectMap.get().currentProgram).get(location), transpose, value);
+        nglUniformMatrix4fv(WebGLObjectMap.get().toUniform(location), transpose, value);
     }
 
     public static void glUseProgram(int programID)
     {
         checkContextCompatibility();
         WebGLObjectMap.get().currentProgram = programID;
-        nglUseProgram(WebGLObjectMap.get().programs.get(programID));
+        nglUseProgram(WebGLObjectMap.get().toProgram(programID));
     }
 
     public static void glValidateProgram(int programID)
     {
         checkContextCompatibility();
-        nglValidateProgram(WebGLObjectMap.get().programs.get(programID));
+        nglValidateProgram(WebGLObjectMap.get().toProgram(programID));
     }
 
     public static void glVertexAttribPointer(int index, int size, int type, boolean normalized, long stride, long offset)
