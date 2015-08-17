@@ -50,7 +50,7 @@ final class WebGLObjectMap
     private final Map<Integer, Map<Integer, JavaScriptObject>> uniforms = new HashMap<>();
 
     // Field to store the current program
-    private int currentProgram = 0;
+    int currentProgram = 0;
 
     private WebGLObjectMap()
     {
