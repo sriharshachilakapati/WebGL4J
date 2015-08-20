@@ -575,10 +575,10 @@ public final class WebGL10
         nglCompileShader(WebGLObjectMap.get().toShader(shaderID));
     }
 
-    public static void glCompressedTexImage2D(int target, int level, int internalFormat, long width, long height,
+    public static void glCompressedTexImage2D(int target, int level, int internalFormat,
                                               int border, long imageSize, Image image)
     {
-        glCompressedTexImage2D(target, level, internalFormat, width, height, border, imageSize, image.getElement());
+        glCompressedTexImage2D(target, level, internalFormat, border, imageSize, image.getElement());
     }
 
     public static void glCompressedTexImage2D(int target, int level, int internalFormat, long width, long height,
@@ -588,24 +588,24 @@ public final class WebGL10
         nglCompressedTexImage2D(target, level, internalFormat, width, height, border, imageSize, pixels);
     }
 
-    public static void glCompressedTexImage2D(int target, int level, int internalFormat, long width, long height,
+    public static void glCompressedTexImage2D(int target, int level, int internalFormat,
                                               int border, long imageSize, JavaScriptObject JavaScriptObject)
     {
         checkContextCompatibility();
-        nglCompressedTexImage2D(target, level, internalFormat, width, height, border, imageSize, JavaScriptObject);
+        nglCompressedTexImage2D(target, level, internalFormat,border, imageSize, JavaScriptObject);
     }
 
-    public static void glCompressedTexSubImage2D(int target, int level, int xOffset, int yOffset, long width, long height,
+    public static void glCompressedTexSubImage2D(int target, int level, int xOffset, int yOffset,
                                                  int format, long imageSize, Image image)
     {
-        glCompressedTexSubImage2D(target, level, xOffset, yOffset, width, height, format, imageSize, image.getElement());
+        glCompressedTexSubImage2D(target, level, xOffset, yOffset, format, imageSize, image.getElement());
     }
 
-    public static void glCompressedTexSubImage2D(int target, int level, int xOffset, int yOffset, long width, long height,
+    public static void glCompressedTexSubImage2D(int target, int level, int xOffset, int yOffset,
                                                  int format, long imageSize, JavaScriptObject data)
     {
         checkContextCompatibility();
-        nglCompressedTexSubImage2D(target, level, xOffset, yOffset, width, height, format, imageSize, data);
+        nglCompressedTexSubImage2D(target, level, xOffset, yOffset, format, imageSize, data);
     }
 
     public static void glCompressedTexSubImage2D(int target, int level, int xOffset, int yOffset, long width, long height,
@@ -1649,9 +1649,9 @@ public final class WebGL10
         $wnd.gl.compileShader(shaderID);
     }-*/;
 
-    private static native void nglCompressedTexImage2D(int target, int level, int internalFormat, double width, double height,
+    private static native void nglCompressedTexImage2D(int target, int level, int internalFormat,
                                                        int border, double imageSize, JavaScriptObject JavaScriptObject) /*-{
-        $wnd.gl.compressedTexImage2D(target, level, internalFormat, width, height, border, imageSize, JavaScriptObject);
+        $wnd.gl.compressedTexImage2D(target, level, internalFormat, border, imageSize, JavaScriptObject);
     }-*/;
 
     private static native void nglCompressedTexImage2D(int target, int level, int internalFormat, double width, double height,
@@ -1659,9 +1659,8 @@ public final class WebGL10
         $wnd.gl.compressedTexImage2D(target, level, internalFormat, width, height, border, imageSize, pixels);
     }-*/;
 
-    private static native void nglCompressedTexSubImage2D(int target, int level, int xOffset, int yOffset, double width,
-                                                          double height, int format, double imageSize, JavaScriptObject data) /*-{
-        $wnd.gl.compressedTexSubImage2D(target, level, xOffset, yOffset, width, height, format, imageSize, data);
+    private static native void nglCompressedTexSubImage2D(int target, int level, int xOffset, int yOffset, int format, double imageSize, JavaScriptObject data) /*-{
+        $wnd.gl.compressedTexSubImage2D(target, level, xOffset, yOffset, format, imageSize, data);
     }-*/;
 
     private static native void nglCompressedTexSubImage2D(int target, int level, int xOffset, int yOffset, double width,
