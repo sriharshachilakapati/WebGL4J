@@ -79,6 +79,14 @@ ctxAttributes.setStencil(true);
 WebGL10.createContext(canvas, ctxAttributes);
 ```
 
+To create WebGL2 contexts, you can use the `createContext` method in the `WebGL20` class. Just like the `createContext` method in the `WebGL10` class, the context attributes are not necessary and are optional.
+
+```java
+WebGL20.createContext(canvas, ctxAttributes);
+```
+
+You can call `WebGL10` methods when you have a `WebGL20` context, but you cannot call WebGL 2.0 functions when you have a WebGL 1.0 context.
+
 ## Using multiple contexts
 
 WebGL4J has support for rendering using multiple contexts. All the overloads to the method `createContext` returns a `WebGLContext` object which you can store. Then depending on your usage, you make a context 'current'.
