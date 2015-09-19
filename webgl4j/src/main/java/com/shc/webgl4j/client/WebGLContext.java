@@ -284,7 +284,7 @@ public final class WebGLContext extends JavaScriptObject
          *
          * <p> Applications that don't require high performance should leave this parameter at its default value of
          * false. Applications that require high performance may set this parameter to true, and if context creation
-         * fails then the application may prefer to use a fallback rendering path. </li>
+         * fails then the application may prefer to use a fallback rendering path. </p>
          *
          * @return Whether the context fails if there is a major performance caveat.
          */
@@ -303,7 +303,7 @@ public final class WebGLContext extends JavaScriptObject
          *
          * <p> Applications that don't require high performance should leave this parameter at its default value of
          * false. Applications that require high performance may set this parameter to true, and if context creation
-         * fails then the application may prefer to use a fallback rendering path. </li>
+         * fails then the application may prefer to use a fallback rendering path. </p>
          *
          * @param fail Whether the context should fail if there is a major performance caveat.
          */
