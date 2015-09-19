@@ -49,6 +49,67 @@ public final class WebGLContext extends JavaScriptObject
     }
 
     /**
+     * A cross-browser polyfill for FullScreen API. Works on Google Chrome 15 and above, Firefox 9 and above, Safari,
+     * Opera 32 and above, Internet Explorer 11 and the new Microsoft Edge. Returns true if any of the context or even
+     * any other element in the page is fullscreen.
+     *
+     * @return True if any context is in fullscreen mode, false otherwise.
+     */
+    public static native boolean isFullscreen() /*-{
+        if ($doc['fullscreenElement'])
+            return $doc['fullscreenElement'] != null;
+
+        if ($doc['msFullscreenElement'])
+            return $doc['msFullscreenElement'] != null;
+
+        if ($doc['mozFullScreenElement'])
+            return $doc['mozFullScreenElement'] != null;
+
+        if ($doc['webkitFullscreenElement'])
+            return $doc['webkitFullscreenElement'] != null;
+
+        return false;
+    }-*/;
+
+    /**
+     * A cross-browser polyfill for FullScreen API. Works on Google Chrome 15 and above, Firefox 9 and above, Safari,
+     * Opera 32 and above, Internet Explorer 11 and the new Microsoft Edge. This method requests the browser to exit the
+     * fullscreen state.
+     *
+     * @return Returns whether the request is successful.
+     */
+    public static native boolean exitFullscreen() /*-{
+        if ($doc['exitFullscreen'])
+            $doc['exitFullscreen']();
+
+        else if ($doc['msExitFullscreen'])
+            $doc['msExitFullscreen']();
+
+        else if ($doc['mozCancelFullScreen'])
+            $doc['mozCancelFullScreen']();
+
+        else if ($doc['webkitExitFullscreen'])
+            $doc['webkitExitFullscreen']();
+
+        else
+            return false;
+
+        return !(@com.shc.webgl4j.client.WebGLContext::isFullscreen()());
+    }-*/;
+
+    /**
+     * Returns the current context. If there is no context that is current, then {@code null} is returned.
+     *
+     * @return The current context.
+     */
+    public static native WebGLContext getCurrent() /*-{
+        if ($wnd['context'] === undefined)
+            return null;
+
+        return $wnd['context'];
+    }-*/;
+
+    /**
      * Returns the native JS WebGL context object that this class wraps upon. This is a javascript object that contains
      * all the methods that are called by {@link WebGL10} and such classes.
      *
@@ -123,67 +184,6 @@ public final class WebGLContext extends JavaScriptObject
     }-*/;
 
     /**
-     * A cross-browser polyfill for FullScreen API. Works on Google Chrome 15 and above, Firefox 9 and above,
-     * Safari, Opera 32 and above, Internet Explorer 11 and the new Microsoft Edge. Returns true if any of the context
-     * or even any other element in the page is fullscreen.
-     *
-     * @return True if any context is in fullscreen mode, false otherwise.
-     */
-    public static native boolean isFullscreen() /*-{
-        if ($doc['fullscreenElement'])
-            return $doc['fullscreenElement'] != null;
-
-        if ($doc['msFullscreenElement'])
-            return $doc['msFullscreenElement'] != null;
-
-        if ($doc['mozFullScreenElement'])
-            return $doc['mozFullScreenElement'] != null;
-
-        if ($doc['webkitFullscreenElement'])
-            return $doc['webkitFullscreenElement'] != null;
-
-        return false;
-    }-*/;
-
-    /**
-     * A cross-browser polyfill for FullScreen API. Works on Google Chrome 15 and above, Firefox 9 and above,
-     * Safari, Opera 32 and above, Internet Explorer 11 and the new Microsoft Edge. This method requests the browser to
-     * exit the fullscreen state.
-     *
-     * @return Returns whether the request is successful.
-     */
-    public static native boolean exitFullscreen() /*-{
-        if ($doc['exitFullscreen'])
-            $doc['exitFullscreen']();
-
-        else if ($doc['msExitFullscreen'])
-            $doc['msExitFullscreen']();
-
-        else if ($doc['mozCancelFullScreen'])
-            $doc['mozCancelFullScreen']();
-
-        else if ($doc['webkitExitFullscreen'])
-            $doc['webkitExitFullscreen']();
-
-        else
-            return false;
-
-        return !(@com.shc.webgl4j.client.WebGLContext::isFullscreen()());
-    }-*/;
-
-    /**
-     * Returns the current context. If there is no context that is current, then {@code null} is returned.
-     *
-     * @return The current context.
-     */
-    public static native WebGLContext getCurrent() /*-{
-        if ($wnd['context'] === undefined)
-            return null;
-
-        return $wnd['context'];
-    }-*/;
-
-    /**
      * This class represents the context attributes that were used to create a context, or the attributes that will be
      * used to create a context. The attributes are nothing but the properties of the context. Note that there will be
      * no effect to the context even if you change the attributes once the context is created. To be sure that the
@@ -196,6 +196,18 @@ public final class WebGLContext extends JavaScriptObject
         protected Attributes()
         {
         }
+
+        public static native Attributes create() /*-{
+            return {
+                alpha: true,
+                depth: true,
+                stencil: false,
+                antiAlias: true,
+                preMultipliedAlpha: true,
+                preserveDrawingBuffer: false,
+                failIfMajorPerformanceCaveat: false
+            };
+        }-*/;
 
         /**
          * Returns whether the draw buffer has an alpha channel. An alpha channel is required for OpenGL to performing
@@ -240,56 +252,139 @@ public final class WebGLContext extends JavaScriptObject
             this.antialias = antialias;
         }-*/;
 
+        /**
+         * Returns the depth property of the WebGLContext. If the value is true, then the drawing buffer has a depth
+         * buffer of at least 8 bits. If the value is false, then no depth buffer is available for that context.
+         *
+         * @return The depth property of WebGLContext.
+         */
         public final native boolean getDepth() /*-{
             return this.depth;
         }-*/;
 
+        /**
+         * Sets the depth property of the WebGLContext. If the new value is true, then the drawing buffer will have a
+         * depth buffer that is at least 8 bits. If the value is false, then no depth buffer is available for the
+         * context. However, this is just a request, you have to check the property after the context is created.
+         *
+         * @param depth The depth property of WebGLContext.
+         */
         public final native void setDepth(boolean depth) /*-{
             this.depth = depth;
         }-*/;
 
+        /**
+         * <p> If the value is true, context creation will fail if the implementation determines that the performance of
+         * the created WebGL context would be dramatically lower than that of a native application making equivalent
+         * OpenGL calls. This could happen for a number of reasons, including: </p>
+         *
+         * <ul> <li> An implementation might switch to a software rasterizer if the user's GPU driver is known to be
+         * unstable.</li> <li> An implementation might require reading back the framebuffer from GPU memory to system
+         * memory before compositing it with the rest of the page, significantly reducing performance.</li> </ul>
+         *
+         * <p> Applications that don't require high performance should leave this parameter at its default value of
+         * false. Applications that require high performance may set this parameter to true, and if context creation
+         * fails then the application may prefer to use a fallback rendering path. </li>
+         *
+         * @return Whether the context fails if there is a major performance caveat.
+         */
         public final native boolean getFailIfMajorPerformanceCaveat() /*-{
             return this.failIfMajorPerformanceCaveat;
         }-*/;
 
+        /**
+         * <p> If the value is true, context creation will fail if the implementation determines that the performance of
+         * the created WebGL context would be dramatically lower than that of a native application making equivalent
+         * OpenGL calls. This could happen for a number of reasons, including: </p>
+         *
+         * <ul> <li> An implementation might switch to a software rasterizer if the user's GPU driver is known to be
+         * unstable.</li> <li> An implementation might require reading back the framebuffer from GPU memory to system
+         * memory before compositing it with the rest of the page, significantly reducing performance.</li> </ul>
+         *
+         * <p> Applications that don't require high performance should leave this parameter at its default value of
+         * false. Applications that require high performance may set this parameter to true, and if context creation
+         * fails then the application may prefer to use a fallback rendering path. </li>
+         *
+         * @param fail Whether the context should fail if there is a major performance caveat.
+         */
         public final native void setFailIfMajorPerformanceCaveat(boolean fail) /*-{
             this.failIfMajorPerformanceCaveat = fail;
         }-*/;
 
+        /**
+         * If the value is true the page compositor will assume the drawing buffer contains colors with premultiplied
+         * alpha. If the value is false the page compositor will assume that colors in the drawing buffer are not
+         * premultiplied. This flag is ignored if the alpha flag is false. See <a href="https://www.khronos.org/registry/webgl/specs/1.0/#PREMULTIPLIED_ALPHA">Premultiplied
+         * Alpha</a> for more information on the effects of the <code>premultipliedAlpha</code> flag.
+         *
+         * @return Whether the drawing buffer contains colors with premultiplied alpha.
+         */
         public final native boolean getPremultipliedAlpha() /*-{
             return this.premultipliedAlpha;
         }-*/;
 
+        /**
+         * If the value is true the page compositor will assume the drawing buffer contains colors with premultiplied
+         * alpha. If the value is false the page compositor will assume that colors in the drawing buffer are not
+         * premultiplied. This flag is ignored if the alpha flag is false. See <a href="https://www.khronos.org/registry/webgl/specs/1.0/#PREMULTIPLIED_ALPHA">Premultiplied
+         * Alpha</a> for more information on the effects of the <code>premultipliedAlpha</code> flag.
+         *
+         * @param premultipliedAlpha Whether the drawing buffer should accept colors with premultiplied alpha.
+         */
         public final native void setPremultipliedAlpha(boolean premultipliedAlpha) /*-{
             this.premultipliedAlpha = premultipliedAlpha;
         }-*/;
 
+        /**
+         * <p> If false, once the drawing buffer is presented as described in the <a
+         * href="https://www.khronos.org/registry/webgl/specs/1.0/#THE_DRAWING_BUFFER">Drawing Buffer</a> section, the
+         * contents of the drawing buffer are cleared to their default values. All elements of the drawing buffer
+         * (color, depth and stencil) are cleared. If the value is true the buffers will not be cleared and will
+         * preserve their values until cleared or overwritten by the author. </p>
+         *
+         * <p><i>On some hardware setting the preserveDrawingBuffer flag to true can have significant performance
+         * implications.</i></p>
+         *
+         * @return Whether the drawing buffer is preserved after presenting.
+         */
         public final native boolean getPreserveDrawingBuffer() /*-{
             return this.preserveDrawingBuffer;
         }-*/;
 
+        /**
+         * <p> If false, once the drawing buffer is presented as described in the <a
+         * href="https://www.khronos.org/registry/webgl/specs/1.0/#THE_DRAWING_BUFFER">Drawing Buffer</a> section, the
+         * contents of the drawing buffer are cleared to their default values. All elements of the drawing buffer
+         * (color, depth and stencil) are cleared. If the value is true the buffers will not be cleared and will
+         * preserve their values until cleared or overwritten by the author. </p>
+         *
+         * <p><i>On some hardware setting the preserveDrawingBuffer flag to true can have significant performance
+         * implications.</i></p>
+         *
+         * @param preserveDrawingBuffer Whether the drawing buffer should be preserved after presenting.
+         */
         public final native void setPreserveDrawingBuffer(boolean preserveDrawingBuffer) /*-{
             this.preserveDrawingBuffer = preserveDrawingBuffer;
         }-*/;
 
+        /**
+         * Returns whether there is a stencil buffer associated with the context. If the value is true, the drawing
+         * buffer has a stencil buffer of at least 8 bits. If the value is false, no stencil buffer is available.
+         *
+         * @return Whether there is a stencil buffer of at least 8 bits.
+         */
         public final native boolean getStencil() /*-{
             return this.stencil;
         }-*/;
 
+        /**
+         * Sets whether there is a stencil buffer associated with the context. If the value is true, the drawing buffer
+         * has a stencil buffer of at least 8 bits. If the value is false, no stencil buffer is available.
+         *
+         * @param stencil Whether a stencil buffer of at least 8 bits should be used.
+         */
         public final native void setStencil(boolean stencil) /*-{
             this.stencil = stencil;
-        }-*/;
-
-        public static native Attributes create() /*-{
-            return {
-                alpha: true,
-                depth: true,
-                stencil: false,
-                antiAlias: true,
-                preMultipliedAlpha: true,
-                preserveDrawingBuffer: false,
-                failIfMajorPerformanceCaveat: false
-            };
         }-*/;
     }
 }
