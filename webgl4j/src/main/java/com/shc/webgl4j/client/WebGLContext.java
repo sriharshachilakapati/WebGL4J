@@ -197,6 +197,22 @@ public final class WebGLContext extends JavaScriptObject
         {
         }
 
+        /**
+         * <p> Creates an Attributes object with the default values as specified in the WebGL 1.0 Specification. The
+         * default values for the properties are as follows. </p>
+         *
+         * <pre>
+         *     alpha: true
+         *     depth: true
+         *     stencil: false
+         *     antiAlias: true
+         *     preMultipliedAlpha: true
+         *     preserveDrawingBuffer: false
+         *     failIfMajorPerformanceCaveat: false
+         * </pre>
+         *
+         * @return An attributes object that contain the default values.
+         */
         public static native Attributes create() /*-{
             return {
                 alpha: true,
