@@ -25,7 +25,9 @@
 package com.shc.webgl4j.client;
 
 import com.google.gwt.canvas.client.Canvas;
+import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.dom.client.CanvasElement;
+import com.google.gwt.typedarrays.shared.ArrayBufferView;
 
 /**
  * @author Sri Harsha Chilakapati
@@ -379,5 +381,80 @@ public final class WebGL20
             throw new IllegalStateException("The context should be created before invoking the GL functions");
     }
 
-    // TODO: Implement WebGL2 functions
+    public static void glCopyBufferSubData(int readTarget, int writeTarget, int readOffset, int writeOffset, int size)
+    {
+        checkContextCompatibility();
+        nglCopyBufferSubData(readTarget, writeTarget, readOffset, writeOffset, size);
+    }
+
+    public static void glGetBufferSubData(int target, int offset, ArrayBufferView returnedData)
+    {
+        checkContextCompatibility();
+        nglGetBufferSubData(target, offset, returnedData);
+    }
+
+    public static void glBlitFramebuffer(int srcX0, int srcY0,
+                                         int srcX1, int srcY1,
+                                         int dstX0, int dstY0,
+                                         int dstX1, int dstY1, int mask, int filter)
+    {
+        checkContextCompatibility();
+        nglBlitFramebuffer(srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
+    }
+
+    public static void glFramebufferTextureLayer(int target, int attachment, int texture, int level, int layer)
+    {
+        checkContextCompatibility();
+        JavaScriptObject textureObj = WebGLObjectMap.get().toTexture(texture);
+        nglFramebufferTextureLayer(target, attachment, textureObj, level, layer);
+    }
+
+    public static void glInvalidateFramebuffer(int target, ArrayBufferView attachments)
+    {
+        checkContextCompatibility();
+        nglInvalidateFramebuffer(target, attachments);
+    }
+
+    public static void glInvalidateSubFramebuffer(int target, ArrayBufferView attachments, int x, int y, int w, int h)
+    {
+        checkContextCompatibility();
+        nglInvalidateSubFramebuffer(target, attachments, x, y, w, h);
+    }
+
+    public static void glReadBuffer(int src)
+    {
+        checkContextCompatibility();
+        nglReadBuffer(src);
+    }
+
+    private static native void nglReadBuffer(int src) /*-{
+        $wnd.gl.readBuffer(src);
+    }-*/;
+
+    private static native void nglInvalidateSubFramebuffer(int target, ArrayBufferView attachments, int x, int y, int w, int h) /*-{
+        $wnd.gl.invalidateSubFramebuffer(target, attachments, x, y, w, h);
+    }-*/;
+
+    private static native void nglInvalidateFramebuffer(int target, ArrayBufferView attachments) /*-{
+        $wnd.gl.invalidateFramebuffer(target, attachments);
+    }-*/;
+
+    private static native void nglFramebufferTextureLayer(int target, int attachment, JavaScriptObject texture, int level, int layer) /*-{
+        $wnd.gl.framebufferTextureLayer(target, attachment, texture, level, layer);
+    }-*/;
+
+    private static native void nglBlitFramebuffer(int srcX0, int srcY0,
+                                                  int srcX1, int srcY1,
+                                                  int dstX0, int dstY0,
+                                                  int dstX1, int dstY1, int mask, int filter) /*-{
+        $wnd.gl.blitFramebuffer(srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
+    }-*/;
+
+    private static native void nglGetBufferSubData(int target, int offset, ArrayBufferView returnedData) /*-{
+        $wnd.gl.getBufferSubData(target, offset, returnedData);
+    }-*/;
+
+    private static native void nglCopyBufferSubData(int readTarget, int writeTarget, int readOffset, int writeOffset, int size) /*-{
+        $wnd.gl.copyBufferSubData(readTarget, writeTarget, readOffset, writeOffset, size);
+    }-*/;
 }
