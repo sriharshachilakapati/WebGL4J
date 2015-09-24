@@ -28,6 +28,7 @@ import com.google.gwt.canvas.client.Canvas;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.dom.client.CanvasElement;
 import com.google.gwt.typedarrays.shared.ArrayBufferView;
+import com.google.gwt.typedarrays.shared.Int32Array;
 
 /**
  * @author Sri Harsha Chilakapati
@@ -426,6 +427,26 @@ public final class WebGL20
         checkContextCompatibility();
         nglReadBuffer(src);
     }
+
+    public static Int32Array glGetInternalformatParameter(int target, int internalFormat, int pName)
+    {
+        checkContextCompatibility();
+        return nglGetInternalformatParameter(target, internalFormat, pName);
+    }
+
+    public static void glRenderbufferStorageMultisample(int target, int samples, int internalFormat, int width, int height)
+    {
+        checkContextCompatibility();
+        nglRenderbufferStorageMultisample(target, samples, internalFormat, width, height);
+    }
+
+    private static native void nglRenderbufferStorageMultisample(int target, int samples, int internalFormat, int width, int height) /*-{
+        $wnd.gl.renderbufferStorageMultisample(target, samples, internalFormat, width, height);
+    }-*/;
+
+    private static native Int32Array nglGetInternalformatParameter(int target, int internalFormat, int pName); /*-{
+        return $wnd.gl.getInternalformatParameter(target, internalFormat, pName);
+    }-*/;
 
     private static native void nglReadBuffer(int src) /*-{
         $wnd.gl.readBuffer(src);
