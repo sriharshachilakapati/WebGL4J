@@ -25,10 +25,12 @@
 package com.shc.webgl4j.client;
 
 import com.google.gwt.canvas.client.Canvas;
+import com.google.gwt.canvas.dom.client.ImageData;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.dom.client.CanvasElement;
 import com.google.gwt.typedarrays.shared.ArrayBufferView;
 import com.google.gwt.typedarrays.shared.Int32Array;
+import com.google.gwt.user.client.ui.Image;
 
 /**
  * @author Sri Harsha Chilakapati
@@ -361,7 +363,7 @@ public final class WebGL20
         try
         {
             var canvas = $doc.createElement('canvas');
-            return !! ( $wnd.WebGLRenderingContext && (canvas.getContext('webgl2') ||
+            return !!( $wnd.WebGLRenderingContext && (canvas.getContext('webgl2') ||
             canvas.getContext('experimental-webgl2')));
         }
         catch (e)
@@ -440,11 +442,173 @@ public final class WebGL20
         nglRenderbufferStorageMultisample(target, samples, internalFormat, width, height);
     }
 
+    public static void glTexStorage2D(int target, int levels, int internalFormat, int width, int height)
+    {
+        checkContextCompatibility();
+        nglTexStorage2D(target, levels, internalFormat, width, height);
+    }
+
+    public static void glTexStorage3D(int target, int levels, int internalFormat, int width, int height, int depth)
+    {
+        checkContextCompatibility();
+        nglTexStorage3D(target, levels, internalFormat, width, height, depth);
+    }
+
+    public static void glTexImage3D(int target, int level, int internalFormat, int width, int height, int depth,
+                                    int border, int format, int type, ArrayBufferView pixels)
+    {
+        checkContextCompatibility();
+        nglTexImage3D(target, level, internalFormat, width, height, depth, border, format, type, pixels);
+    }
+
+    public static void glTexSubImage3D(int target, int level, int xOffset, int yOffset, int zOffset,
+                                       int width, int height, int depth, int format, int type,
+                                       ArrayBufferView pixels)
+    {
+        checkContextCompatibility();
+        nglTexSubImage3D(target, level, xOffset, yOffset, zOffset, width, height, depth, format, type, pixels);
+    }
+
+    public static void glTexSubImage3D(int target, int level, int xOffset, int yOffset, int zOffset,
+                                       int format, int type, JavaScriptObject pixels)
+    {
+        checkContextCompatibility();
+        nglTexSubImage3D(target, level, xOffset, yOffset, zOffset, format, type, pixels);
+    }
+
+    public static void glTexSubImage3D(int target, int level, int xOffset, int yOffset, int zOffset,
+                                       int format, int type, ImageData pixels)
+    {
+        checkContextCompatibility();
+        nglTexSubImage3D(target, level, xOffset, yOffset, zOffset, format, type, pixels);
+    }
+
+    public static void glTexSubImage3D(int target, int level, int xOffset, int yOffset, int zOffset,
+                                       int format, int type, Image pixels)
+    {
+        checkContextCompatibility();
+        nglTexSubImage3D(target, level, xOffset, yOffset, zOffset, format, type, pixels.getElement());
+    }
+
+    public static void glCopyTexSubImage3D(int target, int level, int xOffset, int yOffset, int zOffset,
+                                           int x, int y, int width, int height)
+    {
+        checkContextCompatibility();
+        nglCopyTexSubImage3D(target, level, xOffset, yOffset, zOffset, x, y, width, height);
+    }
+
+    public static void glCompressedTexImage3D(int target, int level, int internalFormat,
+                                              int width, int height, int depth,
+                                              int border, ArrayBufferView data)
+    {
+        checkContextCompatibility();
+        nglCompressedTexImage3D(target, level, internalFormat, width, height, depth, border, data);
+    }
+
+    public static void glCompressedTexSubImage3D(int target, int level, int xOffset, int yOffset, int zOffset,
+                                                 int width, int height, int depth,
+                                                 int format, ArrayBufferView data)
+    {
+        checkContextCompatibility();
+        nglCompressedTexSubImage3D(target, level, xOffset, yOffset, zOffset, width, height, depth, format, data);
+    }
+
+    public static int glGetFragDataLocation(int program, String name)
+    {
+        checkContextCompatibility();
+        return nglGetFragDataLocation(WebGLObjectMap.get().toProgram(program), name);
+    }
+
+    public static void glUniform1ui(int location, int v0)
+    {
+        checkContextCompatibility();
+        nglUniform1ui(WebGLObjectMap.get().toUniform(location), v0);
+    }
+
+    public static void glUniform2ui(int location, int v0, int v1)
+    {
+        checkContextCompatibility();
+        nglUniform2ui(WebGLObjectMap.get().toUniform(location), v0, v1);
+    }
+
+    public static void glUniform3ui(int location, int v0, int v1, int v2)
+    {
+        checkContextCompatibility();
+        nglUniform3ui(WebGLObjectMap.get().toUniform(location), v0, v1, v2);
+    }
+
+    public static void glUniform4ui(int location, int v0, int v1, int v2, int v3)
+    {
+        checkContextCompatibility();
+        nglUniform4ui(WebGLObjectMap.get().toUniform(location), v0, v1, v2, v3);
+    }
+
+    private static native void nglUniform4ui(JavaScriptObject location, int v0, int v1, int v2, int v3) /*-{
+        $wnd.gl.uniform4ui(location, v0, v1, v2, v3);
+    }-*/;
+
+    private static native void nglUniform3ui(JavaScriptObject location, int v0, int v1, int v2) /*-{
+        $wnd.gl.uniform3ui(location, v0, v1, v2);
+    }-*/;
+
+    private static native void nglUniform2ui(JavaScriptObject location, int v0, int v1) /*-{
+        $wnd.gl.uniform2ui(location, v0, v1);
+    }-*/;
+
+    private static native void nglUniform1ui(JavaScriptObject location, int v0) /*-{
+        $wnd.gl.uniform1ui(location, v0);
+    }-*/;
+
+    private static native int nglGetFragDataLocation(JavaScriptObject program, String name) /*-{
+        return $wnd.gl.getFragDataLocation(program, name);
+    }-*/;
+
+    private static native void nglCompressedTexSubImage3D(int target, int level, int xOffset, int yOffset, int zOffset,
+                                                          int width, int height, int depth,
+                                                          int format, ArrayBufferView data) /*-{
+        $wnd.gl.compressedTexSubImage3D(target, level, xOffset, yOffset, zOffset, width, height, data, format, data);
+    }-*/;
+
+    private static native void nglCompressedTexImage3D(int target, int level, int internalFormat,
+                                                       int width, int height, int depth,
+                                                       int border, ArrayBufferView data) /*-{
+        $wnd.gl.compressedTexImage3D(target, level, internalFormat, width, height, depth, border, data);
+    }-*/;
+
+    private static native void nglCopyTexSubImage3D(int target, int level, int xOffset, int yOffset, int zOffset,
+                                                    int x, int y, int width, int height) /*-{
+        $wnd.gl.copyTexSubImage3D(target, level, xOffset, yOffset, zOffset, x, y, width, height);
+    }-*/;
+
+    private static native void nglTexSubImage3D(int target, int level, int xOffset, int yOffset, int zOffset,
+                                                int format, int type, JavaScriptObject pixels) /*-{
+        $wnd.gl.texSubImage3D(target, level, xOffset, yOffset, zOffset, format, type, pixels);
+    }-*/;
+
+    private static native void nglTexSubImage3D(int target, int level, int xOffset, int yOffset, int zOffset,
+                                                int width, int height, int depth, int format, int type,
+                                                ArrayBufferView pixels) /*-{
+        $wnd.gl.texSubImage3D(target, level, xOffset, yOffset, zOffset, width, height, depth, format, type, pixels);
+    }-*/;
+
+    private static native void nglTexImage3D(int target, int level, int internalFormat, int width, int height, int depth,
+                                             int border, int format, int type, ArrayBufferView pixels) /*-{
+        $wnd.gl.texImage3D(target, level, internalFormat, width, height, depth, border, format, type, pixels);
+    }-*/;
+
+    private static native void nglTexStorage3D(int target, int levels, int internalFormat, int width, int height, int depth) /*-{
+        $wnd.gl.texStorage3D(target, levels, internalFormat, width, height, depth);
+    }-*/;
+
+    private static native void nglTexStorage2D(int target, int levels, int internalFormat, int width, int height) /*-{
+        $wnd.gl.texStorage2D(target, levels, internalFormat, width, height);
+    }-*/;
+
     private static native void nglRenderbufferStorageMultisample(int target, int samples, int internalFormat, int width, int height) /*-{
         $wnd.gl.renderbufferStorageMultisample(target, samples, internalFormat, width, height);
     }-*/;
 
-    private static native Int32Array nglGetInternalformatParameter(int target, int internalFormat, int pName); /*-{
+    private static native Int32Array nglGetInternalformatParameter(int target, int internalFormat, int pName) /*-{
         return $wnd.gl.getInternalformatParameter(target, internalFormat, pName);
     }-*/;
 
