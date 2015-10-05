@@ -40,6 +40,7 @@ final class WebGLObjectMap
 {
     private final static Map<WebGLContext, WebGLObjectMap> contexts = new HashMap<>();
 
+    // WebGL10 objects
     private final Map<Integer, JavaScriptObject> shaders       = new HashMap<>();
     private final Map<Integer, JavaScriptObject> buffers       = new HashMap<>();
     private final Map<Integer, JavaScriptObject> programs      = new HashMap<>();
@@ -48,6 +49,13 @@ final class WebGLObjectMap
     private final Map<Integer, JavaScriptObject> renderBuffers = new HashMap<>();
 
     private final Map<Integer, Map<Integer, JavaScriptObject>> uniforms = new HashMap<>();
+
+    // WebGL20 objects
+    private final Map<Integer, JavaScriptObject> queries            = new HashMap<>();
+    private final Map<Integer, JavaScriptObject> samplers           = new HashMap<>();
+    private final Map<Integer, JavaScriptObject> syncs              = new HashMap<>();
+    private final Map<Integer, JavaScriptObject> transformFeedbacks = new HashMap<>();
+    private final Map<Integer, JavaScriptObject> vertexArrayObjects = new HashMap<>();
 
     // Field to store the current program
     int currentProgram = 0;
@@ -71,6 +79,9 @@ final class WebGLObjectMap
 
     int createShader(JavaScriptObject shader)
     {
+        if (shader == null)
+            return 0;
+
         if (shaders.values().contains(shader))
         {
             for (int key : shaders.keySet())
@@ -89,6 +100,9 @@ final class WebGLObjectMap
 
     int createBuffer(JavaScriptObject buffer)
     {
+        if (buffer == null)
+            return 0;
+
         if (buffers.values().contains(buffer))
         {
             for (int key : buffers.keySet())
@@ -107,6 +121,9 @@ final class WebGLObjectMap
 
     int createProgram(JavaScriptObject program)
     {
+        if (program == null)
+            return 0;
+
         if (programs.values().contains(program))
         {
             for (int key : programs.keySet())
@@ -125,6 +142,9 @@ final class WebGLObjectMap
 
     int createTexture(JavaScriptObject texture)
     {
+        if (texture == null)
+            return 0;
+
         if (textures.values().contains(texture))
         {
             for (int key : textures.keySet())
@@ -143,6 +163,9 @@ final class WebGLObjectMap
 
     int createFramebuffer(JavaScriptObject frameBuffer)
     {
+        if (frameBuffer == null)
+            return 0;
+
         if (frameBuffers.values().contains(frameBuffer))
         {
             for (int key : frameBuffers.keySet())
@@ -161,6 +184,9 @@ final class WebGLObjectMap
 
     int createRenderBuffer(JavaScriptObject renderBuffer)
     {
+        if (renderBuffer == null)
+            return 0;
+
         if (renderBuffers.values().contains(renderBuffer))
         {
             for (int key : renderBuffers.keySet())
@@ -179,6 +205,9 @@ final class WebGLObjectMap
 
     int createUniform(JavaScriptObject uniform)
     {
+        if (uniform == null)
+            return 0;
+
         Map<Integer, JavaScriptObject> progUniforms = uniforms.get(currentProgram);
 
         if (progUniforms == null)
@@ -210,32 +239,175 @@ final class WebGLObjectMap
 
     void deleteShader(int shader)
     {
-        shaders.remove(shader);
+        if (shader != 0)
+            shaders.remove(shader);
     }
 
     void deleteBuffer(int buffer)
     {
-        buffers.remove(buffer);
+        if (buffer != 0)
+            buffers.remove(buffer);
     }
 
     void deleteProgram(int program)
     {
-        programs.remove(program);
-        uniforms.remove(program);
+        if (program != 0)
+        {
+            programs.remove(program);
+            uniforms.remove(program);
+        }
     }
 
     void deleteTexture(int texture)
     {
-        textures.remove(texture);
+        if (texture != 0)
+            textures.remove(texture);
     }
 
     void deleteFramebuffer(int frameBuffer)
     {
-        frameBuffers.remove(frameBuffer);
+        if (frameBuffer != 0)
+            frameBuffers.remove(frameBuffer);
     }
 
     void deleteRenderBuffer(int renderBuffer)
     {
-        renderBuffers.remove(renderBuffer);
+        if (renderBuffer != 0)
+            renderBuffers.remove(renderBuffer);
+    }
+
+    int createQuery(JavaScriptObject query)
+    {
+        if (query == null)
+            return 0;
+
+        if (queries.values().contains(query))
+        {
+            for (int key : queries.keySet())
+                if (queries.get(key) == query)
+                    return key;
+        }
+
+        queries.put(queries.size() + 1, query);
+        return queries.size();
+    }
+
+    JavaScriptObject toQuery(int query)
+    {
+        return queries.get(query);
+    }
+
+    int createSampler(JavaScriptObject sampler)
+    {
+        if (sampler == null)
+            return 0;
+
+        if (samplers.values().contains(sampler))
+        {
+            for (int key : samplers.keySet())
+                if (samplers.get(key) == sampler)
+                    return key;
+        }
+
+        samplers.put(samplers.size() + 1, sampler);
+        return samplers.size();
+    }
+
+    JavaScriptObject toSampler(int sampler)
+    {
+        return samplers.get(sampler);
+    }
+
+    int createSync(JavaScriptObject sync)
+    {
+        if (sync == null)
+            return 0;
+
+        if (syncs.values().contains(sync))
+        {
+            for (int key : syncs.keySet())
+                if (syncs.get(key) == sync)
+                    return key;
+        }
+
+        syncs.put(syncs.size() + 1, sync);
+        return syncs.size();
+    }
+
+    JavaScriptObject toSync(int sync)
+    {
+        return syncs.get(sync);
+    }
+
+    int createTransformFeedback(JavaScriptObject transformFeedback)
+    {
+        if (transformFeedback == null)
+            return 0;
+
+        if (transformFeedbacks.values().contains(transformFeedback))
+        {
+            for (int key : transformFeedbacks.keySet())
+                if (transformFeedbacks.get(key) == transformFeedback)
+                    return key;
+        }
+
+        transformFeedbacks.put(transformFeedbacks.size() + 1, transformFeedback);
+        return transformFeedbacks.size();
+    }
+
+    JavaScriptObject toTransformFeedback(int transformFeedback)
+    {
+        return transformFeedbacks.get(transformFeedback);
+    }
+
+    int createVertexArrayObject(JavaScriptObject vertexArrayObject)
+    {
+        if (vertexArrayObject == null)
+            return 0;
+
+        if (vertexArrayObjects.values().contains(vertexArrayObject))
+        {
+            for (int key : vertexArrayObjects.keySet())
+                if (vertexArrayObjects.get(key) == vertexArrayObject)
+                    return key;
+        }
+
+        vertexArrayObjects.put(vertexArrayObjects.size() + 1, vertexArrayObject);
+        return vertexArrayObjects.size();
+    }
+
+    JavaScriptObject toVertexArrayObject(int vertexArrayObject)
+    {
+        return vertexArrayObjects.get(vertexArrayObject);
+    }
+
+    void deleteQuery(int query)
+    {
+        if (query != 0)
+            queries.remove(query);
+    }
+
+    void deleteSampler(int sampler)
+    {
+        if (sampler != 0)
+            samplers.remove(sampler);
+    }
+
+    void deleteSync(int sync)
+    {
+        if (sync != 0)
+            syncs.remove(sync);
+    }
+
+    void deleteTransformFeedback(int transformFeedback)
+    {
+        if (transformFeedback != 0)
+            transformFeedbacks.remove(transformFeedback);
+    }
+
+    void deleteVertexArrayObject(int vertexArrayObject)
+    {
+        if (vertexArrayObject != 0)
+            vertexArrayObjects.remove(vertexArrayObject);
     }
 }
