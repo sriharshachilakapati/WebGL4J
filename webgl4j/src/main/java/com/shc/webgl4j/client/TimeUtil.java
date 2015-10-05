@@ -29,7 +29,7 @@ package com.shc.webgl4j.client;
  */
 public final class TimeUtil
 {
-    private static ImplementationUsed implementationUsed = ImplementationUsed.HIGH_PERFORMANCE;
+    private static Implementation implementation = Implementation.HIGH_PERFORMANCE;
 
     private TimeUtil()
     {
@@ -43,22 +43,22 @@ public final class TimeUtil
         var currentMillis;
         if ($wnd.performance.now)
         {
-            @com.shc.webgl4j.client.TimeUtil::implementationUsed
-                = @com.shc.webgl4j.client.TimeUtil.ImplementationUsed::HIGH_PERFORMANCE;
+            @com.shc.webgl4j.client.TimeUtil::implementation
+                = @com.shc.webgl4j.client.TimeUtil.Implementation::HIGH_PERFORMANCE;
 
             currentMillis = function (){ return $wnd.performance.now(); }
         }
         else if ($wnd.performance.webkitNow)
         {
-            @com.shc.webgl4j.client.TimeUtil::implementationUsed
-                = @com.shc.webgl4j.client.TimeUtil.ImplementationUsed::HIGH_PERFORMANCE_WEBKIT;
+            @com.shc.webgl4j.client.TimeUtil::implementation
+                = @com.shc.webgl4j.client.TimeUtil.Implementation::HIGH_PERFORMANCE_WEBKIT;
 
             currentMillis = function (){ return $wnd.performance.webkitNow(); }
         }
         else
         {
-            @com.shc.webgl4j.client.TimeUtil::implementationUsed
-                = @com.shc.webgl4j.client.TimeUtil.ImplementationUsed::LOW_PERFORMANCE;
+            @com.shc.webgl4j.client.TimeUtil::implementation
+                = @com.shc.webgl4j.client.TimeUtil.Implementation::LOW_PERFORMANCE;
 
             currentMillis = function (){ return Date.now(); }
         }
@@ -93,15 +93,15 @@ public final class TimeUtil
         return currentMicros() * 1000;
     }
 
-    public static ImplementationUsed getImplementationUsed()
+    public static Implementation getImplementation()
     {
         if (!isInitialized())
             initialize();
 
-        return implementationUsed;
+        return implementation;
     }
 
-    public enum ImplementationUsed
+    public enum Implementation
     {
         HIGH_PERFORMANCE,
         HIGH_PERFORMANCE_WEBKIT,
