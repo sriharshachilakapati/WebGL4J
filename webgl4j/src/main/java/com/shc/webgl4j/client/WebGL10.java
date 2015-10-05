@@ -109,6 +109,7 @@ public final class WebGL10
     public static final int GL_ELEMENT_ARRAY_BUFFER                         = 0x8893;
     public static final int GL_ELEMENT_ARRAY_BUFFER_BINDING                 = 0x8895;
     public static final int GL_EQUAL                                        = 0x0202;
+    public static final int GL_FALSE                                        = 0x0000;
     public static final int GL_FASTEST                                      = 0x1101;
     public static final int GL_FLOAT                                        = 0x1406;
     public static final int GL_FLOAT_MAT2                                   = 0x8B5A;
@@ -314,6 +315,7 @@ public final class WebGL10
     public static final int GL_TRIANGLES                                    = 0x0004;
     public static final int GL_TRIANGLE_FAN                                 = 0x0006;
     public static final int GL_TRIANGLE_STRIP                               = 0x0005;
+    public static final int GL_TRUE                                         = 0x0001;
     public static final int GL_UNPACK_ALIGNMENT                             = 0x0CF5;
     public static final int GL_UNPACK_COLORSPACE_CONVERSION_WEBGL           = 0x9243;
     public static final int GL_UNPACK_FLIP_Y_WEBGL                          = 0x9240;
@@ -533,6 +535,7 @@ public final class WebGL10
         nglBufferSubData(target, offset, size, data);
     }
 
+    @WebGLContext.HandlesContextLoss
     public static int glCheckFramebufferStatus(int target)
     {
         checkContextCompatibility();
@@ -832,6 +835,7 @@ public final class WebGL10
         return transformedArray;
     }
 
+    @WebGLContext.HandlesContextLoss
     public static int glGetAttribLocation(int programID, String name)
     {
         checkContextCompatibility();
@@ -844,6 +848,7 @@ public final class WebGL10
         return nglGetCanvas();
     }
 
+    @WebGLContext.HandlesContextLoss
     public static WebGLContext.Attributes glGetContextAttributes()
     {
         checkContextCompatibility();
@@ -862,6 +867,7 @@ public final class WebGL10
         return nglGetDrawingBufferWidth();
     }
 
+    @WebGLContext.HandlesContextLoss
     public static int glGetError()
     {
         checkContextCompatibility();
@@ -1050,6 +1056,7 @@ public final class WebGL10
         return nglGetVertexAttribi(index, pname);
     }
 
+    @WebGLContext.HandlesContextLoss
     public static int glGetVertexAttribOffset(int index, int pname)
     {
         checkContextCompatibility();
@@ -1062,48 +1069,56 @@ public final class WebGL10
         nglHint(target, mode);
     }
 
+    @WebGLContext.HandlesContextLoss
     public static boolean glIsBuffer(int bufferID)
     {
         checkContextCompatibility();
         return nglIsBuffer(WebGLObjectMap.get().toBuffer(bufferID));
     }
 
+    @WebGLContext.HandlesContextLoss
     public static boolean glIsContextLost()
     {
         checkContextCompatibility();
         return nglIsContextLost();
     }
 
+    @WebGLContext.HandlesContextLoss
     public static boolean glIsEnabled(int enableCap)
     {
         checkContextCompatibility();
         return nglIsEnabled(enableCap);
     }
 
+    @WebGLContext.HandlesContextLoss
     public static boolean glIsFramebuffer(int framebufferID)
     {
         checkContextCompatibility();
         return nglIsFramebuffer(WebGLObjectMap.get().toFramebuffer(framebufferID));
     }
 
+    @WebGLContext.HandlesContextLoss
     public static boolean glIsProgram(int programID)
     {
         checkContextCompatibility();
         return nglIsProgram(WebGLObjectMap.get().toProgram(programID));
     }
 
+    @WebGLContext.HandlesContextLoss
     public static boolean glIsRenderbuffer(int renderbufferID)
     {
         checkContextCompatibility();
         return nglIsRenderbuffer(WebGLObjectMap.get().toRenderBuffer(renderbufferID));
     }
 
+    @WebGLContext.HandlesContextLoss
     public static boolean glIsShader(int shaderID)
     {
         checkContextCompatibility();
         return nglIsShader(WebGLObjectMap.get().toShader(shaderID));
     }
 
+    @WebGLContext.HandlesContextLoss
     public static boolean glIsTexture(int textureID)
     {
         checkContextCompatibility();

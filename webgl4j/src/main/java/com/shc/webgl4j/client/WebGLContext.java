@@ -26,6 +26,12 @@ package com.shc.webgl4j.client;
 
 import com.google.gwt.core.client.JavaScriptObject;
 
+import java.lang.annotation.Documented;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
 /**
  * <p>A {@link WebGLContext} represents a WebGL rendering context that is used to draw WebGL graphics onto a HTML5
  * canvas. A <i>context</i> can represent many things, such as which objects are bound to which targets, and the state
@@ -402,5 +408,16 @@ public final class WebGLContext extends JavaScriptObject
         public final native void setStencil(boolean stencil) /*-{
             this.stencil = stencil;
         }-*/;
+    }
+
+    /**
+     * Handles Context Loss is an attribute that specifies that a method defined by WebGL API handles the context loss
+     * automatically. This does nothing but notifies the user by sitting in the documentation.
+     */
+    @Documented
+    @Target(ElementType.METHOD)
+    @Retention(RetentionPolicy.SOURCE)
+    public @interface HandlesContextLoss
+    {
     }
 }
