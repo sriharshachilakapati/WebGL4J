@@ -740,6 +740,99 @@ public final class WebGL20
         return WebGLObjectMap.get().createSampler(nglCreateSampler());
     }
 
+    public static void glDeleteSampler(int sampler)
+    {
+        checkContextCompatibility();
+        nglDeleteSampler(WebGLObjectMap.get().toSampler(sampler));
+        WebGLObjectMap.get().deleteSampler(sampler);
+    }
+
+    @WebGLContext.HandlesContextLoss
+    public static boolean glIsSampler(int sampler)
+    {
+        checkContextCompatibility();
+        return nglIsSampler(WebGLObjectMap.get().toSampler(sampler));
+    }
+
+    public static void glBindSampler(int unit, int sampler)
+    {
+        checkContextCompatibility();
+        nglBindSampler(unit, WebGLObjectMap.get().toSampler(sampler));
+    }
+
+    public static void glSamplerParameteri(int sampler, int pname, int param)
+    {
+        checkContextCompatibility();
+        nglSamplerParameteri(WebGLObjectMap.get().toSampler(sampler), pname, param);
+    }
+
+    public static void glSamplerParameterf(int sampler, int pname, float param)
+    {
+        checkContextCompatibility();
+        nglSamplerParameterf(WebGLObjectMap.get().toSampler(sampler), pname, param);
+    }
+
+    public static int glGetSamplerParameteri(int sampler, int pname)
+    {
+        checkContextCompatibility();
+        return nglGetSamplerParameteri(WebGLObjectMap.get().toSampler(sampler), pname);
+    }
+
+    public static float glGetSamplerParameterf(int sampler, int pname)
+    {
+        checkContextCompatibility();
+        return nglGetSamplerParameterf(WebGLObjectMap.get().toSampler(sampler), pname);
+    }
+
+    public static int glFenceSync(int condition, int flags)
+    {
+        checkContextCompatibility();
+        return WebGLObjectMap.get().createSync(nglFenceSync(condition, flags));
+    }
+
+    @WebGLContext.HandlesContextLoss
+    public static boolean glIsSync(int sync)
+    {
+        checkContextCompatibility();
+        return nglIsSync(WebGLObjectMap.get().toSync(sync));
+    }
+
+    private static native boolean nglIsSync(JavaScriptObject sync) /*-{
+        return $wnd.gl.isSync(sync);
+    }-*/;
+
+    private static native JavaScriptObject nglFenceSync(int condition, int flags) /*-{
+        return $wnd.gl.fenceSync(condition, flags);
+    }-*/;
+
+    private static native float nglGetSamplerParameterf(JavaScriptObject sampler, int pname) /*-{
+        return $wnd.gl.getSamplerParameter(sampler, pname);
+    }-*/;
+
+    private static native int nglGetSamplerParameteri(JavaScriptObject sampler, int pname) /*-{
+        return $wnd.gl.getSamplerParameter(sampler, pname);
+    }-*/;
+
+    private static native void nglSamplerParameterf(JavaScriptObject sampler, int pname, float param) /*-{
+        $wnd.gl.samplerParameterf(sampler, pname, param);
+    }-*/;
+
+    private static native void nglSamplerParameteri(JavaScriptObject sampler, int pname, int param) /*-{
+        $wnd.gl.samplerParameteri(sampler, pname, param);
+    }-*/;
+
+    private static native void nglBindSampler(int unit, JavaScriptObject sampler) /*-{
+        $wnd.gl.bindSampler(unit, sampler);
+    }-*/;
+
+    private static native boolean nglIsSampler(JavaScriptObject sampler) /*-{
+        return $wnd.gl.isSampler(sampler);
+    }-*/;
+
+    private static native void nglDeleteSampler(JavaScriptObject sampler) /*-{
+        $wnd.gl.deleteSampler(sampler);
+    }-*/;
+
     private static native JavaScriptObject nglCreateSampler() /*-{
         return $wnd.gl.createSampler();
     }-*/;
