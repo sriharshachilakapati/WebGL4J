@@ -797,6 +797,47 @@ public final class WebGL20
         return nglIsSync(WebGLObjectMap.get().toSync(sync));
     }
 
+    public static void glDeleteSync(int sync)
+    {
+        checkContextCompatibility();
+        nglDeleteSync(WebGLObjectMap.get().toSync(sync));
+        WebGLObjectMap.get().deleteSync(sync);
+    }
+
+    public static int glClientWaitSync(int sync, int flags, int timeout)
+    {
+        checkContextCompatibility();
+        return nglClientWaitSync(WebGLObjectMap.get().toSync(sync), flags, timeout);
+    }
+
+    public static void glWaitSync(int sync, int flags, int timeout)
+    {
+        checkContextCompatibility();
+        nglWaitSync(WebGLObjectMap.get().toSync(sync), flags, timeout);
+    }
+
+    public static int glGetSyncParameter(int sync, int pname)
+    {
+        checkContextCompatibility();
+        return nglGetSyncParameter(WebGLObjectMap.get().toSync(sync), pname);
+    }
+
+    private static native int nglGetSyncParameter(JavaScriptObject sync, int pname) /*-{
+        return $wnd.gl.getSyncParameter(sync, pname);
+    }-*/;
+
+    private static native void nglWaitSync(JavaScriptObject sync, int flags, int timeout) /*-{
+        $wnd.gl.waitSync(sync, flags, timeout);
+    }-*/;
+
+    private static native int nglClientWaitSync(JavaScriptObject sync, int flags, int timeout) /*-{
+        return $wnd.gl.clientWaitSync(sync, flags, timeout);
+    }-*/;
+
+    private static native void nglDeleteSync(JavaScriptObject sync) /*-{
+        $wnd.gl.deleteSync(sync);
+    }-*/;
+
     private static native boolean nglIsSync(JavaScriptObject sync) /*-{
         return $wnd.gl.isSync(sync);
     }-*/;
