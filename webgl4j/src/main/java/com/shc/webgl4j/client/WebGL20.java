@@ -27,12 +27,15 @@ package com.shc.webgl4j.client;
 import com.google.gwt.canvas.client.Canvas;
 import com.google.gwt.canvas.dom.client.ImageData;
 import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.client.JsArrayString;
 import com.google.gwt.dom.client.CanvasElement;
 import com.google.gwt.typedarrays.shared.ArrayBufferView;
 import com.google.gwt.typedarrays.shared.Float32Array;
 import com.google.gwt.typedarrays.shared.Int32Array;
 import com.google.gwt.typedarrays.shared.Uint32Array;
 import com.google.gwt.user.client.ui.Image;
+
+import java.util.List;
 
 /**
  * @author Sri Harsha Chilakapati
@@ -821,6 +824,128 @@ public final class WebGL20
         checkContextCompatibility();
         return nglGetSyncParameter(WebGLObjectMap.get().toSync(sync), pname);
     }
+
+    public static int glCreateTransformFeedback()
+    {
+        checkContextCompatibility();
+        return WebGLObjectMap.get().createTransformFeedback(nglCreateTransformFeedback());
+    }
+
+    public static void glDeleteTransformFeedback(int transformFeedback)
+    {
+        checkContextCompatibility();
+        nglDeleteTransformFeedback(WebGLObjectMap.get().toTransformFeedback(transformFeedback));
+        WebGLObjectMap.get().deleteTransformFeedback(transformFeedback);
+    }
+
+    @WebGLContext.HandlesContextLoss
+    public static boolean glIsTransformFeedback(int transformFeedback)
+    {
+        checkContextCompatibility();
+        return nglIsTransformFeedback(WebGLObjectMap.get().toTransformFeedback(transformFeedback));
+    }
+
+    public static void glBindTransformFeedback(int target, int transformFeedback)
+    {
+        checkContextCompatibility();
+        nglBindTransformFeedback(target, WebGLObjectMap.get().toTransformFeedback(transformFeedback));
+    }
+
+    public static void glBeginTransformFeedback(int primitiveMode)
+    {
+        checkContextCompatibility();
+        nglBeginTransformFeedback(primitiveMode);
+    }
+
+    public static void glEndTransformFeedback()
+    {
+        checkContextCompatibility();
+        nglEndTransformFeedback();
+    }
+
+    public static void glTransformFeedbackVaryings(int program, JsArrayString varyings, int bufferMode)
+    {
+        checkContextCompatibility();
+        nglTransformFeedbackVaryings(WebGLObjectMap.get().toProgram(program), varyings, bufferMode);
+    }
+
+    public static void glTransformFeedbackVaryings(int program, String[] varyings, int bufferMode)
+    {
+        JsArrayString varyingsArray = JsArrayString.createArray(varyings.length).cast();
+
+        for (String varying : varyings)
+            varyingsArray.push(varying);
+
+        glTransformFeedbackVaryings(program, varyingsArray, bufferMode);
+    }
+
+    public static void glTransformFeedbackVaryings(int program, List<String> varyings, int bufferMode)
+    {
+        JsArrayString varyingsArray = JsArrayString.createArray(varyings.size()).cast();
+
+        for (String varying : varyings)
+            varyingsArray.push(varying);
+
+        glTransformFeedbackVaryings(program, varyingsArray, bufferMode);
+    }
+
+    public static WebGL10.ActiveInfo glGetTransformFeedbackVarying(int program, int index)
+    {
+        checkContextCompatibility();
+        return nglGetTransformFeedbackVarying(WebGLObjectMap.get().toProgram(program), index);
+    }
+
+    public static void glPauseTransformFeedback()
+    {
+        checkContextCompatibility();
+        nglPauseTransformFeedback();
+    }
+
+    public static void glResumeTransformFeedback()
+    {
+        checkContextCompatibility();
+        nglResumeTransformFeedback();
+    }
+
+    private static native void nglResumeTransformFeedback() /*-{
+        $wnd.gl.resumeTransformFeedback();
+    }-*/;
+
+    private static native void nglPauseTransformFeedback() /*-{
+        $wnd.gl.pauseTransformFeedback();
+    }-*/;
+
+    private static native WebGL10.ActiveInfo nglGetTransformFeedbackVarying(JavaScriptObject program, int index) /*-{
+        return $wnd.gl.getTransformFeedbackVarying(program, index);
+    }-*/;
+
+    private static native void nglTransformFeedbackVaryings(JavaScriptObject program, JsArrayString varyings, int bufferMode) /*-{
+        $wnd.gl.transformFeedbackVaryings(program, varyings, bufferMode);
+    }-*/;
+
+    private static native void nglEndTransformFeedback() /*-{
+        $wnd.gl.endTransformFeedback();
+    }-*/;
+
+    private static native void nglBeginTransformFeedback(int primitiveMode) /*-{
+        $wnd.gl.beginTransformFeedback(primitiveMode);
+    }-*/;
+
+    private static native void nglBindTransformFeedback(int target, JavaScriptObject transformFeedback) /*-{
+        $wnd.gl.bindTransformFeedback(target, transformFeedback);
+    }-*/;
+
+    private static native boolean nglIsTransformFeedback(JavaScriptObject transformFeedback) /*-{
+        return $wnd.gl.isTransformFeedback(transformFeedback);
+    }-*/;
+
+    public static native void nglDeleteTransformFeedback(JavaScriptObject transformFeedback) /*-{
+        $wnd.gl.deleteTransformFeedback(transformFeedback);
+    }-*/;
+
+    private static native JavaScriptObject nglCreateTransformFeedback() /*-{
+        return $wnd.gl.createTransformFeedback();
+    }-*/;
 
     private static native int nglGetSyncParameter(JavaScriptObject sync, int pname) /*-{
         return $wnd.gl.getSyncParameter(sync, pname);
