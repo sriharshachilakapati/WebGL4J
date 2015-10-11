@@ -880,52 +880,57 @@ public final class WebGL10
         return nglGetExtension(name);
     }
 
-    public static int glGetFramebufferAttachmentParameter(int target, int attachment, int pname)
+    @SuppressWarnings("unchecked")
+    public static <T> T glGetFramebufferAttachmentParameter(int target, int attachment, int pname)
     {
         checkContextCompatibility();
-        return nglGetFramebufferAttachmentParameter(target, attachment, pname);
+        T result = nglGetFramebufferAttachmentParameter(target, attachment, pname);
+
+        if (pname == GL_FRAMEBUFFER_ATTACHMENT_OBJECT_NAME)
+        {
+            switch ((Integer) glGetFramebufferAttachmentParameter(target, attachment, GL_FRAMEBUFFER_ATTACHMENT_OBJECT_TYPE))
+            {
+                case GL_TEXTURE:
+                    return (T) (Integer) WebGLObjectMap.get().createTexture((JavaScriptObject) result);
+
+                case GL_RENDERBUFFER:
+                    return (T) (Integer) WebGLObjectMap.get().createRenderBuffer((JavaScriptObject) result);
+
+                case GL_NONE:
+                    return (T) (Integer) 0;
+            }
+        }
+
+        return result;
     }
 
-    public static <T extends JavaScriptObject> T glGetParameter(int pname)
+    @SuppressWarnings("unchecked")
+    public static <T> T glGetParameter(int pname)
     {
         checkContextCompatibility();
-        return nglGetParameter(pname);
-    }
+        T result = nglGetParameter(pname);
 
-    public static int glGetParameteri(int pname)
-    {
-        checkContextCompatibility();
-        return nglGetParameteri(pname);
-    }
+        switch (pname)
+        {
+            case GL_ARRAY_BUFFER_BINDING:
+            case GL_ELEMENT_ARRAY_BUFFER_BINDING:
+                return (T) (Integer) WebGLObjectMap.get().createBuffer((JavaScriptObject) result);
 
-    public static boolean glGetParameterb(int pname)
-    {
-        checkContextCompatibility();
-        return nglGetParameterb(pname);
-    }
+            case GL_CURRENT_PROGRAM:
+                return (T) (Integer) WebGLObjectMap.get().createProgram((JavaScriptObject) result);
 
-    public static int[] glGetParameterii(int pname)
-    {
-        checkContextCompatibility();
-        return nglGetParameterii(pname);
-    }
+            case GL_FRAMEBUFFER_BINDING:
+                return (T) (Integer) WebGLObjectMap.get().createFramebuffer((JavaScriptObject) result);
 
-    public static float[] glGetParameterff(int pname)
-    {
-        checkContextCompatibility();
-        return nglGetParameterff(pname);
-    }
+            case GL_RENDERBUFFER_BINDING:
+                return (T) (Integer) WebGLObjectMap.get().createRenderBuffer((JavaScriptObject) result);
 
-    public static boolean[] glGetParameterbb(int pname)
-    {
-        checkContextCompatibility();
-        return nglGetParameterbb(pname);
-    }
+            case GL_TEXTURE_BINDING_2D:
+            case GL_TEXTURE_BINDING_CUBE_MAP:
+                return (T) (Integer) WebGLObjectMap.get().createTexture((JavaScriptObject) result);
+        }
 
-    public static String glGetParameters(int pname)
-    {
-        checkContextCompatibility();
-        return nglGetParameters(pname);
+        return result;
     }
 
     public static String glGetProgramInfoLog(int programID)
@@ -934,16 +939,10 @@ public final class WebGL10
         return nglGetProgramInfoLog(WebGLObjectMap.get().toProgram(programID));
     }
 
-    public static int glGetProgramParameteri(int programID, int pname)
+    public static <T> T glGetProgramParameter(int programID, int pname)
     {
         checkContextCompatibility();
-        return nglGetProgramParameteri(WebGLObjectMap.get().toProgram(programID), pname);
-    }
-
-    public static boolean glGetProgramParameterb(int programID, int pname)
-    {
-        checkContextCompatibility();
-        return nglGetProgramParameterb(WebGLObjectMap.get().toProgram(programID), pname);
+        return nglGetProgramParameter(WebGLObjectMap.get().toProgram(programID), pname);
     }
 
     public static int glGetRenderbufferParameter(int target, int pname)
@@ -958,16 +957,10 @@ public final class WebGL10
         return nglGetShaderInfoLog(WebGLObjectMap.get().toShader(shaderID));
     }
 
-    public static int glGetShaderParameteri(int shaderID, int pname)
+    public static <T> T glGetShaderParameter(int shaderID, int pname)
     {
         checkContextCompatibility();
-        return nglGetShaderParameteri(WebGLObjectMap.get().toShader(shaderID), pname);
-    }
-
-    public static boolean glGetShaderParameterb(int shaderID, int pname)
-    {
-        checkContextCompatibility();
-        return nglGetShaderParameterb(WebGLObjectMap.get().toShader(shaderID), pname);
+        return nglGetShaderParameter(WebGLObjectMap.get().toShader(shaderID), pname);
     }
 
     public static ShaderPrecisionFormat glGetShaderPrecisionFormat(int shaderType, int precisionType)
@@ -994,37 +987,10 @@ public final class WebGL10
         return nglGetTexParameter(WebGLObjectMap.get().toTexture(textureID), pname);
     }
 
-    public static boolean glGetUniformb(int programID, int location)
-    {
-        return glGetUniformbv(programID, location)[0];
-    }
-
-    public static boolean[] glGetUniformbv(int programID, int location)
+    public static <T> T glGetUniform(int program, int location)
     {
         checkContextCompatibility();
-        return nglGetUniformbv(WebGLObjectMap.get().toProgram(programID), WebGLObjectMap.get().toUniform(programID, location));
-    }
-
-    public static float glGetUniformf(int programID, int location)
-    {
-        return glGetUniformfv(programID, location)[0];
-    }
-
-    public static float[] glGetUniformfv(int programID, int location)
-    {
-        checkContextCompatibility();
-        return nglGetUniformfv(WebGLObjectMap.get().toProgram(programID), WebGLObjectMap.get().toUniform(programID, location));
-    }
-
-    public static int glGetUniformi(int programID, int location)
-    {
-        return glGetUniformiv(programID, location)[0];
-    }
-
-    public static int[] glGetUniformiv(int programID, int location)
-    {
-        checkContextCompatibility();
-        return nglGetUniformiv(WebGLObjectMap.get().toProgram(programID), WebGLObjectMap.get().toUniform(programID, location));
+        return nglGetUniform(WebGLObjectMap.get().toProgram(program), WebGLObjectMap.get().toUniform(program, location));
     }
 
     public static int glGetUniformLocation(int programID, String name)
@@ -1033,27 +999,16 @@ public final class WebGL10
         return WebGLObjectMap.get().createUniform(nglGetUniformLocation(WebGLObjectMap.get().toProgram(programID), name));
     }
 
-    public static boolean glGetVertexAttribb(int index, int pname)
+    @SuppressWarnings("unchecked")
+    public static <T> T glGetVertexAttrib(int index, int pname)
     {
         checkContextCompatibility();
-        return nglGetVertexAttribb(index, pname);
-    }
+        T result = nglGetVertexAttrib(index, pname);
 
-    public static float glGetVertexAttribf(int index, int pname)
-    {
-        return glGetVertexAttribfv(index, pname)[0];
-    }
+        if (pname == GL_VERTEX_ATTRIB_ARRAY_BUFFER_BINDING)
+                return (T) (Integer) WebGLObjectMap.get().createBuffer((JavaScriptObject) result);
 
-    public static float[] glGetVertexAttribfv(int index, int pname)
-    {
-        checkContextCompatibility();
-        return nglGetVertexAttribfv(index, pname);
-    }
-
-    public static int glGetVertexAttribi(int index, int pname)
-    {
-        checkContextCompatibility();
-        return nglGetVertexAttribi(index, pname);
+        return result;
     }
 
     @WebGLContext.HandlesContextLoss
@@ -1853,35 +1808,11 @@ public final class WebGL10
         return $wnd.gl.getExtension(name);
     }-*/;
 
-    private static native int nglGetFramebufferAttachmentParameter(int target, int attachment, int pname) /*-{
+    private static native <T> T nglGetFramebufferAttachmentParameter(int target, int attachment, int pname) /*-{
         return $wnd.gl.getFramebufferAttachmentParameter(target, attachment, pname);
     }-*/;
 
-    private static native <T extends JavaScriptObject> T nglGetParameter(int pname) /*-{
-        return $wnd.gl.getParameter(pname);
-    }-*/;
-
-    private static native int nglGetParameteri(int pname) /*-{
-        return $wnd.gl.getParameter(pname);
-    }-*/;
-
-    private static native boolean nglGetParameterb(int pname) /*-{
-        return $wnd.gl.getParameter(pname);
-    }-*/;
-
-    private static native int[] nglGetParameterii(int pname) /*-{
-        return $wnd.gl.getParameter(pname);
-    }-*/;
-
-    private static native float[] nglGetParameterff(int pname) /*-{
-        return $wnd.gl.getParameter(pname);
-    }-*/;
-
-    private static native boolean[] nglGetParameterbb(int pname) /*-{
-        return $wnd.gl.getParameter(pname);
-    }-*/;
-
-    private static native String nglGetParameters(int pname) /*-{
+    private static native <T> T nglGetParameter(int pname) /*-{
         return $wnd.gl.getParameter(pname);
     }-*/;
 
@@ -1889,11 +1820,7 @@ public final class WebGL10
         return $wnd.gl.getProgramInfoLog(programID);
     }-*/;
 
-    private static native int nglGetProgramParameteri(JavaScriptObject programID, int pname) /*-{
-        return $wnd.gl.getProgramParameter(programID, pname);
-    }-*/;
-
-    private static native boolean nglGetProgramParameterb(JavaScriptObject programID, int pname) /*-{
+    private static native <T> T nglGetProgramParameter(JavaScriptObject programID, int pname) /*-{
         return $wnd.gl.getProgramParameter(programID, pname);
     }-*/;
 
@@ -1905,11 +1832,7 @@ public final class WebGL10
         return $wnd.gl.getShaderInfoLog(shaderID);
     }-*/;
 
-    private static native int nglGetShaderParameteri(JavaScriptObject shaderID, int pname) /*-{
-        return $wnd.gl.getShaderParameter(shaderID, pname);
-    }-*/;
-
-    private static native boolean nglGetShaderParameterb(JavaScriptObject shaderID, int pname) /*-{
+    private static native <T> T nglGetShaderParameter(JavaScriptObject shaderID, int pname) /*-{
         return $wnd.gl.getShaderParameter(shaderID, pname);
     }-*/;
 
@@ -1929,15 +1852,7 @@ public final class WebGL10
         return $wnd.gl.getTexParameter(textureID, pname);
     }-*/;
 
-    private static native boolean[] nglGetUniformbv(JavaScriptObject programID, JavaScriptObject location) /*-{
-        return $wnd.gl.getUniform(programID, location);
-    }-*/;
-
-    private static native float[] nglGetUniformfv(JavaScriptObject programID, JavaScriptObject location) /*-{
-        return $wnd.gl.getUniform(programID, location);
-    }-*/;
-
-    private static native int[] nglGetUniformiv(JavaScriptObject programID, JavaScriptObject location) /*-{
+    private static native <T> T nglGetUniform(JavaScriptObject programID, JavaScriptObject location) /*-{
         return $wnd.gl.getUniform(programID, location);
     }-*/;
 
@@ -1945,15 +1860,7 @@ public final class WebGL10
         return $wnd.gl.getUniformLocation(programID, name);
     }-*/;
 
-    private static native boolean nglGetVertexAttribb(int index, int pname) /*-{
-        return $wnd.gl.getVertexAttrib(index, pname);
-    }-*/;
-
-    private static native float[] nglGetVertexAttribfv(int index, int pname) /*-{
-        return $wnd.gl.getVertexAttrib(index, pname);
-    }-*/;
-
-    private static native int nglGetVertexAttribi(int index, int pname) /*-{
+    private static native <T> T nglGetVertexAttrib(int index, int pname) /*-{
         return $wnd.gl.getVertexAttrib(index, pname);
     }-*/;
 

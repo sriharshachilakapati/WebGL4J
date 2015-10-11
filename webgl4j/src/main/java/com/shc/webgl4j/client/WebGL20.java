@@ -732,7 +732,7 @@ public final class WebGL20
         return WebGLObjectMap.get().createQuery(nglGetQuery(target, pname));
     }
 
-    public static int glGetQueryParameter(int query, int pname)
+    public static <T> T glGetQueryParameter(int query, int pname)
     {
         checkContextCompatibility();
         return nglGetQueryParameter(WebGLObjectMap.get().toQuery(query), pname);
@@ -776,16 +776,10 @@ public final class WebGL20
         nglSamplerParameterf(WebGLObjectMap.get().toSampler(sampler), pname, param);
     }
 
-    public static int glGetSamplerParameteri(int sampler, int pname)
+    public static <T> T glGetSamplerParameter(int sampler, int pname)
     {
         checkContextCompatibility();
-        return nglGetSamplerParameteri(WebGLObjectMap.get().toSampler(sampler), pname);
-    }
-
-    public static float glGetSamplerParameterf(int sampler, int pname)
-    {
-        checkContextCompatibility();
-        return nglGetSamplerParameterf(WebGLObjectMap.get().toSampler(sampler), pname);
+        return nglGetSamplerParameter(WebGLObjectMap.get().toSampler(sampler), pname);
     }
 
     public static int glFenceSync(int condition, int flags)
@@ -920,10 +914,15 @@ public final class WebGL20
         nglBindBufferRange(target, index, WebGLObjectMap.get().toBuffer(buffer), offset, size);
     }
 
-    public static int glGetIndexedParameter(int target, int index)
+    @SuppressWarnings("unchecked")
+    public static <T> T glGetIndexedParameter(int target, int index)
     {
         checkContextCompatibility();
-        return nglGetIndexedParameter(target, index);
+
+        if (target == GL_TRANSFORM_FEEDBACK_BUFFER_BINDING || target == GL_UNIFORM_BUFFER_BINDING)
+            return (T) (Integer) WebGLObjectMap.get().createBuffer((JavaScriptObject) nglGetIndexedParameter(target, index));
+        else
+            return nglGetIndexedParameter(target, index);
     }
 
     public static Uint32Array glGetUniformIndices(int program, JsArrayString uniformNames)
@@ -1026,7 +1025,7 @@ public final class WebGL20
         return $wnd.gl.getUniformIndices(program, uniformNames);
     }-*/;
 
-    private static native int nglGetIndexedParameter(int target, int index) /*-{
+    private static native <T> T nglGetIndexedParameter(int target, int index) /*-{
         return $wnd.gl.getIndexedParameter(target, index);
     }-*/;
 
@@ -1102,11 +1101,7 @@ public final class WebGL20
         return $wnd.gl.fenceSync(condition, flags);
     }-*/;
 
-    private static native float nglGetSamplerParameterf(JavaScriptObject sampler, int pname) /*-{
-        return $wnd.gl.getSamplerParameter(sampler, pname);
-    }-*/;
-
-    private static native int nglGetSamplerParameteri(JavaScriptObject sampler, int pname) /*-{
+    private static native <T> T nglGetSamplerParameter(JavaScriptObject sampler, int pname) /*-{
         return $wnd.gl.getSamplerParameter(sampler, pname);
     }-*/;
 
@@ -1134,7 +1129,7 @@ public final class WebGL20
         return $wnd.gl.createSampler();
     }-*/;
 
-    private static native int nglGetQueryParameter(JavaScriptObject query, int pname) /*-{
+    private static native <T> T nglGetQueryParameter(JavaScriptObject query, int pname) /*-{
         var result = $wnd.gl.getQueryParameter(query, pname);
         return (typeof (result) == 'boolean') ? result ? 1 : 0 : result;
     }-*/;
