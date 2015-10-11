@@ -29,6 +29,7 @@ import com.google.gwt.canvas.dom.client.ImageData;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsArrayString;
 import com.google.gwt.dom.client.CanvasElement;
+import com.google.gwt.typedarrays.client.Uint32ArrayNative;
 import com.google.gwt.typedarrays.shared.ArrayBufferView;
 import com.google.gwt.typedarrays.shared.Float32Array;
 import com.google.gwt.typedarrays.shared.Int32Array;
@@ -906,6 +907,136 @@ public final class WebGL20
         checkContextCompatibility();
         nglResumeTransformFeedback();
     }
+
+    public static void glBindBufferBase(int target, int index, int buffer)
+    {
+        checkContextCompatibility();
+        nglBindBufferBase(target, index, WebGLObjectMap.get().toBuffer(buffer));
+    }
+
+    public static void glBindBufferRange(int target, int index, int buffer, int offset, int size)
+    {
+        checkContextCompatibility();
+        nglBindBufferRange(target, index, WebGLObjectMap.get().toBuffer(buffer), offset, size);
+    }
+
+    public static int glGetIndexedParameter(int target, int index)
+    {
+        checkContextCompatibility();
+        return nglGetIndexedParameter(target, index);
+    }
+
+    public static Uint32Array glGetUniformIndices(int program, JsArrayString uniformNames)
+    {
+        checkContextCompatibility();
+        return nglGetUniformIndices(WebGLObjectMap.get().toBuffer(program), uniformNames);
+    }
+
+    public static Uint32Array glGetUniformIndices(int program, List<String> uniformNames)
+    {
+        JsArrayString arrayString = JsArrayString.createArray(uniformNames.size()).cast();
+
+        for (String uniformName : uniformNames)
+            arrayString.push(uniformName);
+
+        return glGetUniformIndices(program, arrayString);
+    }
+
+    public static Uint32Array glGetUniformIndices(int program, String... uniformNames)
+    {
+        JsArrayString arrayString = JsArrayString.createArray(uniformNames.length).cast();
+
+        for (String uniformName : uniformNames)
+            arrayString.push(uniformName);
+
+        return glGetUniformIndices(program, arrayString);
+    }
+
+    public static Int32Array glGetActiveUniforms(int program, Uint32Array uniformIndices, int pname)
+    {
+        checkContextCompatibility();
+        return nglGetActiveUniforms(WebGLObjectMap.get().toProgram(program), uniformIndices, pname);
+    }
+
+    public static Int32Array glGetActiveUniforms(int program, List<Integer> uniformIndices, int pname)
+    {
+        Uint32Array indices = Uint32ArrayNative.create(uniformIndices.size());
+
+        for (int i = 0; i < uniformIndices.size(); i++)
+            indices.set(i, uniformIndices.get(i));
+
+        return glGetActiveUniforms(program, indices, pname);
+    }
+
+    public static Int32Array glGetActiveUniforms(int program, int[] uniformIndices, int pname)
+    {
+        Uint32Array indices = Uint32ArrayNative.create(uniformIndices.length);
+
+        for (int i = 0; i < uniformIndices.length; i++)
+            indices.set(i, uniformIndices[i]);
+
+        return glGetActiveUniforms(program, indices, pname);
+    }
+
+    public static int glGetUniformBlockIndex(int program, String uniformBlockName)
+    {
+        checkContextCompatibility();
+        return nglGetUniformBlockIndex(WebGLObjectMap.get().toProgram(program), uniformBlockName);
+    }
+
+    public static <T> T glGetActiveUniformBlockParameter(int program, int uniformBlockIndex, int pname)
+    {
+        checkContextCompatibility();
+        return nglGetActiveUniformBlockParameter(WebGLObjectMap.get().toProgram(program), uniformBlockIndex, pname);
+    }
+
+    public static String glGetActiveUniformBlockName(int program, int uniformBlockIndex)
+    {
+        checkContextCompatibility();
+        return nglGetActiveUniformBlockName(WebGLObjectMap.get().toProgram(program), uniformBlockIndex);
+    }
+
+    public static void glUniformBlockBinding(int program, int uniformBlockIndex, int uniformBlockBinding)
+    {
+        checkContextCompatibility();
+        nglUniformBlockBinding(WebGLObjectMap.get().toProgram(program), uniformBlockIndex, uniformBlockBinding);
+    }
+
+    private static native void nglUniformBlockBinding(JavaScriptObject program, int uniformBlockIndex, int uniformBlockBinding) /*-{
+        $wnd.gl.uniformBlockBinding(program, uniformBlockIndex, uniformBlockBinding);
+    }-*/;
+
+    private static native String nglGetActiveUniformBlockName(JavaScriptObject program, int uniformBlockIndex) /*-{
+        return $wnd.gl.getActiveUniformBlockName(program, uniformBlockIndex);
+    }-*/;
+
+    private static native <T> T nglGetActiveUniformBlockParameter(JavaScriptObject program, int uniformBlockIndex, int pname) /*-{
+        return $wnd.gl.getActiveUniformBlockParameter(program, uniformBlockIndex, pname);
+    }-*/;
+
+    private static native int nglGetUniformBlockIndex(JavaScriptObject program, String uniformBlockName) /*-{
+        return $wnd.gl.getUniformBlockIndex(program, uniformBlockName);
+    }-*/;
+
+    private static native Int32Array nglGetActiveUniforms(JavaScriptObject program, Uint32Array uniformIndices, int pname) /*-{
+        return $wnd.gl.getActiveUniforms(program, uniformIndices, pname);
+    }-*/;
+
+    private static native Uint32Array nglGetUniformIndices(JavaScriptObject program, JsArrayString uniformNames) /*-{
+        return $wnd.gl.getUniformIndices(program, uniformNames);
+    }-*/;
+
+    private static native int nglGetIndexedParameter(int target, int index) /*-{
+        return $wnd.gl.getIndexedParameter(target, index);
+    }-*/;
+
+    private static native void nglBindBufferRange(int target, int index, JavaScriptObject buffer, int offset, int size) /*-{
+        $wnd.gl.bindBufferRange(target, index, buffer, offset, size);
+    }-*/;
+
+    private static native void nglBindBufferBase(int target, int index, JavaScriptObject buffer) /*-{
+        $wnd.gl.bindBufferBase(target, index, buffer);
+    }-*/;
 
     private static native void nglResumeTransformFeedback() /*-{
         $wnd.gl.resumeTransformFeedback();
