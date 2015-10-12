@@ -1001,6 +1001,48 @@ public final class WebGL20
         nglUniformBlockBinding(WebGLObjectMap.get().toProgram(program), uniformBlockIndex, uniformBlockBinding);
     }
 
+    public static int glCreateVertexArray()
+    {
+        checkContextCompatibility();
+        return WebGLObjectMap.get().createVertexArrayObject(nglCreateVertexArray());
+    }
+
+    public static void glDeleteVertexArray(int vertexArray)
+    {
+        checkContextCompatibility();
+        nglDeleteVertexArray(WebGLObjectMap.get().toVertexArrayObject(vertexArray));
+        WebGLObjectMap.get().deleteVertexArrayObject(vertexArray);
+    }
+
+    @WebGLContext.HandlesContextLoss
+    public static boolean glIsVertexArray(int vertexArray)
+    {
+        checkContextCompatibility();
+        return nglIsVertexArray(WebGLObjectMap.get().toVertexArrayObject(vertexArray));
+    }
+
+    public static void glBindVertexArray(int vertexArray)
+    {
+        checkContextCompatibility();
+        nglBindVertexArray(WebGLObjectMap.get().toVertexArrayObject(vertexArray));
+    }
+
+    private static native void nglBindVertexArray(JavaScriptObject vertexArray) /*-{
+        $wnd.gl.bindVertexArray(vertexArray);
+    }-*/;
+
+    private static native boolean nglIsVertexArray(JavaScriptObject vertexArray) /*-{
+        return $wnd.gl.isVertexArray(vertexArray);
+    }-*/;
+
+    private static native void nglDeleteVertexArray(JavaScriptObject vertexArray) /*-{
+        $wnd.gl.deleteVertexArray(vertexArray);
+    }-*/;
+
+    private static native JavaScriptObject nglCreateVertexArray() /*-{
+        return $wnd.gl.createVertexArray();
+    }-*/;
+
     private static native void nglUniformBlockBinding(JavaScriptObject program, int uniformBlockIndex, int uniformBlockBinding) /*-{
         $wnd.gl.uniformBlockBinding(program, uniformBlockIndex, uniformBlockBinding);
     }-*/;
@@ -1130,8 +1172,7 @@ public final class WebGL20
     }-*/;
 
     private static native <T> T nglGetQueryParameter(JavaScriptObject query, int pname) /*-{
-        var result = $wnd.gl.getQueryParameter(query, pname);
-        return (typeof (result) == 'boolean') ? result ? 1 : 0 : result;
+        return $wnd.gl.getQueryParameter(query, pname);
     }-*/;
 
     private static native JavaScriptObject nglGetQuery(int target, int pname) /*-{
