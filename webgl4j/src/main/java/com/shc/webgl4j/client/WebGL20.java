@@ -324,6 +324,12 @@ public final class WebGL20
     {
     }
 
+    private static void checkContextCompatibility()
+    {
+        if (!isContextCompatible())
+            throw new IllegalStateException("The context should be created before invoking the GL functions");
+    }
+
     public static WebGLContext createContext(Canvas canvas)
     {
         return createContext(canvas.getCanvasElement());
@@ -365,41 +371,46 @@ public final class WebGL20
         };
     }-*/;
 
-    public static native boolean isSupported() /*-{
-        try
-        {
-            var canvas = $doc.createElement('canvas');
-            return !!( $wnd.WebGLRenderingContext && (canvas.getContext('webgl2') ||
-            canvas.getContext('experimental-webgl2')));
-        }
-        catch (e)
-        {
-            $wnd.console.log(e);
-            return false;
-        }
-    }-*/;
-
-    public static boolean isContextCompatible()
-    {
-        return WebGLContext.getCurrent() != null && WebGLContext.getCurrent().getVersion() >= 2.0;
-    }
-
-    private static void checkContextCompatibility()
-    {
-        if (!isContextCompatible())
-            throw new IllegalStateException("The context should be created before invoking the GL functions");
-    }
-
-    public static void glCopyBufferSubData(int readTarget, int writeTarget, int readOffset, int writeOffset, int size)
+    public static void glBeginQuery(int target, int query)
     {
         checkContextCompatibility();
-        nglCopyBufferSubData(readTarget, writeTarget, readOffset, writeOffset, size);
+        nglBeginQuery(target, WebGLObjectMap.get().toQuery(query));
     }
 
-    public static void glGetBufferSubData(int target, int offset, ArrayBufferView returnedData)
+    public static void glBeginTransformFeedback(int primitiveMode)
     {
         checkContextCompatibility();
-        nglGetBufferSubData(target, offset, returnedData);
+        nglBeginTransformFeedback(primitiveMode);
+    }
+
+    public static void glBindBufferBase(int target, int index, int buffer)
+    {
+        checkContextCompatibility();
+        nglBindBufferBase(target, index, WebGLObjectMap.get().toBuffer(buffer));
+    }
+
+    public static void glBindBufferRange(int target, int index, int buffer, int offset, int size)
+    {
+        checkContextCompatibility();
+        nglBindBufferRange(target, index, WebGLObjectMap.get().toBuffer(buffer), offset, size);
+    }
+
+    public static void glBindSampler(int unit, int sampler)
+    {
+        checkContextCompatibility();
+        nglBindSampler(unit, WebGLObjectMap.get().toSampler(sampler));
+    }
+
+    public static void glBindTransformFeedback(int target, int transformFeedback)
+    {
+        checkContextCompatibility();
+        nglBindTransformFeedback(target, WebGLObjectMap.get().toTransformFeedback(transformFeedback));
+    }
+
+    public static void glBindVertexArray(int vertexArray)
+    {
+        checkContextCompatibility();
+        nglBindVertexArray(WebGLObjectMap.get().toVertexArrayObject(vertexArray));
     }
 
     public static void glBlitFramebuffer(int srcX0, int srcY0,
@@ -411,11 +422,301 @@ public final class WebGL20
         nglBlitFramebuffer(srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
     }
 
+    public static void glClearBufferfi(int buffer, int drawbuffer, float depth, int stencil)
+    {
+        checkContextCompatibility();
+        nglClearBufferfi(buffer, drawbuffer, depth, stencil);
+    }
+
+    public static void glClearBufferfv(int buffer, int drawbuffer, Float32Array source)
+    {
+        checkContextCompatibility();
+        nglClearBufferfv(buffer, drawbuffer, source);
+    }
+
+    public static void glClearBufferiv(int buffer, int drawbuffer, Int32Array source)
+    {
+        checkContextCompatibility();
+        nglClearBufferiv(buffer, drawbuffer, source);
+    }
+
+    public static void glClearBufferuiv(int buffer, int drawbuffer, Uint32Array source)
+    {
+        checkContextCompatibility();
+        nglClearBufferuiv(buffer, drawbuffer, source);
+    }
+
+    public static int glClientWaitSync(int sync, int flags, int timeout)
+    {
+        checkContextCompatibility();
+        return nglClientWaitSync(WebGLObjectMap.get().toSync(sync), flags, timeout);
+    }
+
+    public static void glCompressedTexImage3D(int target, int level, int internalFormat,
+                                              int width, int height, int depth,
+                                              int border, ArrayBufferView data)
+    {
+        checkContextCompatibility();
+        nglCompressedTexImage3D(target, level, internalFormat, width, height, depth, border, data);
+    }
+
+    public static void glCompressedTexSubImage3D(int target, int level, int xOffset, int yOffset, int zOffset,
+                                                 int width, int height, int depth,
+                                                 int format, ArrayBufferView data)
+    {
+        checkContextCompatibility();
+        nglCompressedTexSubImage3D(target, level, xOffset, yOffset, zOffset, width, height, depth, format, data);
+    }
+
+    public static void glCopyBufferSubData(int readTarget, int writeTarget, int readOffset, int writeOffset, int size)
+    {
+        checkContextCompatibility();
+        nglCopyBufferSubData(readTarget, writeTarget, readOffset, writeOffset, size);
+    }
+
+    public static void glCopyTexSubImage3D(int target, int level, int xOffset, int yOffset, int zOffset,
+                                           int x, int y, int width, int height)
+    {
+        checkContextCompatibility();
+        nglCopyTexSubImage3D(target, level, xOffset, yOffset, zOffset, x, y, width, height);
+    }
+
+    public static int glCreateQuery()
+    {
+        checkContextCompatibility();
+        return WebGLObjectMap.get().createQuery(nglCreateQuery());
+    }
+
+    public static int glCreateSampler()
+    {
+        checkContextCompatibility();
+        return WebGLObjectMap.get().createSampler(nglCreateSampler());
+    }
+
+    public static int glCreateTransformFeedback()
+    {
+        checkContextCompatibility();
+        return WebGLObjectMap.get().createTransformFeedback(nglCreateTransformFeedback());
+    }
+
+    public static int glCreateVertexArray()
+    {
+        checkContextCompatibility();
+        return WebGLObjectMap.get().createVertexArrayObject(nglCreateVertexArray());
+    }
+
+    public static void glDeleteQuery(int query)
+    {
+        checkContextCompatibility();
+
+        nglDeleteQuery(WebGLObjectMap.get().toQuery(query));
+        WebGLObjectMap.get().deleteQuery(query);
+    }
+
+    public static void glDeleteSampler(int sampler)
+    {
+        checkContextCompatibility();
+        nglDeleteSampler(WebGLObjectMap.get().toSampler(sampler));
+        WebGLObjectMap.get().deleteSampler(sampler);
+    }
+
+    public static void glDeleteSync(int sync)
+    {
+        checkContextCompatibility();
+        nglDeleteSync(WebGLObjectMap.get().toSync(sync));
+        WebGLObjectMap.get().deleteSync(sync);
+    }
+
+    public static void glDeleteTransformFeedback(int transformFeedback)
+    {
+        checkContextCompatibility();
+        nglDeleteTransformFeedback(WebGLObjectMap.get().toTransformFeedback(transformFeedback));
+        WebGLObjectMap.get().deleteTransformFeedback(transformFeedback);
+    }
+
+    public static void glDeleteVertexArray(int vertexArray)
+    {
+        checkContextCompatibility();
+        nglDeleteVertexArray(WebGLObjectMap.get().toVertexArrayObject(vertexArray));
+        WebGLObjectMap.get().deleteVertexArrayObject(vertexArray);
+    }
+
+    public static void glDrawArraysInstanced(int mode, int first, int count, int instanceCount)
+    {
+        checkContextCompatibility();
+        nglDrawArraysInstanced(mode, first, count, instanceCount);
+    }
+
+    public static void glDrawBuffers(Uint32Array buffers)
+    {
+        checkContextCompatibility();
+        nglDrawBuffers(buffers);
+    }
+
+    public static void glDrawElementsInstanced(int mode, int count, int type, int offset, int instanceCount)
+    {
+        checkContextCompatibility();
+        nglDrawElementsInstanced(mode, count, type, offset, instanceCount);
+    }
+
+    public static void glDrawRangeElements(int mode, int start, int end, int count, int type, int offset)
+    {
+        checkContextCompatibility();
+        nglDrawRangeElements(mode, start, end, count, type, offset);
+    }
+
+    public static void glEndQuery(int target)
+    {
+        checkContextCompatibility();
+        nglEndQuery(target);
+    }
+
+    public static void glEndTransformFeedback()
+    {
+        checkContextCompatibility();
+        nglEndTransformFeedback();
+    }
+
+    public static int glFenceSync(int condition, int flags)
+    {
+        checkContextCompatibility();
+        return WebGLObjectMap.get().createSync(nglFenceSync(condition, flags));
+    }
+
     public static void glFramebufferTextureLayer(int target, int attachment, int texture, int level, int layer)
     {
         checkContextCompatibility();
         JavaScriptObject textureObj = WebGLObjectMap.get().toTexture(texture);
         nglFramebufferTextureLayer(target, attachment, textureObj, level, layer);
+    }
+
+    public static String glGetActiveUniformBlockName(int program, int uniformBlockIndex)
+    {
+        checkContextCompatibility();
+        return nglGetActiveUniformBlockName(WebGLObjectMap.get().toProgram(program), uniformBlockIndex);
+    }
+
+    public static <T> T glGetActiveUniformBlockParameter(int program, int uniformBlockIndex, int pname)
+    {
+        checkContextCompatibility();
+        return nglGetActiveUniformBlockParameter(WebGLObjectMap.get().toProgram(program), uniformBlockIndex, pname);
+    }
+
+    public static Int32Array glGetActiveUniforms(int program, Uint32Array uniformIndices, int pname)
+    {
+        checkContextCompatibility();
+        return nglGetActiveUniforms(WebGLObjectMap.get().toProgram(program), uniformIndices, pname);
+    }
+
+    public static Int32Array glGetActiveUniforms(int program, List<Integer> uniformIndices, int pname)
+    {
+        Uint32Array indices = Uint32ArrayNative.create(uniformIndices.size());
+
+        for (int i = 0; i < uniformIndices.size(); i++)
+            indices.set(i, uniformIndices.get(i));
+
+        return glGetActiveUniforms(program, indices, pname);
+    }
+
+    public static Int32Array glGetActiveUniforms(int program, int[] uniformIndices, int pname)
+    {
+        Uint32Array indices = Uint32ArrayNative.create(uniformIndices.length);
+
+        for (int i = 0; i < uniformIndices.length; i++)
+            indices.set(i, uniformIndices[i]);
+
+        return glGetActiveUniforms(program, indices, pname);
+    }
+
+    public static void glGetBufferSubData(int target, int offset, ArrayBufferView returnedData)
+    {
+        checkContextCompatibility();
+        nglGetBufferSubData(target, offset, returnedData);
+    }
+
+    public static int glGetFragDataLocation(int program, String name)
+    {
+        checkContextCompatibility();
+        return nglGetFragDataLocation(WebGLObjectMap.get().toProgram(program), name);
+    }
+
+    @SuppressWarnings("unchecked")
+    public static <T> T glGetIndexedParameter(int target, int index)
+    {
+        checkContextCompatibility();
+
+        if (target == GL_TRANSFORM_FEEDBACK_BUFFER_BINDING || target == GL_UNIFORM_BUFFER_BINDING)
+            return (T) (Integer) WebGLObjectMap.get().createBuffer((JavaScriptObject) nglGetIndexedParameter(target, index));
+        else
+            return nglGetIndexedParameter(target, index);
+    }
+
+    public static Int32Array glGetInternalformatParameter(int target, int internalFormat, int pName)
+    {
+        checkContextCompatibility();
+        return nglGetInternalformatParameter(target, internalFormat, pName);
+    }
+
+    public static int glGetQuery(int target, int pname)
+    {
+        checkContextCompatibility();
+        return WebGLObjectMap.get().createQuery(nglGetQuery(target, pname));
+    }
+
+    public static <T> T glGetQueryParameter(int query, int pname)
+    {
+        checkContextCompatibility();
+        return nglGetQueryParameter(WebGLObjectMap.get().toQuery(query), pname);
+    }
+
+    public static <T> T glGetSamplerParameter(int sampler, int pname)
+    {
+        checkContextCompatibility();
+        return nglGetSamplerParameter(WebGLObjectMap.get().toSampler(sampler), pname);
+    }
+
+    public static int glGetSyncParameter(int sync, int pname)
+    {
+        checkContextCompatibility();
+        return nglGetSyncParameter(WebGLObjectMap.get().toSync(sync), pname);
+    }
+
+    public static WebGL10.ActiveInfo glGetTransformFeedbackVarying(int program, int index)
+    {
+        checkContextCompatibility();
+        return nglGetTransformFeedbackVarying(WebGLObjectMap.get().toProgram(program), index);
+    }
+
+    public static int glGetUniformBlockIndex(int program, String uniformBlockName)
+    {
+        checkContextCompatibility();
+        return nglGetUniformBlockIndex(WebGLObjectMap.get().toProgram(program), uniformBlockName);
+    }
+
+    public static Uint32Array glGetUniformIndices(int program, JsArrayString uniformNames)
+    {
+        checkContextCompatibility();
+        return nglGetUniformIndices(WebGLObjectMap.get().toBuffer(program), uniformNames);
+    }
+
+    public static Uint32Array glGetUniformIndices(int program, List<String> uniformNames)
+    {
+        JsArrayString arrayString = JsArrayString.createArray(uniformNames.size()).cast();
+
+        for (String uniformName : uniformNames)
+            arrayString.push(uniformName);
+
+        return glGetUniformIndices(program, arrayString);
+    }
+
+    public static Uint32Array glGetUniformIndices(int program, String... uniformNames)
+    {
+        JsArrayString arrayString = JsArrayString.createArray(uniformNames.length).cast();
+
+        for (String uniformName : uniformNames)
+            arrayString.push(uniformName);
+
+        return glGetUniformIndices(program, arrayString);
     }
 
     public static void glInvalidateFramebuffer(int target, ArrayBufferView attachments)
@@ -430,22 +731,82 @@ public final class WebGL20
         nglInvalidateSubFramebuffer(target, attachments, x, y, w, h);
     }
 
+    @WebGLContext.HandlesContextLoss
+    public static boolean glIsQuery(int query)
+    {
+        checkContextCompatibility();
+        return nglIsQuery(WebGLObjectMap.get().toQuery(query));
+    }
+
+    @WebGLContext.HandlesContextLoss
+    public static boolean glIsSampler(int sampler)
+    {
+        checkContextCompatibility();
+        return nglIsSampler(WebGLObjectMap.get().toSampler(sampler));
+    }
+
+    @WebGLContext.HandlesContextLoss
+    public static boolean glIsSync(int sync)
+    {
+        checkContextCompatibility();
+        return nglIsSync(WebGLObjectMap.get().toSync(sync));
+    }
+
+    @WebGLContext.HandlesContextLoss
+    public static boolean glIsTransformFeedback(int transformFeedback)
+    {
+        checkContextCompatibility();
+        return nglIsTransformFeedback(WebGLObjectMap.get().toTransformFeedback(transformFeedback));
+    }
+
+    @WebGLContext.HandlesContextLoss
+    public static boolean glIsVertexArray(int vertexArray)
+    {
+        checkContextCompatibility();
+        return nglIsVertexArray(WebGLObjectMap.get().toVertexArrayObject(vertexArray));
+    }
+
+    public static void glPauseTransformFeedback()
+    {
+        checkContextCompatibility();
+        nglPauseTransformFeedback();
+    }
+
     public static void glReadBuffer(int src)
     {
         checkContextCompatibility();
         nglReadBuffer(src);
     }
 
-    public static Int32Array glGetInternalformatParameter(int target, int internalFormat, int pName)
-    {
-        checkContextCompatibility();
-        return nglGetInternalformatParameter(target, internalFormat, pName);
-    }
-
     public static void glRenderbufferStorageMultisample(int target, int samples, int internalFormat, int width, int height)
     {
         checkContextCompatibility();
         nglRenderbufferStorageMultisample(target, samples, internalFormat, width, height);
+    }
+
+    public static void glResumeTransformFeedback()
+    {
+        checkContextCompatibility();
+        nglResumeTransformFeedback();
+    }
+
+    public static void glSamplerParameterf(int sampler, int pname, float param)
+    {
+        checkContextCompatibility();
+        nglSamplerParameterf(WebGLObjectMap.get().toSampler(sampler), pname, param);
+    }
+
+    public static void glSamplerParameteri(int sampler, int pname, int param)
+    {
+        checkContextCompatibility();
+        nglSamplerParameteri(WebGLObjectMap.get().toSampler(sampler), pname, param);
+    }
+
+    public static void glTexImage3D(int target, int level, int internalFormat, int width, int height, int depth,
+                                    int border, int format, int type, ArrayBufferView pixels)
+    {
+        checkContextCompatibility();
+        nglTexImage3D(target, level, internalFormat, width, height, depth, border, format, type, pixels);
     }
 
     public static void glTexStorage2D(int target, int levels, int internalFormat, int width, int height)
@@ -458,13 +819,6 @@ public final class WebGL20
     {
         checkContextCompatibility();
         nglTexStorage3D(target, levels, internalFormat, width, height, depth);
-    }
-
-    public static void glTexImage3D(int target, int level, int internalFormat, int width, int height, int depth,
-                                    int border, int format, int type, ArrayBufferView pixels)
-    {
-        checkContextCompatibility();
-        nglTexImage3D(target, level, internalFormat, width, height, depth, border, format, type, pixels);
     }
 
     public static void glTexSubImage3D(int target, int level, int xOffset, int yOffset, int zOffset,
@@ -496,33 +850,30 @@ public final class WebGL20
         nglTexSubImage3D(target, level, xOffset, yOffset, zOffset, format, type, pixels.getElement());
     }
 
-    public static void glCopyTexSubImage3D(int target, int level, int xOffset, int yOffset, int zOffset,
-                                           int x, int y, int width, int height)
+    public static void glTransformFeedbackVaryings(int program, JsArrayString varyings, int bufferMode)
     {
         checkContextCompatibility();
-        nglCopyTexSubImage3D(target, level, xOffset, yOffset, zOffset, x, y, width, height);
+        nglTransformFeedbackVaryings(WebGLObjectMap.get().toProgram(program), varyings, bufferMode);
     }
 
-    public static void glCompressedTexImage3D(int target, int level, int internalFormat,
-                                              int width, int height, int depth,
-                                              int border, ArrayBufferView data)
+    public static void glTransformFeedbackVaryings(int program, String[] varyings, int bufferMode)
     {
-        checkContextCompatibility();
-        nglCompressedTexImage3D(target, level, internalFormat, width, height, depth, border, data);
+        JsArrayString varyingsArray = JsArrayString.createArray(varyings.length).cast();
+
+        for (String varying : varyings)
+            varyingsArray.push(varying);
+
+        glTransformFeedbackVaryings(program, varyingsArray, bufferMode);
     }
 
-    public static void glCompressedTexSubImage3D(int target, int level, int xOffset, int yOffset, int zOffset,
-                                                 int width, int height, int depth,
-                                                 int format, ArrayBufferView data)
+    public static void glTransformFeedbackVaryings(int program, List<String> varyings, int bufferMode)
     {
-        checkContextCompatibility();
-        nglCompressedTexSubImage3D(target, level, xOffset, yOffset, zOffset, width, height, depth, format, data);
-    }
+        JsArrayString varyingsArray = JsArrayString.createArray(varyings.size()).cast();
 
-    public static int glGetFragDataLocation(int program, String name)
-    {
-        checkContextCompatibility();
-        return nglGetFragDataLocation(WebGLObjectMap.get().toProgram(program), name);
+        for (String varying : varyings)
+            varyingsArray.push(varying);
+
+        glTransformFeedbackVaryings(program, varyingsArray, bufferMode);
     }
 
     public static void glUniform1ui(int location, int v0)
@@ -531,28 +882,16 @@ public final class WebGL20
         nglUniform1ui(WebGLObjectMap.get().toUniform(location), v0);
     }
 
-    public static void glUniform2ui(int location, int v0, int v1)
-    {
-        checkContextCompatibility();
-        nglUniform2ui(WebGLObjectMap.get().toUniform(location), v0, v1);
-    }
-
-    public static void glUniform3ui(int location, int v0, int v1, int v2)
-    {
-        checkContextCompatibility();
-        nglUniform3ui(WebGLObjectMap.get().toUniform(location), v0, v1, v2);
-    }
-
-    public static void glUniform4ui(int location, int v0, int v1, int v2, int v3)
-    {
-        checkContextCompatibility();
-        nglUniform4ui(WebGLObjectMap.get().toUniform(location), v0, v1, v2, v3);
-    }
-
     public static void glUniform1uiv(int location, Uint32Array value)
     {
         checkContextCompatibility();
         nglUniform1uiv(WebGLObjectMap.get().toUniform(location), value);
+    }
+
+    public static void glUniform2ui(int location, int v0, int v1)
+    {
+        checkContextCompatibility();
+        nglUniform2ui(WebGLObjectMap.get().toUniform(location), v0, v1);
     }
 
     public static void glUniform2uiv(int location, Uint32Array value)
@@ -561,10 +900,22 @@ public final class WebGL20
         nglUniform2uiv(WebGLObjectMap.get().toUniform(location), value);
     }
 
+    public static void glUniform3ui(int location, int v0, int v1, int v2)
+    {
+        checkContextCompatibility();
+        nglUniform3ui(WebGLObjectMap.get().toUniform(location), v0, v1, v2);
+    }
+
     public static void glUniform3uiv(int location, Uint32Array value)
     {
         checkContextCompatibility();
         nglUniform3uiv(WebGLObjectMap.get().toUniform(location), value);
+    }
+
+    public static void glUniform4ui(int location, int v0, int v1, int v2, int v3)
+    {
+        checkContextCompatibility();
+        nglUniform4ui(WebGLObjectMap.get().toUniform(location), v0, v1, v2, v3);
     }
 
     public static void glUniform4uiv(int location, Uint32Array value)
@@ -573,16 +924,16 @@ public final class WebGL20
         nglUniform4uiv(WebGLObjectMap.get().toUniform(location), value);
     }
 
+    public static void glUniformBlockBinding(int program, int uniformBlockIndex, int uniformBlockBinding)
+    {
+        checkContextCompatibility();
+        nglUniformBlockBinding(WebGLObjectMap.get().toProgram(program), uniformBlockIndex, uniformBlockBinding);
+    }
+
     public static void glUniformMatrix2x3fv(int location, boolean transpose, Float32Array value)
     {
         checkContextCompatibility();
         nglUniformMatrix2x3fv(WebGLObjectMap.get().toUniform(location), transpose, value);
-    }
-
-    public static void glUniformMatrix3x2fv(int location, boolean transpose, Float32Array value)
-    {
-        checkContextCompatibility();
-        nglUniformMatrix3x2fv(WebGLObjectMap.get().toUniform(location), transpose, value);
     }
 
     public static void glUniformMatrix2x4fv(int location, boolean transpose, Float32Array value)
@@ -591,10 +942,10 @@ public final class WebGL20
         nglUniformMatrix2x4fv(WebGLObjectMap.get().toUniform(location), transpose, value);
     }
 
-    public static void glUniformMatrix4x2fv(int location, boolean transpose, Float32Array value)
+    public static void glUniformMatrix3x2fv(int location, boolean transpose, Float32Array value)
     {
         checkContextCompatibility();
-        nglUniformMatrix4x2fv(WebGLObjectMap.get().toUniform(location), transpose, value);
+        nglUniformMatrix3x2fv(WebGLObjectMap.get().toUniform(location), transpose, value);
     }
 
     public static void glUniformMatrix3x4fv(int location, boolean transpose, Float32Array value)
@@ -603,10 +954,22 @@ public final class WebGL20
         nglUniformMatrix3x4fv(WebGLObjectMap.get().toUniform(location), transpose, value);
     }
 
+    public static void glUniformMatrix4x2fv(int location, boolean transpose, Float32Array value)
+    {
+        checkContextCompatibility();
+        nglUniformMatrix4x2fv(WebGLObjectMap.get().toUniform(location), transpose, value);
+    }
+
     public static void glUniformMatrix4x3fv(int location, boolean transpose, Float32Array value)
     {
         checkContextCompatibility();
         nglUniformMatrix4x3fv(WebGLObjectMap.get().toUniform(location), transpose, value);
+    }
+
+    public static void glVertexAttribDivisor(int index, int divisor)
+    {
+        checkContextCompatibility();
+        nglVertexAttribDivisor(index, divisor);
     }
 
     public static void glVertexAttribI4i(int index, int x, int y, int z, int w)
@@ -639,564 +1002,64 @@ public final class WebGL20
         nglVertexAttribIPointer(index, size, type, stride, offset);
     }
 
-    public static void glVertexAttribDivisor(int index, int divisor)
-    {
-        checkContextCompatibility();
-        nglVertexAttribDivisor(index, divisor);
-    }
-
-    public static void glDrawArraysInstanced(int mode, int first, int count, int instanceCount)
-    {
-        checkContextCompatibility();
-        nglDrawArraysInstanced(mode, first, count, instanceCount);
-    }
-
-    public static void glDrawElementsInstanced(int mode, int count, int type, int offset, int instanceCount)
-    {
-        checkContextCompatibility();
-        nglDrawElementsInstanced(mode, count, type, offset, instanceCount);
-    }
-
-    public static void glDrawRangeElements(int mode, int start, int end, int count, int type, int offset)
-    {
-        checkContextCompatibility();
-        nglDrawRangeElements(mode, start, end, count, type, offset);
-    }
-
-    public static void glDrawBuffers(Uint32Array buffers)
-    {
-        checkContextCompatibility();
-        nglDrawBuffers(buffers);
-    }
-
-    public static void glClearBufferiv(int buffer, int drawbuffer, Int32Array source)
-    {
-        checkContextCompatibility();
-        nglClearBufferiv(buffer, drawbuffer, source);
-    }
-
-    public static void glClearBufferuiv(int buffer, int drawbuffer, Uint32Array source)
-    {
-        checkContextCompatibility();
-        nglClearBufferuiv(buffer, drawbuffer, source);
-    }
-
-    public static void glClearBufferfv(int buffer, int drawbuffer, Float32Array source)
-    {
-        checkContextCompatibility();
-        nglClearBufferfv(buffer, drawbuffer, source);
-    }
-
-    public static void glClearBufferfi(int buffer, int drawbuffer, float depth, int stencil)
-    {
-        checkContextCompatibility();
-        nglClearBufferfi(buffer, drawbuffer, depth, stencil);
-    }
-
-    public static int glCreateQuery()
-    {
-        checkContextCompatibility();
-        return WebGLObjectMap.get().createQuery(nglCreateQuery());
-    }
-
-    public static void glDeleteQuery(int query)
-    {
-        checkContextCompatibility();
-
-        nglDeleteQuery(WebGLObjectMap.get().toQuery(query));
-        WebGLObjectMap.get().deleteQuery(query);
-    }
-
-    @WebGLContext.HandlesContextLoss
-    public static boolean glIsQuery(int query)
-    {
-        checkContextCompatibility();
-        return nglIsQuery(WebGLObjectMap.get().toQuery(query));
-    }
-
-    public static void glBeginQuery(int target, int query)
-    {
-        checkContextCompatibility();
-        nglBeginQuery(target, WebGLObjectMap.get().toQuery(query));
-    }
-
-    public static void glEndQuery(int target)
-    {
-        checkContextCompatibility();
-        nglEndQuery(target);
-    }
-
-    public static int glGetQuery(int target, int pname)
-    {
-        checkContextCompatibility();
-        return WebGLObjectMap.get().createQuery(nglGetQuery(target, pname));
-    }
-
-    public static <T> T glGetQueryParameter(int query, int pname)
-    {
-        checkContextCompatibility();
-        return nglGetQueryParameter(WebGLObjectMap.get().toQuery(query), pname);
-    }
-
-    public static int glCreateSampler()
-    {
-        checkContextCompatibility();
-        return WebGLObjectMap.get().createSampler(nglCreateSampler());
-    }
-
-    public static void glDeleteSampler(int sampler)
-    {
-        checkContextCompatibility();
-        nglDeleteSampler(WebGLObjectMap.get().toSampler(sampler));
-        WebGLObjectMap.get().deleteSampler(sampler);
-    }
-
-    @WebGLContext.HandlesContextLoss
-    public static boolean glIsSampler(int sampler)
-    {
-        checkContextCompatibility();
-        return nglIsSampler(WebGLObjectMap.get().toSampler(sampler));
-    }
-
-    public static void glBindSampler(int unit, int sampler)
-    {
-        checkContextCompatibility();
-        nglBindSampler(unit, WebGLObjectMap.get().toSampler(sampler));
-    }
-
-    public static void glSamplerParameteri(int sampler, int pname, int param)
-    {
-        checkContextCompatibility();
-        nglSamplerParameteri(WebGLObjectMap.get().toSampler(sampler), pname, param);
-    }
-
-    public static void glSamplerParameterf(int sampler, int pname, float param)
-    {
-        checkContextCompatibility();
-        nglSamplerParameterf(WebGLObjectMap.get().toSampler(sampler), pname, param);
-    }
-
-    public static <T> T glGetSamplerParameter(int sampler, int pname)
-    {
-        checkContextCompatibility();
-        return nglGetSamplerParameter(WebGLObjectMap.get().toSampler(sampler), pname);
-    }
-
-    public static int glFenceSync(int condition, int flags)
-    {
-        checkContextCompatibility();
-        return WebGLObjectMap.get().createSync(nglFenceSync(condition, flags));
-    }
-
-    @WebGLContext.HandlesContextLoss
-    public static boolean glIsSync(int sync)
-    {
-        checkContextCompatibility();
-        return nglIsSync(WebGLObjectMap.get().toSync(sync));
-    }
-
-    public static void glDeleteSync(int sync)
-    {
-        checkContextCompatibility();
-        nglDeleteSync(WebGLObjectMap.get().toSync(sync));
-        WebGLObjectMap.get().deleteSync(sync);
-    }
-
-    public static int glClientWaitSync(int sync, int flags, int timeout)
-    {
-        checkContextCompatibility();
-        return nglClientWaitSync(WebGLObjectMap.get().toSync(sync), flags, timeout);
-    }
-
     public static void glWaitSync(int sync, int flags, int timeout)
     {
         checkContextCompatibility();
         nglWaitSync(WebGLObjectMap.get().toSync(sync), flags, timeout);
     }
 
-    public static int glGetSyncParameter(int sync, int pname)
+    public static boolean isContextCompatible()
     {
-        checkContextCompatibility();
-        return nglGetSyncParameter(WebGLObjectMap.get().toSync(sync), pname);
+        return WebGLContext.getCurrent() != null && WebGLContext.getCurrent().getVersion() >= 2.0;
     }
 
-    public static int glCreateTransformFeedback()
-    {
-        checkContextCompatibility();
-        return WebGLObjectMap.get().createTransformFeedback(nglCreateTransformFeedback());
-    }
-
-    public static void glDeleteTransformFeedback(int transformFeedback)
-    {
-        checkContextCompatibility();
-        nglDeleteTransformFeedback(WebGLObjectMap.get().toTransformFeedback(transformFeedback));
-        WebGLObjectMap.get().deleteTransformFeedback(transformFeedback);
-    }
-
-    @WebGLContext.HandlesContextLoss
-    public static boolean glIsTransformFeedback(int transformFeedback)
-    {
-        checkContextCompatibility();
-        return nglIsTransformFeedback(WebGLObjectMap.get().toTransformFeedback(transformFeedback));
-    }
-
-    public static void glBindTransformFeedback(int target, int transformFeedback)
-    {
-        checkContextCompatibility();
-        nglBindTransformFeedback(target, WebGLObjectMap.get().toTransformFeedback(transformFeedback));
-    }
-
-    public static void glBeginTransformFeedback(int primitiveMode)
-    {
-        checkContextCompatibility();
-        nglBeginTransformFeedback(primitiveMode);
-    }
-
-    public static void glEndTransformFeedback()
-    {
-        checkContextCompatibility();
-        nglEndTransformFeedback();
-    }
-
-    public static void glTransformFeedbackVaryings(int program, JsArrayString varyings, int bufferMode)
-    {
-        checkContextCompatibility();
-        nglTransformFeedbackVaryings(WebGLObjectMap.get().toProgram(program), varyings, bufferMode);
-    }
-
-    public static void glTransformFeedbackVaryings(int program, String[] varyings, int bufferMode)
-    {
-        JsArrayString varyingsArray = JsArrayString.createArray(varyings.length).cast();
-
-        for (String varying : varyings)
-            varyingsArray.push(varying);
-
-        glTransformFeedbackVaryings(program, varyingsArray, bufferMode);
-    }
-
-    public static void glTransformFeedbackVaryings(int program, List<String> varyings, int bufferMode)
-    {
-        JsArrayString varyingsArray = JsArrayString.createArray(varyings.size()).cast();
-
-        for (String varying : varyings)
-            varyingsArray.push(varying);
-
-        glTransformFeedbackVaryings(program, varyingsArray, bufferMode);
-    }
-
-    public static WebGL10.ActiveInfo glGetTransformFeedbackVarying(int program, int index)
-    {
-        checkContextCompatibility();
-        return nglGetTransformFeedbackVarying(WebGLObjectMap.get().toProgram(program), index);
-    }
-
-    public static void glPauseTransformFeedback()
-    {
-        checkContextCompatibility();
-        nglPauseTransformFeedback();
-    }
-
-    public static void glResumeTransformFeedback()
-    {
-        checkContextCompatibility();
-        nglResumeTransformFeedback();
-    }
-
-    public static void glBindBufferBase(int target, int index, int buffer)
-    {
-        checkContextCompatibility();
-        nglBindBufferBase(target, index, WebGLObjectMap.get().toBuffer(buffer));
-    }
-
-    public static void glBindBufferRange(int target, int index, int buffer, int offset, int size)
-    {
-        checkContextCompatibility();
-        nglBindBufferRange(target, index, WebGLObjectMap.get().toBuffer(buffer), offset, size);
-    }
-
-    @SuppressWarnings("unchecked")
-    public static <T> T glGetIndexedParameter(int target, int index)
-    {
-        checkContextCompatibility();
-
-        if (target == GL_TRANSFORM_FEEDBACK_BUFFER_BINDING || target == GL_UNIFORM_BUFFER_BINDING)
-            return (T) (Integer) WebGLObjectMap.get().createBuffer((JavaScriptObject) nglGetIndexedParameter(target, index));
-        else
-            return nglGetIndexedParameter(target, index);
-    }
-
-    public static Uint32Array glGetUniformIndices(int program, JsArrayString uniformNames)
-    {
-        checkContextCompatibility();
-        return nglGetUniformIndices(WebGLObjectMap.get().toBuffer(program), uniformNames);
-    }
-
-    public static Uint32Array glGetUniformIndices(int program, List<String> uniformNames)
-    {
-        JsArrayString arrayString = JsArrayString.createArray(uniformNames.size()).cast();
-
-        for (String uniformName : uniformNames)
-            arrayString.push(uniformName);
-
-        return glGetUniformIndices(program, arrayString);
-    }
-
-    public static Uint32Array glGetUniformIndices(int program, String... uniformNames)
-    {
-        JsArrayString arrayString = JsArrayString.createArray(uniformNames.length).cast();
-
-        for (String uniformName : uniformNames)
-            arrayString.push(uniformName);
-
-        return glGetUniformIndices(program, arrayString);
-    }
-
-    public static Int32Array glGetActiveUniforms(int program, Uint32Array uniformIndices, int pname)
-    {
-        checkContextCompatibility();
-        return nglGetActiveUniforms(WebGLObjectMap.get().toProgram(program), uniformIndices, pname);
-    }
-
-    public static Int32Array glGetActiveUniforms(int program, List<Integer> uniformIndices, int pname)
-    {
-        Uint32Array indices = Uint32ArrayNative.create(uniformIndices.size());
-
-        for (int i = 0; i < uniformIndices.size(); i++)
-            indices.set(i, uniformIndices.get(i));
-
-        return glGetActiveUniforms(program, indices, pname);
-    }
-
-    public static Int32Array glGetActiveUniforms(int program, int[] uniformIndices, int pname)
-    {
-        Uint32Array indices = Uint32ArrayNative.create(uniformIndices.length);
-
-        for (int i = 0; i < uniformIndices.length; i++)
-            indices.set(i, uniformIndices[i]);
-
-        return glGetActiveUniforms(program, indices, pname);
-    }
-
-    public static int glGetUniformBlockIndex(int program, String uniformBlockName)
-    {
-        checkContextCompatibility();
-        return nglGetUniformBlockIndex(WebGLObjectMap.get().toProgram(program), uniformBlockName);
-    }
-
-    public static <T> T glGetActiveUniformBlockParameter(int program, int uniformBlockIndex, int pname)
-    {
-        checkContextCompatibility();
-        return nglGetActiveUniformBlockParameter(WebGLObjectMap.get().toProgram(program), uniformBlockIndex, pname);
-    }
-
-    public static String glGetActiveUniformBlockName(int program, int uniformBlockIndex)
-    {
-        checkContextCompatibility();
-        return nglGetActiveUniformBlockName(WebGLObjectMap.get().toProgram(program), uniformBlockIndex);
-    }
-
-    public static void glUniformBlockBinding(int program, int uniformBlockIndex, int uniformBlockBinding)
-    {
-        checkContextCompatibility();
-        nglUniformBlockBinding(WebGLObjectMap.get().toProgram(program), uniformBlockIndex, uniformBlockBinding);
-    }
-
-    public static int glCreateVertexArray()
-    {
-        checkContextCompatibility();
-        return WebGLObjectMap.get().createVertexArrayObject(nglCreateVertexArray());
-    }
-
-    public static void glDeleteVertexArray(int vertexArray)
-    {
-        checkContextCompatibility();
-        nglDeleteVertexArray(WebGLObjectMap.get().toVertexArrayObject(vertexArray));
-        WebGLObjectMap.get().deleteVertexArrayObject(vertexArray);
-    }
-
-    @WebGLContext.HandlesContextLoss
-    public static boolean glIsVertexArray(int vertexArray)
-    {
-        checkContextCompatibility();
-        return nglIsVertexArray(WebGLObjectMap.get().toVertexArrayObject(vertexArray));
-    }
-
-    public static void glBindVertexArray(int vertexArray)
-    {
-        checkContextCompatibility();
-        nglBindVertexArray(WebGLObjectMap.get().toVertexArrayObject(vertexArray));
-    }
-
-    private static native void nglBindVertexArray(JavaScriptObject vertexArray) /*-{
-        $wnd.gl.bindVertexArray(vertexArray);
-    }-*/;
-
-    private static native boolean nglIsVertexArray(JavaScriptObject vertexArray) /*-{
-        return $wnd.gl.isVertexArray(vertexArray);
-    }-*/;
-
-    private static native void nglDeleteVertexArray(JavaScriptObject vertexArray) /*-{
-        $wnd.gl.deleteVertexArray(vertexArray);
-    }-*/;
-
-    private static native JavaScriptObject nglCreateVertexArray() /*-{
-        return $wnd.gl.createVertexArray();
-    }-*/;
-
-    private static native void nglUniformBlockBinding(JavaScriptObject program, int uniformBlockIndex, int uniformBlockBinding) /*-{
-        $wnd.gl.uniformBlockBinding(program, uniformBlockIndex, uniformBlockBinding);
-    }-*/;
-
-    private static native String nglGetActiveUniformBlockName(JavaScriptObject program, int uniformBlockIndex) /*-{
-        return $wnd.gl.getActiveUniformBlockName(program, uniformBlockIndex);
-    }-*/;
-
-    private static native <T> T nglGetActiveUniformBlockParameter(JavaScriptObject program, int uniformBlockIndex, int pname) /*-{
-        return $wnd.gl.getActiveUniformBlockParameter(program, uniformBlockIndex, pname);
-    }-*/;
-
-    private static native int nglGetUniformBlockIndex(JavaScriptObject program, String uniformBlockName) /*-{
-        return $wnd.gl.getUniformBlockIndex(program, uniformBlockName);
-    }-*/;
-
-    private static native Int32Array nglGetActiveUniforms(JavaScriptObject program, Uint32Array uniformIndices, int pname) /*-{
-        return $wnd.gl.getActiveUniforms(program, uniformIndices, pname);
-    }-*/;
-
-    private static native Uint32Array nglGetUniformIndices(JavaScriptObject program, JsArrayString uniformNames) /*-{
-        return $wnd.gl.getUniformIndices(program, uniformNames);
-    }-*/;
-
-    private static native <T> T nglGetIndexedParameter(int target, int index) /*-{
-        return $wnd.gl.getIndexedParameter(target, index);
-    }-*/;
-
-    private static native void nglBindBufferRange(int target, int index, JavaScriptObject buffer, int offset, int size) /*-{
-        $wnd.gl.bindBufferRange(target, index, buffer, offset, size);
-    }-*/;
-
-    private static native void nglBindBufferBase(int target, int index, JavaScriptObject buffer) /*-{
-        $wnd.gl.bindBufferBase(target, index, buffer);
-    }-*/;
-
-    private static native void nglResumeTransformFeedback() /*-{
-        $wnd.gl.resumeTransformFeedback();
-    }-*/;
-
-    private static native void nglPauseTransformFeedback() /*-{
-        $wnd.gl.pauseTransformFeedback();
-    }-*/;
-
-    private static native WebGL10.ActiveInfo nglGetTransformFeedbackVarying(JavaScriptObject program, int index) /*-{
-        return $wnd.gl.getTransformFeedbackVarying(program, index);
-    }-*/;
-
-    private static native void nglTransformFeedbackVaryings(JavaScriptObject program, JsArrayString varyings, int bufferMode) /*-{
-        $wnd.gl.transformFeedbackVaryings(program, varyings, bufferMode);
-    }-*/;
-
-    private static native void nglEndTransformFeedback() /*-{
-        $wnd.gl.endTransformFeedback();
-    }-*/;
-
-    private static native void nglBeginTransformFeedback(int primitiveMode) /*-{
-        $wnd.gl.beginTransformFeedback(primitiveMode);
-    }-*/;
-
-    private static native void nglBindTransformFeedback(int target, JavaScriptObject transformFeedback) /*-{
-        $wnd.gl.bindTransformFeedback(target, transformFeedback);
-    }-*/;
-
-    private static native boolean nglIsTransformFeedback(JavaScriptObject transformFeedback) /*-{
-        return $wnd.gl.isTransformFeedback(transformFeedback);
-    }-*/;
-
-    public static native void nglDeleteTransformFeedback(JavaScriptObject transformFeedback) /*-{
-        $wnd.gl.deleteTransformFeedback(transformFeedback);
-    }-*/;
-
-    private static native JavaScriptObject nglCreateTransformFeedback() /*-{
-        return $wnd.gl.createTransformFeedback();
-    }-*/;
-
-    private static native int nglGetSyncParameter(JavaScriptObject sync, int pname) /*-{
-        return $wnd.gl.getSyncParameter(sync, pname);
-    }-*/;
-
-    private static native void nglWaitSync(JavaScriptObject sync, int flags, int timeout) /*-{
-        $wnd.gl.waitSync(sync, flags, timeout);
-    }-*/;
-
-    private static native int nglClientWaitSync(JavaScriptObject sync, int flags, int timeout) /*-{
-        return $wnd.gl.clientWaitSync(sync, flags, timeout);
-    }-*/;
-
-    private static native void nglDeleteSync(JavaScriptObject sync) /*-{
-        $wnd.gl.deleteSync(sync);
-    }-*/;
-
-    private static native boolean nglIsSync(JavaScriptObject sync) /*-{
-        return $wnd.gl.isSync(sync);
-    }-*/;
-
-    private static native JavaScriptObject nglFenceSync(int condition, int flags) /*-{
-        return $wnd.gl.fenceSync(condition, flags);
-    }-*/;
-
-    private static native <T> T nglGetSamplerParameter(JavaScriptObject sampler, int pname) /*-{
-        return $wnd.gl.getSamplerParameter(sampler, pname);
-    }-*/;
-
-    private static native void nglSamplerParameterf(JavaScriptObject sampler, int pname, float param) /*-{
-        $wnd.gl.samplerParameterf(sampler, pname, param);
-    }-*/;
-
-    private static native void nglSamplerParameteri(JavaScriptObject sampler, int pname, int param) /*-{
-        $wnd.gl.samplerParameteri(sampler, pname, param);
-    }-*/;
-
-    private static native void nglBindSampler(int unit, JavaScriptObject sampler) /*-{
-        $wnd.gl.bindSampler(unit, sampler);
-    }-*/;
-
-    private static native boolean nglIsSampler(JavaScriptObject sampler) /*-{
-        return $wnd.gl.isSampler(sampler);
-    }-*/;
-
-    private static native void nglDeleteSampler(JavaScriptObject sampler) /*-{
-        $wnd.gl.deleteSampler(sampler);
-    }-*/;
-
-    private static native JavaScriptObject nglCreateSampler() /*-{
-        return $wnd.gl.createSampler();
-    }-*/;
-
-    private static native <T> T nglGetQueryParameter(JavaScriptObject query, int pname) /*-{
-        return $wnd.gl.getQueryParameter(query, pname);
-    }-*/;
-
-    private static native JavaScriptObject nglGetQuery(int target, int pname) /*-{
-        return $wnd.gl.getQuery(target, pname);
-    }-*/;
-
-    private static native void nglEndQuery(int target) /*-{
-        $wnd.gl.endQuery(target);
+    public static native boolean isSupported() /*-{
+        try
+        {
+            var canvas = $doc.createElement('canvas');
+            return !!( $wnd.WebGLRenderingContext && (canvas.getContext('webgl2') ||
+            canvas.getContext('experimental-webgl2')));
+        }
+        catch (e)
+        {
+            $wnd.console.log(e);
+            return false;
+        }
     }-*/;
 
     private static native void nglBeginQuery(int target, JavaScriptObject query) /*-{
         $wnd.gl.beginQuery(target, query);
     }-*/;
 
-    private static native boolean nglIsQuery(JavaScriptObject query) /*-{
-        return $wnd.gl.isQuery(query);
+    private static native void nglBeginTransformFeedback(int primitiveMode) /*-{
+        $wnd.gl.beginTransformFeedback(primitiveMode);
     }-*/;
 
-    private static native void nglDeleteQuery(JavaScriptObject query) /*-{
-        $wnd.gl.deleteQuery(query);
+    private static native void nglBindBufferBase(int target, int index, JavaScriptObject buffer) /*-{
+        $wnd.gl.bindBufferBase(target, index, buffer);
     }-*/;
 
-    private static native JavaScriptObject nglCreateQuery() /*-{
-        return $wnd.gl.createQuery();
+    private static native void nglBindBufferRange(int target, int index, JavaScriptObject buffer, int offset, int size) /*-{
+        $wnd.gl.bindBufferRange(target, index, buffer, offset, size);
+    }-*/;
+
+    private static native void nglBindSampler(int unit, JavaScriptObject sampler) /*-{
+        $wnd.gl.bindSampler(unit, sampler);
+    }-*/;
+
+    private static native void nglBindTransformFeedback(int target, JavaScriptObject transformFeedback) /*-{
+        $wnd.gl.bindTransformFeedback(target, transformFeedback);
+    }-*/;
+
+    private static native void nglBindVertexArray(JavaScriptObject vertexArray) /*-{
+        $wnd.gl.bindVertexArray(vertexArray);
+    }-*/;
+
+    private static native void nglBlitFramebuffer(int srcX0, int srcY0,
+                                                  int srcX1, int srcY1,
+                                                  int dstX0, int dstY0,
+                                                  int dstX1, int dstY1, int mask, int filter) /*-{
+        $wnd.gl.blitFramebuffer(srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
     }-*/;
 
     private static native void nglClearBufferfi(int buffer, int drawbuffer, float depth, int stencil) /*-{
@@ -1207,118 +1070,16 @@ public final class WebGL20
         $wnd.gl.clearBufferfv(buffer, drawbuffer, source);
     }-*/;
 
-    private static native void nglClearBufferuiv(int buffer, int drawbuffer, Uint32Array source) /*-{
-        $wnd.gl.clearBufferuiv(buffer, drawbuffer, source);
-    }-*/;
-
     private static native void nglClearBufferiv(int buffer, int drawbuffer, Int32Array source) /*-{
         $wnd.gl.clearBufferiv(buffer, drawbuffer, source);
     }-*/;
 
-    private static native void nglDrawBuffers(Uint32Array buffers) /*-{
-        $wnd.gl.drawBuffers(buffers);
+    private static native void nglClearBufferuiv(int buffer, int drawbuffer, Uint32Array source) /*-{
+        $wnd.gl.clearBufferuiv(buffer, drawbuffer, source);
     }-*/;
 
-    private static native void nglDrawRangeElements(int mode, int start, int end, int count, int type, int offset) /*-{
-        $wnd.gl.drawRangeElements(mode, start, end, count, type, offset);
-    }-*/;
-
-    private static native void nglDrawElementsInstanced(int mode, int count, int type, int offset, int instanceCount) /*-{
-        $wnd.gl.drawElementsInstanced(mode, count, type, offset, instanceCount);
-    }-*/;
-
-    private static native void nglDrawArraysInstanced(int mode, int first, int count, int instanceCount) /*-{
-        $wnd.gl.drawArraysInstanced(mode, first, count, instanceCount);
-    }-*/;
-
-    private static native void nglVertexAttribDivisor(int index, int divisor) /*-{
-        $wnd.gl.vertexAttribDivisor(index, divisor);
-    }-*/;
-
-    private static native void nglVertexAttribIPointer(int index, int size, int type, int stride, int offset) /*-{
-        $wnd.gl.vertexAttribIPointer(index, size, type, stride, offset);
-    }-*/;
-
-    private static native void nglVertexAttribI4uiv(int index, Int32Array value) /*-{
-        $wnd.gl.vertexAttribI4uiv(index, value);
-    }-*/;
-
-    private static native void nglVertexAttribI4ui(int index, int x, int y, int z, int w) /*-{
-        $wnd.gl.vertexAttribI4ui(index, x, y, z, w);
-    }-*/;
-
-    private static native void nglVertexAttribI4iv(int index, Int32Array value) /*-{
-        $wnd.gl.vertexAttribI4iv(index, value);
-    }-*/;
-
-    private static native void nglVertexAttribI4i(int index, int x, int y, int z, int w) /*-{
-        $wnd.gl.vertexAttribI4i(index, x, y, z, w);
-    }-*/;
-
-    private static native void nglUniformMatrix4x3fv(JavaScriptObject location, boolean transpose, Float32Array value) /*-{
-        $wnd.gl.uniformMatrix4x3fv(location, transpose, value);
-    }-*/;
-
-    private static native void nglUniformMatrix3x4fv(JavaScriptObject location, boolean transpose, Float32Array value) /*-{
-        $wnd.gl.uniformMatrix3x4fv(location, transpose, value);
-    }-*/;
-
-    private static native void nglUniformMatrix4x2fv(JavaScriptObject location, boolean transpose, Float32Array value) /*-{
-        $wnd.gl.uniformMatrix4x2fv(location, transpose, value);
-    }-*/;
-
-    private static native void nglUniformMatrix2x4fv(JavaScriptObject location, boolean transpose, Float32Array value) /*-{
-        $wnd.gl.uniformMatrix2x4fv(location, transpose, value);
-    }-*/;
-
-    private static native void nglUniformMatrix3x2fv(JavaScriptObject location, boolean transpose, Float32Array value) /*-{
-        $wnd.gl.uniformMatrix3x2fv(location, transpose, value);
-    }-*/;
-
-    private static native void nglUniformMatrix2x3fv(JavaScriptObject location, boolean transpose, Float32Array value) /*-{
-        $wnd.gl.uniformMatrix2x3fv(location, transpose, value);
-    }-*/;
-
-    private static native void nglUniform4uiv(JavaScriptObject location, Uint32Array value) /*-{
-        $wnd.gl.uniform4uiv(location, value);
-    }-*/;
-
-    private static native void nglUniform3uiv(JavaScriptObject location, Uint32Array value) /*-{
-        $wnd.gl.uniform3uiv(location, value);
-    }-*/;
-
-    private static native void nglUniform2uiv(JavaScriptObject location, Uint32Array value) /*-{
-        $wnd.gl.uniform2uiv(location, value);
-    }-*/;
-
-    private static native void nglUniform1uiv(JavaScriptObject location, Uint32Array value) /*-{
-        $wnd.gl.uniform1uiv(location, value);
-    }-*/;
-
-    private static native void nglUniform4ui(JavaScriptObject location, int v0, int v1, int v2, int v3) /*-{
-        $wnd.gl.uniform4ui(location, v0, v1, v2, v3);
-    }-*/;
-
-    private static native void nglUniform3ui(JavaScriptObject location, int v0, int v1, int v2) /*-{
-        $wnd.gl.uniform3ui(location, v0, v1, v2);
-    }-*/;
-
-    private static native void nglUniform2ui(JavaScriptObject location, int v0, int v1) /*-{
-        $wnd.gl.uniform2ui(location, v0, v1);
-    }-*/;
-
-    private static native void nglUniform1ui(JavaScriptObject location, int v0) /*-{
-        $wnd.gl.uniform1ui(location, v0);
-    }-*/;
-
-    private static native int nglGetFragDataLocation(JavaScriptObject program, String name) /*-{
-        return $wnd.gl.getFragDataLocation(program, name);
-    }-*/;
-
-    private static native void nglCompressedTexSubImage3D(int target, int level, int xOffset, int yOffset, int zOffset,
-                                                          int width, int height, int depth,
-                                                          int format, ArrayBufferView data) /*-{
-        $wnd.gl.compressedTexSubImage3D(target, level, xOffset, yOffset, zOffset, width, height, data, format, data);
+    private static native int nglClientWaitSync(JavaScriptObject sync, int flags, int timeout) /*-{
+        return $wnd.gl.clientWaitSync(sync, flags, timeout);
     }-*/;
 
     private static native void nglCompressedTexImage3D(int target, int level, int internalFormat,
@@ -1327,9 +1088,208 @@ public final class WebGL20
         $wnd.gl.compressedTexImage3D(target, level, internalFormat, width, height, depth, border, data);
     }-*/;
 
+    private static native void nglCompressedTexSubImage3D(int target, int level, int xOffset, int yOffset, int zOffset,
+                                                          int width, int height, int depth,
+                                                          int format, ArrayBufferView data) /*-{
+        $wnd.gl.compressedTexSubImage3D(target, level, xOffset, yOffset, zOffset, width, height, data, format, data);
+    }-*/;
+
+    private static native void nglCopyBufferSubData(int readTarget, int writeTarget, int readOffset, int writeOffset, int size) /*-{
+        $wnd.gl.copyBufferSubData(readTarget, writeTarget, readOffset, writeOffset, size);
+    }-*/;
+
     private static native void nglCopyTexSubImage3D(int target, int level, int xOffset, int yOffset, int zOffset,
                                                     int x, int y, int width, int height) /*-{
         $wnd.gl.copyTexSubImage3D(target, level, xOffset, yOffset, zOffset, x, y, width, height);
+    }-*/;
+
+    private static native JavaScriptObject nglCreateQuery() /*-{
+        return $wnd.gl.createQuery();
+    }-*/;
+
+    private static native JavaScriptObject nglCreateSampler() /*-{
+        return $wnd.gl.createSampler();
+    }-*/;
+
+    private static native JavaScriptObject nglCreateTransformFeedback() /*-{
+        return $wnd.gl.createTransformFeedback();
+    }-*/;
+
+    private static native JavaScriptObject nglCreateVertexArray() /*-{
+        return $wnd.gl.createVertexArray();
+    }-*/;
+
+    private static native void nglDeleteQuery(JavaScriptObject query) /*-{
+        $wnd.gl.deleteQuery(query);
+    }-*/;
+
+    private static native void nglDeleteSampler(JavaScriptObject sampler) /*-{
+        $wnd.gl.deleteSampler(sampler);
+    }-*/;
+
+    private static native void nglDeleteSync(JavaScriptObject sync) /*-{
+        $wnd.gl.deleteSync(sync);
+    }-*/;
+
+    public static native void nglDeleteTransformFeedback(JavaScriptObject transformFeedback) /*-{
+        $wnd.gl.deleteTransformFeedback(transformFeedback);
+    }-*/;
+
+    private static native void nglDeleteVertexArray(JavaScriptObject vertexArray) /*-{
+        $wnd.gl.deleteVertexArray(vertexArray);
+    }-*/;
+
+    private static native void nglDrawArraysInstanced(int mode, int first, int count, int instanceCount) /*-{
+        $wnd.gl.drawArraysInstanced(mode, first, count, instanceCount);
+    }-*/;
+
+    private static native void nglDrawBuffers(Uint32Array buffers) /*-{
+        $wnd.gl.drawBuffers(buffers);
+    }-*/;
+
+    private static native void nglDrawElementsInstanced(int mode, int count, int type, int offset, int instanceCount) /*-{
+        $wnd.gl.drawElementsInstanced(mode, count, type, offset, instanceCount);
+    }-*/;
+
+    private static native void nglDrawRangeElements(int mode, int start, int end, int count, int type, int offset) /*-{
+        $wnd.gl.drawRangeElements(mode, start, end, count, type, offset);
+    }-*/;
+
+    private static native void nglEndQuery(int target) /*-{
+        $wnd.gl.endQuery(target);
+    }-*/;
+
+    private static native void nglEndTransformFeedback() /*-{
+        $wnd.gl.endTransformFeedback();
+    }-*/;
+
+    private static native JavaScriptObject nglFenceSync(int condition, int flags) /*-{
+        return $wnd.gl.fenceSync(condition, flags);
+    }-*/;
+
+    private static native void nglFramebufferTextureLayer(int target, int attachment, JavaScriptObject texture, int level, int layer) /*-{
+        $wnd.gl.framebufferTextureLayer(target, attachment, texture, level, layer);
+    }-*/;
+
+    private static native String nglGetActiveUniformBlockName(JavaScriptObject program, int uniformBlockIndex) /*-{
+        return $wnd.gl.getActiveUniformBlockName(program, uniformBlockIndex);
+    }-*/;
+
+    private static native <T> T nglGetActiveUniformBlockParameter(JavaScriptObject program, int uniformBlockIndex, int pname) /*-{
+        return $wnd.gl.getActiveUniformBlockParameter(program, uniformBlockIndex, pname);
+    }-*/;
+
+    private static native Int32Array nglGetActiveUniforms(JavaScriptObject program, Uint32Array uniformIndices, int pname) /*-{
+        return $wnd.gl.getActiveUniforms(program, uniformIndices, pname);
+    }-*/;
+
+    private static native void nglGetBufferSubData(int target, int offset, ArrayBufferView returnedData) /*-{
+        $wnd.gl.getBufferSubData(target, offset, returnedData);
+    }-*/;
+
+    private static native int nglGetFragDataLocation(JavaScriptObject program, String name) /*-{
+        return $wnd.gl.getFragDataLocation(program, name);
+    }-*/;
+
+    private static native <T> T nglGetIndexedParameter(int target, int index) /*-{
+        return $wnd.gl.getIndexedParameter(target, index);
+    }-*/;
+
+    private static native Int32Array nglGetInternalformatParameter(int target, int internalFormat, int pName) /*-{
+        return $wnd.gl.getInternalformatParameter(target, internalFormat, pName);
+    }-*/;
+
+    private static native JavaScriptObject nglGetQuery(int target, int pname) /*-{
+        return $wnd.gl.getQuery(target, pname);
+    }-*/;
+
+    private static native <T> T nglGetQueryParameter(JavaScriptObject query, int pname) /*-{
+        return $wnd.gl.getQueryParameter(query, pname);
+    }-*/;
+
+    private static native <T> T nglGetSamplerParameter(JavaScriptObject sampler, int pname) /*-{
+        return $wnd.gl.getSamplerParameter(sampler, pname);
+    }-*/;
+
+    private static native int nglGetSyncParameter(JavaScriptObject sync, int pname) /*-{
+        return $wnd.gl.getSyncParameter(sync, pname);
+    }-*/;
+
+    private static native WebGL10.ActiveInfo nglGetTransformFeedbackVarying(JavaScriptObject program, int index) /*-{
+        return $wnd.gl.getTransformFeedbackVarying(program, index);
+    }-*/;
+
+    private static native int nglGetUniformBlockIndex(JavaScriptObject program, String uniformBlockName) /*-{
+        return $wnd.gl.getUniformBlockIndex(program, uniformBlockName);
+    }-*/;
+
+    private static native Uint32Array nglGetUniformIndices(JavaScriptObject program, JsArrayString uniformNames) /*-{
+        return $wnd.gl.getUniformIndices(program, uniformNames);
+    }-*/;
+
+    private static native void nglInvalidateFramebuffer(int target, ArrayBufferView attachments) /*-{
+        $wnd.gl.invalidateFramebuffer(target, attachments);
+    }-*/;
+
+    private static native void nglInvalidateSubFramebuffer(int target, ArrayBufferView attachments, int x, int y, int w, int h) /*-{
+        $wnd.gl.invalidateSubFramebuffer(target, attachments, x, y, w, h);
+    }-*/;
+
+    private static native boolean nglIsQuery(JavaScriptObject query) /*-{
+        return $wnd.gl.isQuery(query);
+    }-*/;
+
+    private static native boolean nglIsSampler(JavaScriptObject sampler) /*-{
+        return $wnd.gl.isSampler(sampler);
+    }-*/;
+
+    private static native boolean nglIsSync(JavaScriptObject sync) /*-{
+        return $wnd.gl.isSync(sync);
+    }-*/;
+
+    private static native boolean nglIsTransformFeedback(JavaScriptObject transformFeedback) /*-{
+        return $wnd.gl.isTransformFeedback(transformFeedback);
+    }-*/;
+
+    private static native boolean nglIsVertexArray(JavaScriptObject vertexArray) /*-{
+        return $wnd.gl.isVertexArray(vertexArray);
+    }-*/;
+
+    private static native void nglPauseTransformFeedback() /*-{
+        $wnd.gl.pauseTransformFeedback();
+    }-*/;
+
+    private static native void nglReadBuffer(int src) /*-{
+        $wnd.gl.readBuffer(src);
+    }-*/;
+
+    private static native void nglRenderbufferStorageMultisample(int target, int samples, int internalFormat, int width, int height) /*-{
+        $wnd.gl.renderbufferStorageMultisample(target, samples, internalFormat, width, height);
+    }-*/;
+
+    private static native void nglResumeTransformFeedback() /*-{
+        $wnd.gl.resumeTransformFeedback();
+    }-*/;
+
+    private static native void nglSamplerParameterf(JavaScriptObject sampler, int pname, float param) /*-{
+        $wnd.gl.samplerParameterf(sampler, pname, param);
+    }-*/;
+
+    private static native void nglSamplerParameteri(JavaScriptObject sampler, int pname, int param) /*-{
+        $wnd.gl.samplerParameteri(sampler, pname, param);
+    }-*/;
+
+    private static native void nglTexImage3D(int target, int level, int internalFormat, int width, int height, int depth,
+                                             int border, int format, int type, ArrayBufferView pixels) /*-{
+        $wnd.gl.texImage3D(target, level, internalFormat, width, height, depth, border, format, type, pixels);
+    }-*/;
+
+    private static native void nglTexStorage2D(int target, int levels, int internalFormat, int width, int height) /*-{
+        $wnd.gl.texStorage2D(target, levels, internalFormat, width, height);
+    }-*/;
+
+    private static native void nglTexStorage3D(int target, int levels, int internalFormat, int width, int height, int depth) /*-{
+        $wnd.gl.texStorage3D(target, levels, internalFormat, width, height, depth);
     }-*/;
 
     private static native void nglTexSubImage3D(int target, int level, int xOffset, int yOffset, int zOffset,
@@ -1343,55 +1303,95 @@ public final class WebGL20
         $wnd.gl.texSubImage3D(target, level, xOffset, yOffset, zOffset, width, height, depth, format, type, pixels);
     }-*/;
 
-    private static native void nglTexImage3D(int target, int level, int internalFormat, int width, int height, int depth,
-                                             int border, int format, int type, ArrayBufferView pixels) /*-{
-        $wnd.gl.texImage3D(target, level, internalFormat, width, height, depth, border, format, type, pixels);
+    private static native void nglTransformFeedbackVaryings(JavaScriptObject program, JsArrayString varyings, int bufferMode) /*-{
+        $wnd.gl.transformFeedbackVaryings(program, varyings, bufferMode);
     }-*/;
 
-    private static native void nglTexStorage3D(int target, int levels, int internalFormat, int width, int height, int depth) /*-{
-        $wnd.gl.texStorage3D(target, levels, internalFormat, width, height, depth);
+    private static native void nglUniform1ui(JavaScriptObject location, int v0) /*-{
+        $wnd.gl.uniform1ui(location, v0);
     }-*/;
 
-    private static native void nglTexStorage2D(int target, int levels, int internalFormat, int width, int height) /*-{
-        $wnd.gl.texStorage2D(target, levels, internalFormat, width, height);
+    private static native void nglUniform1uiv(JavaScriptObject location, Uint32Array value) /*-{
+        $wnd.gl.uniform1uiv(location, value);
     }-*/;
 
-    private static native void nglRenderbufferStorageMultisample(int target, int samples, int internalFormat, int width, int height) /*-{
-        $wnd.gl.renderbufferStorageMultisample(target, samples, internalFormat, width, height);
+    private static native void nglUniform2ui(JavaScriptObject location, int v0, int v1) /*-{
+        $wnd.gl.uniform2ui(location, v0, v1);
     }-*/;
 
-    private static native Int32Array nglGetInternalformatParameter(int target, int internalFormat, int pName) /*-{
-        return $wnd.gl.getInternalformatParameter(target, internalFormat, pName);
+    private static native void nglUniform2uiv(JavaScriptObject location, Uint32Array value) /*-{
+        $wnd.gl.uniform2uiv(location, value);
     }-*/;
 
-    private static native void nglReadBuffer(int src) /*-{
-        $wnd.gl.readBuffer(src);
+    private static native void nglUniform3ui(JavaScriptObject location, int v0, int v1, int v2) /*-{
+        $wnd.gl.uniform3ui(location, v0, v1, v2);
     }-*/;
 
-    private static native void nglInvalidateSubFramebuffer(int target, ArrayBufferView attachments, int x, int y, int w, int h) /*-{
-        $wnd.gl.invalidateSubFramebuffer(target, attachments, x, y, w, h);
+    private static native void nglUniform3uiv(JavaScriptObject location, Uint32Array value) /*-{
+        $wnd.gl.uniform3uiv(location, value);
     }-*/;
 
-    private static native void nglInvalidateFramebuffer(int target, ArrayBufferView attachments) /*-{
-        $wnd.gl.invalidateFramebuffer(target, attachments);
+    private static native void nglUniform4ui(JavaScriptObject location, int v0, int v1, int v2, int v3) /*-{
+        $wnd.gl.uniform4ui(location, v0, v1, v2, v3);
     }-*/;
 
-    private static native void nglFramebufferTextureLayer(int target, int attachment, JavaScriptObject texture, int level, int layer) /*-{
-        $wnd.gl.framebufferTextureLayer(target, attachment, texture, level, layer);
+    private static native void nglUniform4uiv(JavaScriptObject location, Uint32Array value) /*-{
+        $wnd.gl.uniform4uiv(location, value);
     }-*/;
 
-    private static native void nglBlitFramebuffer(int srcX0, int srcY0,
-                                                  int srcX1, int srcY1,
-                                                  int dstX0, int dstY0,
-                                                  int dstX1, int dstY1, int mask, int filter) /*-{
-        $wnd.gl.blitFramebuffer(srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
+    private static native void nglUniformBlockBinding(JavaScriptObject program, int uniformBlockIndex, int uniformBlockBinding) /*-{
+        $wnd.gl.uniformBlockBinding(program, uniformBlockIndex, uniformBlockBinding);
     }-*/;
 
-    private static native void nglGetBufferSubData(int target, int offset, ArrayBufferView returnedData) /*-{
-        $wnd.gl.getBufferSubData(target, offset, returnedData);
+    private static native void nglUniformMatrix2x3fv(JavaScriptObject location, boolean transpose, Float32Array value) /*-{
+        $wnd.gl.uniformMatrix2x3fv(location, transpose, value);
     }-*/;
 
-    private static native void nglCopyBufferSubData(int readTarget, int writeTarget, int readOffset, int writeOffset, int size) /*-{
-        $wnd.gl.copyBufferSubData(readTarget, writeTarget, readOffset, writeOffset, size);
+    private static native void nglUniformMatrix2x4fv(JavaScriptObject location, boolean transpose, Float32Array value) /*-{
+        $wnd.gl.uniformMatrix2x4fv(location, transpose, value);
+    }-*/;
+
+    private static native void nglUniformMatrix3x2fv(JavaScriptObject location, boolean transpose, Float32Array value) /*-{
+        $wnd.gl.uniformMatrix3x2fv(location, transpose, value);
+    }-*/;
+
+    private static native void nglUniformMatrix3x4fv(JavaScriptObject location, boolean transpose, Float32Array value) /*-{
+        $wnd.gl.uniformMatrix3x4fv(location, transpose, value);
+    }-*/;
+
+    private static native void nglUniformMatrix4x2fv(JavaScriptObject location, boolean transpose, Float32Array value) /*-{
+        $wnd.gl.uniformMatrix4x2fv(location, transpose, value);
+    }-*/;
+
+    private static native void nglUniformMatrix4x3fv(JavaScriptObject location, boolean transpose, Float32Array value) /*-{
+        $wnd.gl.uniformMatrix4x3fv(location, transpose, value);
+    }-*/;
+
+    private static native void nglVertexAttribDivisor(int index, int divisor) /*-{
+        $wnd.gl.vertexAttribDivisor(index, divisor);
+    }-*/;
+
+    private static native void nglVertexAttribI4i(int index, int x, int y, int z, int w) /*-{
+        $wnd.gl.vertexAttribI4i(index, x, y, z, w);
+    }-*/;
+
+    private static native void nglVertexAttribI4iv(int index, Int32Array value) /*-{
+        $wnd.gl.vertexAttribI4iv(index, value);
+    }-*/;
+
+    private static native void nglVertexAttribI4ui(int index, int x, int y, int z, int w) /*-{
+        $wnd.gl.vertexAttribI4ui(index, x, y, z, w);
+    }-*/;
+
+    private static native void nglVertexAttribI4uiv(int index, Int32Array value) /*-{
+        $wnd.gl.vertexAttribI4uiv(index, value);
+    }-*/;
+
+    private static native void nglVertexAttribIPointer(int index, int size, int type, int stride, int offset) /*-{
+        $wnd.gl.vertexAttribIPointer(index, size, type, stride, offset);
+    }-*/;
+
+    private static native void nglWaitSync(JavaScriptObject sync, int flags, int timeout) /*-{
+        $wnd.gl.waitSync(sync, flags, timeout);
     }-*/;
 }
