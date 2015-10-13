@@ -64,7 +64,7 @@ public final class EXT_blend_minmax
     public static void enableExtension()
     {
         if (!WebGL10.isContextCompatible())
-        throw new IllegalStateException("You must have a WebGL context >= 1.0 to enable this extension.");
+            throw new IllegalStateException("You must have a WebGL context >= 1.0 to enable this extension.");
 
         if (!isSupported())
             throw new RuntimeException("This browser does not support the EXT_blend_minmax extension.");
