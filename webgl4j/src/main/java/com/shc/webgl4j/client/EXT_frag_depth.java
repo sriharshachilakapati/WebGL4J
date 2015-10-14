@@ -39,6 +39,9 @@ public final class EXT_frag_depth
         if (!WebGL10.isSupported())
             return false;
 
+        if (!WebGL10.isContextCompatible())
+            throw new IllegalStateException("You must have a WebGL context >= 1.0 to check if extension is supported.");
+
         for (String supportedExtension : WebGL10.glGetSupportedExtensions())
         {
             switch (supportedExtension)
