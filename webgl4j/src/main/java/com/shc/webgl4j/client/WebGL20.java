@@ -345,7 +345,7 @@ public final class WebGL20
         return createContext(canvas, null);
     }
 
-    public static native WebGLContext createContext(CanvasElement element, WebGLContext.Attributes attribs) /*-{
+    public static native WebGLContext createContext(CanvasElement canvas, WebGLContext.Attributes attributes) /*-{
         try
         {
             if (attributes)
