@@ -72,7 +72,7 @@ public final class OES_standard_derivatives
             nEnableExtension();
     }
 
-    public static void checkExtension()
+    private static void checkExtension()
     {
         if (!WebGL10.isContextCompatible())
             throw new RuntimeException("You must create a WebGL context before accessing extension methods.");

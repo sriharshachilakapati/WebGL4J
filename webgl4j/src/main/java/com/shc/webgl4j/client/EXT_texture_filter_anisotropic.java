@@ -73,7 +73,7 @@ public final class EXT_texture_filter_anisotropic
             nEnableExtension();
     }
 
-    public static void checkExtension()
+    private static void checkExtension()
     {
         if (!WebGL10.isContextCompatible())
             throw new RuntimeException("You must create a WebGL context before accessing extension methods.");

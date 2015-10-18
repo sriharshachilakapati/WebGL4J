@@ -70,7 +70,7 @@ public final class OES_element_index_uint
             nEnableExtension();
     }
 
-    public static void checkExtension()
+    private static void checkExtension()
     {
         if (!WebGL10.isContextCompatible())
             throw new RuntimeException("You must create a WebGL context before accessing extension methods.");
