@@ -1013,7 +1013,12 @@ public final class WebGL20
         return WebGLContext.getCurrent() != null && WebGLContext.getCurrent().getVersion() >= 2.0;
     }
 
-    public static native boolean isSupported() /*-{
+    public static boolean isSupported()
+    {
+        return isContextCompatible() || nIsSupported();
+    }
+
+    private static native boolean nIsSupported() /*-{
         try
         {
             var canvas = $doc.createElement('canvas');

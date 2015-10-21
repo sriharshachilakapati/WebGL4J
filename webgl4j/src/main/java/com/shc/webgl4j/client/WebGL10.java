@@ -386,7 +386,12 @@ public final class WebGL10
         };
     }-*/;
 
-    public static native boolean isSupported() /*-{
+    public static boolean isSupported()
+    {
+        return isContextCompatible() || nIsSupported();
+    }
+
+    private static native boolean nIsSupported() /*-{
         try
         {
             var canvas = $doc.createElement('canvas');
