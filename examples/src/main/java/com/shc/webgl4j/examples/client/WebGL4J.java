@@ -54,13 +54,15 @@ public class WebGL4J implements EntryPoint
     @Override
     public void onModuleLoad()
     {
-        RootLayoutPanel.get().add(new HTML("<h1 style='padding-left: 20px;'>" +
-                                           "<img src='http://goharsha.com/images/webgl4j.png' height=70></img>" +
-                                           "Examples</h1>"));
+        RootLayoutPanel.get().add(new HTML(
+                "<img style='float: left; padding: 10px;'" +
+                " src='http://goharsha.com/webgl4j/logos/128/logo-green-dark.png'></img>" +
+                "<h1 style='padding-left: 20px; font-size: 65px;'>" +
+                "&nbsp;Examples</h1>"));
 
         final ArrayList<Example> examples = new ArrayList<>();
 
-        final TabLayoutPanel tabs = new TabLayoutPanel(150, Style.Unit.PX);
+        final TabLayoutPanel tabs = new TabLayoutPanel(190, Style.Unit.PX);
         tabs.add(new ScrollPanel(createInformationTab()), "Information");
 
         Example triangleExample = new TriangleExample(createCanvas());
