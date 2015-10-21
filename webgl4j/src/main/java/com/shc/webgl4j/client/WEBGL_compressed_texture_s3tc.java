@@ -75,15 +75,6 @@ public final class WEBGL_compressed_texture_s3tc
             nEnableExtension();
     }
 
-    private static void checkExtension()
-    {
-        if (!WebGL10.isContextCompatible())
-            throw new RuntimeException("You must create a WebGL context before accessing extension methods.");
-
-        if (!isExtensionEnabled())
-            throw new IllegalStateException("Extension must be enabled before using any members.");
-    }
-
     public static native boolean isExtensionEnabled() /*-{
         return typeof ($wnd.gl.wcts_ext) !== 'undefined';
     }-*/;

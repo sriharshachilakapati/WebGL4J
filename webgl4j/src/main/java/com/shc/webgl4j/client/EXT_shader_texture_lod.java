@@ -70,15 +70,6 @@ public final class EXT_shader_texture_lod
             nEnableExtension();
     }
 
-    private static void checkExtension()
-    {
-        if (!WebGL10.isContextCompatible())
-            throw new RuntimeException("You must create a WebGL context before accessing extension methods.");
-
-        if (!isExtensionEnabled())
-            throw new IllegalStateException("Extension must be enabled before using any members.");
-    }
-
     public static native boolean isExtensionEnabled() /*-{
         return typeof ($wnd.gl.estl_ext) !== 'undefined';
     }-*/;
