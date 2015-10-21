@@ -135,7 +135,7 @@ Once the terminal says that the server is ready at **http://localhost:9876**, fi
 
 This project is covered by MIT licence. You can read the terms [here](http://opensource.org/licenses/MIT).
 
-The logos were designed by [NegativeZero](http://goharsha.com/webgl4j/logos/128/logo-blue-dark.png) (Twitter: [@NegativeZeroDEV](https://twitter.com/NegativeZeroDEV/)) and is licenced under Creative Commons.
+The logos were designed by [NegativeZero](https://github.com/NegativeXero/) (Twitter: [@NegativeZeroDEV](https://twitter.com/NegativeZeroDEV/)) and is licenced under Creative Commons.
 
 ## Contact
 
