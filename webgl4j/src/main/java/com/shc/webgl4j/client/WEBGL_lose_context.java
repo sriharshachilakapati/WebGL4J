@@ -46,11 +46,11 @@ public final class WEBGL_lose_context
         {
             switch (supportedExtension)
             {
-                case "WEBGL_lost_context":
-                case "O_WEBGL_lost_context":
-                case "IE_WEBGL_lost_context":
-                case "MOZ_WEBGL_lost_context":
-                case "WEBKIT_WEBGL_lost_context":
+                case "WEBGL_lose_context":
+                case "O_WEBGL_lose_context":
+                case "IE_WEBGL_lose_context":
+                case "MOZ_WEBGL_lose_context":
+                case "WEBKIT_WEBGL_lose_context":
                     return true;
             }
         }
@@ -64,7 +64,7 @@ public final class WEBGL_lose_context
             throw new IllegalStateException("You must have a WebGL context >= 1.0 to enable this extension.");
 
         if (!isSupported())
-            throw new RuntimeException("This browser does not support the WEBGL_lost_context extension.");
+            throw new RuntimeException("This browser does not support the WEBGL_lose_context extension.");
 
         if (!isExtensionEnabled())
             nEnableExtension();
@@ -96,11 +96,11 @@ public final class WEBGL_lose_context
     }-*/;
 
     private static native void nEnableExtension() /*-{
-        $wnd.gl.wlc_ext = $wnd.gl.getExtension('WEBGL_lost_context') ||
-            $wnd.gl.getExtension('O_WEBGL_lost_context') ||
-            $wnd.gl.getExtension('IE_WEBGL_lost_context') ||
-            $wnd.gl.getExtension('MOZ_WEBGL_lost_context') ||
-            $wnd.gl.getExtension('WEBKIT_WEBGL_lost_context');
+        $wnd.gl.wlc_ext = $wnd.gl.getExtension('WEBGL_lose_context') ||
+            $wnd.gl.getExtension('O_WEBGL_lose_context') ||
+            $wnd.gl.getExtension('IE_WEBGL_lose_context') ||
+            $wnd.gl.getExtension('MOZ_WEBGL_lose_context') ||
+            $wnd.gl.getExtension('WEBKIT_WEBGL_lose_context');
     }-*/;
 
     private static native void nglLoseContext() /*-{
