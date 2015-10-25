@@ -32,7 +32,7 @@ import java.util.Map;
 /**
  * A class used to convert WebGL objects (WebGLTexture, WebGLBuffer etc.,) to integers just like the desktop OpenGL.
  * This class is package-private since there is no direct use of this class for users. It is simply expected to work in
- * the background.
+ * the background. That is the reason this class is declared as package private.
  *
  * @author Sri Harsha Chilakapati
  */
