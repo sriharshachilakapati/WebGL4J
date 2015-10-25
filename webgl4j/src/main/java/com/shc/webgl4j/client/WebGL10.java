@@ -597,10 +597,10 @@ public final class WebGL10
     }
 
     public static void glCompressedTexImage2D(int target, int level, int internalFormat,
-                                              int border, long imageSize, JavaScriptObject JavaScriptObject)
+                                              int border, long imageSize, JavaScriptObject javaScriptObject)
     {
         checkContextCompatibility();
-        nglCompressedTexImage2D(target, level, internalFormat,border, imageSize, JavaScriptObject);
+        nglCompressedTexImage2D(target, level, internalFormat, border, imageSize, javaScriptObject);
     }
 
     public static void glCompressedTexSubImage2D(int target, int level, int xOffset, int yOffset,
@@ -1011,7 +1011,7 @@ public final class WebGL10
         T result = nglGetVertexAttrib(index, pname);
 
         if (pname == GL_VERTEX_ATTRIB_ARRAY_BUFFER_BINDING)
-                return (T) (Integer) WebGLObjectMap.get().createBuffer((JavaScriptObject) result);
+            return (T) (Integer) WebGLObjectMap.get().createBuffer((JavaScriptObject) result);
 
         return result;
     }
@@ -1174,6 +1174,7 @@ public final class WebGL10
         checkContextCompatibility();
         nglStencilOpSeparate(face, fail, zFail, zPass);
     }
+
     public static void glTexImage2D(int target, int level, int internalFormat, int format, int type, Image pixels)
     {
         checkContextCompatibility();
@@ -1814,11 +1815,96 @@ public final class WebGL10
     }-*/;
 
     private static native <T> T nglGetFramebufferAttachmentParameter(int target, int attachment, int pname) /*-{
-        return $wnd.gl.getFramebufferAttachmentParameter(target, attachment, pname);
+        var value = $wnd.gl.getFramebufferAttachmentParameter(target, attachment, pname);
+
+        if (pname == @com.shc.webgl4j.client.WebGL10::GL_FRAMEBUFFER_ATTACHMENT_OBJECT_TYPE ||
+            pname == @com.shc.webgl4j.client.WebGL10::GL_FRAMEBUFFER_ATTACHMENT_TEXTURE_LEVEL ||
+            pname == @com.shc.webgl4j.client.WebGL10::GL_FRAMEBUFFER_ATTACHMENT_TEXTURE_CUBE_MAP_FACE)
+            return @java.lang.Integer::valueOf(I)(value);
+
+        return value;
     }-*/;
 
     private static native <T> T nglGetParameter(int pname) /*-{
-        return $wnd.gl.getParameter(pname);
+        var result = $wnd.gl.getParameter(pname);
+
+        // Perform boxing to prevent ClassCastException
+        switch (pname)
+        {
+            case @com.shc.webgl4j.client.WebGL10::GL_ACTIVE_TEXTURE:
+            case @com.shc.webgl4j.client.WebGL10::GL_ALPHA_BITS:
+            case @com.shc.webgl4j.client.WebGL10::GL_BLEND_DST_ALPHA:
+            case @com.shc.webgl4j.client.WebGL10::GL_BLEND_DST_RGB:
+            case @com.shc.webgl4j.client.WebGL10::GL_BLEND_EQUATION_ALPHA:
+            case @com.shc.webgl4j.client.WebGL10::GL_BLEND_EQUATION_RGB:
+            case @com.shc.webgl4j.client.WebGL10::GL_BLEND_SRC_ALPHA:
+            case @com.shc.webgl4j.client.WebGL10::GL_BLEND_SRC_RGB:
+            case @com.shc.webgl4j.client.WebGL10::GL_BLUE_BITS:
+            case @com.shc.webgl4j.client.WebGL10::GL_CULL_FACE_MODE:
+            case @com.shc.webgl4j.client.WebGL10::GL_DEPTH_BITS:
+            case @com.shc.webgl4j.client.WebGL10::GL_DEPTH_FUNC:
+            case @com.shc.webgl4j.client.WebGL10::GL_FRONT_FACE:
+            case @com.shc.webgl4j.client.WebGL10::GL_GENERATE_MIPMAP_HINT:
+            case @com.shc.webgl4j.client.WebGL10::GL_GREEN_BITS:
+            case @com.shc.webgl4j.client.WebGL10::GL_IMPLEMENTATION_COLOR_READ_FORMAT:
+            case @com.shc.webgl4j.client.WebGL10::GL_IMPLEMENTATION_COLOR_READ_TYPE:
+            case @com.shc.webgl4j.client.WebGL10::GL_MAX_COMBINED_TEXTURE_IMAGE_UNITS:
+            case @com.shc.webgl4j.client.WebGL10::GL_MAX_CUBE_MAP_TEXTURE_SIZE:
+            case @com.shc.webgl4j.client.WebGL10::GL_MAX_FRAGMENT_UNIFORM_VECTORS:
+            case @com.shc.webgl4j.client.WebGL10::GL_MAX_RENDERBUFFER_SIZE:
+            case @com.shc.webgl4j.client.WebGL10::GL_MAX_TEXTURE_IMAGE_UNITS:
+            case @com.shc.webgl4j.client.WebGL10::GL_MAX_TEXTURE_SIZE:
+            case @com.shc.webgl4j.client.WebGL10::GL_MAX_VARYING_VECTORS:
+            case @com.shc.webgl4j.client.WebGL10::GL_MAX_VERTEX_ATTRIBS:
+            case @com.shc.webgl4j.client.WebGL10::GL_MAX_VERTEX_TEXTURE_IMAGE_UNITS:
+            case @com.shc.webgl4j.client.WebGL10::GL_MAX_VERTEX_UNIFORM_VECTORS:
+            case @com.shc.webgl4j.client.WebGL10::GL_PACK_ALIGNMENT:
+            case @com.shc.webgl4j.client.WebGL10::GL_RED_BITS:
+            case @com.shc.webgl4j.client.WebGL10::GL_SAMPLE_BUFFERS:
+            case @com.shc.webgl4j.client.WebGL10::GL_SAMPLES:
+            case @com.shc.webgl4j.client.WebGL10::GL_STENCIL_BACK_FAIL:
+            case @com.shc.webgl4j.client.WebGL10::GL_STENCIL_BACK_FUNC:
+            case @com.shc.webgl4j.client.WebGL10::GL_STENCIL_BACK_PASS_DEPTH_PASS:
+            case @com.shc.webgl4j.client.WebGL10::GL_STENCIL_BACK_PASS_DEPTH_FAIL:
+            case @com.shc.webgl4j.client.WebGL10::GL_STENCIL_BACK_REF:
+            case @com.shc.webgl4j.client.WebGL10::GL_STENCIL_BACK_VALUE_MASK:
+            case @com.shc.webgl4j.client.WebGL10::GL_STENCIL_BACK_WRITEMASK:
+            case @com.shc.webgl4j.client.WebGL10::GL_STENCIL_BITS:
+            case @com.shc.webgl4j.client.WebGL10::GL_STENCIL_CLEAR_VALUE:
+            case @com.shc.webgl4j.client.WebGL10::GL_STENCIL_FAIL:
+            case @com.shc.webgl4j.client.WebGL10::GL_STENCIL_FUNC:
+            case @com.shc.webgl4j.client.WebGL10::GL_STENCIL_PASS_DEPTH_FAIL:
+            case @com.shc.webgl4j.client.WebGL10::GL_STENCIL_PASS_DEPTH_PASS:
+            case @com.shc.webgl4j.client.WebGL10::GL_STENCIL_REF:
+            case @com.shc.webgl4j.client.WebGL10::GL_STENCIL_VALUE_MASK:
+            case @com.shc.webgl4j.client.WebGL10::GL_STENCIL_WRITEMASK:
+            case @com.shc.webgl4j.client.WebGL10::GL_SUBPIXEL_BITS:
+            case @com.shc.webgl4j.client.WebGL10::GL_UNPACK_ALIGNMENT:
+            case @com.shc.webgl4j.client.WebGL10::GL_UNPACK_COLORSPACE_CONVERSION_WEBGL:
+                return @java.lang.Integer::valueOf(I)(result);
+
+            case @com.shc.webgl4j.client.WebGL10::GL_DEPTH_CLEAR_VALUE:
+            case @com.shc.webgl4j.client.WebGL10::GL_LINE_WIDTH:
+            case @com.shc.webgl4j.client.WebGL10::GL_POLYGON_OFFSET_FACTOR:
+            case @com.shc.webgl4j.client.WebGL10::GL_POLYGON_OFFSET_UNITS:
+            case @com.shc.webgl4j.client.WebGL10::GL_SAMPLE_COVERAGE_VALUE:
+                return @java.lang.Float::valueOf(F)(result);
+
+            case @com.shc.webgl4j.client.WebGL10::GL_BLEND:
+            case @com.shc.webgl4j.client.WebGL10::GL_CULL_FACE:
+            case @com.shc.webgl4j.client.WebGL10::GL_DEPTH_TEST:
+            case @com.shc.webgl4j.client.WebGL10::GL_DEPTH_WRITEMASK:
+            case @com.shc.webgl4j.client.WebGL10::GL_DITHER:
+            case @com.shc.webgl4j.client.WebGL10::GL_POLYGON_OFFSET_FILL:
+            case @com.shc.webgl4j.client.WebGL10::GL_SAMPLE_COVERAGE_INVERT:
+            case @com.shc.webgl4j.client.WebGL10::GL_SCISSOR_TEST:
+            case @com.shc.webgl4j.client.WebGL10::GL_STENCIL_TEST:
+            case @com.shc.webgl4j.client.WebGL10::GL_UNPACK_FLIP_Y_WEBGL:
+            case @com.shc.webgl4j.client.WebGL10::GL_UNPACK_PREMULTIPLY_ALPHA_WEBGL:
+                return @java.lang.Boolean::valueOf(Z)(result);
+        }
+
+        return result;
     }-*/;
 
     private static native String nglGetProgramInfoLog(JavaScriptObject programID) /*-{
@@ -1826,7 +1912,20 @@ public final class WebGL10
     }-*/;
 
     private static native <T> T nglGetProgramParameter(JavaScriptObject programID, int pname) /*-{
-        return $wnd.gl.getProgramParameter(programID, pname);
+        var result = $wnd.gl.getProgramParameter(programID, pname);
+
+        // Perform boxing to prevent ClassCastException
+        if (pname == @com.shc.webgl4j.client.WebGL10::GL_LINK_STATUS ||
+            pname == @com.shc.webgl4j.client.WebGL10::GL_DELETE_STATUS ||
+            pname == @com.shc.webgl4j.client.WebGL10::GL_VALIDATE_STATUS)
+            return @java.lang.Boolean::valueOf(Z)(result);
+
+        if (pname == @com.shc.webgl4j.client.WebGL10::GL_ATTACHED_SHADERS ||
+            pname == @com.shc.webgl4j.client.WebGL10::GL_ACTIVE_ATTRIBUTES ||
+            pname == @com.shc.webgl4j.client.WebGL10::GL_ACTIVE_UNIFORMS)
+            return @java.lang.Integer::valueOf(I)(result);
+
+        return result;
     }-*/;
 
     private static native int nglGetRenderbufferParameter(int target, int pname) /*-{
@@ -1838,7 +1937,12 @@ public final class WebGL10
     }-*/;
 
     private static native <T> T nglGetShaderParameter(JavaScriptObject shaderID, int pname) /*-{
-        return $wnd.gl.getShaderParameter(shaderID, pname);
+        var value = $wnd.gl.getShaderParameter(shaderID, pname);
+
+        if (pname == @com.shc.webgl4j.client.WebGL10::GL_SHADER_TYPE)
+            return @java.lang.Integer::valueOf(I)(value);
+
+        return @java.lang.Boolean::valueOf(Z)(value);
     }-*/;
 
     private static native ShaderPrecisionFormat nglGetShaderPrecisionFormat(int shaderType, int precisionType) /*-{
@@ -1858,7 +1962,21 @@ public final class WebGL10
     }-*/;
 
     private static native <T> T nglGetUniform(JavaScriptObject programID, JavaScriptObject location) /*-{
-        return $wnd.gl.getUniform(programID, location);
+        var result = $wnd.gl.getUniform(programID, location);
+
+        var type = typeof (result);
+        if (type === 'boolean')
+            return @java.lang.Boolean::valueOf(Z)(result);
+
+        if (type === 'number')
+        {
+            if (result === +result && result === (result|0))
+                return @java.lang.Integer::valueOf(I)(result);
+
+            return @java.lang.Float::valueOf(F)(result);
+        }
+
+        return result;
     }-*/;
 
     private static native JavaScriptObject nglGetUniformLocation(JavaScriptObject programID, String name) /*-{
@@ -1866,7 +1984,18 @@ public final class WebGL10
     }-*/;
 
     private static native <T> T nglGetVertexAttrib(int index, int pname) /*-{
-        return $wnd.gl.getVertexAttrib(index, pname);
+        var result = $wnd.gl.getVertexAttrib(index, pname);
+
+        if (pname == @com.shc.webgl4j.client.WebGL10::GL_VERTEX_ATTRIB_ARRAY_ENABLED ||
+            pname == @com.shc.webgl4j.client.WebGL10::GL_VERTEX_ATTRIB_ARRAY_NORMALIZED)
+            return @java.lang.Boolean::valueOf(Z)(result);
+
+        if (pname == @com.shc.webgl4j.client.WebGL10::GL_VERTEX_ATTRIB_ARRAY_SIZE ||
+            pname == @com.shc.webgl4j.client.WebGL10::GL_VERTEX_ATTRIB_ARRAY_STRIDE ||
+            pname == @com.shc.webgl4j.client.WebGL10::GL_VERTEX_ATTRIB_ARRAY_TYPE)
+            return @java.lang.Integer::valueOf(I)(result);
+
+        return result;
     }-*/;
 
     private static native int nglGetVertexAttribOffset(int index, int pname) /*-{
