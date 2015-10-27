@@ -36,7 +36,24 @@ import com.google.gwt.typedarrays.shared.TypedArrays;
 import com.google.gwt.user.client.ui.Image;
 
 /**
+ * <p>This class contains all the constants and methods that were introduced in the WebGL 1.0 specification. The methods
+ * require a WebGL 1.0 compatible context current (see {@link WebGLContext}) and the canvas of the active context
+ * visible on the webpage. The extensions that require WebGL 1.0 specification are</p>
+ *
+ * <ul> <li>{@link ANGLE_instanced_arrays}</li> <li>{@link EXT_blend_minmax}</li> <li>{@link EXT_frag_depth}</li>
+ * <li>{@link EXT_shader_texture_lod}</li> <li>{@link EXT_texture_filter_anisotropic}</li> <li>{@link
+ * OES_element_index_uint}</li> <li>{@link OES_standard_derivatives}</li> <li>{@link OES_texture_float}</li> <li>{@link
+ * OES_texture_float_linear}</li> <li>{@link OES_texture_half_float}</li> <li>{@link OES_texture_half_float_linear}</li>
+ * <li>{@link OES_vertex_array_object}</li> <li>{@link WEBGL_compressed_texture_s3tc}</li> <li>{@link
+ * WEBGL_debug_renderer_info}</li> <li>{@link WEBGL_debug_shaders}</li> <li>{@link WEBGL_depth_texture}</li> <li>{@link
+ * WEBGL_draw_buffers}</li> <li>{@link WEBGL_lose_context}</li> </ul>
+ *
+ * <p>The specification that describes the WebGL 1.0 API can be found here at the Khronos registry at the following URL:
+ * <a href="https://www.khronos.org/registry/webgl/specs/latest/1.0/">https://www.khronos.org/registry/webgl/specs/latest/1.0/</a></p>
+ *
  * @author Sri Harsha Chilakapati
+ * @see WebGLContext
+ * @see WebGL10#createContext
  */
 public final class WebGL10
 {
@@ -845,6 +862,12 @@ public final class WebGL10
     {
         checkContextCompatibility();
         return nglGetAttribLocation(WebGLObjectMap.get().toProgram(programID), name);
+    }
+
+    public static int glGetBufferParameter(int target, int pname)
+    {
+        checkContextCompatibility();
+        return nglGetBufferParameter(target, pname);
     }
 
     public static Element glGetCanvas()
@@ -1970,7 +1993,7 @@ public final class WebGL10
 
         if (type === 'number')
         {
-            if (result === +result && result === (result|0))
+            if (result === +result && result === (result | 0))
                 return @java.lang.Integer::valueOf(I)(result);
 
             return @java.lang.Float::valueOf(F)(result);
@@ -2265,39 +2288,78 @@ public final class WebGL10
         $wnd.gl.viewport(x, y, w, h);
     }-*/;
 
+    /**
+     * The WebGL10.ActiveInfo class represents the information returned from the {@link #glGetActiveAttrib(int, int)}
+     * and {@link #glGetActiveUniform(int, int)} calls. It tells about the name, size and type of the active object.
+     */
     public static class ActiveInfo extends JavaScriptObject
     {
         protected ActiveInfo()
         {
         }
 
+        /**
+         * Returns the name of the requested variable.
+         *
+         * @return The name of the requested variable.
+         */
         public final native int getName() /*-{
             return this.name;
         }-*/;
 
+        /**
+         * Returns the size of the requested variable.
+         *
+         * @return The size of the requested variable.
+         */
         public final native int getSize() /*-{
             return this.size;
         }-*/;
 
+        /**
+         * Returns the type of the requested variable.
+         *
+         * @return The type of the requested variable.
+         */
         public final native int getType() /*-{
             return this.type;
         }-*/;
     }
 
+    /**
+     * The WebGL10.ShaderPrecisionFormat class represents the information returned from the {@link
+     * #glGetShaderPrecisionFormat(int, int)} call. It tells the precision, and also the minimum and maximum values in
+     * the allowed range.
+     */
     public static class ShaderPrecisionFormat extends JavaScriptObject
     {
         protected ShaderPrecisionFormat()
         {
         }
 
+        /**
+         * The number of bits of precision that can be represented. For integer formats this value is always 0.
+         *
+         * @return the number of bits of precision.
+         */
         public final native int getPrecision() /*-{
             return this.precision;
         }-*/;
 
+        /**
+         * Returns the base 2 log of the absolute value of the maximum value that can be represented.
+         *
+         * @return The base 2 log of the absolute value of the maximum value that can be represented.
+         */
         public final native int getRangeMax() /*-{
             return this.rangeMax;
         }-*/;
 
+        /**
+         * Returns the base 2 log of the absolute value of the minimum value that can be represented.
+         *
+         * @return The base 2 log of the absolute value of the minimum value that can be represented.
+         */
         public final native int getRangeMin() /*-{
             return this.rangeMin;
         }-*/;
