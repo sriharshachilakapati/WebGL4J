@@ -38,6 +38,8 @@ import com.google.gwt.user.client.ui.Image;
 
 import java.util.List;
 
+import static com.shc.webgl4j.client.WebGL10.*;
+
 /**
  * @author Sri Harsha Chilakapati
  */
@@ -719,6 +721,19 @@ public final class WebGL20
         return glGetUniformIndices(program, arrayString);
     }
 
+    @SuppressWarnings("unchecked")
+    public static <T> T glGetVertexAttrib(int index, int pname)
+    {
+        checkContextCompatibility();
+
+        Object value = nglGetVertexAttrib(index, pname);
+
+        if (pname == GL_VERTEX_ATTRIB_ARRAY_BUFFER_BINDING)
+            return (T) (Integer) WebGLObjectMap.get().createBuffer((JavaScriptObject) value);
+
+        return nglGetVertexAttrib(index, pname);
+    }
+
     public static void glInvalidateFramebuffer(int target, ArrayBufferView attachments)
     {
         checkContextCompatibility();
@@ -1181,7 +1196,21 @@ public final class WebGL20
     }-*/;
 
     private static native <T> T nglGetActiveUniformBlockParameter(JavaScriptObject program, int uniformBlockIndex, int pname) /*-{
-        return $wnd.gl.getActiveUniformBlockParameter(program, uniformBlockIndex, pname);
+        var value = $wnd.gl.getActiveUniformBlockParameter(program, uniformBlockIndex, pname);
+
+        switch (pname)
+        {
+            case @com.shc.webgl4j.client.WebGL20::GL_UNIFORM_BLOCK_BINDING:
+            case @com.shc.webgl4j.client.WebGL20::GL_UNIFORM_BLOCK_DATA_SIZE:
+            case @com.shc.webgl4j.client.WebGL20::GL_UNIFORM_BLOCK_ACTIVE_UNIFORMS:
+                return @java.lang.Integer::valueOf(I)(value);
+
+            case @com.shc.webgl4j.client.WebGL20::GL_UNIFORM_BLOCK_REFERENCED_BY_VERTEX_SHADER:
+            case @com.shc.webgl4j.client.WebGL20::GL_UNIFORM_BLOCK_REFERENCED_BY_FRAGMENT_SHADER:
+                return @java.lang.Boolean::valueOf(Z)(value);
+        }
+
+        return value;
     }-*/;
 
     private static native Int32Array nglGetActiveUniforms(JavaScriptObject program, Uint32Array uniformIndices, int pname) /*-{
@@ -1197,7 +1226,18 @@ public final class WebGL20
     }-*/;
 
     private static native <T> T nglGetIndexedParameter(int target, int index) /*-{
-        return $wnd.gl.getIndexedParameter(target, index);
+        var value = $wnd.gl.getIndexedParameter(target, index);
+
+        switch (value)
+        {
+            case @com.shc.webgl4j.client.WebGL20::GL_UNIFORM_BUFFER_SIZE:
+            case @com.shc.webgl4j.client.WebGL20::GL_UNIFORM_BUFFER_START:
+            case @com.shc.webgl4j.client.WebGL20::GL_TRANSFORM_FEEDBACK_BUFFER_SIZE:
+            case @com.shc.webgl4j.client.WebGL20::GL_TRANSFORM_FEEDBACK_BUFFER_START:
+                return @java.lang.Integer::valueOf(I)(value);
+        }
+
+        return value;
     }-*/;
 
     private static native Int32Array nglGetInternalformatParameter(int target, int internalFormat, int pName) /*-{
@@ -1209,11 +1249,43 @@ public final class WebGL20
     }-*/;
 
     private static native <T> T nglGetQueryParameter(JavaScriptObject query, int pname) /*-{
-        return $wnd.gl.getQueryParameter(query, pname);
+        var value = $wnd.gl.getQueryParameter(query, pname);
+
+        if (value != null)
+        {
+            switch (pname)
+            {
+                case @com.shc.webgl4j.client.WebGL20::GL_QUERY_RESULT:
+                    return @java.lang.Integer::valueOf(I)(value);
+
+                case @com.shc.webgl4j.client.WebGL20::GL_QUERY_RESULT_AVAILABLE:
+                    return @java.lang.Boolean::valueOf(Z)(value);
+            }
+        }
+
+        return value;
     }-*/;
 
     private static native <T> T nglGetSamplerParameter(JavaScriptObject sampler, int pname) /*-{
-        return $wnd.gl.getSamplerParameter(sampler, pname);
+        var value = $wnd.gl.getSamplerParameter(sampler, pname);
+
+        switch (value)
+        {
+            case @com.shc.webgl4j.client.WebGL20::GL_TEXTURE_COMPARE_FUNC:
+            case @com.shc.webgl4j.client.WebGL20::GL_TEXTURE_COMPARE_MODE:
+            case @com.shc.webgl4j.client.WebGL10::GL_TEXTURE_MAG_FILTER:
+            case @com.shc.webgl4j.client.WebGL10::GL_TEXTURE_MIN_FILTER:
+            case @com.shc.webgl4j.client.WebGL20::GL_TEXTURE_WRAP_R:
+            case @com.shc.webgl4j.client.WebGL10::GL_TEXTURE_WRAP_S:
+            case @com.shc.webgl4j.client.WebGL10::GL_TEXTURE_WRAP_T:
+                return @java.lang.Integer::valueOf(I)(value);
+
+            case @com.shc.webgl4j.client.WebGL20::GL_TEXTURE_MAX_LOD:
+            case @com.shc.webgl4j.client.WebGL20::GL_TEXTURE_MIN_LOD:
+                return @java.lang.Float::valueOf(F)(value);
+        }
+
+        return value;
     }-*/;
 
     private static native int nglGetSyncParameter(JavaScriptObject sync, int pname) /*-{
@@ -1230,6 +1302,26 @@ public final class WebGL20
 
     private static native Uint32Array nglGetUniformIndices(JavaScriptObject program, JsArrayString uniformNames) /*-{
         return $wnd.gl.getUniformIndices(program, uniformNames);
+    }-*/;
+
+    private static native <T> T nglGetVertexAttrib(int index, int pname) /*-{
+        var value = $wnd.gl.getVertexAttrib(index, pname);
+
+        switch (value)
+        {
+            case @com.shc.webgl4j.client.WebGL10::GL_VERTEX_ATTRIB_ARRAY_SIZE:
+            case @com.shc.webgl4j.client.WebGL10::GL_VERTEX_ATTRIB_ARRAY_TYPE:
+            case @com.shc.webgl4j.client.WebGL10::GL_VERTEX_ATTRIB_ARRAY_STRIDE:
+            case @com.shc.webgl4j.client.WebGL20::GL_VERTEX_ATTRIB_ARRAY_DIVISOR:
+                return @java.lang.Integer::valueOf(I)(value);
+
+            case @com.shc.webgl4j.client.WebGL10::GL_VERTEX_ATTRIB_ARRAY_ENABLED:
+            case @com.shc.webgl4j.client.WebGL10::GL_VERTEX_ATTRIB_ARRAY_NORMALIZED:
+            case @com.shc.webgl4j.client.WebGL20::GL_VERTEX_ATTRIB_ARRAY_INTEGER:
+                return @java.lang.Boolean::valueOf(Z)(value);
+        }
+
+        return value;
     }-*/;
 
     private static native void nglInvalidateFramebuffer(int target, ArrayBufferView attachments) /*-{
