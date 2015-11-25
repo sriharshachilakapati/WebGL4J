@@ -1,4 +1,4 @@
-![WebGL4J Logo](http://goharsha.com/webgl4j/logos/128/logo-blue-light.png)
+![WebGL4J Logo](http://goharsha.com/webgl4j/logos/256/logo-blue-light.png)
 
 WebGL4J is a WebGL wrapper library for the Java programming language which allows to use Java to write HTML5 applications using GWT (Google Web Toolkit) which uses WebGL to draw 2D / 3D hardware accelerated graphics using a HTML5 Canvas.
 
