@@ -1,4 +1,4 @@
-<p align="center"><img src="http://goharsha.com/webgl4j/logos/256/logo-blue-light.png"></img></p>
+<p align="center"><img src="http://goharsha.com/WebGL4J/logos/256/logo-blue-light.png"></img></p>
 
 WebGL4J is a WebGL wrapper library for the Java programming language which allows to use Java to write HTML5 applications using GWT (Google Web Toolkit) which uses WebGL to draw 2D / 3D hardware accelerated graphics using a HTML5 Canvas.
 
@@ -123,7 +123,7 @@ This method returns a success value, to notify you whether the request is accept
 
 ## Running the examples
 
-You can see the examples in action by navigating your browser to [http://goharsha.com/webgl4j/](http://goharsha.com/webgl4j/). Instead if you want to compile them yourself, enter the following command into the console.
+You can see the examples in action by navigating your browser to [http://goharsha.com/WebGL4J/](http://goharsha.com/WebGL4J/). Instead if you want to compile them yourself, enter the following command into the console.
 
 ```bash
 ./gradlew clean build superDev
