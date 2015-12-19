@@ -56,7 +56,7 @@ public class WebGL4J implements EntryPoint
     {
         RootLayoutPanel.get().add(new HTML(
                 "<img style='float: left; padding: 10px;'" +
-                " src='http://goharsha.com/webgl4j/logos/128/logo-green-dark.png'></img>" +
+                " src='http://goharsha.com/WebGL4J/logos/128/logo-green-dark.png'></img>" +
                 "<h1 style='padding-left: 20px; font-size: 65px;'>" +
                 "&nbsp;Examples</h1>"));
 
