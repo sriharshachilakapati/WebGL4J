@@ -36,6 +36,7 @@ import com.google.gwt.user.client.ui.TabLayoutPanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.shc.webgl4j.client.*;
 
+import java.util.List;
 import java.util.ArrayList;
 
 import static com.shc.webgl4j.client.WEBGL_debug_renderer_info.*;
@@ -51,6 +52,9 @@ public class WebGL4J implements EntryPoint
         return "<b>" + name + ": </b>" + (value ? "Supported" : "Not Supported") + "</br>";
     }
 
+    private List<Example>  examples;
+    private TabLayoutPanel tabs;
+
     @Override
     public void onModuleLoad()
     {
@@ -60,9 +64,9 @@ public class WebGL4J implements EntryPoint
                 "<h1 style='padding-left: 20px; font-size: 65px;'>" +
                 "&nbsp;Examples</h1>"));
 
-        final ArrayList<Example> examples = new ArrayList<>();
+        examples = new ArrayList<>();
 
-        final TabLayoutPanel tabs = new TabLayoutPanel(190, Style.Unit.PX);
+        tabs = new TabLayoutPanel(190, Style.Unit.PX);
         tabs.add(new ScrollPanel(createInformationTab()), "Information");
 
         Example triangleExample = new TriangleExample(createCanvas());
@@ -94,24 +98,22 @@ public class WebGL4J implements EntryPoint
             example.init();
         }
 
-        AnimationScheduler.get().requestAnimationFrame(new AnimationScheduler.AnimationCallback()
-        {
-            @Override
-            public void execute(double timestamp)
-            {
-                for (Example example : examples)
-                {
-                    if (tabs.getWidget(tabs.getSelectedIndex()) == example.canvas)
-                    {
-                        example.context.makeCurrent();
-                        example.render();
-                        break;
-                    }
-                }
+        AnimationScheduler.get().requestAnimationFrame(this::animationCallback);
+    }
 
-                AnimationScheduler.get().requestAnimationFrame(this);
+    private void animationCallback(double timestamp)
+    {
+        for (Example example : examples)
+        {
+            if (tabs.getWidget(tabs.getSelectedIndex()) == example.canvas)
+            {
+                example.context.makeCurrent();
+                example.render();
+                break;
             }
-        });
+        }
+
+        AnimationScheduler.get().requestAnimationFrame(this::animationCallback);
     }
 
     private Widget createInformationTab()

@@ -9,9 +9,11 @@ buildscript {
 
 allprojects {
     apply plugin: 'idea'
+    apply plugin: 'maven'
 
     repositories {
         jcenter()
+        mavenCentral()
     }
 }
 

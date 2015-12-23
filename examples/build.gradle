@@ -1,8 +1,14 @@
 apply plugin: 'java'
 apply plugin: 'jetty'
 
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
 gwt {
-    gwtVersion = '2.7.0'
+    minHeapSize = "512M";
+    maxHeapSize = "1024M";
+
+    gwtVersion = '2.8.0-beta1'
     modules 'com.shc.webgl4j.examples.client'
     devModules 'com.shc.webgl4j.examples.client'
 }
@@ -12,9 +18,11 @@ javadoc {
 }
 
 dependencies {
-    compile project(":webgl4j")
-    compile 'com.google.gwt:gwt-user:2.7.0'
-    compile fileTree(dir: "libs", includes: ["*.jar"])
+    providedCompile 'com.google.gwt:gwt-user:2.8.0-beta1'
+    providedCompile 'com.google.gwt:gwt-servlet:2.8.0-beta1'
+
+    providedCompile project(":webgl4j")
+    providedCompile fileTree(dir: "libs", includes: ["*.jar"])
 }
 
 task run(type: JettyRunWar) {
