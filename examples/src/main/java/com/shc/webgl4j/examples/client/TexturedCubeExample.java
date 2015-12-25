@@ -25,8 +25,6 @@
 package com.shc.webgl4j.examples.client;
 
 import com.google.gwt.canvas.client.Canvas;
-import com.google.gwt.event.dom.client.LoadEvent;
-import com.google.gwt.event.dom.client.LoadHandler;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.RootPanel;
 import org.joml.Matrix4f;
@@ -219,23 +217,19 @@ public class TexturedCubeExample extends Example
         glEnableVertexAttribArray(texcoordLoc);
 
         final Image image = new Image("texture.png");
-        image.addLoadHandler(new LoadHandler()
+        image.addLoadHandler(event ->
         {
-            @Override
-            public void onLoad(LoadEvent event)
-            {
-                // Make current again, this is asynchronous event
-                context.makeCurrent();
-                int texID = glCreateTexture();
-                glBindTexture(GL_TEXTURE_2D, texID);
+            // Make current again, this is asynchronous event
+            context.makeCurrent();
+            int texID = glCreateTexture();
+            glBindTexture(GL_TEXTURE_2D, texID);
 
-                glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, GL_RGBA, GL_UNSIGNED_BYTE, image);
+            glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, GL_RGBA, GL_UNSIGNED_BYTE, image);
 
-                glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-                glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 
-                glUniform1i(glGetUniformLocation(programID, "tex"), 0);
-            }
+            glUniform1i(glGetUniformLocation(programID, "tex"), 0);
         });
         image.setVisible(false);
         RootPanel.get().add(image);

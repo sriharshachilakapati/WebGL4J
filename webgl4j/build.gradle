@@ -2,6 +2,9 @@ apply plugin: 'java'
 apply plugin: 'maven'
 apply plugin: 'signing'
 
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+
 group = "com.goharsha"
 archivesBaseName = "webgl4j"
 version = "0.2.7"
