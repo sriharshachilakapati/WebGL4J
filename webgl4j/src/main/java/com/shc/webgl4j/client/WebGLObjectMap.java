@@ -60,6 +60,20 @@ final class WebGLObjectMap
     // Field to store the current program
     int currentProgram = 0;
 
+    // Fields for last generated IDs of WebGL objects
+    private int lastShaderID            = 0;
+    private int lastBufferID            = 0;
+    private int lastProgramID           = 0;
+    private int lastTextureID           = 0;
+    private int lastFramebufferID       = 0;
+    private int lastRenderbufferID      = 0;
+    private int lastUniformID           = 0;
+    private int lastQueryID             = 0;
+    private int lastSamplerID           = 0;
+    private int lastSyncID              = 0;
+    private int lastTransformFeedbackID = 0;
+    private int lastVertexArrayObjectID = 0;
+
     private WebGLObjectMap()
     {
     }
@@ -89,8 +103,8 @@ final class WebGLObjectMap
                     return key;
         }
 
-        shaders.put(shaders.size() + 1, shader);
-        return shaders.size();
+        shaders.put(++lastShaderID, shader);
+        return lastShaderID;
     }
 
     JavaScriptObject toShader(int shaderID)
@@ -110,8 +124,8 @@ final class WebGLObjectMap
                     return key;
         }
 
-        buffers.put(buffers.size() + 1, buffer);
-        return buffers.size();
+        buffers.put(++lastBufferID, buffer);
+        return lastBufferID;
     }
 
     JavaScriptObject toBuffer(int bufferID)
@@ -131,8 +145,8 @@ final class WebGLObjectMap
                     return key;
         }
 
-        programs.put(programs.size() + 1, program);
-        return programs.size();
+        programs.put(++lastProgramID, program);
+        return lastProgramID;
     }
 
     JavaScriptObject toProgram(int programID)
@@ -152,8 +166,8 @@ final class WebGLObjectMap
                     return key;
         }
 
-        textures.put(textures.size() + 1, texture);
-        return textures.size();
+        textures.put(++lastTextureID, texture);
+        return lastTextureID;
     }
 
     JavaScriptObject toTexture(int textureID)
@@ -173,8 +187,8 @@ final class WebGLObjectMap
                     return key;
         }
 
-        frameBuffers.put(frameBuffers.size() + 1, frameBuffer);
-        return frameBuffers.size();
+        frameBuffers.put(++lastFramebufferID, frameBuffer);
+        return lastFramebufferID;
     }
 
     JavaScriptObject toFramebuffer(int frameBuffer)
@@ -194,8 +208,8 @@ final class WebGLObjectMap
                     return key;
         }
 
-        renderBuffers.put(renderBuffers.size() + 1, renderBuffer);
-        return renderBuffers.size();
+        renderBuffers.put(++lastRenderbufferID, renderBuffer);
+        return lastRenderbufferID;
     }
 
     JavaScriptObject toRenderBuffer(int renderBuffer)
@@ -223,8 +237,8 @@ final class WebGLObjectMap
                     return key;
         }
 
-        progUniforms.put(progUniforms.size() + 1, uniform);
-        return progUniforms.size();
+        progUniforms.put(++lastUniformID, uniform);
+        return lastUniformID;
     }
 
     JavaScriptObject toUniform(int programID, int uniform)
@@ -288,8 +302,8 @@ final class WebGLObjectMap
                     return key;
         }
 
-        queries.put(queries.size() + 1, query);
-        return queries.size();
+        queries.put(++lastQueryID, query);
+        return lastQueryID;
     }
 
     JavaScriptObject toQuery(int query)
@@ -309,8 +323,8 @@ final class WebGLObjectMap
                     return key;
         }
 
-        samplers.put(samplers.size() + 1, sampler);
-        return samplers.size();
+        samplers.put(++lastSamplerID, sampler);
+        return lastSamplerID;
     }
 
     JavaScriptObject toSampler(int sampler)
@@ -330,8 +344,8 @@ final class WebGLObjectMap
                     return key;
         }
 
-        syncs.put(syncs.size() + 1, sync);
-        return syncs.size();
+        syncs.put(++lastSyncID, sync);
+        return lastSyncID;
     }
 
     JavaScriptObject toSync(int sync)
@@ -351,8 +365,8 @@ final class WebGLObjectMap
                     return key;
         }
 
-        transformFeedbacks.put(transformFeedbacks.size() + 1, transformFeedback);
-        return transformFeedbacks.size();
+        transformFeedbacks.put(++lastTransformFeedbackID, transformFeedback);
+        return lastTransformFeedbackID;
     }
 
     JavaScriptObject toTransformFeedback(int transformFeedback)
@@ -372,8 +386,8 @@ final class WebGLObjectMap
                     return key;
         }
 
-        vertexArrayObjects.put(vertexArrayObjects.size() + 1, vertexArrayObject);
-        return vertexArrayObjects.size();
+        vertexArrayObjects.put(++lastVertexArrayObjectID, vertexArrayObject);
+        return lastVertexArrayObjectID;
     }
 
     JavaScriptObject toVertexArrayObject(int vertexArrayObject)
