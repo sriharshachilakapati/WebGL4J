@@ -7,7 +7,7 @@ targetCompatibility = 1.7
 
 group = "com.goharsha"
 archivesBaseName = "webgl4j"
-version = "0.2.7"
+version = "0.2.8"
 
 dependencies {
     compile 'com.google.gwt:gwt-user:2.7.0'
