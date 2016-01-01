@@ -22,7 +22,7 @@ You can get WebGL4J in three ways, either from the central maven repository, or 
 <dependency>
     <groupId>com.goharsha</groupId>
     <artifactId>webgl4j</artifactId>
-    <version>0.2.7</version>
+    <version>0.2.8</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -30,10 +30,10 @@ You can get WebGL4J in three ways, either from the central maven repository, or 
 That is for maven. The repository is maven central repository. For gradle users, you can add it to your dependencies like the following.
 
 ```gradle
-compile group: 'com.goharsha', name: 'webgl4j', version: '0.2.7'
+compile group: 'com.goharsha', name: 'webgl4j', version: '0.2.8'
 
 // or shorthand notation
-compile 'com.goharsha:webgl4j:0.2.7'
+compile 'com.goharsha:webgl4j:0.2.8'
 ```
 
 Add that and you'll be getting your dependencies downloaded to you. The second way is to download the JAR from the GitHub releases and add it to the classpath in your webapp. You can build your own version of the library in the following way.
