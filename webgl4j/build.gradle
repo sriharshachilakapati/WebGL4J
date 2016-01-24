@@ -9,6 +9,22 @@ group = "com.goharsha"
 archivesBaseName = "webgl4j"
 version = "0.2.8"
 
+// Check if the required properties are included, so we prevent our
+// build from failing.
+if (project.hasProperty('ossrhUsername'))
+{
+    project.ext.ossrhUsername = ossrhUsername
+    project.ext.ossrhPassword = ossrhPassword
+}
+else
+{
+    // We might be running on another system where he is not
+    // the owner who can push to OSSRH through maven. Set
+    // default values so he can still build the library locally.
+    project.ext.ossrhUsername = ''
+    project.ext.ossrhPassword = ''
+}
+
 dependencies {
     compile 'com.google.gwt:gwt-user:2.7.0'
 }
@@ -45,11 +61,11 @@ uploadArchives {
             beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
 
             repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
-                authentication(userName: ossrhUsername, password: ossrhPassword)
+                authentication(userName: project.ext.ossrhUsername, password: project.ext.ossrhPassword)
             }
 
             snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots/") {
-                authentication(userName: ossrhUsername, password: ossrhPassword)
+                authentication(userName: project.ext.ossrhUsername, password: project.ext.ossrhPassword)
             }
 
             pom.project {
