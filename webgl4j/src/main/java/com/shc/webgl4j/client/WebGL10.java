@@ -362,21 +362,59 @@ public final class WebGL10
     {
     }
 
+    /**
+     * Creates a WebGL 1.0 context upon a canvas object using the default context attributes. This method alerts the
+     * user if there is no WebGL support and also redirects the browser to <a href="http://get.webgl.org/">get.webgl.org
+     * </a>.
+     *
+     * @param canvas     The canvas object to creeate the context upon.
+     *
+     * @return The created WebGL context object.
+     */
     public static WebGLContext createContext(Canvas canvas)
     {
         return createContext(canvas.getCanvasElement());
     }
 
+    /**
+     * Creates a WebGL 1.0 context upon a canvas object using the specified context attributes. This method alerts the
+     * user if there is no WebGL support and also redirects the browser to <a href="http://get.webgl.org/">get.webgl.org
+     * </a>.
+     *
+     * @param canvas     The canvas object to creeate the context upon.
+     * @param attributes The context attributes to request the context with.
+     *
+     * @return The created WebGL context object.
+     */
     public static WebGLContext createContext(Canvas canvas, WebGLContext.Attributes attributes)
     {
         return createContext(canvas.getCanvasElement(), attributes);
     }
 
+    /**
+     * Creates a WebGL 1.0 context upon a canvas element using the default context attributes. This method alerts the
+     * user if there is no WebGL support and also redirects the browser to <a href="http://get.webgl.org/">get.webgl.org
+     * </a>.
+     *
+     * @param canvas     The canvas element to creeate the context upon.
+     *
+     * @return The created WebGL context object.
+     */
     public static WebGLContext createContext(CanvasElement canvas)
     {
         return createContext(canvas, null);
     }
 
+    /**
+     * Creates a WebGL 1.0 context upon a canvas element using the specified context attributes. This method alerts the
+     * user if there is no WebGL support and also redirects the browser to <a href="http://get.webgl.org/">get.webgl.org
+     * </a>.
+     *
+     * @param canvas     The canvas element to creeate the context upon.
+     * @param attributes The context attributes to request the context with.
+     *
+     * @return The created WebGL context object.
+     */
     public static native WebGLContext createContext(CanvasElement canvas, WebGLContext.Attributes attributes) /*-{
         try
         {
@@ -403,6 +441,12 @@ public final class WebGL10
         };
     }-*/;
 
+    /**
+     * This method tests if WebGL 1.0 is supported in the browser. Use this before creating the context if you want to
+     * implement custom error handling instead of redirecting the browser.
+     *
+     * @return True if WebGL 1.0 is supported in the browser.
+     */
     public static boolean isSupported()
     {
         return isContextCompatible() || nIsSupported();
@@ -422,6 +466,12 @@ public final class WebGL10
         }
     }-*/;
 
+    /**
+     * This method checks whether the current context supports WebGL 1.0 specification. All the WebGL 2.0 contexts are
+     * also compatibile with WebGL 1.0 spec.
+     *
+     * @return True if the current context is compatibile with WebGL 1.0.
+     */
     public static boolean isContextCompatible()
     {
         return WebGLContext.getCurrent() != null && WebGLContext.getCurrent().getVersion() >= 1.0;
