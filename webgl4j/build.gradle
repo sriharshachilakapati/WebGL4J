@@ -52,7 +52,10 @@ artifacts {
 }
 
 signing {
-    sign configurations.archives
+    // Only sign the archives if there is a username. This allows one to build the library
+    // on systems with no username set.
+    if (ossrhUsername != '')
+        sign configurations.archives
 }
 
 uploadArchives {
