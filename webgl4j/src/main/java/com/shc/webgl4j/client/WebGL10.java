@@ -617,18 +617,58 @@ public final class WebGL10
         nglBindRenderbuffer(target, WebGLObjectMap.get().toRenderBuffer(renderBuffer));
     }
 
+    /**
+     * <p>{@code glBindTexture} lets you create or use a named texture. Calling {@code glBindTexture} with target set to
+     * {@link #GL_TEXTURE_2D}, {@link #GL_TEXTURE_CUBE_MAP}, and texture set to the name of the new texture binds the
+     * texture name to the target. When a texture is bound to a target, the previous binding for that target is
+     * automatically broken.</p>
+     *
+     * <p>{@link #GL_INVALID_ENUM} is generated if target is not one of the allowable values.</p>
+     *
+     * <p>{@link #GL_INVALID_VALUE} is generated if target is not a name returned from a previous call to {@link
+     * #glCreateTexture()}.</p>
+     *
+     * <p>{@link #GL_INVALID_OPERATION} is generated if texture was previously created with a {@code target} that
+     * doesn't match that of {@code target}.</p>
+     *
+     * @param target    Specifies the target to which the texture is bound. Must be either {@link #GL_TEXTURE_2D} or
+     *                  {@link #GL_TEXTURE_CUBE_MAP}.
+     * @param textureID Specifies the name of a texture.
+     */
     public static void glBindTexture(int target, int textureID)
     {
         checkContextCompatibility();
         nglBindTexture(target, WebGLObjectMap.get().toTexture(textureID));
     }
 
+    /**
+     * The {@link #GL_BLEND_COLOR} may be used to calculate the source and destination blending factors. The color
+     * components are clamped to the range {@code [0,1]} before being stored. See {@link #glBlendFunc(int, int)} for a
+     * complete description of the blending operations. Initially the {@link #GL_BLEND_COLOR} is set to {@code (0, 0, 0,
+     * 0)}.
+     *
+     * @param r Specifies the red component of {@link #GL_BLEND_COLOR}.
+     * @param g Specifies the green component of {@link #GL_BLEND_COLOR}.
+     * @param b Specifies the blue component of {@link #GL_BLEND_COLOR}.
+     * @param a Specifies the alpha component of {@link #GL_BLEND_COLOR}.
+     */
     public static void glBlendColor(float r, float g, float b, float a)
     {
         checkContextCompatibility();
         nglBlendColor(r, g, b, a);
     }
 
+    /**
+     * <p>The blend equations determine how a new pixel (the ''source'' color) is combined with a pixel already in the
+     * framebuffer (the ''destination'' color). This function sets both the RGB blend equation and the alpha blend
+     * equation to a single equation.</p>
+     *
+     * <p>{@link #GL_INVALID_ENUM} is generated if mode is not one of {@link #GL_FUNC_ADD}, {@link #GL_FUNC_SUBTRACT},
+     * or {@link #GL_FUNC_REVERSE_SUBTRACT}.</p>
+     *
+     * @param mode specifies how source and destination colors are combined. It must be {@link #GL_FUNC_ADD},
+     *             {@link #GL_FUNC_SUBTRACT}, or {@link #GL_FUNC_REVERSE_SUBTRACT}.
+     */
     public static void glBlendEquation(int mode)
     {
         checkContextCompatibility();
