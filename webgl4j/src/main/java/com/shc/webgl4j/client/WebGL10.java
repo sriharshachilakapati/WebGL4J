@@ -666,8 +666,8 @@ public final class WebGL10
      * <p>{@link #GL_INVALID_ENUM} is generated if mode is not one of {@link #GL_FUNC_ADD}, {@link #GL_FUNC_SUBTRACT},
      * or {@link #GL_FUNC_REVERSE_SUBTRACT}.</p>
      *
-     * @param mode specifies how source and destination colors are combined. It must be {@link #GL_FUNC_ADD},
-     *             {@link #GL_FUNC_SUBTRACT}, or {@link #GL_FUNC_REVERSE_SUBTRACT}.
+     * @param mode specifies how source and destination colors are combined. It must be {@link #GL_FUNC_ADD}, {@link
+     *             #GL_FUNC_SUBTRACT}, or {@link #GL_FUNC_REVERSE_SUBTRACT}.
      */
     public static void glBlendEquation(int mode)
     {
@@ -675,12 +675,50 @@ public final class WebGL10
         nglBlendEquation(mode);
     }
 
+    /**
+     * <p>The blend equations determines how a new pixel (the ''source'' color) is combined with a pixel already in the
+     * framebuffer (the ''destination'' color). This function specifies one blend equation for the RGB-color components
+     * and one blend equation for the alpha component.</p>
+     *
+     * <p>{@link #GL_INVALID_ENUM} is generated if either modeRGB or modeAlpha is not one of {@link #GL_FUNC_ADD},
+     * {@link #GL_FUNC_SUBTRACT}, or {@link #GL_FUNC_REVERSE_SUBTRACT}.</p>
+     *
+     * @param modeRGB   Specifies the RGB blend equation, how the red, green, and blue components of the source and
+     *                  destination colors are combined. It must be {@link #GL_FUNC_ADD}, {@link #GL_FUNC_SUBTRACT}, or
+     *                  {@link #GL_FUNC_REVERSE_SUBTRACT}.
+     * @param modeAlpha Specifies the alpha blend equation, how the alpha component of the source and destination colors
+     *                  are combined. It must be {@link #GL_FUNC_ADD}, {@link #GL_FUNC_SUBTRACT}, or {@link
+     *                  #GL_FUNC_REVERSE_SUBTRACT}.
+     */
     public static void glBlendEquationSeparate(int modeRGB, int modeAlpha)
     {
         checkContextCompatibility();
         nglBlendEquationSeparate(modeRGB, modeAlpha);
     }
 
+    /**
+     * <p>{@code glBlendFunc} defines the operation of blending when it is enabled. {@code srcFactor} specifies which
+     * method is used to scale the source color components. {@code dstFactor} specifies which method is used to scale
+     * the destination color components.</p>
+     *
+     * <p>{@link #GL_INVALID_ENUM} is generated if either {@code srcFactor} or {@code dstFactor} is not an accepted
+     * value.</p>
+     *
+     * @param srcFactor Specifies how the red, green, blue, and alpha source blending factors are computed. The
+     *                  following symbolic constants are accepted: {@link #GL_ZERO}, {@link #GL_ONE}, {@link
+     *                  #GL_SRC_COLOR}, {@link #GL_ONE_MINUS_SRC_COLOR}, {@link #GL_DST_COLOR}, {@link
+     *                  #GL_ONE_MINUS_DST_COLOR}, {@link #GL_SRC_ALPHA}, {@link #GL_ONE_MINUS_SRC_ALPHA}, {@link
+     *                  #GL_DST_ALPHA}, {@link #GL_ONE_MINUS_DST_ALPHA}, {@link #GL_CONSTANT_COLOR}, {@link
+     *                  #GL_ONE_MINUS_CONSTANT_COLOR}, {@link #GL_CONSTANT_ALPHA}, {@link #GL_ONE_MINUS_CONSTANT_ALPHA},
+     *                  and {@link #GL_SRC_ALPHA_SATURATE}. The initial value is {@link #GL_ONE}.
+     * @param dstFactor Specifies how the red, green, blue, and alpha destination blending factors are computed. The
+     *                  following symbolic constants are accepted: {@link #GL_ZERO}, {@link #GL_ONE}, {@link
+     *                  #GL_SRC_COLOR}, {@link #GL_ONE_MINUS_SRC_COLOR}, {@link #GL_DST_COLOR}, {@link
+     *                  #GL_ONE_MINUS_DST_COLOR}, {@link #GL_SRC_ALPHA}, {@link #GL_ONE_MINUS_SRC_ALPHA}, {@link
+     *                  #GL_DST_ALPHA}, {@link #GL_ONE_MINUS_DST_ALPHA}. {@link #GL_CONSTANT_COLOR}, {@link
+     *                  #GL_ONE_MINUS_CONSTANT_COLOR}, {@link #GL_CONSTANT_ALPHA}, and {@link
+     *                  #GL_ONE_MINUS_CONSTANT_ALPHA}. The initial value is {@link #GL_ZERO}.
+     */
     public static void glBlendFunc(int srcFactor, int dstFactor)
     {
         checkContextCompatibility();
