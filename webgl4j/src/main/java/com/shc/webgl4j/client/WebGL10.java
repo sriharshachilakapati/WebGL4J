@@ -725,30 +725,159 @@ public final class WebGL10
         nglBlendFunc(srcFactor, dstFactor);
     }
 
+    /**
+     * <p>{@code glBlendFuncSeparate} defines the operation of blending when it is enabled. {@code srcRGB} specifies
+     * which method is used to scale the source RGB-color components. {@code dstRGB} specifies which method is used to
+     * scale the destination RGB-color components. Likewise, {@code srcAlpha} specifies which method is used to scale
+     * the source alpha color component, and {@code dstAlpha} specifies which method is used to scale the destination
+     * alpha component.</p>
+     *
+     * <p>{@link #GL_INVALID_ENUM} is generated if {@code srcRGB}, {@code dstRGB}, {@code srcAlpha}, or {@code dstAlpha}
+     * is not an accepted value.</p>
+     *
+     * @param srcRGB   Specifies how the red, green, and blue blending factors are computed. The following symbolic
+     *                 constants are accepted: {@link #GL_ZERO}, {@link #GL_ONE}, {@link #GL_SRC_COLOR}, {@link
+     *                 #GL_ONE_MINUS_SRC_COLOR}, {@link #GL_DST_COLOR}, {@link #GL_ONE_MINUS_DST_COLOR}, {@link
+     *                 #GL_SRC_ALPHA}, {@link #GL_ONE_MINUS_SRC_ALPHA}, {@link #GL_DST_ALPHA}, {@link
+     *                 #GL_ONE_MINUS_DST_ALPHA}, {@link #GL_CONSTANT_COLOR}, {@link #GL_ONE_MINUS_CONSTANT_COLOR},
+     *                 {@link #GL_CONSTANT_ALPHA}, {@link #GL_ONE_MINUS_CONSTANT_ALPHA}, and {@link
+     *                 #GL_SRC_ALPHA_SATURATE}. The initial value is {@link #GL_ONE}.
+     * @param dstRGB   Specifies how the red, green, and blue destination blending factors are computed. The following
+     *                 symbolic constants are accepted: {@link #GL_ZERO}, {@link #GL_ONE}, {@link #GL_SRC_COLOR}, {@link
+     *                 #GL_ONE_MINUS_SRC_COLOR}, {@link #GL_DST_COLOR}, {@link #GL_ONE_MINUS_DST_COLOR}, {@link
+     *                 #GL_SRC_ALPHA}, {@link #GL_ONE_MINUS_SRC_ALPHA}, {@link #GL_DST_ALPHA}, {@link
+     *                 #GL_ONE_MINUS_DST_ALPHA}. {@link #GL_CONSTANT_COLOR}, {@link #GL_ONE_MINUS_CONSTANT_COLOR},
+     *                 {@link #GL_CONSTANT_ALPHA}, and {@link #GL_ONE_MINUS_CONSTANT_ALPHA}. The initial value is {@link
+     *                 #GL_ZERO}.
+     * @param srcAlpha Specified how the alpha source blending factor is computed. The same symbolic constants are
+     *                 accepted as for srcRGB. The initial value is {@link #GL_ONE}.
+     * @param dstAlpha Specified how the alpha destination blending factor is computed. The same symbolic constants are
+     *                 accepted as for dstRGB. The initial value is {@link #GL_ZERO}.
+     */
     public static void glBlendFuncSeparate(int srcRGB, int dstRGB, int srcAlpha, int dstAlpha)
     {
         checkContextCompatibility();
         nglBlendFuncSeparate(srcRGB, dstRGB, srcAlpha, dstAlpha);
     }
 
+    /**
+     * <p>{@code glBufferData} creates a new data store for the buffer object currently bound to target. Any
+     * pre-existing data store is deleted. The new data store is created with the size of the data and usage.</p>
+     *
+     * <p>{@code usage} is a hint to the GL implementation as to how a buffer object's data store will be accessed. This
+     * enables the GL implementation to make more intelligent decisions that may significantly impact buffer object
+     * performance. It does not, however, constrain the actual usage of the data store. </p>
+     *
+     * <p>{@link #GL_INVALID_ENUM} is generated if target is not {@link #GL_ARRAY_BUFFER} or {@link
+     * #GL_ELEMENT_ARRAY_BUFFER}.</p>
+     *
+     * <p>{@link #GL_INVALID_ENUM} is generated if usage is not {@link #GL_STREAM_DRAW}, {@link #GL_STATIC_DRAW}, or
+     * {@link #GL_DYNAMIC_DRAW}.</p>
+     *
+     * <p>{@link #GL_INVALID_OPERATION} is generated if the reserved buffer object name 0 is bound to target.</p>
+     *
+     * <p>{@link #GL_OUT_OF_MEMORY} is generated if the GL is unable to create a data store with the specified
+     * size.</p>
+     *
+     * @param target Specifies the target buffer object. The symbolic constant must be {@link #GL_ARRAY_BUFFER} or
+     *               {@link #GL_ELEMENT_ARRAY_BUFFER}.
+     * @param data   Specifies the data which should be copied into the data store.
+     * @param usage  Specifies the expected usage pattern of the data store. The symbolic constant must be {@link
+     *               #GL_STREAM_DRAW}, {@link #GL_STATIC_DRAW}, or {@link #GL_DYNAMIC_DRAW}.
+     */
     public static void glBufferData(int target, float[] data, int usage)
     {
         checkContextCompatibility();
         nglBufferData(target, data, usage);
     }
 
+    /**
+     * <p>{@code glBufferData} creates a new data store for the buffer object currently bound to target. Any
+     * pre-existing data store is deleted. The new data store is created with the size of the data and usage.</p>
+     *
+     * <p>{@code usage} is a hint to the GL implementation as to how a buffer object's data store will be accessed. This
+     * enables the GL implementation to make more intelligent decisions that may significantly impact buffer object
+     * performance. It does not, however, constrain the actual usage of the data store. </p>
+     *
+     * <p>{@link #GL_INVALID_ENUM} is generated if target is not {@link #GL_ARRAY_BUFFER} or {@link
+     * #GL_ELEMENT_ARRAY_BUFFER}.</p>
+     *
+     * <p>{@link #GL_INVALID_ENUM} is generated if usage is not {@link #GL_STREAM_DRAW}, {@link #GL_STATIC_DRAW}, or
+     * {@link #GL_DYNAMIC_DRAW}.</p>
+     *
+     * <p>{@link #GL_INVALID_OPERATION} is generated if the reserved buffer object name 0 is bound to target.</p>
+     *
+     * <p>{@link #GL_OUT_OF_MEMORY} is generated if the GL is unable to create a data store with the specified
+     * size.</p>
+     *
+     * @param target Specifies the target buffer object. The symbolic constant must be {@link #GL_ARRAY_BUFFER} or
+     *               {@link #GL_ELEMENT_ARRAY_BUFFER}.
+     * @param data   Specifies the data which should be copied into the data store.
+     * @param usage  Specifies the expected usage pattern of the data store. The symbolic constant must be {@link
+     *               #GL_STREAM_DRAW}, {@link #GL_STATIC_DRAW}, or {@link #GL_DYNAMIC_DRAW}.
+     */
     public static void glBufferData(int target, int[] data, int usage)
     {
         checkContextCompatibility();
         nglBufferData(target, data, usage);
     }
 
+    /**
+     * <p>{@code glBufferData} creates a new data store for the buffer object currently bound to target. Any
+     * pre-existing data store is deleted. The new data store is created with the size of the data and usage.</p>
+     *
+     * <p>{@code usage} is a hint to the GL implementation as to how a buffer object's data store will be accessed. This
+     * enables the GL implementation to make more intelligent decisions that may significantly impact buffer object
+     * performance. It does not, however, constrain the actual usage of the data store. </p>
+     *
+     * <p>{@link #GL_INVALID_ENUM} is generated if target is not {@link #GL_ARRAY_BUFFER} or {@link
+     * #GL_ELEMENT_ARRAY_BUFFER}.</p>
+     *
+     * <p>{@link #GL_INVALID_ENUM} is generated if usage is not {@link #GL_STREAM_DRAW}, {@link #GL_STATIC_DRAW}, or
+     * {@link #GL_DYNAMIC_DRAW}.</p>
+     *
+     * <p>{@link #GL_INVALID_OPERATION} is generated if the reserved buffer object name 0 is bound to target.</p>
+     *
+     * <p>{@link #GL_OUT_OF_MEMORY} is generated if the GL is unable to create a data store with the specified
+     * size.</p>
+     *
+     * @param target Specifies the target buffer object. The symbolic constant must be {@link #GL_ARRAY_BUFFER} or
+     *               {@link #GL_ELEMENT_ARRAY_BUFFER}.
+     * @param data   Specifies the data which should be copied into the data store.
+     * @param usage  Specifies the expected usage pattern of the data store. The symbolic constant must be {@link
+     *               #GL_STREAM_DRAW}, {@link #GL_STATIC_DRAW}, or {@link #GL_DYNAMIC_DRAW}.
+     */
     public static void glBufferData(int target, short[] data, int usage)
     {
         checkContextCompatibility();
         nglBufferData(target, data, usage);
     }
 
+    /**
+     * <p>{@code glBufferData} creates a new data store for the buffer object currently bound to target. Any
+     * pre-existing data store is deleted. The new data store is created with the size of the data and usage.</p>
+     *
+     * <p>{@code usage} is a hint to the GL implementation as to how a buffer object's data store will be accessed. This
+     * enables the GL implementation to make more intelligent decisions that may significantly impact buffer object
+     * performance. It does not, however, constrain the actual usage of the data store. </p>
+     *
+     * <p>{@link #GL_INVALID_ENUM} is generated if target is not {@link #GL_ARRAY_BUFFER} or {@link
+     * #GL_ELEMENT_ARRAY_BUFFER}.</p>
+     *
+     * <p>{@link #GL_INVALID_ENUM} is generated if usage is not {@link #GL_STREAM_DRAW}, {@link #GL_STATIC_DRAW}, or
+     * {@link #GL_DYNAMIC_DRAW}.</p>
+     *
+     * <p>{@link #GL_INVALID_OPERATION} is generated if the reserved buffer object name 0 is bound to target.</p>
+     *
+     * <p>{@link #GL_OUT_OF_MEMORY} is generated if the GL is unable to create a data store with the specified
+     * size.</p>
+     *
+     * @param target Specifies the target buffer object. The symbolic constant must be {@link #GL_ARRAY_BUFFER} or
+     *               {@link #GL_ELEMENT_ARRAY_BUFFER}.
+     * @param data   Specifies the data which should be copied into the data store.
+     * @param usage  Specifies the expected usage pattern of the data store. The symbolic constant must be {@link
+     *               #GL_STREAM_DRAW}, {@link #GL_STATIC_DRAW}, or {@link #GL_DYNAMIC_DRAW}.
+     */
     public static void glBufferData(int target, ArrayBufferView data, int usage)
     {
         checkContextCompatibility();
