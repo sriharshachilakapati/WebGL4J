@@ -884,24 +884,108 @@ public final class WebGL10
         nglBufferData(target, data, usage);
     }
 
+    /**
+     * <p>{@code glBufferSubData} redefines some or all of the data store for the buffer object currently bound to
+     * {@code target}. Data starting at byte offset {@code offset} and extending for {@code size} bytes is copied to the
+     * data store from the memory pointed to by {@code data}. An error is thrown if {@code offset} and {@code size}
+     * together define a range beyond the bounds of the buffer object's data store.</p>
+     *
+     * <p>{@link #GL_INVALID_ENUM} is generated if target is not {@link #GL_ARRAY_BUFFER} or {@link
+     * #GL_ELEMENT_ARRAY_BUFFER}.</p>
+     *
+     * <p>{@link #GL_INVALID_VALUE} is generated if offset or size is negative, or if together they define a region of
+     * memory that extends beyond the buffer object's allocated data store.</p>
+     *
+     * <p>{@link #GL_INVALID_OPERATION} is generated if the reserved buffer object name 0 is bound to target.</p>
+     *
+     * @param target Specifies the target buffer object. The symbolic constant must be {@link #GL_ARRAY_BUFFER} or
+     *               {@link #GL_ELEMENT_ARRAY_BUFFER}.
+     * @param offset Specifies the offset into the buffer object's data store where data replacement will begin,
+     *               measured in bytes.
+     * @param size   Specifies the size in bytes of the data store region being replaced.
+     * @param data   Specifies the new data that will be copied into the data store.
+     */
     public static void glBufferSubData(int target, int offset, long size, float[] data)
     {
         checkContextCompatibility();
         nglBufferSubData(target, offset, size, data);
     }
 
+    /**
+     * <p>{@code glBufferSubData} redefines some or all of the data store for the buffer object currently bound to
+     * {@code target}. Data starting at byte offset {@code offset} and extending for {@code size} bytes is copied to the
+     * data store from the memory pointed to by {@code data}. An error is thrown if {@code offset} and {@code size}
+     * together define a range beyond the bounds of the buffer object's data store.</p>
+     *
+     * <p>{@link #GL_INVALID_ENUM} is generated if target is not {@link #GL_ARRAY_BUFFER} or {@link
+     * #GL_ELEMENT_ARRAY_BUFFER}.</p>
+     *
+     * <p>{@link #GL_INVALID_VALUE} is generated if offset or size is negative, or if together they define a region of
+     * memory that extends beyond the buffer object's allocated data store.</p>
+     *
+     * <p>{@link #GL_INVALID_OPERATION} is generated if the reserved buffer object name 0 is bound to target.</p>
+     *
+     * @param target Specifies the target buffer object. The symbolic constant must be {@link #GL_ARRAY_BUFFER} or
+     *               {@link #GL_ELEMENT_ARRAY_BUFFER}.
+     * @param offset Specifies the offset into the buffer object's data store where data replacement will begin,
+     *               measured in bytes.
+     * @param size   Specifies the size in bytes of the data store region being replaced.
+     * @param data   Specifies the new data that will be copied into the data store.
+     */
     public static void glBufferSubData(int target, int offset, long size, int[] data)
     {
         checkContextCompatibility();
         nglBufferSubData(target, offset, size, data);
     }
 
+    /**
+     * <p>{@code glBufferSubData} redefines some or all of the data store for the buffer object currently bound to
+     * {@code target}. Data starting at byte offset {@code offset} and extending for {@code size} bytes is copied to the
+     * data store from the memory pointed to by {@code data}. An error is thrown if {@code offset} and {@code size}
+     * together define a range beyond the bounds of the buffer object's data store.</p>
+     *
+     * <p>{@link #GL_INVALID_ENUM} is generated if target is not {@link #GL_ARRAY_BUFFER} or {@link
+     * #GL_ELEMENT_ARRAY_BUFFER}.</p>
+     *
+     * <p>{@link #GL_INVALID_VALUE} is generated if offset or size is negative, or if together they define a region of
+     * memory that extends beyond the buffer object's allocated data store.</p>
+     *
+     * <p>{@link #GL_INVALID_OPERATION} is generated if the reserved buffer object name 0 is bound to target.</p>
+     *
+     * @param target Specifies the target buffer object. The symbolic constant must be {@link #GL_ARRAY_BUFFER} or
+     *               {@link #GL_ELEMENT_ARRAY_BUFFER}.
+     * @param offset Specifies the offset into the buffer object's data store where data replacement will begin,
+     *               measured in bytes.
+     * @param size   Specifies the size in bytes of the data store region being replaced.
+     * @param data   Specifies the new data that will be copied into the data store.
+     */
     public static void glBufferSubData(int target, int offset, long size, short[] data)
     {
         checkContextCompatibility();
         nglBufferSubData(target, offset, size, data);
     }
 
+    /**
+     * <p>{@code glBufferSubData} redefines some or all of the data store for the buffer object currently bound to
+     * {@code target}. Data starting at byte offset {@code offset} and extending for {@code size} bytes is copied to the
+     * data store from the memory pointed to by {@code data}. An error is thrown if {@code offset} and {@code size}
+     * together define a range beyond the bounds of the buffer object's data store.</p>
+     *
+     * <p>{@link #GL_INVALID_ENUM} is generated if target is not {@link #GL_ARRAY_BUFFER} or {@link
+     * #GL_ELEMENT_ARRAY_BUFFER}.</p>
+     *
+     * <p>{@link #GL_INVALID_VALUE} is generated if offset or size is negative, or if together they define a region of
+     * memory that extends beyond the buffer object's allocated data store.</p>
+     *
+     * <p>{@link #GL_INVALID_OPERATION} is generated if the reserved buffer object name 0 is bound to target.</p>
+     *
+     * @param target Specifies the target buffer object. The symbolic constant must be {@link #GL_ARRAY_BUFFER} or
+     *               {@link #GL_ELEMENT_ARRAY_BUFFER}.
+     * @param offset Specifies the offset into the buffer object's data store where data replacement will begin,
+     *               measured in bytes.
+     * @param size   Specifies the size in bytes of the data store region being replaced.
+     * @param data   Specifies the new data that will be copied into the data store.
+     */
     public static void glBufferSubData(int target, int offset, long size, ArrayBufferView data)
     {
         checkContextCompatibility();
