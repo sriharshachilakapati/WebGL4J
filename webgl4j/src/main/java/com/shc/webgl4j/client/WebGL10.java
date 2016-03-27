@@ -762,6 +762,37 @@ public final class WebGL10
 
     /**
      * <p>{@code glBufferData} creates a new data store for the buffer object currently bound to target. Any
+     * pre-existing data store is deleted. The new data store is created with the specified size and usage.</p>
+     *
+     * <p>{@code usage} is a hint to the GL implementation as to how a buffer object's data store will be accessed. This
+     * enables the GL implementation to make more intelligent decisions that may significantly impact buffer object
+     * performance. It does not, however, constrain the actual usage of the data store. </p>
+     *
+     * <p>{@link #GL_INVALID_ENUM} is generated if target is not {@link #GL_ARRAY_BUFFER} or {@link
+     * #GL_ELEMENT_ARRAY_BUFFER}.</p>
+     *
+     * <p>{@link #GL_INVALID_ENUM} is generated if usage is not {@link #GL_STREAM_DRAW}, {@link #GL_STATIC_DRAW}, or
+     * {@link #GL_DYNAMIC_DRAW}.</p>
+     *
+     * <p>{@link #GL_INVALID_OPERATION} is generated if the reserved buffer object name 0 is bound to target.</p>
+     *
+     * <p>{@link #GL_OUT_OF_MEMORY} is generated if the GL is unable to create a data store with the specified
+     * size.</p>
+     *
+     * @param target Specifies the target buffer object. The symbolic constant must be {@link #GL_ARRAY_BUFFER} or
+     *               {@link #GL_ELEMENT_ARRAY_BUFFER}.
+     * @param size   Specifies the size of the data store to be created..
+     * @param usage  Specifies the expected usage pattern of the data store. The symbolic constant must be {@link
+     *               #GL_STREAM_DRAW}, {@link #GL_STATIC_DRAW}, or {@link #GL_DYNAMIC_DRAW}.
+     */
+    public static void glBufferData(int target, int size, int usage)
+    {
+        checkContextCompatibility();
+        nglBufferData(target, size, usage);
+    }
+
+    /**
+     * <p>{@code glBufferData} creates a new data store for the buffer object currently bound to target. Any
      * pre-existing data store is deleted. The new data store is created with the size of the data and usage.</p>
      *
      * <p>{@code usage} is a hint to the GL implementation as to how a buffer object's data store will be accessed. This
@@ -2021,6 +2052,10 @@ public final class WebGL10
 
     private static native void nglBlendFuncSeparate(int srcRGB, int dstRGB, int srcAlpha, int dstAlpha) /*-{
         $wnd.gl.blendFuncSeparate(srcRGB, dstRGB, srcAlpha, dstAlpha);
+    }-*/;
+
+    private static native void nglBufferData(int target, int size, int usage) /*-{
+        $wnd.gl.bufferData(target, size, usage);
     }-*/;
 
     private static native void nglBufferData(int target, float[] data, int usage) /*-{
