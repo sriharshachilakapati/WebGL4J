@@ -29,8 +29,12 @@ import com.google.gwt.canvas.dom.client.ImageData;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.dom.client.CanvasElement;
 import com.google.gwt.dom.client.Element;
+import com.google.gwt.typedarrays.client.Float32ArrayNative;
+import com.google.gwt.typedarrays.client.Int16ArrayNative;
+import com.google.gwt.typedarrays.client.Int32ArrayNative;
 import com.google.gwt.typedarrays.shared.ArrayBufferView;
 import com.google.gwt.typedarrays.shared.Float32Array;
+import com.google.gwt.typedarrays.shared.Int16Array;
 import com.google.gwt.typedarrays.shared.Int32Array;
 import com.google.gwt.typedarrays.shared.TypedArrays;
 import com.google.gwt.user.client.ui.Image;
@@ -917,9 +921,9 @@ public final class WebGL10
 
     /**
      * <p>{@code glBufferSubData} redefines some or all of the data store for the buffer object currently bound to
-     * {@code target}. Data starting at byte offset {@code offset} and extending for {@code size} bytes is copied to the
-     * data store from the memory pointed to by {@code data}. An error is thrown if {@code offset} and {@code size}
-     * together define a range beyond the bounds of the buffer object's data store.</p>
+     * {@code target}. Data starting at byte offset {@code offset} and extending for {@code sizeof data} bytes is copied
+     * to the data store from the memory pointed to by {@code data}. An error is thrown if {@code offset} and {@code
+     * size} together define a range beyond the bounds of the buffer object's data store.</p>
      *
      * <p>{@link #GL_INVALID_ENUM} is generated if target is not {@link #GL_ARRAY_BUFFER} or {@link
      * #GL_ELEMENT_ARRAY_BUFFER}.</p>
@@ -933,13 +937,116 @@ public final class WebGL10
      *               {@link #GL_ELEMENT_ARRAY_BUFFER}.
      * @param offset Specifies the offset into the buffer object's data store where data replacement will begin,
      *               measured in bytes.
-     * @param size   Specifies the size in bytes of the data store region being replaced.
      * @param data   Specifies the new data that will be copied into the data store.
      */
-    public static void glBufferSubData(int target, int offset, long size, float[] data)
+    public static void glBufferSubData(int target, int offset, ArrayBufferView data)
     {
         checkContextCompatibility();
-        nglBufferSubData(target, offset, size, data);
+        nglBufferSubData(target, offset, data);
+    }
+
+    /**
+     * <p>{@code glBufferSubData} redefines some or all of the data store for the buffer object currently bound to
+     * {@code target}. Data starting at byte offset {@code offset} and extending for {@code sizeof data} bytes is copied
+     * to the data store from the memory pointed to by {@code data}. An error is thrown if {@code offset} and {@code
+     * size} together define a range beyond the bounds of the buffer object's data store.</p>
+     *
+     * <p>{@link #GL_INVALID_ENUM} is generated if target is not {@link #GL_ARRAY_BUFFER} or {@link
+     * #GL_ELEMENT_ARRAY_BUFFER}.</p>
+     *
+     * <p>{@link #GL_INVALID_VALUE} is generated if offset or size is negative, or if together they define a region of
+     * memory that extends beyond the buffer object's allocated data store.</p>
+     *
+     * <p>{@link #GL_INVALID_OPERATION} is generated if the reserved buffer object name 0 is bound to target.</p>
+     *
+     * @param target Specifies the target buffer object. The symbolic constant must be {@link #GL_ARRAY_BUFFER} or
+     *               {@link #GL_ELEMENT_ARRAY_BUFFER}.
+     * @param offset Specifies the offset into the buffer object's data store where data replacement will begin,
+     *               measured in bytes.
+     * @param data   Specifies the new data that will be copied into the data store.
+     */
+    public static void glBufferSubData(int target, int offset, float[] data)
+    {
+        checkContextCompatibility();
+        nglBufferSubData(target, offset, data);
+    }
+
+    /**
+     * <p>{@code glBufferSubData} redefines some or all of the data store for the buffer object currently bound to
+     * {@code target}. Data starting at byte offset {@code offset} and extending for {@code sizeof data} bytes is copied
+     * to the data store from the memory pointed to by {@code data}. An error is thrown if {@code offset} and {@code
+     * size} together define a range beyond the bounds of the buffer object's data store.</p>
+     *
+     * <p>{@link #GL_INVALID_ENUM} is generated if target is not {@link #GL_ARRAY_BUFFER} or {@link
+     * #GL_ELEMENT_ARRAY_BUFFER}.</p>
+     *
+     * <p>{@link #GL_INVALID_VALUE} is generated if offset or size is negative, or if together they define a region of
+     * memory that extends beyond the buffer object's allocated data store.</p>
+     *
+     * <p>{@link #GL_INVALID_OPERATION} is generated if the reserved buffer object name 0 is bound to target.</p>
+     *
+     * @param target Specifies the target buffer object. The symbolic constant must be {@link #GL_ARRAY_BUFFER} or
+     *               {@link #GL_ELEMENT_ARRAY_BUFFER}.
+     * @param offset Specifies the offset into the buffer object's data store where data replacement will begin,
+     *               measured in bytes.
+     * @param data   Specifies the new data that will be copied into the data store.
+     */
+    public static void glBufferSubData(int target, int offset, int[] data)
+    {
+        checkContextCompatibility();
+        nglBufferSubData(target, offset, data);
+    }
+
+    /**
+     * <p>{@code glBufferSubData} redefines some or all of the data store for the buffer object currently bound to
+     * {@code target}. Data starting at byte offset {@code offset} and extending for {@code sizeof data} bytes is copied
+     * to the data store from the memory pointed to by {@code data}. An error is thrown if {@code offset} and {@code
+     * size} together define a range beyond the bounds of the buffer object's data store.</p>
+     *
+     * <p>{@link #GL_INVALID_ENUM} is generated if target is not {@link #GL_ARRAY_BUFFER} or {@link
+     * #GL_ELEMENT_ARRAY_BUFFER}.</p>
+     *
+     * <p>{@link #GL_INVALID_VALUE} is generated if offset or size is negative, or if together they define a region of
+     * memory that extends beyond the buffer object's allocated data store.</p>
+     *
+     * <p>{@link #GL_INVALID_OPERATION} is generated if the reserved buffer object name 0 is bound to target.</p>
+     *
+     * @param target Specifies the target buffer object. The symbolic constant must be {@link #GL_ARRAY_BUFFER} or
+     *               {@link #GL_ELEMENT_ARRAY_BUFFER}.
+     * @param offset Specifies the offset into the buffer object's data store where data replacement will begin,
+     *               measured in bytes.
+     * @param data   Specifies the new data that will be copied into the data store.
+     */
+    public static void glBufferSubData(int target, int offset, short[] data)
+    {
+        checkContextCompatibility();
+        nglBufferSubData(target, offset, data);
+    }
+
+    /**
+     * <p>{@code glBufferSubData} redefines some or all of the data store for the buffer object currently bound to
+     * {@code target}. Data starting at byte offset {@code offset} and extending for {@code sizeof data} bytes is copied
+     * to the data store from the memory pointed to by {@code data}. An error is thrown if {@code offset} and {@code
+     * size} together define a range beyond the bounds of the buffer object's data store.</p>
+     *
+     * <p>{@link #GL_INVALID_ENUM} is generated if target is not {@link #GL_ARRAY_BUFFER} or {@link
+     * #GL_ELEMENT_ARRAY_BUFFER}.</p>
+     *
+     * <p>{@link #GL_INVALID_VALUE} is generated if offset or size is negative, or if together they define a region of
+     * memory that extends beyond the buffer object's allocated data store.</p>
+     *
+     * <p>{@link #GL_INVALID_OPERATION} is generated if the reserved buffer object name 0 is bound to target.</p>
+     *
+     * @param target Specifies the target buffer object. The symbolic constant must be {@link #GL_ARRAY_BUFFER} or
+     *               {@link #GL_ELEMENT_ARRAY_BUFFER}.
+     * @param offset Specifies the offset into the buffer object's data store where data replacement will begin,
+     *               measured in bytes.
+     * @param data   Specifies the new data that will be copied into the data store.
+     */
+    public static void glBufferSubData(int target, int offset, byte[] data)
+    {
+        checkContextCompatibility();
+        nglBufferSubData(target, offset, data);
     }
 
     /**
@@ -963,10 +1070,12 @@ public final class WebGL10
      * @param size   Specifies the size in bytes of the data store region being replaced.
      * @param data   Specifies the new data that will be copied into the data store.
      */
-    public static void glBufferSubData(int target, int offset, long size, int[] data)
+    public static void glBufferSubData(int target, int offset, int size, float[] data)
     {
         checkContextCompatibility();
-        nglBufferSubData(target, offset, size, data);
+        Float32Array dataBuffer = Float32ArrayNative.create(data.length);
+        dataBuffer.set(data);
+        nglBufferSubData(target, offset, size, dataBuffer);
     }
 
     /**
@@ -990,10 +1099,12 @@ public final class WebGL10
      * @param size   Specifies the size in bytes of the data store region being replaced.
      * @param data   Specifies the new data that will be copied into the data store.
      */
-    public static void glBufferSubData(int target, int offset, long size, short[] data)
+    public static void glBufferSubData(int target, int offset, int size, int[] data)
     {
         checkContextCompatibility();
-        nglBufferSubData(target, offset, size, data);
+        Int32Array dataBuffer = Int32ArrayNative.create(data.length);
+        dataBuffer.set(data);
+        nglBufferSubData(target, offset, size, dataBuffer);
     }
 
     /**
@@ -1017,7 +1128,36 @@ public final class WebGL10
      * @param size   Specifies the size in bytes of the data store region being replaced.
      * @param data   Specifies the new data that will be copied into the data store.
      */
-    public static void glBufferSubData(int target, int offset, long size, ArrayBufferView data)
+    public static void glBufferSubData(int target, int offset, int size, short[] data)
+    {
+        checkContextCompatibility();
+        Int16Array dataBuffer = Int16ArrayNative.create(data.length);
+        dataBuffer.set(data);
+        nglBufferSubData(target, offset, size, dataBuffer);
+    }
+
+    /**
+     * <p>{@code glBufferSubData} redefines some or all of the data store for the buffer object currently bound to
+     * {@code target}. Data starting at byte offset {@code offset} and extending for {@code size} bytes is copied to the
+     * data store from the memory pointed to by {@code data}. An error is thrown if {@code offset} and {@code size}
+     * together define a range beyond the bounds of the buffer object's data store.</p>
+     *
+     * <p>{@link #GL_INVALID_ENUM} is generated if target is not {@link #GL_ARRAY_BUFFER} or {@link
+     * #GL_ELEMENT_ARRAY_BUFFER}.</p>
+     *
+     * <p>{@link #GL_INVALID_VALUE} is generated if offset or size is negative, or if together they define a region of
+     * memory that extends beyond the buffer object's allocated data store.</p>
+     *
+     * <p>{@link #GL_INVALID_OPERATION} is generated if the reserved buffer object name 0 is bound to target.</p>
+     *
+     * @param target Specifies the target buffer object. The symbolic constant must be {@link #GL_ARRAY_BUFFER} or
+     *               {@link #GL_ELEMENT_ARRAY_BUFFER}.
+     * @param offset Specifies the offset into the buffer object's data store where data replacement will begin,
+     *               measured in bytes.
+     * @param size   Specifies the size in bytes of the data store region being replaced.
+     * @param data   Specifies the new data that will be copied into the data store.
+     */
+    public static void glBufferSubData(int target, int offset, int size, ArrayBufferView data)
     {
         checkContextCompatibility();
         nglBufferSubData(target, offset, size, data);
@@ -2074,20 +2214,29 @@ public final class WebGL10
         $wnd.gl.bufferData(target, data, usage);
     }-*/;
 
-    private static native void nglBufferSubData(int target, int offset, double size, float[] data) /*-{
-        $wnd.gl.bufferSubData(target, offset, size, new Float32Array(data));
+    private static native void nglBufferSubData(int target, int offset, ArrayBufferView data) /*-{
+        $wnd.gl.bufferSubData(target, offset, data);
     }-*/;
 
-    private static native void nglBufferSubData(int target, int offset, double size, int[] data) /*-{
-        $wnd.gl.bufferSubData(target, offset, size, new Int32Array(data));
+    private static native void nglBufferSubData(int target, int offset, float[] data) /*-{
+        $wnd.gl.bufferSubData(target, offset, new Float32Array(data));
     }-*/;
 
-    private static native void nglBufferSubData(int target, int offset, double size, short[] data) /*-{
-        $wnd.gl.bufferSubData(target, offset, size, new Int16Array(data));
+    private static native void nglBufferSubData(int target, int offset, int[] data) /*-{
+        $wnd.gl.bufferSubData(target, offset, new Int32Array(data));
     }-*/;
 
-    private static native void nglBufferSubData(int target, int offset, double size, ArrayBufferView data) /*-{
-        $wnd.gl.bufferSubData(target, offset, size, data);
+    private static native void nglBufferSubData(int target, int offset, short[] data) /*-{
+        $wnd.gl.bufferSubData(target, offset, new Int16Array(data));
+    }-*/;
+
+    private static native void nglBufferSubData(int target, int offset, byte[] data) /*-{
+        $wnd.gl.bufferSubData(target, offset, new Int8Array(data));
+    }-*/;
+
+    private static native void nglBufferSubData(int target, int offset, int size, ArrayBufferView data) /*-{
+        data = new DataView(data.buffer, offset, size);
+        $wnd.gl.bufferSubData(target, offset, data);
     }-*/;
 
     private static native int nglCheckFramebufferStatus(int target) /*-{
