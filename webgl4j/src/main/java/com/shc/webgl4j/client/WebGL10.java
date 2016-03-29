@@ -1163,6 +1163,17 @@ public final class WebGL10
         nglBufferSubData(target, offset, size, data);
     }
 
+    /**
+     * <p>{@code glCheckFramebufferStatus} returns a symbolic constant that identifies whether or not the currently
+     * bound framebuffer is framebuffer complete, and if not, which of the rules of framebuffer completeness is
+     * violated.</p>
+     *
+     * <p>{@link #GL_INVALID_ENUM} is generated if target is not {@link #GL_FRAMEBUFFER}.</p>
+     *
+     * @param target Specifies the target framebuffer object. The symbolic constant must be {@link #GL_FRAMEBUFFER}.
+     *
+     * @return A GLenum indicating the completeness status of the framebuffer.
+     */
     @WebGLContext.HandlesContextLoss
     public static int glCheckFramebufferStatus(int target)
     {
@@ -1170,6 +1181,16 @@ public final class WebGL10
         return nglCheckFramebufferStatus(target);
     }
 
+    /**
+     * <p>{@code glClear} sets the bitplane area of the window to values previously selected by {@link
+     * #glClearColor(float, float, float, float)} , {@link #glClearDepth(float)} , and {@link
+     * #glClearStencil(int)}.</p>
+     *
+     * <p>{@link #GL_INVALID_VALUE} is generated if any bit other than the three defined bits is set in mask.</p>
+     *
+     * @param masks Bitwise OR of masks that indicate the buffers to be cleared. The three masks are {@link
+     *              #GL_COLOR_BUFFER_BIT}, {@link #GL_DEPTH_BUFFER_BIT}, and {@link #GL_STENCIL_BUFFER_BIT}.
+     */
     public static void glClear(int masks)
     {
         checkContextCompatibility();
