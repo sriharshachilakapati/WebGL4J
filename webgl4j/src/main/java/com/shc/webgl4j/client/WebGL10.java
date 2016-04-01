@@ -1197,18 +1197,40 @@ public final class WebGL10
         nglClear(masks);
     }
 
+    /**
+     * {@code glClearColor} specifies the red, green, blue, and alpha values used by {@link #glClear(int)} to clear the
+     * color buffers. Values specified by {@code glClearColor} are clamped to the range [0,1].
+     *
+     * @param r Specifies the red value used when the color buffers are cleared.
+     * @param g Specifies the green value used when the color buffers are cleared.
+     * @param b Specifies the blue value used when the color buffers are cleared.
+     * @param a Specifies the alpha value used when the color buffers are cleared.
+     */
     public static void glClearColor(float r, float g, float b, float a)
     {
         checkContextCompatibility();
         nglClearColor(r, g, b, a);
     }
 
+    /**
+     * {@code glClearDepth} specifies the depth value used by {@link #glClear(int)} to clear the depth buffer. Values
+     * specified by {@code glClearDepth} are clamped to the range [0,1].
+     *
+     * @param depth Specifies the depth value used when the depth buffer is cleared. The initial value is 1.
+     */
     public static void glClearDepth(float depth)
     {
         checkContextCompatibility();
         nglClearDepth(depth);
     }
 
+    /**
+     * {@code glClearStencil} specifies the index used by {@link #glClear(int)} to clear the stencil buffer. {@code
+     * stencil} is masked with <code>2<sup>m</sup>-1</code>, where <em>m</em> is the number of bits in the stencil
+     * buffer.
+     *
+     * @param stencil Specifies the index used when the stencil buffer is cleared. The initial value is 0.
+     */
     public static void glClearStencil(int stencil)
     {
         checkContextCompatibility();
