@@ -1285,7 +1285,7 @@ public final class WebGL10
      *
      * <p>{@link #GL_INVALID_VALUE} is generated if level is less than 0.</p>
      *
-     * <p>{@link #GL_INVALID_VALUE} may be generated if level is greater than <code>log<sub>2</sub> max</sub></code>,
+     * <p>{@link #GL_INVALID_VALUE} may be generated if level is greater than <code>log<sub>2</sub> max</code>,
      * where {@code max} is the returned value of {@link #GL_MAX_TEXTURE_SIZE} when target is {@link #GL_TEXTURE_2D} or
      * {@link #GL_MAX_CUBE_MAP_TEXTURE_SIZE} when target is not {@link #GL_TEXTURE_2D}.</p>
      *
@@ -1331,7 +1331,7 @@ public final class WebGL10
      *
      * <p>{@link #GL_INVALID_VALUE} is generated if level is less than 0.</p>
      *
-     * <p>{@link #GL_INVALID_VALUE} may be generated if level is greater than <code>log<sub>2</sub> max</sub></code>,
+     * <p>{@link #GL_INVALID_VALUE} may be generated if level is greater than <code>log<sub>2</sub> max</code>,
      * where {@code max} is the returned value of {@link #GL_MAX_TEXTURE_SIZE} when target is {@link #GL_TEXTURE_2D} or
      * {@link #GL_MAX_CUBE_MAP_TEXTURE_SIZE} when target is not {@link #GL_TEXTURE_2D}.</p>
      *
@@ -1387,7 +1387,7 @@ public final class WebGL10
      *
      * <p>{@link #GL_INVALID_VALUE} is generated if level is less than 0.</p>
      *
-     * <p>{@link #GL_INVALID_VALUE} may be generated if level is greater than <code>log<sub>2</sub> max</sub></code>,
+     * <p>{@link #GL_INVALID_VALUE} may be generated if level is greater than <code>log<sub>2</sub> max</code>,
      * where {@code max} is the returned value of {@link #GL_MAX_TEXTURE_SIZE} when target is {@link #GL_TEXTURE_2D} or
      * {@link #GL_MAX_CUBE_MAP_TEXTURE_SIZE} when target is not {@link #GL_TEXTURE_2D}.</p>
      *
