@@ -1285,9 +1285,9 @@ public final class WebGL10
      *
      * <p>{@link #GL_INVALID_VALUE} is generated if level is less than 0.</p>
      *
-     * <p>{@link #GL_INVALID_VALUE} may be generated if level is greater than <code>log<sub>2</sub> max</code>,
-     * where {@code max} is the returned value of {@link #GL_MAX_TEXTURE_SIZE} when target is {@link #GL_TEXTURE_2D} or
-     * {@link #GL_MAX_CUBE_MAP_TEXTURE_SIZE} when target is not {@link #GL_TEXTURE_2D}.</p>
+     * <p>{@link #GL_INVALID_VALUE} may be generated if level is greater than <code>log<sub>2</sub> max</code>, where
+     * {@code max} is the returned value of {@link #GL_MAX_TEXTURE_SIZE} when target is {@link #GL_TEXTURE_2D} or {@link
+     * #GL_MAX_CUBE_MAP_TEXTURE_SIZE} when target is not {@link #GL_TEXTURE_2D}.</p>
      *
      * <p>{@link #GL_INVALID_VALUE} is generated if border is not 0.</p>
      *
@@ -1331,9 +1331,9 @@ public final class WebGL10
      *
      * <p>{@link #GL_INVALID_VALUE} is generated if level is less than 0.</p>
      *
-     * <p>{@link #GL_INVALID_VALUE} may be generated if level is greater than <code>log<sub>2</sub> max</code>,
-     * where {@code max} is the returned value of {@link #GL_MAX_TEXTURE_SIZE} when target is {@link #GL_TEXTURE_2D} or
-     * {@link #GL_MAX_CUBE_MAP_TEXTURE_SIZE} when target is not {@link #GL_TEXTURE_2D}.</p>
+     * <p>{@link #GL_INVALID_VALUE} may be generated if level is greater than <code>log<sub>2</sub> max</code>, where
+     * {@code max} is the returned value of {@link #GL_MAX_TEXTURE_SIZE} when target is {@link #GL_TEXTURE_2D} or {@link
+     * #GL_MAX_CUBE_MAP_TEXTURE_SIZE} when target is not {@link #GL_TEXTURE_2D}.</p>
      *
      * <p>{@link #GL_INVALID_VALUE} is generated if imageSize is not consistent with the format, dimensions, and
      * contents of the specified compressed image data.</p>
@@ -1387,9 +1387,9 @@ public final class WebGL10
      *
      * <p>{@link #GL_INVALID_VALUE} is generated if level is less than 0.</p>
      *
-     * <p>{@link #GL_INVALID_VALUE} may be generated if level is greater than <code>log<sub>2</sub> max</code>,
-     * where {@code max} is the returned value of {@link #GL_MAX_TEXTURE_SIZE} when target is {@link #GL_TEXTURE_2D} or
-     * {@link #GL_MAX_CUBE_MAP_TEXTURE_SIZE} when target is not {@link #GL_TEXTURE_2D}.</p>
+     * <p>{@link #GL_INVALID_VALUE} may be generated if level is greater than <code>log<sub>2</sub> max</code>, where
+     * {@code max} is the returned value of {@link #GL_MAX_TEXTURE_SIZE} when target is {@link #GL_TEXTURE_2D} or {@link
+     * #GL_MAX_CUBE_MAP_TEXTURE_SIZE} when target is not {@link #GL_TEXTURE_2D}.</p>
      *
      * <p>{@link #GL_INVALID_VALUE} is generated if border is not 0.</p>
      *
@@ -1418,12 +1418,110 @@ public final class WebGL10
         nglCompressedTexImage2D(target, level, internalFormat, border, imageSize, javaScriptObject);
     }
 
+    /**
+     * <p>{@code glCompressedTexSubImage2D} redefines a contiguous subregion of an existing two-dimensional texture
+     * image. The texels referenced by data replace the portion of the existing texture array with x indices xoffset and
+     * {@code xoffset + width - 1}, and the y indices yoffset and {@code yoffset + height − 1}, inclusive. This region
+     * may not include any texels outside the range of the texture array as it was originally specified. It is not an
+     * error to specify a subtexture with width of 0, but such a specification has no effect.</p>
+     *
+     * <p>{@link #GL_INVALID_ENUM} is generated if target is not {@link #GL_TEXTURE_2D}, {@link
+     * #GL_TEXTURE_CUBE_MAP_POSITIVE_X}, {@link #GL_TEXTURE_CUBE_MAP_NEGATIVE_X}, {@link
+     * #GL_TEXTURE_CUBE_MAP_POSITIVE_Y}, {@link #GL_TEXTURE_CUBE_MAP_NEGATIVE_Y}, {@link
+     * #GL_TEXTURE_CUBE_MAP_POSITIVE_Z}, or {@link #GL_TEXTURE_CUBE_MAP_NEGATIVE_Z}.</p>
+     *
+     * <p>{@link #GL_INVALID_ENUM} is generated if format is not a supported format returned in {@link
+     * #GL_COMPRESSED_TEXTURE_FORMATS}.</p>
+     *
+     * <p>{@link #GL_INVALID_VALUE} is generated if level is less than 0.</p>
+     *
+     * <p>{@link #GL_INVALID_VALUE} may be generated if level is greater than log<sub>2</sub>max, where max is the
+     * returned value of {@link #GL_MAX_TEXTURE_SIZE} when target is {@link #GL_TEXTURE_2D} or {@link
+     * #GL_MAX_CUBE_MAP_TEXTURE_SIZE} when target is not {@link #GL_TEXTURE_2D}.</p>
+     *
+     * <p>{@link #GL_INVALID_VALUE} is generated if {@code xoffset < 0}, {@code (xoffset + width) > w}, {@code yoffset <
+     * 0}, or {@code (yoffset + height) > h}, where w is the width and h is the height of the texture image being
+     * modified.</p>
+     *
+     * <p>{@link #GL_INVALID_VALUE} is generated if width or height is less than 0.</p>
+     *
+     * <p>{@link #GL_INVALID_VALUE} is generated if imageSize is not consistent with the format, dimensions, and
+     * contents of the specified compressed image data.</p>
+     *
+     * <p>{@link #GL_INVALID_OPERATION} is generated if the texture array has not been defined by a previous {@link
+     * #glCompressedTexImage2D(int, int, int, int, long, Image)} operation whose internalformat matches the format of
+     * {@code glCompressedTexSubImage2D}.</p>
+     *
+     * <p>{@link #GL_INVALID_OPERATION} is generated if parameter combinations are not supported by the specific
+     * compressed internal format as specified in the specific texture compression extension.</p>
+     *
+     * <p>Undefined results, including abnormal program termination, are generated if data is not encoded in a manner
+     * consistent with the extension specification defining the internal compression format.</p>
+     *
+     * @param target    Specifies the target of the active texture unit.
+     * @param level     Specifies the level-of-detail number. Level 0 is the base image level. Level n is the nth mipmap
+     *                  reduction image.
+     * @param xOffset   Specifies a texel offset in the x direction within the texture array.
+     * @param yOffset   Specifies a texel offset in the y direction within the texture array.
+     * @param format    Specifies the format of the compressed image data stored at address data.
+     * @param imageSize Specifies the number of unsigned bytes of image data starting at the address specified by data.
+     * @param image     Specifies a pointer to the compressed image data in memory.
+     */
     public static void glCompressedTexSubImage2D(int target, int level, int xOffset, int yOffset,
                                                  int format, long imageSize, Image image)
     {
         glCompressedTexSubImage2D(target, level, xOffset, yOffset, format, imageSize, image.getElement());
     }
 
+    /**
+     * <p>{@code glCompressedTexSubImage2D} redefines a contiguous subregion of an existing two-dimensional texture
+     * image. The texels referenced by data replace the portion of the existing texture array with x indices xoffset and
+     * {@code xoffset + width - 1}, and the y indices yoffset and {@code yoffset + height − 1}, inclusive. This region
+     * may not include any texels outside the range of the texture array as it was originally specified. It is not an
+     * error to specify a subtexture with width of 0, but such a specification has no effect.</p>
+     *
+     * <p>{@link #GL_INVALID_ENUM} is generated if target is not {@link #GL_TEXTURE_2D}, {@link
+     * #GL_TEXTURE_CUBE_MAP_POSITIVE_X}, {@link #GL_TEXTURE_CUBE_MAP_NEGATIVE_X}, {@link
+     * #GL_TEXTURE_CUBE_MAP_POSITIVE_Y}, {@link #GL_TEXTURE_CUBE_MAP_NEGATIVE_Y}, {@link
+     * #GL_TEXTURE_CUBE_MAP_POSITIVE_Z}, or {@link #GL_TEXTURE_CUBE_MAP_NEGATIVE_Z}.</p>
+     *
+     * <p>{@link #GL_INVALID_ENUM} is generated if format is not a supported format returned in {@link
+     * #GL_COMPRESSED_TEXTURE_FORMATS}.</p>
+     *
+     * <p>{@link #GL_INVALID_VALUE} is generated if level is less than 0.</p>
+     *
+     * <p>{@link #GL_INVALID_VALUE} may be generated if level is greater than log<sub>2</sub>max, where max is the
+     * returned value of {@link #GL_MAX_TEXTURE_SIZE} when target is {@link #GL_TEXTURE_2D} or {@link
+     * #GL_MAX_CUBE_MAP_TEXTURE_SIZE} when target is not {@link #GL_TEXTURE_2D}.</p>
+     *
+     * <p>{@link #GL_INVALID_VALUE} is generated if {@code xoffset < 0}, {@code (xoffset + width) > w}, {@code yoffset <
+     * 0}, or {@code (yoffset + height) > h}, where w is the width and h is the height of the texture image being
+     * modified.</p>
+     *
+     * <p>{@link #GL_INVALID_VALUE} is generated if width or height is less than 0.</p>
+     *
+     * <p>{@link #GL_INVALID_VALUE} is generated if imageSize is not consistent with the format, dimensions, and
+     * contents of the specified compressed image data.</p>
+     *
+     * <p>{@link #GL_INVALID_OPERATION} is generated if the texture array has not been defined by a previous {@link
+     * #glCompressedTexImage2D(int, int, int, int, long, Image)} operation whose internalformat matches the format of
+     * {@code glCompressedTexSubImage2D}.</p>
+     *
+     * <p>{@link #GL_INVALID_OPERATION} is generated if parameter combinations are not supported by the specific
+     * compressed internal format as specified in the specific texture compression extension.</p>
+     *
+     * <p>Undefined results, including abnormal program termination, are generated if data is not encoded in a manner
+     * consistent with the extension specification defining the internal compression format.</p>
+     *
+     * @param target    Specifies the target of the active texture unit.
+     * @param level     Specifies the level-of-detail number. Level 0 is the base image level. Level n is the nth mipmap
+     *                  reduction image.
+     * @param xOffset   Specifies a texel offset in the x direction within the texture array.
+     * @param yOffset   Specifies a texel offset in the y direction within the texture array.
+     * @param format    Specifies the format of the compressed image data stored at address data.
+     * @param imageSize Specifies the number of unsigned bytes of image data starting at the address specified by data.
+     * @param data      Specifies a pointer to the compressed image data in memory.
+     */
     public static void glCompressedTexSubImage2D(int target, int level, int xOffset, int yOffset,
                                                  int format, long imageSize, JavaScriptObject data)
     {
@@ -1431,6 +1529,57 @@ public final class WebGL10
         nglCompressedTexSubImage2D(target, level, xOffset, yOffset, format, imageSize, data);
     }
 
+    /**
+     * <p>{@code glCompressedTexSubImage2D} redefines a contiguous subregion of an existing two-dimensional texture
+     * image. The texels referenced by data replace the portion of the existing texture array with x indices xoffset and
+     * {@code xoffset + width - 1}, and the y indices yoffset and {@code yoffset + height − 1}, inclusive. This region
+     * may not include any texels outside the range of the texture array as it was originally specified. It is not an
+     * error to specify a subtexture with width of 0, but such a specification has no effect.</p>
+     *
+     * <p>{@link #GL_INVALID_ENUM} is generated if target is not {@link #GL_TEXTURE_2D}, {@link
+     * #GL_TEXTURE_CUBE_MAP_POSITIVE_X}, {@link #GL_TEXTURE_CUBE_MAP_NEGATIVE_X}, {@link
+     * #GL_TEXTURE_CUBE_MAP_POSITIVE_Y}, {@link #GL_TEXTURE_CUBE_MAP_NEGATIVE_Y}, {@link
+     * #GL_TEXTURE_CUBE_MAP_POSITIVE_Z}, or {@link #GL_TEXTURE_CUBE_MAP_NEGATIVE_Z}.</p>
+     *
+     * <p>{@link #GL_INVALID_ENUM} is generated if format is not a supported format returned in {@link
+     * #GL_COMPRESSED_TEXTURE_FORMATS}.</p>
+     *
+     * <p>{@link #GL_INVALID_VALUE} is generated if level is less than 0.</p>
+     *
+     * <p>{@link #GL_INVALID_VALUE} may be generated if level is greater than log<sub>2</sub>max, where max is the
+     * returned value of {@link #GL_MAX_TEXTURE_SIZE} when target is {@link #GL_TEXTURE_2D} or {@link
+     * #GL_MAX_CUBE_MAP_TEXTURE_SIZE} when target is not {@link #GL_TEXTURE_2D}.</p>
+     *
+     * <p>{@link #GL_INVALID_VALUE} is generated if {@code xoffset < 0}, {@code (xoffset + width) > w}, {@code yoffset <
+     * 0}, or {@code (yoffset + height) > h}, where w is the width and h is the height of the texture image being
+     * modified.</p>
+     *
+     * <p>{@link #GL_INVALID_VALUE} is generated if width or height is less than 0.</p>
+     *
+     * <p>{@link #GL_INVALID_VALUE} is generated if imageSize is not consistent with the format, dimensions, and
+     * contents of the specified compressed image data.</p>
+     *
+     * <p>{@link #GL_INVALID_OPERATION} is generated if the texture array has not been defined by a previous {@link
+     * #glCompressedTexImage2D(int, int, int, int, long, Image)} operation whose internalformat matches the format of
+     * {@code glCompressedTexSubImage2D}.</p>
+     *
+     * <p>{@link #GL_INVALID_OPERATION} is generated if parameter combinations are not supported by the specific
+     * compressed internal format as specified in the specific texture compression extension.</p>
+     *
+     * <p>Undefined results, including abnormal program termination, are generated if data is not encoded in a manner
+     * consistent with the extension specification defining the internal compression format.</p>
+     *
+     * @param target    Specifies the target of the active texture unit.
+     * @param level     Specifies the level-of-detail number. Level 0 is the base image level. Level n is the nth mipmap
+     *                  reduction image.
+     * @param xOffset   Specifies a texel offset in the x direction within the texture array.
+     * @param yOffset   Specifies a texel offset in the y direction within the texture array.
+     * @param width     Specifies the width of the texture subimage.
+     * @param height    Specifies the height of the texture subimage.
+     * @param format    Specifies the format of the compressed image data stored at address data.
+     * @param imageSize Specifies the number of unsigned bytes of image data starting at the address specified by data.
+     * @param data      Specifies a pointer to the compressed image data in memory.
+     */
     public static void glCompressedTexSubImage2D(int target, int level, int xOffset, int yOffset, long width, long height,
                                                  int format, long imageSize, ArrayBufferView data)
     {
