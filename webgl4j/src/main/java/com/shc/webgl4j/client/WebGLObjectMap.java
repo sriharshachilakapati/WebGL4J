@@ -220,7 +220,7 @@ final class WebGLObjectMap
     int createUniform(JavaScriptObject uniform)
     {
         if (uniform == null)
-            return 0;
+            return -1;
 
         Map<Integer, JavaScriptObject> progUniforms = uniforms.get(currentProgram);
 
@@ -243,7 +243,7 @@ final class WebGLObjectMap
 
     JavaScriptObject toUniform(int programID, int uniform)
     {
-        return uniforms.get(programID).get(uniform);
+        return uniform == -1 ? null : uniforms.get(programID).get(uniform);
     }
 
     JavaScriptObject toUniform(int uniform)
