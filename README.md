@@ -131,6 +131,18 @@ ctx2.makeCurrent();
 
 You don't need to make the context current if you are only using one context. If you are using multiple contexts, the context that is just created will be the current, so in the above example, `ctx2` will be current since it is the latest created context.
 
+## Using extensions
+
+Extensions in WebGL are a bit different when compared to the standard desktop OpenGL extensions. One notable difference is that here the extension needs to be enabled first, unlike the traditional desktop OpenGL where all the extensions are enabled by default.
+
+```java
+// Check if the extension is supported
+if (OES_vertex_array_object.isSupported())
+    OES_vertex_array_object.enableExtension();
+```
+
+The above example demonstrates the `OES_vertex_array_object` extension, and how to enable it. Once it's enabled, you can call any of it's static functions just like you call the WebGL functions. If you try to use an exception without enabling it, an `IllegalStateException` will be thrown at you.
+
 ## Fullscreen mode
 
 You can use the built in polyfill to request the fullscreen mode on a context. This works in most browsers (Chrome, Safari, Opera, Firefox, IE 11 and the new Edge), with the ones that are tested being Chrome, Firefox, IE 11 and Edge. This is how you request fullscreen mode.
