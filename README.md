@@ -141,7 +141,7 @@ if (OES_vertex_array_object.isSupported())
     OES_vertex_array_object.enableExtension();
 ```
 
-The above example demonstrates the `OES_vertex_array_object` extension, and how to enable it. Once it's enabled, you can call any of it's static functions just like you call the WebGL functions. If you try to use an exception without enabling it, an `IllegalStateException` will be thrown at you.
+The above example demonstrates the `OES_vertex_array_object` extension, and how to enable it. Once it's enabled, you can call any of it's static functions just like you call the WebGL functions. If you try to use an extension without enabling it, an `IllegalStateException` will be thrown at you.
 
 ## Fullscreen mode
 
