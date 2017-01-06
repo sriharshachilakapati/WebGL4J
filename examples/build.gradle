@@ -20,9 +20,9 @@ javadoc {
 dependencies {
     providedCompile 'com.google.gwt:gwt-user:2.8.0-beta1'
     providedCompile 'com.google.gwt:gwt-servlet:2.8.0-beta1'
+    providedCompile 'org.joml:joml-gwt:1.9.2-SNAPSHOT'
 
     providedCompile project(":webgl4j")
-    providedCompile fileTree(dir: "libs", includes: ["*.jar"])
 }
 
 task run(type: JettyRunWar) {
