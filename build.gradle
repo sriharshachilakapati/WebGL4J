@@ -26,6 +26,5 @@ project(":examples") {
 
     dependencies {
         compile project(":webgl4j")
-        compile 'com.google.gwt:gwt-user:2.7.0'
     }
 }

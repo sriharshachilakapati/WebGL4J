@@ -8,7 +8,7 @@ gwt {
     minHeapSize = "512M";
     maxHeapSize = "1024M";
 
-    gwtVersion = '2.8.0-beta1'
+    gwtVersion = '2.8.0'
     modules 'com.shc.webgl4j.examples.client'
     devModules 'com.shc.webgl4j.examples.client'
 }
@@ -18,10 +18,9 @@ javadoc {
 }
 
 dependencies {
-    providedCompile 'com.google.gwt:gwt-user:2.8.0-beta1'
-    providedCompile 'com.google.gwt:gwt-servlet:2.8.0-beta1'
-    providedCompile 'org.joml:joml-gwt:1.9.2-SNAPSHOT'
-
+    providedCompile 'com.google.gwt:gwt-user:2.8.0'
+    providedCompile 'com.google.gwt:gwt-servlet:2.8.0'
+    providedCompile 'org.joml:joml-gwt:1.9.3-SNAPSHOT'
     providedCompile project(":webgl4j")
 }
 

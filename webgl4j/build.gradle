@@ -2,8 +2,8 @@ apply plugin: 'java'
 apply plugin: 'maven'
 apply plugin: 'signing'
 
-sourceCompatibility = 1.7
-targetCompatibility = 1.7
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
 
 group = "com.goharsha"
 archivesBaseName = "webgl4j"
@@ -26,7 +26,7 @@ else
 }
 
 dependencies {
-    compile 'com.google.gwt:gwt-user:2.7.0'
+    compile 'com.google.gwt:gwt-user:2.8.0'
 }
 
 jar {
