@@ -11,6 +11,10 @@ gwt {
     gwtVersion = '2.8.0'
     modules 'com.shc.webgl4j.examples.client'
     devModules 'com.shc.webgl4j.examples.client'
+
+    compiler {
+        strict = true
+    }
 }
 
 javadoc {
@@ -21,6 +25,7 @@ dependencies {
     providedCompile 'com.google.gwt:gwt-user:2.8.0'
     providedCompile 'com.google.gwt:gwt-servlet:2.8.0'
     providedCompile 'org.joml:joml-gwt:1.9.3-SNAPSHOT'
+    providedCompile fileTree('libs')
     providedCompile project(":webgl4j")
 }
 

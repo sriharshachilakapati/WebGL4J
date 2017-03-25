@@ -9,7 +9,7 @@
     <inherits name='com.shc.webgl4j.client'/>
 
     <!-- Inherit the JOML-GWT library.                        -->
-    <inherits name='joml'/>
+    <inherits name='org.joml.JOML'/>
 
     <!-- Define the entrypoint                                -->
     <entry-point class='com.shc.webgl4j.examples.client.WebGL4J'/>
