@@ -1956,10 +1956,10 @@ public final class WebGL10
         return nglGetSupportedExtensions();
     }
 
-    public static int glGetTexParameter(int textureID, int pname)
+    public static int glGetTexParameter(int textureTarget, int pname)
     {
         checkContextCompatibility();
-        return nglGetTexParameter(WebGLObjectMap.get().toTexture(textureID), pname);
+        return nglGetTexParameter(textureTarget, pname);
     }
 
     public static <T> T glGetUniform(int program, int location)
@@ -2940,8 +2940,8 @@ public final class WebGL10
         return $wnd.gl.getSupportedExtensions();
     }-*/;
 
-    private static native int nglGetTexParameter(JavaScriptObject textureID, int pname) /*-{
-        return $wnd.gl.getTexParameter(textureID, pname);
+    private static native int nglGetTexParameter(int textureTarget, int pname) /*-{
+        return $wnd.gl.getTexParameter(textureTarget, pname);
     }-*/;
 
     private static native <T> T nglGetUniform(JavaScriptObject programID, JavaScriptObject location) /*-{
