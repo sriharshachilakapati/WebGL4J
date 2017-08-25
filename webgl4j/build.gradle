@@ -7,7 +7,7 @@ targetCompatibility = 1.8
 
 group = "com.goharsha"
 archivesBaseName = "webgl4j"
-version = "0.2.9"
+version = "0.3.0-SNAPSHOT"
 
 // Check if the required properties are included, so we prevent our
 // build from failing.
